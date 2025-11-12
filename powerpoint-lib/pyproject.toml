@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "powerpoint-lib"
+version = "0.1.0"
+description = "Utilities for exporting pandas DataFrames to PowerPoint slides using Great Tables."
+readme = "README.md"
+authors = [{name = "Your Name", email = "you@example.com"}]
+requires-python = ">=3.9"
+dependencies = [
+  "pandas>=1.5",
+  "python-pptx>=0.6.21",
+  "great-tables>=0.3.0"
+]
+
+[project.optional-dependencies]
+dev = [
+  "mypy",
+  "ruff"
+]
