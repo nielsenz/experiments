@@ -33,8 +33,8 @@ python lake_mead_analyzer.py
 
 The script will:
 1. Attempt to fetch the latest data from USGS
-2. Fall back to cached data if available
-3. Generate sample data if no real data is accessible
+2. Fall back to cached data if API is unavailable
+3. Display an error if no data is accessible
 4. Display trend analysis in the terminal
 5. Generate visualization charts
 6. Save charts to the `output/` directory

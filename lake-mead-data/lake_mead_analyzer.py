@@ -327,10 +327,10 @@ class LakeMeadAnalyzer:
         elif not self.fetch_data():
             print("\nAttempting to load cached data...")
             if not self.load_cached_data():
-                print("\nNo cached data found. Generating sample data for demonstration...")
-                if not self.generate_sample_data():
-                    print("\n✗ Unable to generate sample data.")
-                    return False
+                print("\n✗ Unable to fetch data from USGS API and no cached data available.")
+                print("   Please check your internet connection and try again.")
+                print("   Alternatively, run with --sample flag to use generated sample data for testing.")
+                return False
 
         # Perform analysis
         self.analyze_trends()
