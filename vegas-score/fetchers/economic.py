@@ -22,7 +22,7 @@ CENSUS_BASE = "https://api.census.gov/data"
 
 # BLS Series IDs for Las Vegas-Henderson-Paradise, NV MSA
 BLS_SERIES = {
-    "unemployment": "LAUMT321982000000003",      # Unemployment rate
+    "unemployment": "LAUCN320030000000003",      # Unemployment rate (Clark County)
     "total_nonfarm": "SMU32298200000000001",      # Total nonfarm employment (thousands)
     "leisure_hosp": "SMU32298207000000001",       # Leisure & hospitality employment
     "construction": "SMU32298202000000001",       # Construction employment
@@ -94,7 +94,7 @@ class EconomicFetcher:
     # ── BLS helpers ─────────────────────────────────────────
     def _bls_fetch(self, series_id, start_year=None, end_year=None):
         if start_year is None:
-            start_year = str(datetime.now().year - 1)
+            start_year = str(datetime.now().year - 2)  # Go back 2 years for LAU publication lag
         if end_year is None:
             end_year = str(datetime.now().year)
         payload = {
@@ -107,7 +107,10 @@ class EconomicFetcher:
         resp = r.json()
         if resp["status"] != "REQUEST_SUCCEEDED":
             raise ValueError(f"BLS error: {resp.get('message', resp['status'])}")
-        return resp["Results"]["series"][0]["data"]
+        data = resp["Results"]["series"][0]["data"]
+        if not data:
+            raise ValueError(f"No BLS data for {series_id} in {start_year}-{end_year}")
+        return data
 
     # ── Unemployment ────────────────────────────────────────
     def _fetch_unemployment(self):
@@ -185,9 +188,10 @@ class EconomicFetcher:
     # ── Census Population ───────────────────────────────────
     def _fetch_population(self):
         if self.demo:
-            return {"population": 2320800, "name": "Clark County, NV", "year": 2023}
-        url = f"{CENSUS_BASE}/2023/pep/population"
-        params = {"get": "POP_2023,NAME", "for": "county:003", "in": "state:32"}
+            return {"population": 2320800, "name": "Clark County, NV", "year": 2022}
+        # PEP endpoint is unreliable; use ACS 5-year estimate (B01003_001E = total population)
+        url = f"{CENSUS_BASE}/2022/acs/acs5"
+        params = {"get": "B01003_001E,NAME", "for": "county:003", "in": "state:32"}
         r = requests.get(url, params=params, timeout=15)
         r.raise_for_status()
         data = r.json()
@@ -195,7 +199,7 @@ class EconomicFetcher:
             return {
                 "population": int(data[1][0]),
                 "name": data[1][1],
-                "year": 2023,
+                "year": 2022,
             }
         raise ValueError("No population data")
 

@@ -129,40 +129,32 @@ class EnvironmentalFetcher:
     def _fetch_aqi(self):
         if self.demo:
             return self._demo_aqi()
-        # Try the state-level current observations endpoint (no key needed)
-        url = "https://www.airnow.gov/rest/cb/states/NV/currentObservations"
-        r = requests.get(url, timeout=15)
-        r.raise_for_status()
-        data = r.json()
-        vegas = [
-            d for d in data
-            if "Vegas" in str(d.get("reportingArea", ""))
-            or "Clark" in str(d.get("reportingArea", ""))
-        ]
-        if vegas:
-            e = vegas[0]
-            return {
-                "aqi": e.get("aqi"),
-                "category": e.get("category"),
-                "pollutant": e.get("pollutant"),
-                "reporting_area": e.get("reportingArea"),
+        # The official AirNow API requires a free key (https://docs.airnowapi.org/account/request/)
+        # Set AIRNOW_API_KEY env var to enable
+        import os
+        api_key = os.environ.get("AIRNOW_API_KEY", "")
+        if api_key:
+            url = "https://www.airnowapi.org/aq/observation/zipCode/current/"
+            params = {
+                "format": "application/json",
+                "zipCode": "89052",
+                "distance": 25,
+                "API_KEY": api_key,
             }
-        # Fallback: use lat/lon endpoint
-        url2 = "https://www.airnow.gov/rest/cb/reportingArea"
-        params = {"latitude": SEVEN_HILLS_LAT, "longitude": SEVEN_HILLS_LON,
-                  "stateCode": "NV", "maxDistance": 50}
-        r2 = requests.get(url2, params=params, timeout=15)
-        r2.raise_for_status()
-        d = r2.json()
-        if d:
-            e = d[0] if isinstance(d, list) else d
-            return {
-                "aqi": e.get("aqi"),
-                "category": e.get("category"),
-                "pollutant": e.get("pollutant"),
-                "reporting_area": e.get("reportingArea"),
-            }
-        raise ValueError("No AQI data found for Las Vegas area")
+            r = requests.get(url, params=params, timeout=15)
+            r.raise_for_status()
+            data = r.json()
+            if data:
+                # Find PM2.5 entry or use first available
+                pm25 = [d for d in data if d.get("ParameterName") == "PM2.5"]
+                e = pm25[0] if pm25 else data[0]
+                return {
+                    "aqi": e.get("AQI"),
+                    "category": e.get("Category", {}).get("Name"),
+                    "pollutant": e.get("ParameterName"),
+                    "reporting_area": e.get("ReportingArea"),
+                }
+        raise ValueError("Set AIRNOW_API_KEY env var (free at docs.airnowapi.org)")
 
     def _demo_aqi(self):
         return {
@@ -176,17 +168,28 @@ class EnvironmentalFetcher:
     def _fetch_uv(self):
         if self.demo:
             return {"uv_index": 7, "uv_alert": False, "zip": "89052"}
-        url = "https://data.epa.gov/efservice/getEnvirofactsUVDAILY/ZIP/89052/JSON"
-        r = requests.get(url, timeout=15)
-        r.raise_for_status()
-        data = r.json()
-        if data:
-            return {
-                "uv_index": data[0].get("UV_INDEX"),
-                "uv_alert": bool(data[0].get("UV_ALERT")),
-                "zip": "89052",
-            }
-        raise ValueError("No UV data for ZIP 89052")
+        # Try both EPA Envirofacts hosts (the API has moved between domains)
+        urls = [
+            "https://enviro.epa.gov/enviro/efservice/getEnvirofactsUVDAILY/ZIP/89052/JSON",
+            "https://data.epa.gov/efservice/getEnvirofactsUVDAILY/ZIP/89052/JSON",
+        ]
+        for url in urls:
+            try:
+                r = requests.get(url, timeout=15, allow_redirects=True)
+                r.raise_for_status()
+                data = r.json()
+                if isinstance(data, list) and data:
+                    return {
+                        "uv_index": data[0].get("UV_INDEX"),
+                        "uv_alert": bool(data[0].get("UV_ALERT")),
+                        "zip": "89052",
+                    }
+                # API returned but with an error message
+                if isinstance(data, dict) and "error" in str(data).lower():
+                    continue
+            except Exception:
+                continue
+        raise ValueError("EPA UV API unavailable — endpoints may be offline")
 
     # ── Lake Mead (USBR RISE) ──────────────────────────────
     def _fetch_lake_mead(self):
@@ -194,22 +197,31 @@ class EnvironmentalFetcher:
             return self._demo_lake_mead()
         end = datetime.now().strftime("%Y-%m-%d")
         start = (datetime.now() - timedelta(days=7)).strftime("%Y-%m-%d")
+        # Item 6123 = Lake Mead Elevation (ft); 6124 = Storage (af)
         url = "https://data.usbr.gov/rise/api/result/download"
-        params = {"itemId": "6124", "after": start, "before": end, "order": "DESC"}
+        params = {"itemId": "6123", "after": start, "before": end, "order": "DESC"}
         r = requests.get(url, params=params, timeout=15)
         r.raise_for_status()
         data = r.json()
         if data:
-            latest = data[0] if isinstance(data, list) else data
-            elev = latest.get("result", latest.get("value"))
-            # Lake Mead max capacity at ~1,229 ft; dead pool ~895 ft
-            pct = round((float(elev) - 895) / (1229 - 895) * 100, 1) if elev else None
-            return {
-                "elevation_ft": elev,
-                "pct_capacity": pct,
-                "date": latest.get("dateTime", ""),
-            }
-        raise ValueError("No Lake Mead data returned")
+            # /result/download returns a dict with metadata + numbered keys for data points
+            elev = None
+            date_str = ""
+            if "0" in data:
+                elev = data["0"].get("result")
+                date_str = data["0"].get("dateTime", "")
+            elif isinstance(data, list) and data:
+                elev = data[0].get("result", data[0].get("value"))
+                date_str = data[0].get("dateTime", "")
+            if elev is not None:
+                # Lake Mead max capacity at ~1,229 ft; dead pool ~895 ft
+                pct = round((float(elev) - 895) / (1229 - 895) * 100, 1)
+                return {
+                    "elevation_ft": elev,
+                    "pct_capacity": pct,
+                    "date": date_str,
+                }
+        raise ValueError("No Lake Mead elevation data returned")
 
     def _demo_lake_mead(self):
         return {
@@ -222,16 +234,16 @@ class EnvironmentalFetcher:
     def _fetch_usgs_water(self):
         if self.demo:
             return {
-                "site": "Colorado R at Hoover Dam",
-                "value": 12500,
-                "unit": "ft3/s",
+                "site": "Colorado R below Hoover Dam",
+                "value": 47.0,
+                "unit": "ft",
                 "datetime": "2026-02-22T12:00:00",
             }
         url = "https://waterservices.usgs.gov/nwis/iv/"
         params = {
             "sites": "09421500",  # Colorado River below Hoover Dam
             "format": "json",
-            "parameterCd": "00060",  # Discharge (ft³/s)
+            "parameterCd": "00065",  # Gage height (ft) — discharge not available at this site
             "period": "P7D",
         }
         r = requests.get(url, params=params, timeout=15)
@@ -260,18 +272,40 @@ class EnvironmentalFetcher:
             }
         end = datetime.now().strftime("%m/%d/%Y")
         start = (datetime.now() - timedelta(days=14)).strftime("%m/%d/%Y")
-        url = "https://usdm.unl.edu/api/county_statistics/GetDroughtSeverityStatisticsByAreaPercent"
-        params = {"aoi": "32003", "startdate": start, "enddate": end, "statisticsType": "1"}
-        r = requests.get(url, params=params, timeout=15)
-        r.raise_for_status()
-        data = r.json()
-        if data:
-            latest = data[-1] if isinstance(data, list) else data
-            return {
-                "category": f"D{latest.get('d1', 0) and 1 or 0}",
-                "pct_area": latest.get("d1", 0),
-                "none_pct": latest.get("none", 0),
-                "d0_pct": latest.get("d0", 0),
-                "d1_pct": latest.get("d1", 0),
-            }
-        raise ValueError("No drought data")
+        # Try both the old and new domain — the API has been unstable
+        urls = [
+            "https://droughtmonitor.unl.edu/api/county_statistics/GetDroughtSeverityStatisticsByAreaPercent",
+            "https://usdm.unl.edu/api/county_statistics/GetDroughtSeverityStatisticsByAreaPercent",
+        ]
+        for url in urls:
+            try:
+                params = {"aoi": "32003", "startdate": start, "enddate": end, "statisticsType": "1"}
+                r = requests.get(url, params=params, timeout=15)
+                r.raise_for_status()
+                data = r.json()
+                if data:
+                    latest = data[-1] if isinstance(data, list) else data
+                    # Determine worst drought category present
+                    for level in ["d4", "d3", "d2", "d1", "d0"]:
+                        pct = latest.get(level, 0)
+                        if pct and float(pct) > 0:
+                            labels = {"d0": "D0 (Abnormally Dry)", "d1": "D1 (Moderate Drought)",
+                                      "d2": "D2 (Severe Drought)", "d3": "D3 (Extreme Drought)",
+                                      "d4": "D4 (Exceptional Drought)"}
+                            return {
+                                "category": labels.get(level, level.upper()),
+                                "pct_area": float(pct),
+                                "none_pct": latest.get("none", 0),
+                                "d0_pct": latest.get("d0", 0),
+                                "d1_pct": latest.get("d1", 0),
+                            }
+                    return {
+                        "category": "None",
+                        "pct_area": 0,
+                        "none_pct": latest.get("none", 100),
+                        "d0_pct": 0,
+                        "d1_pct": 0,
+                    }
+            except Exception:
+                continue
+        raise ValueError("Drought Monitor API unavailable on both domains")

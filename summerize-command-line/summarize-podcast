@@ -1,0 +1,330 @@
+#!/bin/bash
+# Summarize podcasts from RSS feeds or YouTube videos/channels
+# Supports: RSS feeds, YouTube videos, YouTube channels/playlists
+
+set -e
+
+# Configuration
+WHISPER_MODEL="${SUMMARIZE_WHISPER_CPP_MODEL_PATH:-$HOME/.local/share/whisper/ggml-medium.bin}"
+TEMP_DIR="${TMPDIR:-/tmp}"
+
+usage() {
+    echo "Usage: summarize-podcast [options] <url> [count]"
+    echo ""
+    echo "Arguments:"
+    echo "  url      RSS feed URL, YouTube video URL, or YouTube channel URL"
+    echo "  count    Number of episodes/videos to summarize (default: 1)"
+    echo ""
+    echo "Options:"
+    echo "  --prompt <text>   Custom prompt for summarization"
+    echo "  --transcript      Output transcript only (no summary)"
+    echo "  --since-days <n>  Only include RSS episodes published in last N days"
+    echo "  --help            Show this help message"
+    echo ""
+    echo "Examples:"
+    echo "  summarize-podcast 'https://feeds.example.com/podcast.xml'"
+    echo "  summarize-podcast 'https://feeds.example.com/podcast.xml' 3"
+    echo "  summarize-podcast 'https://www.youtube.com/watch?v=VIDEO_ID'"
+    echo "  summarize-podcast 'https://www.youtube.com/channel/CHANNEL_ID' 2"
+    echo "  summarize-podcast --prompt 'Extract betting picks' 'https://feed.xml'"
+    exit 0
+}
+
+# Parse options
+CUSTOM_PROMPT=""
+TRANSCRIPT_ONLY=false
+SINCE_DAYS=""
+
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        --prompt)
+            CUSTOM_PROMPT="$2"
+            shift 2
+            ;;
+        --transcript)
+            TRANSCRIPT_ONLY=true
+            shift
+            ;;
+        --since-days)
+            SINCE_DAYS="$2"
+            shift 2
+            ;;
+        --help|-h)
+            usage
+            ;;
+        *)
+            break
+            ;;
+    esac
+done
+
+if [ -z "$1" ]; then
+    usage
+fi
+
+INPUT_URL="$1"
+COUNT="${2:-1}"
+
+# Detect URL type
+detect_url_type() {
+    local url="$1"
+    if [[ "$url" =~ youtube\.com/watch ]] || [[ "$url" =~ youtu\.be/ ]]; then
+        echo "youtube_video"
+    elif [[ "$url" =~ youtube\.com/(channel|c|@|user) ]] || [[ "$url" =~ youtube\.com/playlist ]]; then
+        echo "youtube_channel"
+    elif [[ "$url" =~ \.xml ]] || [[ "$url" =~ /feed ]] || [[ "$url" =~ rss ]]; then
+        echo "rss"
+    else
+        # Try to detect by fetching headers
+        local content_type=$(curl -sI "$url" | grep -i content-type | head -1)
+        if [[ "$content_type" =~ xml ]] || [[ "$content_type" =~ rss ]]; then
+            echo "rss"
+        else
+            echo "unknown"
+        fi
+    fi
+}
+
+# Get YouTube video transcript via yt-dlp subtitles
+get_youtube_transcript() {
+    local video_url="$1"
+    local output_base="$TEMP_DIR/yt_$(date +%s)_$$"
+
+    echo "Fetching YouTube transcript..." >&2
+
+    # Try to get auto-generated subtitles first
+    if yt-dlp --write-auto-sub --sub-lang en --skip-download --output "$output_base" "$video_url" > /dev/null 2>&1; then
+        if [ -f "${output_base}.en.vtt" ]; then
+            # Clean VTT to plain text
+            cat "${output_base}.en.vtt" | \
+                grep -v "^WEBVTT" | \
+                grep -v "^Kind:" | \
+                grep -v "^Language:" | \
+                grep -v "^$" | \
+                grep -v "^[0-9][0-9]:[0-9][0-9]" | \
+                sed 's/<[^>]*>//g' | \
+                uniq > "${output_base}.txt"
+            rm -f "${output_base}.en.vtt"
+            echo "${output_base}.txt"
+            return 0
+        fi
+    fi
+
+    # Fallback: download audio and transcribe with whisper
+    echo "No subtitles available, transcribing with Whisper..." >&2
+    transcribe_youtube_audio "$video_url"
+}
+
+# Download YouTube audio and transcribe with whisper-cli
+transcribe_youtube_audio() {
+    local video_url="$1"
+    local output_base="$TEMP_DIR/yt_audio_$(date +%s)_$$"
+
+    # Download audio only
+    yt-dlp -x --audio-format mp3 --output "${output_base}.%(ext)s" "$video_url" > /dev/null 2>&1
+
+    if [ -f "${output_base}.mp3" ]; then
+        whisper-cli -m "$WHISPER_MODEL" -f "${output_base}.mp3" -otxt -of "$output_base" > /dev/null 2>&1
+        rm -f "${output_base}.mp3"
+        echo "${output_base}.txt"
+    else
+        echo "Failed to download audio" >&2
+        return 1
+    fi
+}
+
+# Get videos from YouTube channel/playlist
+get_youtube_videos() {
+    local channel_url="$1"
+    local count="$2"
+
+    # Append /videos if it's a channel URL without path
+    if [[ "$channel_url" =~ youtube\.com/(channel|c|@) ]] && [[ ! "$channel_url" =~ /videos ]]; then
+        channel_url="${channel_url}/videos"
+    fi
+
+    yt-dlp --flat-playlist --print "%(id)s" "$channel_url" 2>/dev/null | head -n "$count"
+}
+
+# Get episodes from RSS feed
+get_rss_episodes() {
+    local feed_url="$1"
+    local count="$2"
+    local since_days="$3"
+
+    python3 - "$feed_url" "$count" "$since_days" <<'PY'
+import sys
+import xml.etree.ElementTree as ET
+from email.utils import parsedate_to_datetime
+from datetime import datetime, timezone, timedelta
+
+feed_url = sys.argv[1]
+count = int(sys.argv[2])
+since_days = sys.argv[3]
+
+import urllib.request
+
+with urllib.request.urlopen(feed_url) as resp:
+    data = resp.read()
+
+root = ET.fromstring(data)
+items = root.findall(".//item")
+
+since_cutoff = None
+if since_days:
+    since_cutoff = datetime.now(timezone.utc) - timedelta(days=int(since_days))
+
+results = []
+for item in items:
+    enclosure = item.find("enclosure")
+    if enclosure is None:
+        continue
+    url = enclosure.attrib.get("url")
+    if not url:
+        continue
+    title = item.findtext("title") or "Untitled episode"
+    pub_date = item.findtext("pubDate") or ""
+    pub_dt = None
+    if pub_date:
+        try:
+            pub_dt = parsedate_to_datetime(pub_date)
+        except Exception:
+            pub_dt = None
+    if since_cutoff and pub_dt:
+        if pub_dt.astimezone(timezone.utc) < since_cutoff:
+            continue
+    results.append((url, title, pub_date))
+    if len(results) >= count:
+        break
+
+for url, title, pub_date in results:
+    # Use a stable delimiter for bash parsing.
+    print(f"{url}|||{title}|||{pub_date}")
+PY
+}
+
+# Transcribe audio file with whisper-cli
+transcribe_audio() {
+    local audio_url="$1"
+    local output_base="$TEMP_DIR/podcast_$(date +%s)_$$"
+
+    echo "Downloading audio..." >&2
+    curl -sL -o "${output_base}.mp3" "$audio_url"
+
+    echo "Transcribing with Whisper (this may take a few minutes)..." >&2
+    whisper-cli -m "$WHISPER_MODEL" -f "${output_base}.mp3" -otxt -of "$output_base" > /dev/null 2>&1
+
+    rm -f "${output_base}.mp3"
+    echo "${output_base}.txt"
+}
+
+# Summarize a transcript file
+summarize_transcript() {
+    local transcript_file="$1"
+    local prompt="$2"
+
+    if [ "$TRANSCRIPT_ONLY" = true ]; then
+        cat "$transcript_file"
+    else
+        if [ -n "$prompt" ]; then
+            summarize "$transcript_file" --prompt "$prompt" --length xl
+        else
+            summarize "$transcript_file" --length xl
+        fi
+    fi
+}
+
+# Main logic
+URL_TYPE=$(detect_url_type "$INPUT_URL")
+
+case "$URL_TYPE" in
+    youtube_video)
+        echo "=== YouTube Video ==="
+        TRANSCRIPT=$(get_youtube_transcript "$INPUT_URL")
+        if [ -f "$TRANSCRIPT" ]; then
+            summarize_transcript "$TRANSCRIPT" "$CUSTOM_PROMPT"
+            rm -f "$TRANSCRIPT"
+        fi
+        ;;
+
+    youtube_channel)
+        echo "=== YouTube Channel/Playlist ==="
+        VIDEO_IDS=$(get_youtube_videos "$INPUT_URL" "$COUNT")
+
+        if [ -z "$VIDEO_IDS" ]; then
+            echo "No videos found"
+            exit 1
+        fi
+
+        echo "$VIDEO_IDS" | while read -r VIDEO_ID; do
+            echo ""
+            echo "--- Video: https://youtube.com/watch?v=$VIDEO_ID ---"
+            TRANSCRIPT=$(get_youtube_transcript "https://youtube.com/watch?v=$VIDEO_ID")
+            if [ -f "$TRANSCRIPT" ]; then
+                summarize_transcript "$TRANSCRIPT" "$CUSTOM_PROMPT"
+                rm -f "$TRANSCRIPT"
+            fi
+            echo ""
+        done
+        ;;
+
+    rss)
+        echo "=== Podcast RSS Feed ==="
+        EPISODES=$(get_rss_episodes "$INPUT_URL" "$COUNT" "$SINCE_DAYS")
+
+        if [ -z "$EPISODES" ]; then
+            echo "No episodes found in feed"
+            exit 1
+        fi
+
+        echo "$EPISODES" | while read -r EPISODE; do
+            EPISODE_URL="${EPISODE%%|||*}"
+            EPISODE_META="${EPISODE#*|||}"
+            EPISODE_TITLE="${EPISODE_META%%|||*}"
+            EPISODE_DATE="${EPISODE_META#*|||}"
+            echo ""
+            if [ -n "$EPISODE_DATE" ]; then
+                echo "--- Episode: $EPISODE_TITLE ($EPISODE_DATE) ---"
+            else
+                echo "--- Episode: $EPISODE_TITLE ---"
+            fi
+            echo "URL: $EPISODE_URL"
+            TRANSCRIPT=$(transcribe_audio "$EPISODE_URL")
+            if [ -f "$TRANSCRIPT" ]; then
+                summarize_transcript "$TRANSCRIPT" "$CUSTOM_PROMPT"
+                rm -f "$TRANSCRIPT"
+            fi
+            echo ""
+        done
+        ;;
+
+    *)
+        echo "Could not detect URL type. Trying as RSS feed..."
+        EPISODES=$(get_rss_episodes "$INPUT_URL" "$COUNT" "$SINCE_DAYS")
+
+        if [ -z "$EPISODES" ]; then
+            echo "No episodes found. Try providing a direct RSS feed URL or YouTube URL."
+            exit 1
+        fi
+
+        echo "$EPISODES" | while read -r EPISODE; do
+            EPISODE_URL="${EPISODE%%|||*}"
+            EPISODE_META="${EPISODE#*|||}"
+            EPISODE_TITLE="${EPISODE_META%%|||*}"
+            EPISODE_DATE="${EPISODE_META#*|||}"
+            echo ""
+            if [ -n "$EPISODE_DATE" ]; then
+                echo "--- Episode: $EPISODE_TITLE ($EPISODE_DATE) ---"
+            else
+                echo "--- Episode: $EPISODE_TITLE ---"
+            fi
+            echo "URL: $EPISODE_URL"
+            TRANSCRIPT=$(transcribe_audio "$EPISODE_URL")
+            if [ -f "$TRANSCRIPT" ]; then
+                summarize_transcript "$TRANSCRIPT" "$CUSTOM_PROMPT"
+                rm -f "$TRANSCRIPT"
+            fi
+            echo ""
+        done
+        ;;
+esac
