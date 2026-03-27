@@ -102,7 +102,11 @@ for f, c in zip(features, lr.coef_[0]):
 print(f"  intercept: {lr.intercept_[0]:+.4f}")
 
 # Save model
-model_path = '/home/workspace/cbb-2026/first_to_10_model_2025.pkl'
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent))
+from config import MODEL_2025, PROCESSED_DIR
+model_path = str(MODEL_2025)
 with open(model_path, 'wb') as f:
     pickle.dump({'model': lr, 'features': features}, f)
 print(f"\nModel saved → {model_path}")
@@ -156,7 +160,7 @@ for home, away, h_ppg, a_ppg in s16_matchups:
 pred_df = pd.DataFrame(pred_rows)
 print(pred_df[['home_team','away_team','prob_home_first_10','favored_first_10','confidence']].to_string(index=False))
 
-pred_path = '/home/workspace/cbb-2026/sweet16_predictions_2026.csv'
+pred_path = str(PROCESSED_DIR / 'sweet16_predictions_2026.csv')
 pred_df.to_csv(pred_path, index=False)
 print(f"\nPredictions saved → {pred_path}")
 
