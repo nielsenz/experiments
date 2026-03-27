@@ -1,12 +1,17 @@
 """
 Get full season game IDs - November through March.
 """
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from config import SOURCE_DIR
+
 import requests
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 import time
 
-OUT = '/home/workspace/cbb-2026/source/all_game_ids.txt'
+OUT = SOURCE_DIR / 'all_game_ids.txt'
 
 session = requests.Session()
 session.mount('https://', HTTPAdapter(max_retries=3))

@@ -5,6 +5,11 @@ Scrape 2025-2026 CBB regular season PBP for team stats - optimized.
 3. Fetch PBP in parallel
 4. Compute team PPG from scoring plays
 """
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from config import RAW_DIR, PROCESSED_DIR
+
 import sportsdataverse as sdv
 import json
 import pandas as pd
@@ -13,8 +18,8 @@ import os
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 SEASON = 2026
-OUTPUT_DIR = "/home/workspace/cbb-2026/source"
-os.makedirs(OUTPUT_DIR, exist_ok=True)
+RAW_DIR.mkdir(parents=True, exist_ok=True)
+OUTPUT_DIR = RAW_DIR
 
 # ─── Step 1: Get all game IDs (parallel schedule scan) ───────────
 print("Getting calendar...")
@@ -182,5 +187,5 @@ team_stats = pd.DataFrame(rows).sort_values('team_name').reset_index(drop=True)
 print(f"\nTeams: {len(team_stats)}")
 print(team_stats.to_string(index=False))
 
-team_stats.to_csv(f"{OUTPUT_DIR}/team_stats_2026.csv", index=False)
+team_stats.to_csv(PROCESSED_DIR / 'team_stats_2026.csv', index=False)
 print(f"\nSaved team_stats_2026.csv")

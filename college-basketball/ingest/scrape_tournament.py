@@ -1,18 +1,21 @@
 """
 Scrape 2025-2026 CBB tournament PBP - focused fast scraper.
 """
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from config import RAW_DIR, SOURCE_DIR
+
 import sportsdataverse as sdv
 import pandas as pd
 import json
 import time
 import os
-import sys
 from datetime import datetime
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import threading
 
-OUT_DIR = "/home/workspace/cbb-2026/source"
-os.makedirs(OUT_DIR, exist_ok=True)
+RAW_DIR.mkdir(parents=True, exist_ok=True)
 
 # NCAA tournament dates 2026
 TOURNAMENT_DATES = [
@@ -88,11 +91,11 @@ def main():
     print(f"\nSuccessfully scraped: {len(games_data)}/{len(all_game_ids)} games")
     
     # Step 3: Save raw JSON
-    out_file = f"{OUT_DIR}/tournament_pbp_2026_raw.json"
+    out_file = RAW_DIR / 'tournament_pbp_2026_raw.json'
     with open(out_file, 'w') as f:
         json.dump(games_data, f)
-    print(f"\nSaved raw PBP to {out_file}")
-    
+    print(f"\nSaved raw PBP to {str(out_file)}")
+
     # Step 4: Save game metadata (schedule)
     print("\n[3] Saving schedule metadata...")
     sched_rows = []
@@ -104,10 +107,10 @@ def main():
                 sched_rows.append(sched)
         except:
             pass
-    
+
     if sched_rows:
         sched_df = pd.concat(sched_rows, ignore_index=True)
-        sched_df.to_csv(f"{OUT_DIR}/tournament_schedule_2026.csv", index=False)
+        sched_df.to_csv(SOURCE_DIR / 'tournament_schedule_2026.csv', index=False)
         print(f"Saved {len(sched_df)} schedule rows")
     
     print("\n[DONE] Tournament scrape complete!")

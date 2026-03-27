@@ -1,6 +1,11 @@
 """
 Scrape 2025-2026 CBB PBP for team stats - fast parallel approach.
 """
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from config import RAW_DIR, SOURCE_DIR, PROCESSED_DIR
+
 import sportsdataverse as sdv
 import json, os, time, pickle
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -9,8 +14,7 @@ import numpy as np
 import requests
 
 SEASON = 2026
-OUT_DIR = '/home/workspace/cbb-2026/source'
-os.makedirs(OUT_DIR, exist_ok=True)
+RAW_DIR.mkdir(parents=True, exist_ok=True)
 
 def scrape_game(gid):
     """Fetch PBP for one game. Returns (gid, data) or (gid, None) on failure."""
@@ -33,7 +37,7 @@ print(f"Date range: {reg['date'].min()} → {reg['date'].max()}")
 game_ids = reg['id'].astype(str).tolist()
 print(f"Scraping {len(game_ids)} games...")
 
-done_file = f'{OUT_DIR}/season_pbp_2026_raw.json'
+done_file = RAW_DIR / 'season_pbp_2026.json'
 existing = set()
 if os.path.exists(done_file):
     with open(done_file) as f:
@@ -80,7 +84,7 @@ print("\nComputing team stats from PBP...")
 from collections import defaultdict
 
 team_scores = defaultdict(list)
-team_ opponents = defaultdict(list)
+team_opponents = defaultdict(list)
 
 for gid, game in all_data.items():
     plays = game.get('plays', [])

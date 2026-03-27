@@ -3,6 +3,11 @@ Build and evaluate first-to-10 model on 2025-2026 data.
 - All 1158 scraped games for team stats
 - Hold out 20% of completed tournament games for evaluation
 """
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from config import SEASON_PBP, TOURNAMENT_PBP, MODEL_2026, MODELS_DIR
+
 import json, numpy as np
 from collections import defaultdict
 from sklearn.ensemble import GradientBoostingClassifier
@@ -11,9 +16,9 @@ from sklearn.metrics import brier_score_loss, roc_auc_score, accuracy_score
 import pickle
 
 # ── Load data ──────────────────────────────────────────────────────────────────
-with open('/home/workspace/cbb-2026/source/season_pbp_2026.json') as f:
+with open(SEASON_PBP) as f:
     all_games = json.load(f)
-with open('/home/workspace/cbb-pbp/first_to_10_model_v2.pkl', 'rb') as f:
+with open(MODEL_2026, 'rb') as f:
     old = pickle.load(f)
 old_model = old['model']
 t2024 = old['team_pts']
@@ -55,7 +60,7 @@ for v in t2026.values(): v['pr'] = v['pace'] / lap if v['pace']>0 else 1.0
 print(f"2025-26: {len(t2026)} teams, league avg pace={lap:.1f}")
 
 # ── Load tournament data ──────────────────────────────────────────────────────
-with open('/home/workspace/cbb-2026/source/tournament_pbp_2026_raw.json') as f:
+with open(TOURNAMENT_PBP) as f:
     tourn = json.load(f)
 
 def ef10(plays):

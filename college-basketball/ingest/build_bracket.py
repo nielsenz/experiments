@@ -1,8 +1,13 @@
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from config import TOURNAMENT_PBP, MODEL_2026, PROCESSED_DIR
+
 import json, pandas as pd, numpy as np, pickle, requests
 
-with open('/home/workspace/cbb-2026/source/tournament_pbp_2026_raw.json') as f:
+with open(TOURNAMENT_PBP) as f:
     all_games = json.load(f)
-with open('/home/workspace/cbb-pbp/first_to_10_model.pkl', 'rb') as f:
+with open(MODEL_2026, 'rb') as f:
     ma = pickle.load(f)
 team_pts_2024 = ma['team_pts']
 
@@ -113,7 +118,7 @@ for gid, game in all_games.items():
         'pace_ratio':round((hp+ap)/147.4,3),'home_f10_prob':prob,'stats_source':src})
 
 df = pd.DataFrame(rows)
-df.to_csv('/home/workspace/cbb-2026/first_to_10_2026.csv',index=False)
+df.to_csv(PROCESSED_DIR / 'first_to_10_2026.csv', index=False)
 
 completed = df[df['round']=='R1-DONE']
 live = df[df['round']=='R1-LIVE']
@@ -152,4 +157,4 @@ for _,r in r2.sort_values('home_team').iterrows():
 for _,r in later.sort_values(['round','home_team']).iterrows():
     print(f"  {r['round']:<6} {r['home_team']:<28} {r['away_team']:<28} {r['home_f10_prob']:>6.1f}% {r['home_pts_pg']:>6.1f} {r['away_pts_pg']:>6.1f}  {r['stats_source']}")
 
-print(f"\nSaved → /home/workspace/cbb-2026/first_to_10_2026.csv")
+print(f"\nSaved → {str(PROCESSED_DIR / 'first_to_10_2026.csv')}")

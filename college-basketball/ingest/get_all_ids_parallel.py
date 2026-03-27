@@ -1,13 +1,18 @@
 """
 Get ALL game IDs for 2025-2026 season - parallel date queries.
 """
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from config import SOURCE_DIR
+
 import requests
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-OUT = '/home/workspace/cbb-2026/source/full_game_ids.txt'
+OUT = SOURCE_DIR / 'full_game_ids.txt'
 
 session = requests.Session()
 session.mount('https://', HTTPAdapter(max_retries=2))

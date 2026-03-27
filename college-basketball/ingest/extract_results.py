@@ -2,19 +2,24 @@
 Extract first-to-10 results from completed 2026 tournament PBP.
 Also try to get recent team stats from scoreboard API.
 """
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from config import TOURNAMENT_PBP, MODEL_2026, PROCESSED_DIR
+
 import requests
 import json
 import pandas as pd
 import numpy as np
+import pickle
 from datetime import datetime
 
 # Load tournament PBP data
-with open('/home/workspace/cbb-2026/source/tournament_pbp_2026_raw.json') as f:
+with open(TOURNAMENT_PBP) as f:
     all_games = json.load(f)
 
-# Load 2024 model for fallback stats
-import pickle
-with open('/home/workspace/cbb-pbp/first_to_10_model.pkl', 'rb') as f:
+# Load model for fallback stats
+with open(MODEL_2026, 'rb') as f:
     ma = pickle.load(f)
 team_pts_2024 = ma['team_pts']
 
@@ -195,7 +200,7 @@ for _, row in df.iterrows():
 pred_df = pd.DataFrame(predictions)
 
 # Save
-pred_df.to_csv('/home/workspace/cbb-2026/first_to_10_2026.csv', index=False)
+pred_df.to_csv(PROCESSED_DIR / 'first_to_10_2026.csv', index=False)
 
 # Print summary
 completed = pred_df[pred_df['status'] == 'STATUS_FINAL']
@@ -217,4 +222,4 @@ for _, r in in_progress.iterrows():
     actual = f" | ACTUAL: {r['actual_f10'].upper()}" if r['actual_f10'] else ""
     print(f"  {r['date']} | {r['home_team']} {r['home_score']}-{r['away_score']} {r['away_team']} [{r['status']}]{actual}")
 
-print(f"\nSaved to /home/workspace/cbb-2026/first_to_10_2026.csv")
+print(f"\nSaved to {str(PROCESSED_DIR / 'first_to_10_2026.csv')}")

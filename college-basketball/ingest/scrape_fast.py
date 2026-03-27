@@ -2,6 +2,11 @@
 Fast CBB 2025-2026 PBP scraper using direct ESPN API.
 Uses session pooling for speed.
 """
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from config import SOURCE_DIR
+
 import requests
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
@@ -10,8 +15,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 import threading
 
 SEASON = 2026
-OUT_DIR = '/home/workspace/cbb-2026/source'
-os.makedirs(OUT_DIR, exist_ok=True)
+SOURCE_DIR.mkdir(parents=True, exist_ok=True)
 
 # Thread-safe session factory
 session_lock = threading.Lock()
@@ -97,8 +101,8 @@ for month in ['02', '03']:
 # Deduplicate and save
 all_game_ids = sorted(all_game_ids)
 print(f"\nTotal unique game IDs: {len(all_game_ids)}")
-print(f"Saving to {OUT_DIR}/game_ids_2026.txt")
-with open(f'{OUT_DIR}/game_ids_2026.txt', 'w') as f:
+print(f"Saving to {str(SOURCE_DIR / 'game_ids_2026.txt')}")
+with open(SOURCE_DIR / 'game_ids_2026.txt', 'w') as f:
     for gid in all_game_ids:
         f.write(f"{gid}\n")
 print("Done - game IDs saved.")

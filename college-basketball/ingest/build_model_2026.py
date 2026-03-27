@@ -1,11 +1,16 @@
 """
 Build 2025-2026 team stats from scraped PBP, apply to first-to-10 model.
 """
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from config import SEASON_PBP, PROCESSED_DIR, TOURNAMENT_PBP, MODEL_2026
+
 import json, pickle, pandas as pd, numpy as np
 from collections import defaultdict
 
-PBP_FILE = '/home/workspace/cbb-2026/source/season_pbp_2026.json'
-OUT_DIR = '/home/workspace/cbb-2026'
+PBP_FILE = SEASON_PBP
+OUT_DIR = PROCESSED_DIR
 
 print("Loading PBP data...")
 with open(PBP_FILE) as f:
@@ -109,14 +114,14 @@ print("\n" + "="*60)
 print("APPLYING TO 2026 TOURNAMENT")
 print("="*60)
 
-with open('/home/workspace/cbb-pbp/first_to_10_model.pkl', 'rb') as f:
+with open(MODEL_2026, 'rb') as f:
     ma = pickle.load(f)
 model = ma['model']
 team_pts_2024 = ma['team_pts']
 team_pts_2024['team_name_lower'] = team_pts_2024['team_name'].str.lower().str.strip()
 
 # Tournament PBP
-with open('/home/workspace/cbb-2026/source/tournament_pbp_2026_raw.json') as f:
+with open(TOURNAMENT_PBP) as f:
     tourn_games = json.load(f)
 
 # Build winner set from completed games

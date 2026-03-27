@@ -3,6 +3,11 @@ Build first-to-10 model for 2026 CBB tournament.
 1. Extract actual first-to-10 outcomes from completed games
 2. Predict for scheduled round 1 games using regular season stats
 """
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from config import MODEL_2026, TOURNAMENT_PBP, SCHEDULE, PROCESSED_DIR
+
 import json
 import pandas as pd
 import numpy as np
@@ -11,17 +16,17 @@ from concurrent.futures import ThreadPoolExecutor
 import sportsdataverse as sdv
 import time
 
-# ─── Load 2024 model for team stats ───────────────────────────────────────────
-with open('/home/workspace/cbb-pbp/first_to_10_model.pkl', 'rb') as f:
+# ─── Load model for team stats ────────────────────────────────────────────────
+with open(MODEL_2026, 'rb') as f:
     model_artifacts = pickle.load(f)
 
 team_pts_2024 = model_artifacts['team_pts']  # team_name -> avg pts
 
 # ─── Load 2026 tournament data ────────────────────────────────────────────────
-with open('/home/workspace/cbb-2026/source/tournament_pbp_2026_raw.json') as f:
+with open(TOURNAMENT_PBP) as f:
     all_games = json.load(f)
 
-sched_df = pd.read_csv('/home/workspace/cbb-2026/source/tournament_schedule_2026.csv')
+sched_df = pd.read_csv(SCHEDULE)
 sched_df['game_date'] = pd.to_datetime(sched_df['date']).dt.strftime('%Y-%m-%d')
 
 # ─── Extract first-to-10 from completed games ───────────────────────────────────
@@ -77,17 +82,17 @@ for gid, game in all_games.items():
 
 rdf = pd.DataFrame(f10_results)
 rdf['date'] = pd.to_datetime(rdf['date'], errors='coerce')
-rdf = rdb.sort_values('date').reset_index(drop=True)
+rdf = rdf.sort_values('date').reset_index(drop=True)
 
 # ─── Completed games first-to-10 ──────────────────────────────────────────────
-completed = rdb[rdb['status'].isin(['STATUS_FINAL', 'STATUS_IN_PROGRESS']) & rdb['first_to_10'].notna()]
-scheduled = rdb[rdb['status'] == 'STATUS_SCHEDULED']
+completed = rdf[rdf['status'].isin(['STATUS_FINAL', 'STATUS_IN_PROGRESS']) & rdf['first_to_10'].notna()]
+scheduled = rdf[rdf['status'] == 'STATUS_SCHEDULED']
 
 print("=" * 65)
 print("2026 NCAA TOURNAMENT — FIRST TO 10 RESULTS")
 print("=" * 65)
 print(f"\nCompleted games: {len(completed)}")
-print(rdb[~rdb['first_to_10'].isna()][['date', 'home_team', 'away_team', 'first_to_10', 'home_score', 'away_score']].to_string(index=False))
+print(rdf[~rdf['first_to_10'].isna()][['date', 'home_team', 'away_team', 'first_to_10', 'home_score', 'away_score']].to_string(index=False))
 
 home_f10 = (completed['first_to_10'] == 'home').sum()
 print(f"\nHome first-to-10 rate: {home_f10}/{len(completed)} = {home_f10/len(completed)*100:.1f}%")
@@ -222,6 +227,6 @@ if len(pred_df) > 0:
     print(pred_df[['date', 'home_team', 'away_team', 'home_pts_pg', 'away_pts_pg', 'prob_pct']].to_string(index=False))
 
 # ─── Save results ──────────────────────────────────────────────────────────────
-rdf.to_csv('/home/workspace/cbb-2026/first_to_10_results.csv', index=False)
-pred_df.to_csv('/home/workspace/cbb-2026/first_to_10_predictions.csv', index=False)
+rdf.to_csv(PROCESSED_DIR / 'first_to_10_results.csv', index=False)
+pred_df.to_csv(PROCESSED_DIR / 'first_to_10_predictions.csv', index=False)
 print(f"\nResults saved.")

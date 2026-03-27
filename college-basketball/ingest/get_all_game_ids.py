@@ -1,13 +1,16 @@
 """
 Get full season game IDs - all months.
 """
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from config import SOURCE_DIR
+
 import requests
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 import os
 import threading
-
-OUT_DIR = '/home/workspace/cbb-2026/source'
 
 session_lock = threading.Lock()
 _sessions = []
@@ -54,6 +57,6 @@ for month, days in months.items():
     print(f"{month}: {len(all_ids)} total game IDs")
 
 print(f"\nGrand total: {len(all_ids)} unique game IDs")
-with open(f'{OUT_DIR}/game_ids_2026.txt', 'w') as f:
+with open(SOURCE_DIR / 'game_ids_2026.txt', 'w') as f:
     for gid in sorted(all_ids):
         f.write(f"{gid}\n")

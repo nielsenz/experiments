@@ -2,19 +2,23 @@
 Scrape ESPN CBB 2025-2026 season PBP data using sportsdataverse.
 Usage: python scrape_pbp.py [season_year] [--max-date YYYYMMDD]
 """
+import sys
+import os
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from config import RAW_DIR
+
 import sportsdataverse as sdv
 import pandas as pd
 import json
 import time
-import os
-import sys
 from datetime import datetime
 
-SEASON = int(sys.argv[1]) if len(sys.argv) > 1 else 2026
+SEASON = int(sys.argv[1]) if len(sys.argv) > 2 else 2026
 MAX_DATE = sys.argv[2] if len(sys.argv) > 2 else None
 
-OUT_DIR = f"/home/workspace/cbb-2026/source/pbp_raw_{SEASON}"
-os.makedirs(OUT_DIR, exist_ok=True)
+OUT_DIR = RAW_DIR / f"pbp_raw_{SEASON}"
+OUT_DIR.mkdir(parents=True, exist_ok=True)
 
 print(f"[1] Fetching calendar for {SEASON}...")
 cal = sdv.mbb.espn_mbb_calendar(SEASON, ondays=True, return_as_pandas=True)

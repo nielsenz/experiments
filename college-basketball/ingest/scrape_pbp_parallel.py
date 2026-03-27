@@ -1,6 +1,11 @@
 """
 Step 2: Parallel PBP fetch for collected game IDs.
 """
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from config import RAW_DIR, SOURCE_DIR
+
 import requests
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
@@ -8,11 +13,11 @@ import json, os, time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import threading
 
-OUT_DIR = '/home/workspace/cbb-2026/source'
-PBP_FILE = f'{OUT_DIR}/season_pbp_2026.json'
+RAW_DIR.mkdir(parents=True, exist_ok=True)
+PBP_FILE = RAW_DIR / 'season_pbp_2026.json'
 
 # Load game IDs
-with open(f'{OUT_DIR}/game_ids_2026.txt') as f:
+with open(SOURCE_DIR / 'game_ids_2026.txt') as f:
     game_ids = [l.strip() for l in f if l.strip()]
 print(f"Loaded {len(game_ids)} game IDs")
 
@@ -65,7 +70,7 @@ with ThreadPoolExecutor(max_workers=30) as executor:
 
 elapsed = time.time() - start
 print(f"\nDone: {done} games with PBP in {elapsed:.1f}s ({done/elapsed:.1f}/sec)")
-print(f"Saving to {PBP_FILE}")
+print(f"Saving to {str(PBP_FILE)}")
 with open(PBP_FILE, 'w') as f:
     json.dump(results, f)
 print(f"Saved {len(results)} games.")

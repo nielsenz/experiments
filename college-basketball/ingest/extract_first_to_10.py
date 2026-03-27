@@ -1,10 +1,15 @@
 """
 Extract first-to-10 outcomes from completed tournament games.
 """
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from config import TOURNAMENT_PBP
+
 import json
 import pandas as pd
 
-with open('/home/workspace/cbb-2026/source/tournament_pbp_2026_raw.json') as f:
+with open(TOURNAMENT_PBP) as f:
     all_data = json.load(f)
 
 def extract_first_to_10(game_data):
