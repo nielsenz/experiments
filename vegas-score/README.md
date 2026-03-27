@@ -23,6 +23,15 @@ uv run python vegas_score.py --json
 # Single index
 uv run python vegas_score.py --env-only
 uv run python vegas_score.py --econ-only
+
+# Save each run to local history
+uv run python vegas_score.py --save-history
+
+# Show score trend from saved history
+uv run python vegas_score.py --trend
+
+# Save + show trend in one run
+uv run python vegas_score.py --save-history --trend
 ```
 
 ## Requirements
@@ -146,3 +155,20 @@ Several free API endpoints have changed or are returning errors. The following w
 - **NV Secretary of State**: New business filing counts
 - **Sports economy**: Raiders/F1/Golden Knights event revenue proxies
 - **Seasonal weighting**: Increase heat weight in summer, tourism weight during CES/conventions
+
+## Trend Tracking
+
+`vegas_score.py` can persist snapshots over time in a JSONL history file (default: `.vegas_score_history.jsonl`).
+
+```bash
+# collect one point
+uv run python vegas_score.py --save-history
+
+# display trend from all saved points
+uv run python vegas_score.py --trend
+
+# custom history location
+uv run python vegas_score.py --save-history --trend --history-file data/vegas_history.jsonl
+```
+
+Use cron (daily or hourly) with `--save-history` to build the trend line over time.

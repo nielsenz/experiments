@@ -1,0 +1,14 @@
+{"timestamp": "2025-02-01T12:00:00", "env_overall": null, "econ_overall": 50.4, "composite": 50.4, "demo": false, "source": "historical_backfill_economic"}
+{"timestamp": "2025-03-01T12:00:00", "env_overall": null, "econ_overall": 52.6, "composite": 52.6, "demo": false, "source": "historical_backfill_economic"}
+{"timestamp": "2025-04-01T12:00:00", "env_overall": null, "econ_overall": 55.3, "composite": 55.3, "demo": false, "source": "historical_backfill_economic"}
+{"timestamp": "2025-05-01T12:00:00", "env_overall": null, "econ_overall": 53.9, "composite": 53.9, "demo": false, "source": "historical_backfill_economic"}
+{"timestamp": "2025-06-01T12:00:00", "env_overall": null, "econ_overall": 54.5, "composite": 54.5, "demo": false, "source": "historical_backfill_economic"}
+{"timestamp": "2025-07-01T12:00:00", "env_overall": null, "econ_overall": 56.1, "composite": 56.1, "demo": false, "source": "historical_backfill_economic"}
+{"timestamp": "2025-08-01T12:00:00", "env_overall": null, "econ_overall": 55.0, "composite": 55.0, "demo": false, "source": "historical_backfill_economic"}
+{"timestamp": "2025-09-01T12:00:00", "env_overall": null, "econ_overall": 52.9, "composite": 52.9, "demo": false, "source": "historical_backfill_economic"}
+{"timestamp": "2025-10-01T12:00:00", "env_overall": null, "econ_overall": 66.9, "composite": 66.9, "demo": false, "source": "historical_backfill_economic"}
+{"timestamp": "2025-11-01T12:00:00", "env_overall": null, "econ_overall": 51.9, "composite": 51.9, "demo": false, "source": "historical_backfill_economic"}
+{"timestamp": "2025-12-01T12:00:00", "env_overall": null, "econ_overall": 51.0, "composite": 51.0, "demo": false, "source": "historical_backfill_economic"}
+{"timestamp": "2026-01-01T12:00:00", "env_overall": null, "econ_overall": 14.8, "composite": 14.8, "demo": false, "source": "historical_backfill_economic"}
+{"timestamp": "2026-02-25T21:36:57.730068", "env_overall": null, "econ_overall": 51.3, "composite": null, "demo": false}
+{"timestamp": "2026-02-25T21:37:37.053392", "env_overall": 72.5, "econ_overall": 51.3, "composite": 61.9, "demo": false}
