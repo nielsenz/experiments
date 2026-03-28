@@ -59,6 +59,27 @@ NAME_STOPWORDS = {
     "Classics",
     "Computing",
     "DC3",
+    # Script and language labels that bleed through from XML metadata
+    "Demotic",
+    "Coptic",
+    "Arabic",
+    "Hieratic",
+    "Aramaic",
+    # Physical/structural terms
+    "Recto",
+    "Verso",
+    "Column",
+    "Fragment",
+    # Publication sigla
+    "SB",
+    "BGU",
+    "PSI",
+    "POxy",
+    "PMich",
+    "PTebt",
+    "BL",
+    "CPR",
+    "SPP",
     # Egyptian months (Greek forms)
     "Θὼθ",
     "Θωῦθ",
@@ -104,6 +125,8 @@ class PapyriDocument:
     hgv_id: Optional[str] = None
     date: Optional[str] = None
     place: Optional[str] = None
+    date_range: Optional[tuple[int, int]] = None  # (year_from, year_to); negative = BCE
+    cross_refs: dict[str, object] = field(default_factory=dict)
     explicit_names: list[str] = field(default_factory=list)
     person_names: list[str] = field(default_factory=list)
     sender: Optional[str] = None
@@ -267,6 +290,70 @@ def extract_document_text(root: ET.Element) -> str:
     return normalize_whitespace(" \n ".join(sections))
 
 
+def _parse_tm_id(root: ET.Element) -> Optional[str]:
+    """Extract the Trismegistos document ID from the TEI header."""
+    for elem in root.iter():
+        tag = local_name(elem.tag)
+        if tag == "idno":
+            id_type = elem.attrib.get("type", "").lower()
+            if id_type == "tm":
+                value = (elem.text or "").strip()
+                if value:
+                    return value
+    return None
+
+
+def _parse_date_range(root: ET.Element) -> Optional[tuple[int, int]]:
+    """Extract the document date as a (year_from, year_to) integer tuple.
+
+    Searches for <origDate> with notBefore/notAfter or when attrs.
+    Negative values represent BCE years.
+    """
+    for elem in root.iter():
+        if local_name(elem.tag) != "origDate":
+            continue
+        not_before = elem.attrib.get("notBefore") or elem.attrib.get("notBefore-custom")
+        not_after = elem.attrib.get("notAfter") or elem.attrib.get("notAfter-custom")
+        when = elem.attrib.get("when") or elem.attrib.get("when-custom")
+        try:
+            if not_before and not_after:
+                return (int(not_before), int(not_after))
+            if not_before:
+                return (int(not_before), int(not_before))
+            if not_after:
+                return (int(not_after), int(not_after))
+            if when:
+                year = int(when)
+                return (year, year)
+        except (ValueError, TypeError):
+            continue
+    return None
+
+
+def _parse_place(root: ET.Element) -> Optional[str]:
+    """Extract the document provenance or origin place from the TEI header."""
+    # Prefer explicit provenance/origPlace in the header
+    for path in (
+        ".//tei:origPlace",
+        ".//tei:provenance[@type='located']",
+        ".//tei:provenance",
+    ):
+        elem = root.find(path, TEI_NS)
+        if elem is not None:
+            text = normalize_whitespace("".join(elem.itertext())).strip()
+            if text:
+                return text
+    # Fall back to any placeName in the header settingDesc / sourceDesc area
+    header = root.find(".//tei:teiHeader", TEI_NS)
+    if header is not None:
+        for elem in header.iter():
+            if local_name(elem.tag) == "placeName":
+                text = normalize_whitespace("".join(elem.itertext())).strip()
+                if text:
+                    return text
+    return None
+
+
 def parse_document(source_url: str, xml_text: str) -> PapyriDocument:
     root = ET.fromstring(xml_text)
     record_id = root.attrib.get(f"{XML_NS}id") or source_url.rstrip("/").split("/")[-2]
@@ -279,6 +366,9 @@ def parse_document(source_url: str, xml_text: str) -> PapyriDocument:
         source_url=source_url,
         xml=xml_text,
         text=text,
+        tm_id=_parse_tm_id(root),
+        date_range=_parse_date_range(root),
+        place=_parse_place(root),
         explicit_names=explicit_names,
         sender=sender,
         recipient=recipient,
@@ -384,6 +474,60 @@ def extract_person_names(text: str, nlp: Language | None = None) -> list[str]:
 
 
 # ---------------------------------------------------------------------------
+# Temporal classification
+# ---------------------------------------------------------------------------
+
+def classify_period(year: int) -> str:
+    """Map a calendar year to a broad historical period."""
+    if year <= -30:
+        return "Ptolemaic"
+    if year <= 284:
+        return "Early Roman"
+    if year <= 641:
+        return "Late Roman"
+    return "Byzantine/Islamic"
+
+
+def document_period(doc: "PapyriDocument") -> Optional[str]:
+    """Return the period label for a document, or None if undated."""
+    if doc.date_range is None:
+        return None
+    midpoint = (doc.date_range[0] + doc.date_range[1]) // 2
+    return classify_period(midpoint)
+
+
+def compute_temporal_stats(
+    documents: Iterable["PapyriDocument"], graph: nx.Graph
+) -> dict[str, object]:
+    """Return per-period counts of documents, distinct persons, and graph edges."""
+    from collections import defaultdict
+
+    period_docs: dict[str, list] = defaultdict(list)
+    for doc in documents:
+        period = document_period(doc) or "Unknown"
+        period_docs[period].append(doc)
+
+    stats: dict[str, object] = {}
+    for period, docs in sorted(period_docs.items()):
+        doc_node_ids = {f"document::{d.record_id}" for d in docs}
+        persons: set[str] = set()
+        edge_count = 0
+        for node_id in doc_node_ids:
+            if node_id not in graph:
+                continue
+            for neighbor in graph.neighbors(node_id):
+                if graph.nodes[neighbor].get("kind") == "person":
+                    persons.add(neighbor)
+                edge_count += 1
+        stats[period] = {
+            "documents": len(docs),
+            "persons": len(persons),
+            "edges": edge_count,
+        }
+    return stats
+
+
+# ---------------------------------------------------------------------------
 # Graph construction
 # ---------------------------------------------------------------------------
 
@@ -423,12 +567,17 @@ def build_social_graph(documents: Iterable[PapyriDocument]) -> nx.Graph:
 
     for document in documents:
         doc_node = f"document::{document.record_id}"
+        period = document_period(document)
         ensure_node(
             graph,
             doc_node,
             kind="document",
             title=document.title,
             source_url=document.source_url,
+            period=period,
+            date_range=document.date_range,
+            place=document.place,
+            tm_id=document.tm_id,
         )
 
         people = list(dict.fromkeys(document.person_names + document.explicit_names))
@@ -461,7 +610,57 @@ def build_social_graph(documents: Iterable[PapyriDocument]) -> nx.Graph:
                 document.record_id,
             )
 
+        if document.place:
+            place_node = f"place::{document.place}"
+            ensure_node(graph, place_node, kind="place", name=document.place)
+            add_edge_metadata(graph, doc_node, place_node, "located_in", document.record_id)
+
     return graph
+
+
+# ---------------------------------------------------------------------------
+# Trismegistos enrichment
+# ---------------------------------------------------------------------------
+
+def enrich_with_trismegistos(
+    documents: list[PapyriDocument],
+    cache_path: str | None = None,
+) -> None:
+    """Fetch Trismegistos cross-reference metadata for documents that have a TM ID.
+
+    Results are stored in-place on each document's ``cross_refs`` dict.  A
+    simple JSON file cache (keyed by TM ID) avoids redundant HTTP requests
+    across runs — pass *cache_path* to enable it.
+    """
+    from trismegistos import fetch_tm_metadata, resolve_cross_refs
+
+    cache: dict[str, dict] = {}
+    if cache_path:
+        cache_file = Path(cache_path)
+        if cache_file.exists():
+            try:
+                cache = json.loads(cache_file.read_text(encoding="utf-8"))
+            except Exception:
+                cache = {}
+
+    changed = False
+    for doc in documents:
+        if not doc.tm_id:
+            continue
+        if doc.tm_id in cache:
+            doc.cross_refs = cache[doc.tm_id]
+            continue
+        raw = fetch_tm_metadata(doc.tm_id)
+        if raw:
+            refs = resolve_cross_refs(raw)
+            doc.cross_refs = refs
+            cache[doc.tm_id] = refs
+            changed = True
+
+    if cache_path and changed:
+        Path(cache_path).write_text(
+            json.dumps(cache, ensure_ascii=False, indent=2), encoding="utf-8"
+        )
 
 
 # ---------------------------------------------------------------------------
@@ -501,6 +700,7 @@ def run_pipeline(
     limit: int = 6,
     model_name: str = "en_core_web_sm",
     input_path: str | None = None,
+    trismegistos_cache: str | None = None,
 ) -> tuple[list[PapyriDocument], nx.Graph]:
     if input_path:
         local_rows = load_local_documents(input_path)
@@ -540,6 +740,9 @@ def run_pipeline(
         if document.recipient and document.recipient not in document.person_names:
             document.person_names.append(document.recipient)
 
+    if trismegistos_cache is not None:
+        enrich_with_trismegistos(documents, cache_path=trismegistos_cache)
+
     graph = build_social_graph(documents)
     return documents, graph
 
@@ -565,6 +768,13 @@ def main() -> None:
         default="en_core_web_sm",
         help="spaCy model name to use when available.",
     )
+    parser.add_argument(
+        "--enrich-trismegistos",
+        metavar="CACHE_FILE",
+        default=None,
+        help="Fetch Trismegistos cross-refs for documents that have a TM ID. "
+             "Results are cached in CACHE_FILE (JSON) to avoid repeated HTTP calls.",
+    )
     args = parser.parse_args()
 
     documents, graph = run_pipeline(
@@ -572,12 +782,27 @@ def main() -> None:
         limit=args.limit,
         model_name=args.model,
         input_path=args.input_path,
+        trismegistos_cache=args.enrich_trismegistos,
     )
 
     print(f"documents={len(documents)} nodes={graph.number_of_nodes()} edges={graph.number_of_edges()}")
     for document in documents:
         sample_names = ", ".join(document.person_names[:5]) if document.person_names else "(none found)"
-        print(f"{document.record_id}: {sample_names}")
+        meta = []
+        if document.tm_id:
+            meta.append(f"TM={document.tm_id}")
+        if document.date_range:
+            meta.append(f"dates={document.date_range[0]}–{document.date_range[1]}")
+        if document.place:
+            meta.append(f"place={document.place}")
+        meta_str = f"  [{', '.join(meta)}]" if meta else ""
+        print(f"{document.record_id}:{meta_str} {sample_names}")
+
+    temporal = compute_temporal_stats(documents, graph)
+    if temporal:
+        print("\nTemporal breakdown:")
+        for period, stats in temporal.items():
+            print(f"  {period}: {stats['documents']} docs, {stats['persons']} persons, {stats['edges']} edges")
 
 
 if __name__ == "__main__":
