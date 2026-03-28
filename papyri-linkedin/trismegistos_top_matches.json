@@ -1,0 +1,93 @@
+[
+  {
+    "our_name": "Καίσαρος",
+    "mentions": 4080,
+    "tm_nam_id": 1110,
+    "tm_name": "Caesar",
+    "tm_url": "https://www.trismegistos.org/name/1110"
+  },
+  {
+    "our_name": "Πτολεμαίου",
+    "mentions": 1513,
+    "tm_nam_id": 5317,
+    "tm_name": "Ptolemaios",
+    "tm_url": "https://www.trismegistos.org/name/5317"
+  },
+  {
+    "our_name": "Σεβαστοῦ",
+    "mentions": 1499,
+    "tm_nam_id": 1720,
+    "tm_name": "Sebastos",
+    "tm_url": "https://www.trismegistos.org/name/1720"
+  },
+  {
+    "our_name": "Αὐρηλίου",
+    "mentions": 1319,
+    "tm_nam_id": 62,
+    "tm_name": "Aurelius",
+    "tm_url": "https://www.trismegistos.org/name/62"
+  },
+  {
+    "our_name": "Σαραπίωνος",
+    "mentions": 1023,
+    "tm_nam_id": 5661,
+    "tm_name": "Sarapis",
+    "tm_url": "https://www.trismegistos.org/name/5661"
+  },
+  {
+    "our_name": "Διονυσίου",
+    "mentions": 774,
+    "tm_nam_id": 1656,
+    "tm_name": "Dionysios",
+    "tm_url": "https://www.trismegistos.org/name/1656"
+  },
+  {
+    "our_name": "Σαραπίων",
+    "mentions": 721,
+    "tm_nam_id": 5661,
+    "tm_name": "Sarapis",
+    "tm_url": "https://www.trismegistos.org/name/5661"
+  },
+  {
+    "our_name": "Πτολεμαῖος",
+    "mentions": 629,
+    "tm_nam_id": 5317,
+    "tm_name": "Ptolemaios",
+    "tm_url": "https://www.trismegistos.org/name/5317"
+  },
+  {
+    "our_name": "Αὐρηλίῳ",
+    "mentions": 598,
+    "tm_nam_id": 62,
+    "tm_name": "Aurelius",
+    "tm_url": "https://www.trismegistos.org/name/62"
+  },
+  {
+    "our_name": "Φοιβάμμωνος",
+    "mentions": 543,
+    "tm_nam_id": 6917,
+    "tm_name": "Phoibammon",
+    "tm_url": "https://www.trismegistos.org/name/6917"
+  },
+  {
+    "our_name": "Δημητρίου",
+    "mentions": 434,
+    "tm_nam_id": 1630,
+    "tm_name": "Demetrios",
+    "tm_url": "https://www.trismegistos.org/name/1630"
+  },
+  {
+    "our_name": "Παύλου",
+    "mentions": 333,
+    "tm_nam_id": 4470,
+    "tm_name": "Paulos",
+    "tm_url": "https://www.trismegistos.org/name/4470"
+  },
+  {
+    "our_name": "Φοιβάμμων",
+    "mentions": 247,
+    "tm_nam_id": 6917,
+    "tm_name": "Phoibammon",
+    "tm_url": "https://www.trismegistos.org/name/6917"
+  }
+]
