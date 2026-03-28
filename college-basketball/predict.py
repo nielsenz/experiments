@@ -80,9 +80,16 @@ for _, game in sched.iterrows():
     h_ppg, h_opp, h_pace, h_tempo, h_resolved, h_src = get_stats(home_id)
     a_ppg, a_opp, a_pace, a_tempo, a_resolved, a_src = get_stats(away_id)
 
-    feats = compute_features(h_ppg, a_ppg, h_opp, a_opp, h_pace, a_pace, h_tempo, a_tempo)
-    X = np.array([[feats[c] for c in FEATURE_COLS]])
-    prob_home = float(model.predict_proba(X)[0, 1])
+    # Run both home/away orientations and average — eliminates neutral-site bias
+    feats1 = compute_features(h_ppg, a_ppg, h_opp, a_opp, h_pace, a_pace, h_tempo, a_tempo)
+    X1 = np.array([[feats1[c] for c in FEATURE_COLS]])
+    p1 = float(model.predict_proba(X1)[0, 1])   # P(home F10 | home=teamA)
+
+    feats2 = compute_features(a_ppg, h_ppg, a_opp, h_opp, a_pace, h_pace, a_tempo, h_tempo)
+    X2 = np.array([[feats2[c] for c in FEATURE_COLS]])
+    p2 = float(model.predict_proba(X2)[0, 1])   # P(home F10 | home=teamB) = P(away F10 | away=teamA)
+
+    prob_home = (p1 + (1.0 - p2)) / 2.0
     prob_away = 1.0 - prob_home
 
     edge_team = home_name if prob_home >= 0.5 else away_name
@@ -99,9 +106,9 @@ for _, game in sched.iterrows():
         'away_ppg': round(a_ppg, 1),
         'home_opp_ppg': round(h_opp, 1),
         'away_opp_ppg': round(a_opp, 1),
-        'pace_ratio': round(feats['pace_ratio'], 4),
-        'ppg_diff': round(feats['ppg_diff'], 1),
-        'total_ppg': round(feats['total_ppg'], 1),
+        'pace_ratio': round(feats1['pace_ratio'], 4),
+        'ppg_diff': round(feats1['ppg_diff'], 1),
+        'total_ppg': round(feats1['total_ppg'], 1),
         'prob_home_f10': round(prob_home, 4),
         'prob_away_f10': round(prob_away, 4),
         'edge_team': edge_team,

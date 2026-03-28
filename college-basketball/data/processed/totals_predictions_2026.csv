@@ -53,5 +53,9 @@ game_date,status,home_team,away_team,home_ppg,away_ppg,home_opp_ppg,away_opp_ppg
 2026-03-27,STATUS_SCHEDULED,Duke,St John's,82.0,80.8,63.2,68.1,135.6,10.1,team_stats
 2026-03-27,STATUS_SCHEDULED,Houston,Illinois,77.2,85.0,62.4,69.8,135.8,0.7,team_stats
 2026-03-27,STATUS_SCHEDULED,Michigan,Alabama,87.4,91.3,69.6,82.9,173.9,15.6,team_stats
+2026-03-28,STATUS_SCHEDULED,Arizona,Purdue,86.3,82.3,68.5,70.2,153.8,4.3,team_stats
+2026-03-28,STATUS_SCHEDULED,Illinois,Iowa,85.0,67.8,69.8,70.3,143.6,14.4,team_stats
 2026-03-28,STATUS_SCHEDULED,Iowa State,Tennessee,82.5,79.4,65.4,68.9,139.8,10.1,team_stats
 2026-03-28,STATUS_SCHEDULED,UConn,Michigan St,77.6,79.3,65.3,68.4,133.8,7.7,team_stats
+2026-03-29,STATUS_SCHEDULED,Duke,UConn,82.0,77.6,63.2,65.3,136.0,9.8,team_stats
+2026-03-29,STATUS_SCHEDULED,Michigan,Tennessee,87.4,79.4,69.6,68.9,156.6,7.7,team_stats

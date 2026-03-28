@@ -118,14 +118,44 @@ for gid, game in all_games.items():
     X_rows.append([feats[c] for c in FEATURE_COLS])
     y_labels.append(1 if f10 == 'home' else 0)
 
-X = np.array(X_rows)
-y = np.array(y_labels)
+X_orig = np.array(X_rows)
+y_orig = np.array(y_labels)
+
+# ── Symmetrize: add a mirrored copy of every game with home/away swapped ───────
+# This removes the home-court bias baked in from regular-season training data.
+# Tournament games are neutral-site; the model should be indifferent to the
+# arbitrary home/away label in the schedule.
+#
+# FEATURE_COLS order:
+#   home_ppg, away_ppg, home_opp_ppg, away_opp_ppg, pace_ratio,
+#   ppg_diff, total_ppg, home_net, away_net, home_tempo, away_tempo, tempo_diff
+_idx = {c: i for i, c in enumerate(FEATURE_COLS)}
+mirrored_rows = []
+for row in X_orig:
+    m = row.copy()
+    m[_idx['home_ppg']]     = row[_idx['away_ppg']]
+    m[_idx['away_ppg']]     = row[_idx['home_ppg']]
+    m[_idx['home_opp_ppg']] = row[_idx['away_opp_ppg']]
+    m[_idx['away_opp_ppg']] = row[_idx['home_opp_ppg']]
+    m[_idx['pace_ratio']]   = 1.0 - row[_idx['pace_ratio']]
+    m[_idx['ppg_diff']]     = -row[_idx['ppg_diff']]
+    m[_idx['home_net']]     = row[_idx['away_net']]
+    m[_idx['away_net']]     = row[_idx['home_net']]
+    m[_idx['home_tempo']]   = row[_idx['away_tempo']]
+    m[_idx['away_tempo']]   = row[_idx['home_tempo']]
+    m[_idx['tempo_diff']]   = -row[_idx['tempo_diff']]
+    # total_ppg is symmetric — no change needed
+    mirrored_rows.append(m)
+
+X = np.vstack([X_orig, np.array(mirrored_rows)])
+y = np.concatenate([y_orig, 1 - y_orig])
 
 if missing_teams:
     print(f"  Warning: {len(missing_teams)} team IDs used league avg fallback")
 
-print(f"Training samples: {len(X)}")
-print(f"Home first-to-10 base rate: {y.mean():.1%} ({y.sum()}/{len(y)})")
+print(f"Training samples: {len(X_orig)} original → {len(X)} after symmetrization")
+print(f"Home first-to-10 base rate (original): {y_orig.mean():.1%}")
+print(f"Home first-to-10 base rate (symmetrized): {y.mean():.1%}  (should be ~50%)")
 
 # ── Step 4: Train GBM ──────────────────────────────────────────────────────────
 print("\nTraining GradientBoostingClassifier...")

@@ -1,9 +1,13 @@
 game_date,home_team,away_team,book_spread,book_favored,book_total,model_pred_total,model_pred_spread,model_favored,total_edge_dir,total_edge_pts,spread_edge_pts,actual_total,actual_home_score,actual_away_score,actual_spread
-2026-03-26,Nebraska,Iowa,-1.5,Nebraska,134.5,131.7,10.9,Nebraska,UNDER,-2.8,9.4,,,,
-2026-03-26,Purdue,Texas,-6.5,Purdue,148.5,154.0,11.9,Purdue,OVER,5.5,5.4,,,,
-2026-03-26,Arizona,Arkansas,-8.5,Arizona,167.5,169.0,14.5,Arizona,OVER,1.5,6.0,,,,
-2026-03-26,Houston,Illinois,-3.5,Houston,139.5,135.8,0.7,Houston,UNDER,-3.7,2.8,,,,
-2026-03-27,Duke,St. John's,-6.5,Duke,142.5,135.6,10.1,Duke,UNDER,-6.9,3.6,,,,
+2026-03-26,Nebraska,Iowa,-1.5,Nebraska,134.5,131.7,10.9,Nebraska,UNDER,-2.8,9.4,148.0,71.0,77.0,-6.0
+2026-03-26,Purdue,Texas,-6.5,Purdue,148.5,154.0,11.9,Purdue,OVER,5.5,5.4,156.0,79.0,77.0,2.0
+2026-03-26,Arizona,Arkansas,-8.5,Arizona,167.5,169.0,14.5,Arizona,OVER,1.5,6.0,197.0,109.0,88.0,21.0
+2026-03-26,Houston,Illinois,-3.5,Houston,139.5,135.8,0.7,Houston,UNDER,-3.7,2.8,120.0,55.0,65.0,-10.0
+2026-03-27,Duke,St. John's,-6.5,Duke,142.5,135.6,10.1,Duke,UNDER,-6.9,3.6,155.0,80.0,75.0,5.0
 2026-03-27,Michigan,Alabama,-10.5,Michigan,174.5,173.9,15.6,Michigan,UNDER,-0.6,5.1,,,,
-2026-03-28,Iowa State,Tennessee,-4.5,Iowa State,138.5,139.8,10.1,Iowa State,OVER,1.3,5.6,,,,
-2026-03-28,UConn,Michigan St,-1.5,UConn,135.5,133.8,7.7,UConn,UNDER,-1.7,6.2,,,,
+2026-03-28,Iowa State,Tennessee,-4.5,Iowa State,138.5,139.8,10.1,Iowa State,OVER,1.3,5.6,138.0,62.0,76.0,-14.0
+2026-03-28,UConn,Michigan St,-1.5,UConn,135.5,133.8,7.7,UConn,UNDER,-1.7,6.2,130.0,67.0,63.0,4.0
+2026-03-28,Illinois,Iowa,-6.5,Illinois,138.0,143.6,14.4,Illinois,OVER,5.6,7.9,,,,
+2026-03-28,Arizona,Purdue,-6.0,Arizona,153.0,153.8,4.3,Arizona,OVER,0.8,-1.7,,,,
+2026-03-29,Michigan,Tennessee,-7.5,Michigan,146.0,156.6,7.7,Michigan,OVER,10.6,0.2,,,,
+2026-03-29,Duke,UConn,-5.0,Duke,134.0,136.0,9.8,Duke,OVER,2.0,4.8,,,,

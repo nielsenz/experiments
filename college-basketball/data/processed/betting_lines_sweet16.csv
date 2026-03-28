@@ -1,8 +1,10 @@
 game_date,bet_team,opponent,model_home_team,book_odds,book_implied_prob,model_prob,edge,ev_per_100,tier,note,actual_f10_winner,bet_correct,stake,to_win,total_return
-2026-03-26,Purdue,Texas,Purdue,-165,0.6226,0.688,0.0654,10.5,T2,,,,6,3.64,9.64
-2026-03-26,Iowa,Nebraska,Nebraska,-110,0.5238,0.624,0.1002,19.13,T1,,,,11,10.0,21.0
-2026-03-27,Arizona,Arkansas,Arizona,-160,0.6154,0.864,0.2486,40.4,T2,model home bias,,,6,3.75,9.75
-2026-03-27,Illinois,Houston,Houston,-105,0.5122,0.592,0.0798,15.58,T1,,,,11,10.48,21.48
-2026-03-27,St. Johns,Duke,Duke,115,0.4651,0.557,0.0919,16.16,T1,tempo model flip — Duke slower away,,, 11,12.65,23.65
-2026-03-27,Michigan,Alabama,Michigan,-175,0.6364,0.919,0.2826,44.41,T2,model home bias,,,6,3.43,9.43
-2026-03-28,UConn,Michigan St,UConn,-125,0.5556,0.734,0.1784,32.12,T2,,,,6,4.8,10.8
+2026-03-26,Purdue,Texas,Purdue,-165,0.6226,0.688,0.0654,10.5,T2,,Purdue,True,6,3.64,9.64
+2026-03-26,Iowa,Nebraska,Nebraska,-110,0.5238,0.624,0.1002,19.13,T1,,Nebraska,False,11,10.0,21.0
+2026-03-27,Arizona,Arkansas,Arizona,-160,0.6154,0.864,0.2486,40.4,T2,model home bias,Arizona,True,6,3.75,9.75
+2026-03-27,Illinois,Houston,Houston,-105,0.5122,0.592,0.0798,15.58,T1,,Houston,False,11,10.48,21.48
+2026-03-27,St. Johns,Duke,Duke,115,0.4651,0.557,0.0919,16.16,T1,tempo model flip — Duke slower away,Duke,False,11,12.65,23.65
+2026-03-27,Michigan,Alabama,Michigan,-175,0.6364,0.919,0.2826,44.41,T2,model home bias,Alabama,False,6,3.43,9.43
+2026-03-28,UConn,Michigan St,UConn,-125,0.5556,0.734,0.1784,32.12,T2,,UConn,True,6,4.8,10.8
+2026-03-28,Purdue,Arizona,Illinois,105,0.4878,0.689,0.2012,41.24,T1,elite 8 — debiased model; Purdue listed away,,, 11,11.55,22.55
+2026-03-28,Illinois,Iowa,Illinois,-165,0.6226,0.695,0.0724,11.62,T2,elite 8 — debiased model,,, 6,3.64,9.64
