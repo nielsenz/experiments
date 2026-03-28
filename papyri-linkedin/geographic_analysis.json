@@ -1,0 +1,385 @@
+{
+  "network_stats": {
+    "nodes": 758,
+    "edges": 20934,
+    "components": 1,
+    "largest_component": 758,
+    "top_20_by_degree": [
+      {
+        "place": "Arsinoites",
+        "weighted_degree": 33824,
+        "unique_persons": 13112,
+        "neighbors": 651
+      },
+      {
+        "place": "Oxyrhynchos",
+        "weighted_degree": 31230,
+        "unique_persons": 12339,
+        "neighbors": 668
+      },
+      {
+        "place": "Tebtynis",
+        "weighted_degree": 21256,
+        "unique_persons": 5368,
+        "neighbors": 507
+      },
+      {
+        "place": "Hermopolis",
+        "weighted_degree": 21250,
+        "unique_persons": 5804,
+        "neighbors": 564
+      },
+      {
+        "place": "Philadelphia",
+        "weighted_degree": 20963,
+        "unique_persons": 5144,
+        "neighbors": 517
+      },
+      {
+        "place": "Karanis",
+        "weighted_degree": 20424,
+        "unique_persons": 6828,
+        "neighbors": 509
+      },
+      {
+        "place": "Ptolemais Euergetis",
+        "weighted_degree": 19878,
+        "unique_persons": 3502,
+        "neighbors": 514
+      },
+      {
+        "place": "Theadelphia",
+        "weighted_degree": 19536,
+        "unique_persons": 4443,
+        "neighbors": 508
+      },
+      {
+        "place": "Oxyrhynchites",
+        "weighted_degree": 19365,
+        "unique_persons": 3492,
+        "neighbors": 538
+      },
+      {
+        "place": "Hermopolites",
+        "weighted_degree": 18591,
+        "unique_persons": 4471,
+        "neighbors": 534
+      },
+      {
+        "place": "Herakleopolites",
+        "weighted_degree": 18196,
+        "unique_persons": 3803,
+        "neighbors": 497
+      },
+      {
+        "place": "Theben",
+        "weighted_degree": 16119,
+        "unique_persons": 6464,
+        "neighbors": 434
+      },
+      {
+        "place": "Alexandria",
+        "weighted_degree": 14987,
+        "unique_persons": 2357,
+        "neighbors": 471
+      },
+      {
+        "place": "Soknopaiu Nesos",
+        "weighted_degree": 14538,
+        "unique_persons": 3307,
+        "neighbors": 430
+      },
+      {
+        "place": "Arsinoites, Ägypten",
+        "weighted_degree": 11987,
+        "unique_persons": 1543,
+        "neighbors": 401
+      },
+      {
+        "place": "Herakleopolis",
+        "weighted_degree": 11984,
+        "unique_persons": 1993,
+        "neighbors": 401
+      },
+      {
+        "place": "Antinoopolis",
+        "weighted_degree": 11411,
+        "unique_persons": 1509,
+        "neighbors": 435
+      },
+      {
+        "place": "Euhemeria",
+        "weighted_degree": 9596,
+        "unique_persons": 1017,
+        "neighbors": 354
+      },
+      {
+        "place": "Philadelphia?",
+        "weighted_degree": 9050,
+        "unique_persons": 1162,
+        "neighbors": 318
+      },
+      {
+        "place": "Memphis",
+        "weighted_degree": 8862,
+        "unique_persons": 1036,
+        "neighbors": 346
+      }
+    ],
+    "top_15_bridges": [
+      {
+        "place": "Oxyrhynchos",
+        "betweenness": 0.1627
+      },
+      {
+        "place": "Arsinoites",
+        "betweenness": 0.1403
+      },
+      {
+        "place": "Hermopolis",
+        "betweenness": 0.0648
+      },
+      {
+        "place": "Hermopolites",
+        "betweenness": 0.0545
+      },
+      {
+        "place": "Oxyrhynchites",
+        "betweenness": 0.0504
+      },
+      {
+        "place": "Philadelphia",
+        "betweenness": 0.0427
+      },
+      {
+        "place": "Herakleopolites",
+        "betweenness": 0.0416
+      },
+      {
+        "place": "Tebtynis",
+        "betweenness": 0.0384
+      },
+      {
+        "place": "Ptolemais Euergetis",
+        "betweenness": 0.037
+      },
+      {
+        "place": "Karanis",
+        "betweenness": 0.0363
+      },
+      {
+        "place": "Theadelphia",
+        "betweenness": 0.033
+      },
+      {
+        "place": "Alexandria",
+        "betweenness": 0.0288
+      },
+      {
+        "place": "Antinoopolis",
+        "betweenness": 0.0231
+      },
+      {
+        "place": "Soknopaiu Nesos",
+        "betweenness": 0.0224
+      },
+      {
+        "place": "Theben",
+        "betweenness": 0.0199
+      }
+    ],
+    "top_20_edges": [
+      {
+        "from": "Arsinoites",
+        "to": "Oxyrhynchos",
+        "shared_persons": 1736
+      },
+      {
+        "from": "Arsinoites",
+        "to": "Tebtynis",
+        "shared_persons": 1336
+      },
+      {
+        "from": "Oxyrhynchites",
+        "to": "Oxyrhynchos",
+        "shared_persons": 1288
+      },
+      {
+        "from": "Arsinoites",
+        "to": "Philadelphia",
+        "shared_persons": 1213
+      },
+      {
+        "from": "Oxyrhynchos",
+        "to": "Hermopolis",
+        "shared_persons": 1194
+      },
+      {
+        "from": "Arsinoites",
+        "to": "Karanis",
+        "shared_persons": 1188
+      },
+      {
+        "from": "Arsinoites",
+        "to": "Ptolemais Euergetis",
+        "shared_persons": 1129
+      },
+      {
+        "from": "Arsinoites",
+        "to": "Theadelphia",
+        "shared_persons": 1106
+      },
+      {
+        "from": "Oxyrhynchos",
+        "to": "Karanis",
+        "shared_persons": 968
+      },
+      {
+        "from": "Hermopolis",
+        "to": "Hermopolites",
+        "shared_persons": 932
+      },
+      {
+        "from": "Arsinoites",
+        "to": "Herakleopolites",
+        "shared_persons": 913
+      },
+      {
+        "from": "Arsinoites",
+        "to": "Hermopolis",
+        "shared_persons": 913
+      },
+      {
+        "from": "Oxyrhynchos",
+        "to": "Hermopolites",
+        "shared_persons": 912
+      },
+      {
+        "from": "Oxyrhynchos",
+        "to": "Philadelphia",
+        "shared_persons": 889
+      },
+      {
+        "from": "Ptolemais Euergetis",
+        "to": "Oxyrhynchos",
+        "shared_persons": 882
+      },
+      {
+        "from": "Tebtynis",
+        "to": "Oxyrhynchos",
+        "shared_persons": 878
+      },
+      {
+        "from": "Theadelphia",
+        "to": "Oxyrhynchos",
+        "shared_persons": 850
+      },
+      {
+        "from": "Herakleopolites",
+        "to": "Oxyrhynchos",
+        "shared_persons": 811
+      },
+      {
+        "from": "Arsinoites",
+        "to": "Oxyrhynchites",
+        "shared_persons": 808
+      },
+      {
+        "from": "Arsinoites",
+        "to": "Hermopolites",
+        "shared_persons": 776
+      }
+    ],
+    "component_sizes": [
+      758
+    ]
+  },
+  "fayum": {
+    "total_fayum_persons": 33090,
+    "fayum_only": 25382,
+    "connected_outward": 7708,
+    "outward_pct": 23.3,
+    "top_external_connections": [
+      {
+        "place": "Oxyrhynchos",
+        "shared_persons": 2660
+      },
+      {
+        "place": "Ptolemais Euergetis",
+        "shared_persons": 1576
+      },
+      {
+        "place": "Hermopolis",
+        "shared_persons": 1288
+      },
+      {
+        "place": "Herakleopolites",
+        "shared_persons": 1209
+      },
+      {
+        "place": "Oxyrhynchites",
+        "shared_persons": 1123
+      },
+      {
+        "place": "Hermopolites",
+        "shared_persons": 1036
+      },
+      {
+        "place": "Theben",
+        "shared_persons": 971
+      },
+      {
+        "place": "Alexandria",
+        "shared_persons": 873
+      },
+      {
+        "place": "Arsinoites, Ägypten",
+        "shared_persons": 716
+      },
+      {
+        "place": "Herakleopolis",
+        "shared_persons": 697
+      },
+      {
+        "place": "Philadelphia?",
+        "shared_persons": 611
+      },
+      {
+        "place": "Antinoopolis",
+        "shared_persons": 496
+      },
+      {
+        "place": "Aphrodites Kome",
+        "shared_persons": 478
+      },
+      {
+        "place": "Memphis",
+        "shared_persons": 456
+      },
+      {
+        "place": "Kerkeosiris",
+        "shared_persons": 416
+      },
+      {
+        "place": "Arsinoiton Polis",
+        "shared_persons": 393
+      },
+      {
+        "place": "Bakchias",
+        "shared_persons": 391
+      },
+      {
+        "place": "Elephantine",
+        "shared_persons": 347
+      },
+      {
+        "place": "Panopolis",
+        "shared_persons": 347
+      },
+      {
+        "place": "Mons Claudianus",
+        "shared_persons": 285
+      }
+    ]
+  }
+}
