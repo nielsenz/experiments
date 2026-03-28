@@ -1,0 +1,3198 @@
+{
+  "canonical_persons": [
+    {
+      "canonical_name": "Καίσαρος",
+      "variants": [
+        "Καίσαρος",
+        "Τραιανοῦ Καίσαρος",
+        "Καίσαρος Σεβαστοῦ",
+        "Αὐτοκράτορος Καίσαρος",
+        "Δομιτιανοῦ Καίσαρος"
+      ],
+      "mention_count": 4624
+    },
+    {
+      "canonical_name": "Αὐτοκράτορος Καίσαρος Μάρκου",
+      "variants": [
+        "Αὐτοκράτορος Καίσαρος Μάρκου",
+        "Αὐτοκράτορος Καίσαρος Τίτου",
+        "Αὐτοκράτορος Καίσαρος Τραιανοῦ",
+        "Αὐτοκράτορος Καίσαρος Νέρουα",
+        "Αὐτοκράτορος Καίσαρος Δομιτιανοῦ",
+        "Αὐτοκράτορος Καίσαρος Λουκίου",
+        "Αὐτοκράτορος Καίσαρος Γαίου",
+        "Αὐτοκράτορος Καίσαρος Οὐεσπασιανοῦ",
+        "Αὐτοκράτορος Καίσαρος Πουπλίου"
+      ],
+      "mention_count": 3156
+    },
+    {
+      "canonical_name": "Σεβαστοῦ",
+      "variants": [
+        "Σεβαστοῦ",
+        "Σεβαστοῦ Εὐσεβοῦς",
+        "Σεβαστοῦ Γερμανικοῦ",
+        "Νέου Σεβαστοῦ",
+        "Εὐτυχοῦς Σεβαστοῦ",
+        "Εὐσεβοῦς Σεβαστοῦ",
+        "Σεβαστοῦ Παῦνι"
+      ],
+      "mention_count": 2514
+    },
+    {
+      "canonical_name": "Αὐρηλίου",
+      "variants": [
+        "Αὐρηλίου",
+        "Μάρκου Αὐρηλίου",
+        "Αὐρηλίου Σεουήρου",
+        "Αὐρηλίου Κομμόδου"
+      ],
+      "mention_count": 2230
+    },
+    {
+      "canonical_name": "Αὐρήλιος",
+      "variants": [
+        "Αὐρήλιος",
+        "Αὐρήλιος Φοιβάμμων",
+        "Αὐρήλιος Σαραπίων",
+        "Αὐρήλιος Σερῆνος"
+      ],
+      "mention_count": 1822
+    },
+    {
+      "canonical_name": "Πτολεμαίου",
+      "variants": [
+        "Πτολεμαίου",
+        "Πτολεμαίου Σωτῆρος"
+      ],
+      "mention_count": 1571
+    },
+    {
+      "canonical_name": "Σαραπίωνος",
+      "variants": [
+        "Σαραπίωνος"
+      ],
+      "mention_count": 1023
+    },
+    {
+      "canonical_name": "Σεβαστῶν",
+      "variants": [
+        "Σεβαστῶν",
+        "Μαξιμιανοῦ Σεβαστῶν",
+        "Εὐσεβοῦς Σεβαστῶν"
+      ],
+      "mention_count": 905
+    },
+    {
+      "canonical_name": "Σοκνοπαίου Νήσου",
+      "variants": [
+        "Σοκνοπαίου Νήσου",
+        "Νήσου",
+        "Σοκνοπαίου"
+      ],
+      "mention_count": 900
+    },
+    {
+      "canonical_name": "Τιβερίου Καίσαρος Σεβαστοῦ",
+      "variants": [
+        "Τιβερίου Καίσαρος Σεβαστοῦ",
+        "Τιβερίου Κλαυδίου Καίσαρος",
+        "Γαίου Καίσαρος Σεβαστοῦ"
+      ],
+      "mention_count": 896
+    },
+    {
+      "canonical_name": "Σεβαστοῦ Γερμανικοῦ Αὐτοκράτορος",
+      "variants": [
+        "Σεβαστοῦ Γερμανικοῦ Αὐτοκράτορος",
+        "Τραιανοῦ Σεβαστοῦ Γερμανικοῦ"
+      ],
+      "mention_count": 865
+    },
+    {
+      "canonical_name": "Καρανίδος",
+      "variants": [
+        "Καρανίδος"
+      ],
+      "mention_count": 854
+    },
+    {
+      "canonical_name": "Αἰλίου",
+      "variants": [
+        "Αἰλίου",
+        "Τίτου Αἰλίου"
+      ],
+      "mention_count": 845
+    },
+    {
+      "canonical_name": "Χάρακος",
+      "variants": [
+        "Χάρακος"
+      ],
+      "mention_count": 804
+    },
+    {
+      "canonical_name": "Διονυσίου",
+      "variants": [
+        "Διονυσίου"
+      ],
+      "mention_count": 774
+    },
+    {
+      "canonical_name": "Ζήνωνι",
+      "variants": [
+        "Ζήνωνι"
+      ],
+      "mention_count": 739
+    },
+    {
+      "canonical_name": "Demotic",
+      "variants": [
+        "Demotic"
+      ],
+      "mention_count": 729
+    },
+    {
+      "canonical_name": "Σαραπίων",
+      "variants": [
+        "Σαραπίων"
+      ],
+      "mention_count": 721
+    },
+    {
+      "canonical_name": "Μηνᾶ",
+      "variants": [
+        "Μηνᾶ",
+        "Μηνᾷ"
+      ],
+      "mention_count": 718
+    },
+    {
+      "canonical_name": "Πολέμωνος",
+      "variants": [
+        "Πολέμωνος"
+      ],
+      "mention_count": 680
+    },
+    {
+      "canonical_name": "Τραιανοῦ",
+      "variants": [
+        "Τραιανοῦ"
+      ],
+      "mention_count": 648
+    },
+    {
+      "canonical_name": "Αὐγούστου",
+      "variants": [
+        "Αὐγούστου",
+        "Αὐγούστου Αὐτοκράτορος"
+      ],
+      "mention_count": 648
+    },
+    {
+      "canonical_name": "Πτολεμαῖος",
+      "variants": [
+        "Πτολεμαῖος"
+      ],
+      "mention_count": 629
+    },
+    {
+      "canonical_name": "Θέωνος",
+      "variants": [
+        "Θέωνος"
+      ],
+      "mention_count": 620
+    },
+    {
+      "canonical_name": "Αὐρηλίῳ",
+      "variants": [
+        "Αὐρηλίῳ"
+      ],
+      "mention_count": 598
+    },
+    {
+      "canonical_name": "Διδύμου",
+      "variants": [
+        "Διδύμου"
+      ],
+      "mention_count": 566
+    },
+    {
+      "canonical_name": "Φοιβάμμωνος",
+      "variants": [
+        "Φοιβάμμωνος"
+      ],
+      "mention_count": 543
+    },
+    {
+      "canonical_name": "Διὸς",
+      "variants": [
+        "Διὸς",
+        "Δῖος"
+      ],
+      "mention_count": 539
+    },
+    {
+      "canonical_name": "Θεμίστου",
+      "variants": [
+        "Θεμίστου"
+      ],
+      "mention_count": 517
+    },
+    {
+      "canonical_name": "Χοίαχ",
+      "variants": [
+        "Χοίαχ",
+        "Χοιὰχ"
+      ],
+      "mention_count": 496
+    },
+    {
+      "canonical_name": "Θεοδώρου",
+      "variants": [
+        "Θεοδώρου"
+      ],
+      "mention_count": 489
+    },
+    {
+      "canonical_name": "Διοσκόρου",
+      "variants": [
+        "Διοσκόρου"
+      ],
+      "mention_count": 487
+    },
+    {
+      "canonical_name": "Διονύσιος",
+      "variants": [
+        "Διονύσιος"
+      ],
+      "mention_count": 451
+    },
+    {
+      "canonical_name": "Δημητρίου",
+      "variants": [
+        "Δημητρίου"
+      ],
+      "mention_count": 434
+    },
+    {
+      "canonical_name": "Φλαουίου",
+      "variants": [
+        "Φλαουίου",
+        "Φλαουΐου"
+      ],
+      "mention_count": 422
+    },
+    {
+      "canonical_name": "Νότου",
+      "variants": [
+        "Νότου"
+      ],
+      "mention_count": 413
+    },
+    {
+      "canonical_name": "Εὐσεβοῦς Εὐτυχοῦς Σεβαστοῦ",
+      "variants": [
+        "Εὐσεβοῦς Εὐτυχοῦς Σεβαστοῦ"
+      ],
+      "mention_count": 407
+    },
+    {
+      "canonical_name": "Πτολεμαίωι",
+      "variants": [
+        "Πτολεμαίωι"
+      ],
+      "mention_count": 384
+    },
+    {
+      "canonical_name": "Λουκίου Σεπτιμίου Σεουήρου",
+      "variants": [
+        "Λουκίου Σεπτιμίου Σεουήρου",
+        "Σεπτιμίου Σεουήρου Εὐσεβοῦς"
+      ],
+      "mention_count": 384
+    },
+    {
+      "canonical_name": "Μάρκου Αὐρηλίου Σεουήρου",
+      "variants": [
+        "Μάρκου Αὐρηλίου Σεουήρου",
+        "Μάρκου Αὐρηλίου Κομμόδου"
+      ],
+      "mention_count": 376
+    },
+    {
+      "canonical_name": "Θηβαίδος",
+      "variants": [
+        "Θηβαίδος",
+        "Θηβαΐδος"
+      ],
+      "mention_count": 371
+    },
+    {
+      "canonical_name": "Σαραπίωνι",
+      "variants": [
+        "Σαραπίωνι"
+      ],
+      "mention_count": 369
+    },
+    {
+      "canonical_name": "Οὐήρου",
+      "variants": [
+        "Οὐήρου"
+      ],
+      "mention_count": 363
+    },
+    {
+      "canonical_name": "Γεωργίου",
+      "variants": [
+        "Γεωργίου"
+      ],
+      "mention_count": 345
+    },
+    {
+      "canonical_name": "Πετεσούχου",
+      "variants": [
+        "Πετεσούχου"
+      ],
+      "mention_count": 344
+    },
+    {
+      "canonical_name": "Σερήνου",
+      "variants": [
+        "Σερήνου"
+      ],
+      "mention_count": 341
+    },
+    {
+      "canonical_name": "Αὐτοκράτορος",
+      "variants": [
+        "Αὐτοκράτορος"
+      ],
+      "mention_count": 340
+    },
+    {
+      "canonical_name": "Παύλου",
+      "variants": [
+        "Παύλου"
+      ],
+      "mention_count": 333
+    },
+    {
+      "canonical_name": "Κολλούθου",
+      "variants": [
+        "Κολλούθου"
+      ],
+      "mention_count": 331
+    },
+    {
+      "canonical_name": "Εὐσεβοῦς Περτίνακος",
+      "variants": [
+        "Εὐσεβοῦς Περτίνακος",
+        "Περτίνακος",
+        "Εὐσεβοῦς"
+      ],
+      "mention_count": 327
+    },
+    {
+      "canonical_name": "Χαιρήμονος",
+      "variants": [
+        "Χαιρήμονος"
+      ],
+      "mention_count": 324
+    },
+    {
+      "canonical_name": "Θέων",
+      "variants": [
+        "Θέων"
+      ],
+      "mention_count": 323
+    },
+    {
+      "canonical_name": "Θῶυθ",
+      "variants": [
+        "Θῶυθ",
+        "Θωὺθ"
+      ],
+      "mention_count": 302
+    },
+    {
+      "canonical_name": "Διόσκορος",
+      "variants": [
+        "Διόσκορος"
+      ],
+      "mention_count": 298
+    },
+    {
+      "canonical_name": "Αἰγύπτου",
+      "variants": [
+        "Αἰγύπτου"
+      ],
+      "mention_count": 293
+    },
+    {
+      "canonical_name": "Βίκτορος",
+      "variants": [
+        "Βίκτορος"
+      ],
+      "mention_count": 287
+    },
+    {
+      "canonical_name": "Θώθ",
+      "variants": [
+        "Θώθ",
+        "Θωθ",
+        "Θῶθ"
+      ],
+      "mention_count": 286
+    },
+    {
+      "canonical_name": "Αὐρηλίων",
+      "variants": [
+        "Αὐρηλίων"
+      ],
+      "mention_count": 285
+    },
+    {
+      "canonical_name": "Διογένους",
+      "variants": [
+        "Διογένους"
+      ],
+      "mention_count": 285
+    },
+    {
+      "canonical_name": "Χριστοῦ",
+      "variants": [
+        "Χριστοῦ"
+      ],
+      "mention_count": 285
+    },
+    {
+      "canonical_name": "Νείλου",
+      "variants": [
+        "Νείλου"
+      ],
+      "mention_count": 282
+    },
+    {
+      "canonical_name": "Δίδυμος",
+      "variants": [
+        "Δίδυμος"
+      ],
+      "mention_count": 280
+    },
+    {
+      "canonical_name": "Δομιτιανοῦ",
+      "variants": [
+        "Δομιτιανοῦ"
+      ],
+      "mention_count": 277
+    },
+    {
+      "canonical_name": "Σερῆνος",
+      "variants": [
+        "Σερῆνος"
+      ],
+      "mention_count": 275
+    },
+    {
+      "canonical_name": "Θεῷ",
+      "variants": [
+        "Θεῷ"
+      ],
+      "mention_count": 266
+    },
+    {
+      "canonical_name": "Μάρκου",
+      "variants": [
+        "Μάρκου"
+      ],
+      "mention_count": 265
+    },
+    {
+      "canonical_name": "Σαταβοῦτος",
+      "variants": [
+        "Σαταβοῦτος"
+      ],
+      "mention_count": 255
+    },
+    {
+      "canonical_name": "Ζωίλου",
+      "variants": [
+        "Ζωίλου"
+      ],
+      "mention_count": 249
+    },
+    {
+      "canonical_name": "Πέτρου",
+      "variants": [
+        "Πέτρου"
+      ],
+      "mention_count": 249
+    },
+    {
+      "canonical_name": "Σοήνης",
+      "variants": [
+        "Σοήνης"
+      ],
+      "mention_count": 248
+    },
+    {
+      "canonical_name": "Κάστορος",
+      "variants": [
+        "Κάστορος"
+      ],
+      "mention_count": 247
+    },
+    {
+      "canonical_name": "Φοιβάμμων",
+      "variants": [
+        "Φοιβάμμων"
+      ],
+      "mention_count": 247
+    },
+    {
+      "canonical_name": "Μάρωνος",
+      "variants": [
+        "Μάρωνος"
+      ],
+      "mention_count": 246
+    },
+    {
+      "canonical_name": "Κωνσταντίου",
+      "variants": [
+        "Κωνσταντίου"
+      ],
+      "mention_count": 246
+    },
+    {
+      "canonical_name": "Διοκλητιανοῦ",
+      "variants": [
+        "Διοκλητιανοῦ"
+      ],
+      "mention_count": 245
+    },
+    {
+      "canonical_name": "Πετεσοῦχος",
+      "variants": [
+        "Πετεσοῦχος"
+      ],
+      "mention_count": 244
+    },
+    {
+      "canonical_name": "Πετοσίριος",
+      "variants": [
+        "Πετοσίριος"
+      ],
+      "mention_count": 242
+    },
+    {
+      "canonical_name": "Θαήσιος",
+      "variants": [
+        "Θαήσιος"
+      ],
+      "mention_count": 238
+    },
+    {
+      "canonical_name": "Θεόδωρος",
+      "variants": [
+        "Θεόδωρος"
+      ],
+      "mention_count": 237
+    },
+    {
+      "canonical_name": "Θέωνι",
+      "variants": [
+        "Θέωνι"
+      ],
+      "mention_count": 236
+    },
+    {
+      "canonical_name": "Θεαδελφείας",
+      "variants": [
+        "Θεαδελφείας"
+      ],
+      "mention_count": 232
+    },
+    {
+      "canonical_name": "Δημήτριος",
+      "variants": [
+        "Δημήτριος"
+      ],
+      "mention_count": 232
+    },
+    {
+      "canonical_name": "Οὐεσπασιανοῦ",
+      "variants": [
+        "Οὐεσπασιανοῦ"
+      ],
+      "mention_count": 225
+    },
+    {
+      "canonical_name": "Κομμόδου",
+      "variants": [
+        "Κομμόδου"
+      ],
+      "mention_count": 225
+    },
+    {
+      "canonical_name": "Κροκοδίλων",
+      "variants": [
+        "Κροκοδίλων"
+      ],
+      "mention_count": 224
+    },
+    {
+      "canonical_name": "Αὐρήλιοι",
+      "variants": [
+        "Αὐρήλιοι"
+      ],
+      "mention_count": 224
+    },
+    {
+      "canonical_name": "Αὐρηλία",
+      "variants": [
+        "Αὐρηλία",
+        "Αὐρηλίᾳ"
+      ],
+      "mention_count": 223
+    },
+    {
+      "canonical_name": "Μεχὶρ",
+      "variants": [
+        "Μεχὶρ"
+      ],
+      "mention_count": 221
+    },
+    {
+      "canonical_name": "Δίου",
+      "variants": [
+        "Δίου"
+      ],
+      "mention_count": 220
+    },
+    {
+      "canonical_name": "Βερενίκης",
+      "variants": [
+        "Βερενίκης",
+        "Βερενίκης Εὐεργέτιδος"
+      ],
+      "mention_count": 220
+    },
+    {
+      "canonical_name": "Χαιρήμων",
+      "variants": [
+        "Χαιρήμων"
+      ],
+      "mention_count": 217
+    },
+    {
+      "canonical_name": "Μεμνονείων",
+      "variants": [
+        "Μεμνονείων"
+      ],
+      "mention_count": 214
+    },
+    {
+      "canonical_name": "Μαρίας",
+      "variants": [
+        "Μαρίας"
+      ],
+      "mention_count": 212
+    },
+    {
+      "canonical_name": "Εὐδαίμονος",
+      "variants": [
+        "Εὐδαίμονος"
+      ],
+      "mention_count": 210
+    },
+    {
+      "canonical_name": "Εὐεργετῶν",
+      "variants": [
+        "Εὐεργετῶν"
+      ],
+      "mention_count": 210
+    },
+    {
+      "canonical_name": "Νέρωνος Κλαυδίου Καίσαρος",
+      "variants": [
+        "Νέρωνος Κλαυδίου Καίσαρος"
+      ],
+      "mention_count": 207
+    },
+    {
+      "canonical_name": "Μηνᾶς",
+      "variants": [
+        "Μηνᾶς"
+      ],
+      "mention_count": 204
+    },
+    {
+      "canonical_name": "Φλαυίου",
+      "variants": [
+        "Φλαυίου"
+      ],
+      "mention_count": 203
+    },
+    {
+      "canonical_name": "Καισαρείου",
+      "variants": [
+        "Καισαρείου"
+      ],
+      "mention_count": 202
+    },
+    {
+      "canonical_name": "Μαξιμιανοῦ",
+      "variants": [
+        "Μαξιμιανοῦ"
+      ],
+      "mention_count": 201
+    },
+    {
+      "canonical_name": "Πτολεμαίδι Εὐεργέτιδι",
+      "variants": [
+        "Πτολεμαίδι Εὐεργέτιδι",
+        "Πτολεμαίδι"
+      ],
+      "mention_count": 199
+    },
+    {
+      "canonical_name": "Κερκεσούχων",
+      "variants": [
+        "Κερκεσούχων"
+      ],
+      "mention_count": 198
+    },
+    {
+      "canonical_name": "Κρονίωνος",
+      "variants": [
+        "Κρονίωνος"
+      ],
+      "mention_count": 196
+    },
+    {
+      "canonical_name": "Φιλαδέλφου",
+      "variants": [
+        "Φιλαδέλφου"
+      ],
+      "mention_count": 196
+    },
+    {
+      "canonical_name": "Στοτοήτιος",
+      "variants": [
+        "Στοτοήτιος"
+      ],
+      "mention_count": 194
+    },
+    {
+      "canonical_name": "Καισάρων",
+      "variants": [
+        "Καισάρων"
+      ],
+      "mention_count": 194
+    },
+    {
+      "canonical_name": "Κλεοπάτρας",
+      "variants": [
+        "Κλεοπάτρας"
+      ],
+      "mention_count": 193
+    },
+    {
+      "canonical_name": "Πανίσκου",
+      "variants": [
+        "Πανίσκου"
+      ],
+      "mention_count": 189
+    },
+    {
+      "canonical_name": "Πτολεμαίδος",
+      "variants": [
+        "Πτολεμαίδος"
+      ],
+      "mention_count": 188
+    },
+    {
+      "canonical_name": "Φιλοξένου",
+      "variants": [
+        "Φιλοξένου"
+      ],
+      "mention_count": 187
+    },
+    {
+      "canonical_name": "Κάστωρ",
+      "variants": [
+        "Κάστωρ"
+      ],
+      "mention_count": 186
+    },
+    {
+      "canonical_name": "Διονυσίωι",
+      "variants": [
+        "Διονυσίωι"
+      ],
+      "mention_count": 186
+    },
+    {
+      "canonical_name": "Βακχιάδος",
+      "variants": [
+        "Βακχιάδος"
+      ],
+      "mention_count": 186
+    },
+    {
+      "canonical_name": "Παρθικοῦ",
+      "variants": [
+        "Παρθικοῦ",
+        "Παρθικοῦ Μεγίστου"
+      ],
+      "mention_count": 185
+    },
+    {
+      "canonical_name": "Σεουήρου",
+      "variants": [
+        "Σεουήρου"
+      ],
+      "mention_count": 184
+    },
+    {
+      "canonical_name": "Φιλαδελφείας",
+      "variants": [
+        "Φιλαδελφείας"
+      ],
+      "mention_count": 183
+    },
+    {
+      "canonical_name": "Βίκτωρ",
+      "variants": [
+        "Βίκτωρ"
+      ],
+      "mention_count": 181
+    },
+    {
+      "canonical_name": "Φλαουίῳ",
+      "variants": [
+        "Φλαουίῳ"
+      ],
+      "mention_count": 179
+    },
+    {
+      "canonical_name": "Πτολεμαῖον",
+      "variants": [
+        "Πτολεμαῖον"
+      ],
+      "mention_count": 178
+    },
+    {
+      "canonical_name": "Μύσθου",
+      "variants": [
+        "Μύσθου"
+      ],
+      "mention_count": 178
+    },
+    {
+      "canonical_name": "Θεοδοσίου",
+      "variants": [
+        "Θεοδοσίου"
+      ],
+      "mention_count": 177
+    },
+    {
+      "canonical_name": "Παῦλος",
+      "variants": [
+        "Παῦλος"
+      ],
+      "mention_count": 176
+    },
+    {
+      "canonical_name": "Στεφάνου",
+      "variants": [
+        "Στεφάνου"
+      ],
+      "mention_count": 176
+    },
+    {
+      "canonical_name": "Τεβτύνεως",
+      "variants": [
+        "Τεβτύνεως"
+      ],
+      "mention_count": 176
+    },
+    {
+      "canonical_name": "Μέμφιν",
+      "variants": [
+        "Μέμφιν"
+      ],
+      "mention_count": 174
+    },
+    {
+      "canonical_name": "Κοσμᾶ",
+      "variants": [
+        "Κοσμᾶ"
+      ],
+      "mention_count": 173
+    },
+    {
+      "canonical_name": "Σαρα",
+      "variants": [
+        "Σαρα"
+      ],
+      "mention_count": 172
+    },
+    {
+      "canonical_name": "Τεπτύνεως",
+      "variants": [
+        "Τεπτύνεως"
+      ],
+      "mention_count": 169
+    },
+    {
+      "canonical_name": "Πνεφερῶτος",
+      "variants": [
+        "Πνεφερῶτος"
+      ],
+      "mention_count": 167
+    },
+    {
+      "canonical_name": "Νέρωνος",
+      "variants": [
+        "Νέρωνος"
+      ],
+      "mention_count": 167
+    },
+    {
+      "canonical_name": "Πετε",
+      "variants": [
+        "Πετε"
+      ],
+      "mention_count": 166
+    },
+    {
+      "canonical_name": "Δακικοῦ",
+      "variants": [
+        "Δακικοῦ"
+      ],
+      "mention_count": 165
+    },
+    {
+      "canonical_name": "Διογένης",
+      "variants": [
+        "Διογένης"
+      ],
+      "mention_count": 165
+    },
+    {
+      "canonical_name": "Γαίου",
+      "variants": [
+        "Γαίου"
+      ],
+      "mention_count": 160
+    },
+    {
+      "canonical_name": "Φιλίππου",
+      "variants": [
+        "Φιλίππου"
+      ],
+      "mention_count": 159
+    },
+    {
+      "canonical_name": "Φίλωνος",
+      "variants": [
+        "Φίλωνος"
+      ],
+      "mention_count": 158
+    },
+    {
+      "canonical_name": "Κύρου",
+      "variants": [
+        "Κύρου"
+      ],
+      "mention_count": 158
+    },
+    {
+      "canonical_name": "Θεοῦ",
+      "variants": [
+        "Θεοῦ"
+      ],
+      "mention_count": 156
+    },
+    {
+      "canonical_name": "Κωνσταντίνου",
+      "variants": [
+        "Κωνσταντίνου"
+      ],
+      "mention_count": 156
+    },
+    {
+      "canonical_name": "Φιλοπατόρων",
+      "variants": [
+        "Φιλοπατόρων"
+      ],
+      "mention_count": 155
+    },
+    {
+      "canonical_name": "Φαρμουθι",
+      "variants": [
+        "Φαρμουθι"
+      ],
+      "mention_count": 155
+    },
+    {
+      "canonical_name": "Arabic",
+      "variants": [
+        "Arabic"
+      ],
+      "mention_count": 154
+    },
+    {
+      "canonical_name": "Διοδώρου",
+      "variants": [
+        "Διοδώρου"
+      ],
+      "mention_count": 154
+    },
+    {
+      "canonical_name": "Παμώνθης",
+      "variants": [
+        "Παμώνθης"
+      ],
+      "mention_count": 152
+    },
+    {
+      "canonical_name": "Στοτοῆτις",
+      "variants": [
+        "Στοτοῆτις"
+      ],
+      "mention_count": 151
+    },
+    {
+      "canonical_name": "Σύρου",
+      "variants": [
+        "Σύρου"
+      ],
+      "mention_count": 150
+    },
+    {
+      "canonical_name": "Μέλας",
+      "variants": [
+        "Μέλας"
+      ],
+      "mention_count": 150
+    },
+    {
+      "canonical_name": "Μέμφεως",
+      "variants": [
+        "Μέμφεως"
+      ],
+      "mention_count": 150
+    },
+    {
+      "canonical_name": "Πέρσης",
+      "variants": [
+        "Πέρσης"
+      ],
+      "mention_count": 148
+    },
+    {
+      "canonical_name": "Βομπαή",
+      "variants": [
+        "Βομπαή"
+      ],
+      "mention_count": 148
+    },
+    {
+      "canonical_name": "Γερμανικοῦ",
+      "variants": [
+        "Γερμανικοῦ"
+      ],
+      "mention_count": 147
+    },
+    {
+      "canonical_name": "Παπνουθίου",
+      "variants": [
+        "Παπνουθίου"
+      ],
+      "mention_count": 147
+    },
+    {
+      "canonical_name": "Πασίωνος",
+      "variants": [
+        "Πασίωνος"
+      ],
+      "mention_count": 147
+    },
+    {
+      "canonical_name": "Μακαρίου",
+      "variants": [
+        "Μακαρίου"
+      ],
+      "mention_count": 147
+    },
+    {
+      "canonical_name": "Νεῖλος",
+      "variants": [
+        "Νεῖλος"
+      ],
+      "mention_count": 147
+    },
+    {
+      "canonical_name": "Πουβλίου Σεπτιμίου Γέτα",
+      "variants": [
+        "Πουβλίου Σεπτιμίου Γέτα"
+      ],
+      "mention_count": 146
+    },
+    {
+      "canonical_name": "Αὐγούστων",
+      "variants": [
+        "Αὐγούστων"
+      ],
+      "mention_count": 145
+    },
+    {
+      "canonical_name": "Ψεναμούνιος",
+      "variants": [
+        "Ψεναμούνιος"
+      ],
+      "mention_count": 145
+    },
+    {
+      "canonical_name": "Πικῶς",
+      "variants": [
+        "Πικῶς"
+      ],
+      "mention_count": 145
+    },
+    {
+      "canonical_name": "Φὶβ",
+      "variants": [
+        "Φὶβ",
+        "Φῖβ"
+      ],
+      "mention_count": 145
+    },
+    {
+      "canonical_name": "Τεῶτος",
+      "variants": [
+        "Τεῶτος"
+      ],
+      "mention_count": 143
+    },
+    {
+      "canonical_name": "Γάιος",
+      "variants": [
+        "Γάιος"
+      ],
+      "mention_count": 142
+    },
+    {
+      "canonical_name": "Γεώργιος",
+      "variants": [
+        "Γεώργιος"
+      ],
+      "mention_count": 141
+    },
+    {
+      "canonical_name": "Στοτοήτεως",
+      "variants": [
+        "Στοτοήτεως"
+      ],
+      "mention_count": 139
+    },
+    {
+      "canonical_name": "Θεοδώρῳ",
+      "variants": [
+        "Θεοδώρῳ"
+      ],
+      "mention_count": 139
+    },
+    {
+      "canonical_name": "Μέλανος",
+      "variants": [
+        "Μέλανος"
+      ],
+      "mention_count": 139
+    },
+    {
+      "canonical_name": "Εὐδαίμων",
+      "variants": [
+        "Εὐδαίμων"
+      ],
+      "mention_count": 138
+    },
+    {
+      "canonical_name": "Σαμβᾶ",
+      "variants": [
+        "Σαμβᾶ"
+      ],
+      "mention_count": 138
+    },
+    {
+      "canonical_name": "Πανίσκος",
+      "variants": [
+        "Πανίσκος"
+      ],
+      "mention_count": 138
+    },
+    {
+      "canonical_name": "Πετοσῖρις",
+      "variants": [
+        "Πετοσῖρις"
+      ],
+      "mention_count": 137
+    },
+    {
+      "canonical_name": "Τρύφωνος",
+      "variants": [
+        "Τρύφωνος"
+      ],
+      "mention_count": 136
+    },
+    {
+      "canonical_name": "Πτολε",
+      "variants": [
+        "Πτολε"
+      ],
+      "mention_count": 136
+    },
+    {
+      "canonical_name": "Διονυσιάδος",
+      "variants": [
+        "Διονυσιάδος"
+      ],
+      "mention_count": 136
+    },
+    {
+      "canonical_name": "Παχὼνς",
+      "variants": [
+        "Παχὼνς"
+      ],
+      "mention_count": 135
+    },
+    {
+      "canonical_name": "Θεαδελφίας",
+      "variants": [
+        "Θεαδελφίας"
+      ],
+      "mention_count": 135
+    },
+    {
+      "canonical_name": "Σεν",
+      "variants": [
+        "Σεν"
+      ],
+      "mention_count": 134
+    },
+    {
+      "canonical_name": "Ζήνωνος",
+      "variants": [
+        "Ζήνωνος"
+      ],
+      "mention_count": 134
+    },
+    {
+      "canonical_name": "Διδύμης",
+      "variants": [
+        "Διδύμης"
+      ],
+      "mention_count": 132
+    },
+    {
+      "canonical_name": "Σαράπιδος",
+      "variants": [
+        "Σαράπιδος"
+      ],
+      "mention_count": 131
+    },
+    {
+      "canonical_name": "Διονυσίῳ",
+      "variants": [
+        "Διονυσίῳ"
+      ],
+      "mention_count": 131
+    },
+    {
+      "canonical_name": "Αὐρηλίου Οὐήρου Σεβαστοῦ",
+      "variants": [
+        "Αὐρηλίου Οὐήρου Σεβαστοῦ"
+      ],
+      "mention_count": 129
+    },
+    {
+      "canonical_name": "Κλαυδίου",
+      "variants": [
+        "Κλαυδίου"
+      ],
+      "mention_count": 129
+    },
+    {
+      "canonical_name": "Μέμφει",
+      "variants": [
+        "Μέμφει"
+      ],
+      "mention_count": 129
+    },
+    {
+      "canonical_name": "Πεκῦσις",
+      "variants": [
+        "Πεκῦσις"
+      ],
+      "mention_count": 129
+    },
+    {
+      "canonical_name": "Πεκύσιος",
+      "variants": [
+        "Πεκύσιος"
+      ],
+      "mention_count": 128
+    },
+    {
+      "canonical_name": "Φιλοπάτορος",
+      "variants": [
+        "Φιλοπάτορος"
+      ],
+      "mention_count": 127
+    },
+    {
+      "canonical_name": "Διο",
+      "variants": [
+        "Διο"
+      ],
+      "mention_count": 127
+    },
+    {
+      "canonical_name": "Σερήνῳ",
+      "variants": [
+        "Σερήνῳ"
+      ],
+      "mention_count": 126
+    },
+    {
+      "canonical_name": "Πτο",
+      "variants": [
+        "Πτο"
+      ],
+      "mention_count": 126
+    },
+    {
+      "canonical_name": "Φιλαδελφίας",
+      "variants": [
+        "Φιλαδελφίας"
+      ],
+      "mention_count": 126
+    },
+    {
+      "canonical_name": "Σαραπάμμων",
+      "variants": [
+        "Σαραπάμμων"
+      ],
+      "mention_count": 125
+    },
+    {
+      "canonical_name": "Πτολεμαίῳ",
+      "variants": [
+        "Πτολεμαίῳ"
+      ],
+      "mention_count": 125
+    },
+    {
+      "canonical_name": "Λυσιμάχου",
+      "variants": [
+        "Λυσιμάχου"
+      ],
+      "mention_count": 125
+    },
+    {
+      "canonical_name": "Ταυρίνου",
+      "variants": [
+        "Ταυρίνου"
+      ],
+      "mention_count": 125
+    },
+    {
+      "canonical_name": "Λιβὸς",
+      "variants": [
+        "Λιβὸς"
+      ],
+      "mention_count": 124
+    },
+    {
+      "canonical_name": "Δημητρίωι",
+      "variants": [
+        "Δημητρίωι"
+      ],
+      "mention_count": 122
+    },
+    {
+      "canonical_name": "Ψεν",
+      "variants": [
+        "Ψεν"
+      ],
+      "mention_count": 121
+    },
+    {
+      "canonical_name": "Σαραπίωνα",
+      "variants": [
+        "Σαραπίωνα"
+      ],
+      "mention_count": 121
+    },
+    {
+      "canonical_name": "Πτολ",
+      "variants": [
+        "Πτολ"
+      ],
+      "mention_count": 119
+    },
+    {
+      "canonical_name": "Σισόιτος",
+      "variants": [
+        "Σισόιτος"
+      ],
+      "mention_count": 118
+    },
+    {
+      "canonical_name": "Σαραπιάδος",
+      "variants": [
+        "Σαραπιάδος"
+      ],
+      "mention_count": 117
+    },
+    {
+      "canonical_name": "Παποντῶτος",
+      "variants": [
+        "Παποντῶτος"
+      ],
+      "mention_count": 117
+    },
+    {
+      "canonical_name": "Δωρίωνος",
+      "variants": [
+        "Δωρίωνος"
+      ],
+      "mention_count": 116
+    },
+    {
+      "canonical_name": "Σιλβανοῦ",
+      "variants": [
+        "Σιλβανοῦ"
+      ],
+      "mention_count": 116
+    },
+    {
+      "canonical_name": "Παμώνθου",
+      "variants": [
+        "Παμώνθου"
+      ],
+      "mention_count": 115
+    },
+    {
+      "canonical_name": "Πάσιτος",
+      "variants": [
+        "Πάσιτος"
+      ],
+      "mention_count": 115
+    },
+    {
+      "canonical_name": "Παθύρει",
+      "variants": [
+        "Παθύρει"
+      ],
+      "mention_count": 114
+    },
+    {
+      "canonical_name": "Σύρος",
+      "variants": [
+        "Σύρος"
+      ],
+      "mention_count": 114
+    },
+    {
+      "canonical_name": "Κολλοῦθος",
+      "variants": [
+        "Κολλοῦθος"
+      ],
+      "mention_count": 114
+    },
+    {
+      "canonical_name": "Μουσαίου",
+      "variants": [
+        "Μουσαίου"
+      ],
+      "mention_count": 114
+    },
+    {
+      "canonical_name": "Πέτρος",
+      "variants": [
+        "Πέτρος"
+      ],
+      "mention_count": 114
+    },
+    {
+      "canonical_name": "Ψάις",
+      "variants": [
+        "Ψάις"
+      ],
+      "mention_count": 113
+    },
+    {
+      "canonical_name": "Φοιβάμμωνι",
+      "variants": [
+        "Φοιβάμμωνι"
+      ],
+      "mention_count": 113
+    },
+    {
+      "canonical_name": "Αὐρήλιον",
+      "variants": [
+        "Αὐρήλιον"
+      ],
+      "mention_count": 112
+    },
+    {
+      "canonical_name": "Διονύσιον",
+      "variants": [
+        "Διονύσιον"
+      ],
+      "mention_count": 112
+    },
+    {
+      "canonical_name": "Αὐρηλίας",
+      "variants": [
+        "Αὐρηλίας"
+      ],
+      "mention_count": 111
+    },
+    {
+      "canonical_name": "Σύρων",
+      "variants": [
+        "Σύρων"
+      ],
+      "mention_count": 111
+    },
+    {
+      "canonical_name": "Σαραπάμμωνος",
+      "variants": [
+        "Σαραπάμμωνος"
+      ],
+      "mention_count": 110
+    },
+    {
+      "canonical_name": "Σωκράτης",
+      "variants": [
+        "Σωκράτης"
+      ],
+      "mention_count": 109
+    },
+    {
+      "canonical_name": "Πεθέως",
+      "variants": [
+        "Πεθέως"
+      ],
+      "mention_count": 108
+    },
+    {
+      "canonical_name": "Περιτίου",
+      "variants": [
+        "Περιτίου"
+      ],
+      "mention_count": 108
+    },
+    {
+      "canonical_name": "Λεωνίδου",
+      "variants": [
+        "Λεωνίδου"
+      ],
+      "mention_count": 108
+    },
+    {
+      "canonical_name": "Γορπιαίου",
+      "variants": [
+        "Γορπιαίου"
+      ],
+      "mention_count": 108
+    },
+    {
+      "canonical_name": "Σωτηρίχου",
+      "variants": [
+        "Σωτηρίχου"
+      ],
+      "mention_count": 106
+    },
+    {
+      "canonical_name": "Σωτήρων",
+      "variants": [
+        "Σωτήρων"
+      ],
+      "mention_count": 106
+    },
+    {
+      "canonical_name": "Δαισίου",
+      "variants": [
+        "Δαισίου"
+      ],
+      "mention_count": 106
+    },
+    {
+      "canonical_name": "Μαξίμου",
+      "variants": [
+        "Μαξίμου"
+      ],
+      "mention_count": 105
+    },
+    {
+      "canonical_name": "Ζωίλος",
+      "variants": [
+        "Ζωίλος"
+      ],
+      "mention_count": 105
+    },
+    {
+      "canonical_name": "Δωροθέου",
+      "variants": [
+        "Δωροθέου"
+      ],
+      "mention_count": 103
+    },
+    {
+      "canonical_name": "Μάρων",
+      "variants": [
+        "Μάρων"
+      ],
+      "mention_count": 102
+    },
+    {
+      "canonical_name": "Σαραπ",
+      "variants": [
+        "Σαραπ"
+      ],
+      "mention_count": 102
+    },
+    {
+      "canonical_name": "Σαταβοῦς",
+      "variants": [
+        "Σαταβοῦς"
+      ],
+      "mention_count": 101
+    },
+    {
+      "canonical_name": "Σαβείνου",
+      "variants": [
+        "Σαβείνου"
+      ],
+      "mention_count": 101
+    },
+    {
+      "canonical_name": "Φαμενωθ",
+      "variants": [
+        "Φαμενωθ"
+      ],
+      "mention_count": 101
+    },
+    {
+      "canonical_name": "Οὐαλεντινιανοῦ",
+      "variants": [
+        "Οὐαλεντινιανοῦ"
+      ],
+      "mention_count": 99
+    },
+    {
+      "canonical_name": "Σώτας",
+      "variants": [
+        "Σώτας"
+      ],
+      "mention_count": 99
+    },
+    {
+      "canonical_name": "Πανὸς",
+      "variants": [
+        "Πανὸς"
+      ],
+      "mention_count": 98
+    },
+    {
+      "canonical_name": "Πασίων",
+      "variants": [
+        "Πασίων"
+      ],
+      "mention_count": 98
+    },
+    {
+      "canonical_name": "Δύστρου",
+      "variants": [
+        "Δύστρου"
+      ],
+      "mention_count": 98
+    },
+    {
+      "canonical_name": "Σωκράτους",
+      "variants": [
+        "Σωκράτους"
+      ],
+      "mention_count": 97
+    },
+    {
+      "canonical_name": "Σενουθίου",
+      "variants": [
+        "Σενουθίου"
+      ],
+      "mention_count": 97
+    },
+    {
+      "canonical_name": "Πνεφερῶς",
+      "variants": [
+        "Πνεφερῶς"
+      ],
+      "mention_count": 97
+    },
+    {
+      "canonical_name": "Σούχου",
+      "variants": [
+        "Σούχου"
+      ],
+      "mention_count": 96
+    },
+    {
+      "canonical_name": "Διοσκουρίδου",
+      "variants": [
+        "Διοσκουρίδου"
+      ],
+      "mention_count": 96
+    },
+    {
+      "canonical_name": "Νικάνορος",
+      "variants": [
+        "Νικάνορος"
+      ],
+      "mention_count": 96
+    },
+    {
+      "canonical_name": "Οὐάλεντος",
+      "variants": [
+        "Οὐάλεντος"
+      ],
+      "mention_count": 95
+    },
+    {
+      "canonical_name": "Οὐαλερίου",
+      "variants": [
+        "Οὐαλερίου"
+      ],
+      "mention_count": 95
+    },
+    {
+      "canonical_name": "Μακάριος",
+      "variants": [
+        "Μακάριος"
+      ],
+      "mention_count": 95
+    },
+    {
+      "canonical_name": "Πᾶσις",
+      "variants": [
+        "Πᾶσις"
+      ],
+      "mention_count": 95
+    },
+    {
+      "canonical_name": "Καρανίδι",
+      "variants": [
+        "Καρανίδι"
+      ],
+      "mention_count": 93
+    },
+    {
+      "canonical_name": "Λουκίου",
+      "variants": [
+        "Λουκίου"
+      ],
+      "mention_count": 93
+    },
+    {
+      "canonical_name": "Διδύμῳ",
+      "variants": [
+        "Διδύμῳ"
+      ],
+      "mention_count": 93
+    },
+    {
+      "canonical_name": "Φιλαδέλφειαν",
+      "variants": [
+        "Φιλαδέλφειαν"
+      ],
+      "mention_count": 93
+    },
+    {
+      "canonical_name": "Αὐτοκρατόρων Καισάρων Λουκίου",
+      "variants": [
+        "Αὐτοκρατόρων Καισάρων Λουκίου"
+      ],
+      "mention_count": 92
+    },
+    {
+      "canonical_name": "Ψεναμοῦνις",
+      "variants": [
+        "Ψεναμοῦνις"
+      ],
+      "mention_count": 92
+    },
+    {
+      "canonical_name": "Διοφάνει",
+      "variants": [
+        "Διοφάνει"
+      ],
+      "mention_count": 91
+    },
+    {
+      "canonical_name": "Δαίμονος",
+      "variants": [
+        "Δαίμονος"
+      ],
+      "mention_count": 91
+    },
+    {
+      "canonical_name": "Φιλαδελφείαι",
+      "variants": [
+        "Φιλαδελφείαι"
+      ],
+      "mention_count": 91
+    },
+    {
+      "canonical_name": "Τεσενούφεως",
+      "variants": [
+        "Τεσενούφεως"
+      ],
+      "mention_count": 90
+    },
+    {
+      "canonical_name": "Μηδικοῦ Παρθικοῦ Σαρματικοῦ",
+      "variants": [
+        "Μηδικοῦ Παρθικοῦ Σαρματικοῦ"
+      ],
+      "mention_count": 90
+    },
+    {
+      "canonical_name": "Τρύφων",
+      "variants": [
+        "Τρύφων"
+      ],
+      "mention_count": 90
+    },
+    {
+      "canonical_name": "Πετρωνίου",
+      "variants": [
+        "Πετρωνίου"
+      ],
+      "mention_count": 90
+    },
+    {
+      "canonical_name": "Κρονίων",
+      "variants": [
+        "Κρονίων"
+      ],
+      "mention_count": 90
+    },
+    {
+      "canonical_name": "Παχων",
+      "variants": [
+        "Παχων"
+      ],
+      "mention_count": 90
+    },
+    {
+      "canonical_name": "Κορνηλίου",
+      "variants": [
+        "Κορνηλίου"
+      ],
+      "mention_count": 89
+    },
+    {
+      "canonical_name": "Δημητρίῳ",
+      "variants": [
+        "Δημητρίῳ"
+      ],
+      "mention_count": 88
+    },
+    {
+      "canonical_name": "Μάξιμος",
+      "variants": [
+        "Μάξιμος"
+      ],
+      "mention_count": 88
+    },
+    {
+      "canonical_name": "Γεωργίῳ",
+      "variants": [
+        "Γεωργίῳ"
+      ],
+      "mention_count": 88
+    },
+    {
+      "canonical_name": "Δείου",
+      "variants": [
+        "Δείου"
+      ],
+      "mention_count": 88
+    },
+    {
+      "canonical_name": "Πικῶτος",
+      "variants": [
+        "Πικῶτος"
+      ],
+      "mention_count": 87
+    },
+    {
+      "canonical_name": "Ναρμούθεως",
+      "variants": [
+        "Ναρμούθεως"
+      ],
+      "mention_count": 87
+    },
+    {
+      "canonical_name": "Βίκτωρος",
+      "variants": [
+        "Βίκτωρος"
+      ],
+      "mention_count": 87
+    },
+    {
+      "canonical_name": "Πέρσου",
+      "variants": [
+        "Πέρσου"
+      ],
+      "mention_count": 86
+    },
+    {
+      "canonical_name": "Βορρᾶ",
+      "variants": [
+        "Βορρᾶ"
+      ],
+      "mention_count": 86
+    },
+    {
+      "canonical_name": "Θεοφίλου",
+      "variants": [
+        "Θεοφίλου"
+      ],
+      "mention_count": 85
+    },
+    {
+      "canonical_name": "Διογένει",
+      "variants": [
+        "Διογένει"
+      ],
+      "mention_count": 85
+    },
+    {
+      "canonical_name": "Πακύσεως",
+      "variants": [
+        "Πακύσεως"
+      ],
+      "mention_count": 84
+    },
+    {
+      "canonical_name": "Παρεμβολῆς",
+      "variants": [
+        "Παρεμβολῆς"
+      ],
+      "mention_count": 84
+    },
+    {
+      "canonical_name": "Πετεμενώφιος",
+      "variants": [
+        "Πετεμενώφιος"
+      ],
+      "mention_count": 84
+    },
+    {
+      "canonical_name": "Διοσκόρῳ",
+      "variants": [
+        "Διοσκόρῳ"
+      ],
+      "mention_count": 84
+    },
+    {
+      "canonical_name": "Μαρρῆς",
+      "variants": [
+        "Μαρρῆς"
+      ],
+      "mention_count": 84
+    },
+    {
+      "canonical_name": "Στράτωνος",
+      "variants": [
+        "Στράτωνος"
+      ],
+      "mention_count": 83
+    },
+    {
+      "canonical_name": "Πόλεως",
+      "variants": [
+        "Πόλεως"
+      ],
+      "mention_count": 82
+    },
+    {
+      "canonical_name": "Παποντῶς",
+      "variants": [
+        "Παποντῶς"
+      ],
+      "mention_count": 82
+    },
+    {
+      "canonical_name": "Μούχεως",
+      "variants": [
+        "Μούχεως"
+      ],
+      "mention_count": 82
+    },
+    {
+      "canonical_name": "Σωτήριχος",
+      "variants": [
+        "Σωτήριχος"
+      ],
+      "mention_count": 82
+    },
+    {
+      "canonical_name": "Πετεχῶντος",
+      "variants": [
+        "Πετεχῶντος"
+      ],
+      "mention_count": 82
+    },
+    {
+      "canonical_name": "Μεχειρ",
+      "variants": [
+        "Μεχειρ"
+      ],
+      "mention_count": 82
+    },
+    {
+      "canonical_name": "Πρωτάρχωι",
+      "variants": [
+        "Πρωτάρχωι"
+      ],
+      "mention_count": 82
+    },
+    {
+      "canonical_name": "Τεβτύνει",
+      "variants": [
+        "Τεβτύνει"
+      ],
+      "mention_count": 81
+    },
+    {
+      "canonical_name": "Γεροντίου",
+      "variants": [
+        "Γεροντίου"
+      ],
+      "mention_count": 81
+    },
+    {
+      "canonical_name": "Νήσων",
+      "variants": [
+        "Νήσων"
+      ],
+      "mention_count": 81
+    },
+    {
+      "canonical_name": "Φαωφι",
+      "variants": [
+        "Φαωφι"
+      ],
+      "mention_count": 81
+    },
+    {
+      "canonical_name": "Θὼτ",
+      "variants": [
+        "Θὼτ"
+      ],
+      "mention_count": 81
+    },
+    {
+      "canonical_name": "Καλλινίκου",
+      "variants": [
+        "Καλλινίκου"
+      ],
+      "mention_count": 81
+    },
+    {
+      "canonical_name": "Σατύρου",
+      "variants": [
+        "Σατύρου"
+      ],
+      "mention_count": 81
+    },
+    {
+      "canonical_name": "Σαράπιδι",
+      "variants": [
+        "Σαράπιδι"
+      ],
+      "mention_count": 80
+    },
+    {
+      "canonical_name": "Μαρρείους",
+      "variants": [
+        "Μαρρείους"
+      ],
+      "mention_count": 80
+    },
+    {
+      "canonical_name": "Φατρήους",
+      "variants": [
+        "Φατρήους"
+      ],
+      "mention_count": 80
+    },
+    {
+      "canonical_name": "Στέφανος",
+      "variants": [
+        "Στέφανος"
+      ],
+      "mention_count": 80
+    },
+    {
+      "canonical_name": "Θατρῆτος",
+      "variants": [
+        "Θατρῆτος"
+      ],
+      "mention_count": 80
+    },
+    {
+      "canonical_name": "Τιβερίου",
+      "variants": [
+        "Τιβερίου"
+      ],
+      "mention_count": 80
+    },
+    {
+      "canonical_name": "Σαμβᾶς",
+      "variants": [
+        "Σαμβᾶς"
+      ],
+      "mention_count": 80
+    },
+    {
+      "canonical_name": "Τεβτῦνιν",
+      "variants": [
+        "Τεβτῦνιν"
+      ],
+      "mention_count": 80
+    },
+    {
+      "canonical_name": "Εὐδαιμονίδος",
+      "variants": [
+        "Εὐδαιμονίδος"
+      ],
+      "mention_count": 79
+    },
+    {
+      "canonical_name": "Βουβάστου",
+      "variants": [
+        "Βουβάστου"
+      ],
+      "mention_count": 79
+    },
+    {
+      "canonical_name": "Σαβῖνος",
+      "variants": [
+        "Σαβῖνος"
+      ],
+      "mention_count": 79
+    },
+    {
+      "canonical_name": "Ψάιτος",
+      "variants": [
+        "Ψάιτος"
+      ],
+      "mention_count": 79
+    },
+    {
+      "canonical_name": "Πετεμενῶφις",
+      "variants": [
+        "Πετεμενῶφις"
+      ],
+      "mention_count": 79
+    },
+    {
+      "canonical_name": "Πεκυσίου",
+      "variants": [
+        "Πεκυσίου"
+      ],
+      "mention_count": 79
+    },
+    {
+      "canonical_name": "Σιλβανὸς",
+      "variants": [
+        "Σιλβανὸς"
+      ],
+      "mention_count": 78
+    },
+    {
+      "canonical_name": "Λικιννίου Γαλλιηνοῦ Γερμανικοῦ",
+      "variants": [
+        "Λικιννίου Γαλλιηνοῦ Γερμανικοῦ"
+      ],
+      "mention_count": 78
+    },
+    {
+      "canonical_name": "Ποῦσι",
+      "variants": [
+        "Ποῦσι"
+      ],
+      "mention_count": 78
+    },
+    {
+      "canonical_name": "Τιμοθέου",
+      "variants": [
+        "Τιμοθέου"
+      ],
+      "mention_count": 78
+    },
+    {
+      "canonical_name": "Ξανδικοῦ",
+      "variants": [
+        "Ξανδικοῦ"
+      ],
+      "mention_count": 78
+    },
+    {
+      "canonical_name": "Πανεφρέμμεως",
+      "variants": [
+        "Πανεφρέμμεως"
+      ],
+      "mention_count": 77
+    },
+    {
+      "canonical_name": "Γερμανοῦ",
+      "variants": [
+        "Γερμανοῦ"
+      ],
+      "mention_count": 77
+    },
+    {
+      "canonical_name": "Δημητρίας",
+      "variants": [
+        "Δημητρίας"
+      ],
+      "mention_count": 77
+    },
+    {
+      "canonical_name": "Θερμούθιος",
+      "variants": [
+        "Θερμούθιος"
+      ],
+      "mention_count": 77
+    },
+    {
+      "canonical_name": "Μεσορη",
+      "variants": [
+        "Μεσορη"
+      ],
+      "mention_count": 77
+    },
+    {
+      "canonical_name": "Τεῶς",
+      "variants": [
+        "Τεῶς"
+      ],
+      "mention_count": 76
+    },
+    {
+      "canonical_name": "Φλάουιος",
+      "variants": [
+        "Φλάουιος"
+      ],
+      "mention_count": 76
+    },
+    {
+      "canonical_name": "Εὐημερίας",
+      "variants": [
+        "Εὐημερίας"
+      ],
+      "mention_count": 76
+    },
+    {
+      "canonical_name": "Δωρίων",
+      "variants": [
+        "Δωρίων"
+      ],
+      "mention_count": 76
+    },
+    {
+      "canonical_name": "Πτολεμαικοῦ",
+      "variants": [
+        "Πτολεμαικοῦ"
+      ],
+      "mention_count": 76
+    },
+    {
+      "canonical_name": "Φίβιος",
+      "variants": [
+        "Φίβιος"
+      ],
+      "mention_count": 75
+    },
+    {
+      "canonical_name": "Σαβεῖνος",
+      "variants": [
+        "Σαβεῖνος"
+      ],
+      "mention_count": 75
+    },
+    {
+      "canonical_name": "Θέωνα",
+      "variants": [
+        "Θέωνα"
+      ],
+      "mention_count": 75
+    },
+    {
+      "canonical_name": "Πλῆνις",
+      "variants": [
+        "Πλῆνις"
+      ],
+      "mention_count": 75
+    },
+    {
+      "canonical_name": "Ζήνων",
+      "variants": [
+        "Ζήνων"
+      ],
+      "mention_count": 75
+    },
+    {
+      "canonical_name": "Σώτου",
+      "variants": [
+        "Σώτου"
+      ],
+      "mention_count": 75
+    },
+    {
+      "canonical_name": "Θεὸν",
+      "variants": [
+        "Θεὸν"
+      ],
+      "mention_count": 74
+    },
+    {
+      "canonical_name": "Σωτῆρος",
+      "variants": [
+        "Σωτῆρος"
+      ],
+      "mention_count": 74
+    },
+    {
+      "canonical_name": "Ταμύσθας",
+      "variants": [
+        "Ταμύσθας"
+      ],
+      "mention_count": 73
+    },
+    {
+      "canonical_name": "Αἰγυπτίων",
+      "variants": [
+        "Αἰγυπτίων"
+      ],
+      "mention_count": 73
+    },
+    {
+      "canonical_name": "Πρωτάρχου",
+      "variants": [
+        "Πρωτάρχου"
+      ],
+      "mention_count": 73
+    },
+    {
+      "canonical_name": "Εὐλογίου",
+      "variants": [
+        "Εὐλογίου"
+      ],
+      "mention_count": 73
+    },
+    {
+      "canonical_name": "Παῆσις",
+      "variants": [
+        "Παῆσις"
+      ],
+      "mention_count": 73
+    },
+    {
+      "canonical_name": "Πάτρωνος",
+      "variants": [
+        "Πάτρωνος"
+      ],
+      "mention_count": 73
+    },
+    {
+      "canonical_name": "Φιλοθέου",
+      "variants": [
+        "Φιλοθέου"
+      ],
+      "mention_count": 73
+    },
+    {
+      "canonical_name": "Χαιρήμονι",
+      "variants": [
+        "Χαιρήμονι"
+      ],
+      "mention_count": 73
+    },
+    {
+      "canonical_name": "Θύνεως",
+      "variants": [
+        "Θύνεως"
+      ],
+      "mention_count": 73
+    },
+    {
+      "canonical_name": "Reprinted",
+      "variants": [
+        "Reprinted"
+      ],
+      "mention_count": 73
+    },
+    {
+      "canonical_name": "Πάπου",
+      "variants": [
+        "Πάπου"
+      ],
+      "mention_count": 72
+    },
+    {
+      "canonical_name": "Φίλων",
+      "variants": [
+        "Φίλων"
+      ],
+      "mention_count": 72
+    },
+    {
+      "canonical_name": "Εὐημερείας",
+      "variants": [
+        "Εὐημερείας"
+      ],
+      "mention_count": 72
+    },
+    {
+      "canonical_name": "Πέτρῳ",
+      "variants": [
+        "Πέτρῳ"
+      ],
+      "mention_count": 72
+    },
+    {
+      "canonical_name": "Αὐρηλίοις",
+      "variants": [
+        "Αὐρηλίοις"
+      ],
+      "mention_count": 71
+    },
+    {
+      "canonical_name": "Φλαυίῳ",
+      "variants": [
+        "Φλαυίῳ"
+      ],
+      "mention_count": 71
+    },
+    {
+      "canonical_name": "Κλαυδιανοῦ",
+      "variants": [
+        "Κλαυδιανοῦ"
+      ],
+      "mention_count": 71
+    },
+    {
+      "canonical_name": "Δανιὴλ",
+      "variants": [
+        "Δανιὴλ"
+      ],
+      "mention_count": 71
+    },
+    {
+      "canonical_name": "Σωτὴρ",
+      "variants": [
+        "Σωτὴρ"
+      ],
+      "mention_count": 71
+    },
+    {
+      "canonical_name": "Κυριακοῦ",
+      "variants": [
+        "Κυριακοῦ"
+      ],
+      "mention_count": 71
+    },
+    {
+      "canonical_name": "Φιλομητόρων",
+      "variants": [
+        "Φιλομητόρων"
+      ],
+      "mention_count": 71
+    },
+    {
+      "canonical_name": "Φιλόξενος",
+      "variants": [
+        "Φιλόξενος"
+      ],
+      "mention_count": 70
+    },
+    {
+      "canonical_name": "Οὐαλέριος",
+      "variants": [
+        "Οὐαλέριος"
+      ],
+      "mention_count": 70
+    },
+    {
+      "canonical_name": "Εἰρήνης",
+      "variants": [
+        "Εἰρήνης"
+      ],
+      "mention_count": 70
+    },
+    {
+      "canonical_name": "Διόδωρος",
+      "variants": [
+        "Διόδωρος"
+      ],
+      "mention_count": 70
+    },
+    {
+      "canonical_name": "Μύσθης",
+      "variants": [
+        "Μύσθης"
+      ],
+      "mention_count": 70
+    },
+    {
+      "canonical_name": "Μακεδὼν",
+      "variants": [
+        "Μακεδὼν"
+      ],
+      "mention_count": 70
+    },
+    {
+      "canonical_name": "Θαήσεως",
+      "variants": [
+        "Θαήσεως"
+      ],
+      "mention_count": 69
+    },
+    {
+      "canonical_name": "Αὐνῆς",
+      "variants": [
+        "Αὐνῆς"
+      ],
+      "mention_count": 69
+    },
+    {
+      "canonical_name": "Σαβίνου",
+      "variants": [
+        "Σαβίνου"
+      ],
+      "mention_count": 69
+    },
+    {
+      "canonical_name": "Παύλῳ",
+      "variants": [
+        "Παύλῳ"
+      ],
+      "mention_count": 69
+    },
+    {
+      "canonical_name": "Διδύμη",
+      "variants": [
+        "Διδύμη"
+      ],
+      "mention_count": 69
+    },
+    {
+      "canonical_name": "Χαιρήμωνος",
+      "variants": [
+        "Χαιρήμωνος"
+      ],
+      "mention_count": 69
+    },
+    {
+      "canonical_name": "Δεῖος",
+      "variants": [
+        "Δεῖος"
+      ],
+      "mention_count": 69
+    },
+    {
+      "canonical_name": "Πετεχώνσιος",
+      "variants": [
+        "Πετεχώνσιος"
+      ],
+      "mention_count": 68
+    },
+    {
+      "canonical_name": "Διονυ",
+      "variants": [
+        "Διονυ"
+      ],
+      "mention_count": 68
+    },
+    {
+      "canonical_name": "Λέοντος",
+      "variants": [
+        "Λέοντος"
+      ],
+      "mention_count": 68
+    },
+    {
+      "canonical_name": "Κυρίου",
+      "variants": [
+        "Κυρίου"
+      ],
+      "mention_count": 67
+    },
+    {
+      "canonical_name": "Μαξιμίνου",
+      "variants": [
+        "Μαξιμίνου"
+      ],
+      "mention_count": 67
+    },
+    {
+      "canonical_name": "Βουσίρεως",
+      "variants": [
+        "Βουσίρεως"
+      ],
+      "mention_count": 67
+    },
+    {
+      "canonical_name": "Λύκων",
+      "variants": [
+        "Λύκων"
+      ],
+      "mention_count": 67
+    },
+    {
+      "canonical_name": "Δίδυμον",
+      "variants": [
+        "Δίδυμον"
+      ],
+      "mention_count": 67
+    },
+    {
+      "canonical_name": "Εὐδαίμονι",
+      "variants": [
+        "Εὐδαίμονι"
+      ],
+      "mention_count": 66
+    },
+    {
+      "canonical_name": "Κεφάλωνος",
+      "variants": [
+        "Κεφάλωνος"
+      ],
+      "mention_count": 66
+    },
+    {
+      "canonical_name": "Ταορσενούφεως",
+      "variants": [
+        "Ταορσενούφεως"
+      ],
+      "mention_count": 66
+    },
+    {
+      "canonical_name": "Κοσμᾶς",
+      "variants": [
+        "Κοσμᾶς"
+      ],
+      "mention_count": 66
+    },
+    {
+      "canonical_name": "Παμοῦν",
+      "variants": [
+        "Παμοῦν"
+      ],
+      "mention_count": 66
+    },
+    {
+      "canonical_name": "Φιλα",
+      "variants": [
+        "Φιλα"
+      ],
+      "mention_count": 66
+    },
+    {
+      "canonical_name": "Φιλομήτορος",
+      "variants": [
+        "Φιλομήτορος"
+      ],
+      "mention_count": 66
+    },
+    {
+      "canonical_name": "Ταλεὶ",
+      "variants": [
+        "Ταλεὶ"
+      ],
+      "mention_count": 66
+    },
+    {
+      "canonical_name": "Φρουρίου",
+      "variants": [
+        "Φρουρίου"
+      ],
+      "mention_count": 65
+    },
+    {
+      "canonical_name": "Πινουτίωνος",
+      "variants": [
+        "Πινουτίωνος"
+      ],
+      "mention_count": 65
+    },
+    {
+      "canonical_name": "Αὐτοκρατόρων",
+      "variants": [
+        "Αὐτοκρατόρων"
+      ],
+      "mention_count": 65
+    },
+    {
+      "canonical_name": "Γερμανικείου",
+      "variants": [
+        "Γερμανικείου"
+      ],
+      "mention_count": 65
+    },
+    {
+      "canonical_name": "Παμουθίου",
+      "variants": [
+        "Παμουθίου"
+      ],
+      "mention_count": 65
+    },
+    {
+      "canonical_name": "Φλαουίων",
+      "variants": [
+        "Φλαουίων"
+      ],
+      "mention_count": 65
+    },
+    {
+      "canonical_name": "Διονυσίας",
+      "variants": [
+        "Διονυσίας"
+      ],
+      "mention_count": 64
+    },
+    {
+      "canonical_name": "Οὐαλερίῳ",
+      "variants": [
+        "Οὐαλερίῳ"
+      ],
+      "mention_count": 64
+    },
+    {
+      "canonical_name": "Κερκεοσίρεως",
+      "variants": [
+        "Κερκεοσίρεως"
+      ],
+      "mention_count": 64
+    },
+    {
+      "canonical_name": "Κοπρῆς",
+      "variants": [
+        "Κοπρῆς"
+      ],
+      "mention_count": 64
+    },
+    {
+      "canonical_name": "Γερμανὸς",
+      "variants": [
+        "Γερμανὸς"
+      ],
+      "mention_count": 64
+    },
+    {
+      "canonical_name": "Κλαύδιος",
+      "variants": [
+        "Κλαύδιος"
+      ],
+      "mention_count": 64
+    },
+    {
+      "canonical_name": "Φατρῆς",
+      "variants": [
+        "Φατρῆς"
+      ],
+      "mention_count": 64
+    },
+    {
+      "canonical_name": "Τάνεως",
+      "variants": [
+        "Τάνεως"
+      ],
+      "mention_count": 64
+    },
+    {
+      "canonical_name": "Πλουτίωνος",
+      "variants": [
+        "Πλουτίωνος"
+      ],
+      "mention_count": 64
+    },
+    {
+      "canonical_name": "Φλαύιος",
+      "variants": [
+        "Φλαύιος"
+      ],
+      "mention_count": 64
+    },
+    {
+      "canonical_name": "Πέλα",
+      "variants": [
+        "Πέλα"
+      ],
+      "mention_count": 64
+    },
+    {
+      "canonical_name": "Οὐαλεριανοῦ",
+      "variants": [
+        "Οὐαλεριανοῦ"
+      ],
+      "mention_count": 63
+    },
+    {
+      "canonical_name": "Νεμεσίωνος",
+      "variants": [
+        "Νεμεσίωνος"
+      ],
+      "mention_count": 63
+    },
+    {
+      "canonical_name": "Ψανσνῶς",
+      "variants": [
+        "Ψανσνῶς"
+      ],
+      "mention_count": 63
+    },
+    {
+      "canonical_name": "Ψενχώνσιος",
+      "variants": [
+        "Ψενχώνσιος"
+      ],
+      "mention_count": 63
+    },
+    {
+      "canonical_name": "Πασήμιος",
+      "variants": [
+        "Πασήμιος"
+      ],
+      "mention_count": 63
+    },
+    {
+      "canonical_name": "Μαύρων",
+      "variants": [
+        "Μαύρων"
+      ],
+      "mention_count": 63
+    },
+    {
+      "canonical_name": "Θεαδελφείᾳ",
+      "variants": [
+        "Θεαδελφείᾳ"
+      ],
+      "mention_count": 63
+    },
+    {
+      "canonical_name": "Δημητρία",
+      "variants": [
+        "Δημητρία"
+      ],
+      "mention_count": 62
+    },
+    {
+      "canonical_name": "Πακῦσις",
+      "variants": [
+        "Πακῦσις"
+      ],
+      "mention_count": 62
+    },
+    {
+      "canonical_name": "Εἰρηναίου",
+      "variants": [
+        "Εἰρηναίου"
+      ],
+      "mention_count": 62
+    },
+    {
+      "canonical_name": "Φαήριος",
+      "variants": [
+        "Φαήριος"
+      ],
+      "mention_count": 62
+    },
+    {
+      "canonical_name": "Θερμουθαρίου",
+      "variants": [
+        "Θερμουθαρίου"
+      ],
+      "mention_count": 61
+    },
+    {
+      "canonical_name": "Παθύρεως",
+      "variants": [
+        "Παθύρεως"
+      ],
+      "mention_count": 61
+    },
+    {
+      "canonical_name": "Βιθυνῶν",
+      "variants": [
+        "Βιθυνῶν"
+      ],
+      "mention_count": 61
+    },
+    {
+      "canonical_name": "Παχοῦμις",
+      "variants": [
+        "Παχοῦμις"
+      ],
+      "mention_count": 61
+    },
+    {
+      "canonical_name": "Πετ",
+      "variants": [
+        "Πετ"
+      ],
+      "mention_count": 61
+    },
+    {
+      "canonical_name": "Σισόις",
+      "variants": [
+        "Σισόις"
+      ],
+      "mention_count": 61
+    },
+    {
+      "canonical_name": "Λυσίμαχος",
+      "variants": [
+        "Λυσίμαχος"
+      ],
+      "mention_count": 61
+    },
+    {
+      "canonical_name": "Διοσκουρίδης",
+      "variants": [
+        "Διοσκουρίδης"
+      ],
+      "mention_count": 61
+    },
+    {
+      "canonical_name": "Φίλιππος",
+      "variants": [
+        "Φίλιππος"
+      ],
+      "mention_count": 61
+    },
+    {
+      "canonical_name": "Τασουχαρίου",
+      "variants": [
+        "Τασουχαρίου"
+      ],
+      "mention_count": 60
+    },
+    {
+      "canonical_name": "Παήσιος",
+      "variants": [
+        "Παήσιος"
+      ],
+      "mention_count": 60
+    },
+    {
+      "canonical_name": "Βίκτορι",
+      "variants": [
+        "Βίκτορι"
+      ],
+      "mention_count": 60
+    },
+    {
+      "canonical_name": "Ζαχαρίᾳ",
+      "variants": [
+        "Ζαχαρίᾳ"
+      ],
+      "mention_count": 60
+    },
+    {
+      "canonical_name": "Κέφαλος",
+      "variants": [
+        "Κέφαλος"
+      ],
+      "mention_count": 60
+    },
+    {
+      "canonical_name": "Πετεμίνιος",
+      "variants": [
+        "Πετεμίνιος"
+      ],
+      "mention_count": 60
+    },
+    {
+      "canonical_name": "Φλαουίου Μαυρικίου Τιβερίου",
+      "variants": [
+        "Φλαουίου Μαυρικίου Τιβερίου"
+      ],
+      "mention_count": 60
+    },
+    {
+      "canonical_name": "Δαμιανοῦ",
+      "variants": [
+        "Δαμιανοῦ"
+      ],
+      "mention_count": 60
+    },
+    {
+      "canonical_name": "Παβοῦς",
+      "variants": [
+        "Παβοῦς"
+      ],
+      "mention_count": 59
+    },
+    {
+      "canonical_name": "Θεο",
+      "variants": [
+        "Θεο"
+      ],
+      "mention_count": 59
+    },
+    {
+      "canonical_name": "Πανήμου",
+      "variants": [
+        "Πανήμου"
+      ],
+      "mention_count": 59
+    },
+    {
+      "canonical_name": "Τακόνα",
+      "variants": [
+        "Τακόνα"
+      ],
+      "mention_count": 59
+    },
+    {
+      "canonical_name": "Βησαρίωνος",
+      "variants": [
+        "Βησαρίωνος"
+      ],
+      "mention_count": 59
+    },
+    {
+      "canonical_name": "Εὐτύχου",
+      "variants": [
+        "Εὐτύχου"
+      ],
+      "mention_count": 59
+    },
+    {
+      "canonical_name": "Σευήρου",
+      "variants": [
+        "Σευήρου"
+      ],
+      "mention_count": 59
+    },
+    {
+      "canonical_name": "Σεμθέως",
+      "variants": [
+        "Σεμθέως"
+      ],
+      "mention_count": 59
+    },
+    {
+      "canonical_name": "Τεβτύνι",
+      "variants": [
+        "Τεβτύνι"
+      ],
+      "mention_count": 59
+    },
+    {
+      "canonical_name": "Θαῆσις",
+      "variants": [
+        "Θαῆσις"
+      ],
+      "mention_count": 58
+    },
+    {
+      "canonical_name": "Δαίμων",
+      "variants": [
+        "Δαίμων"
+      ],
+      "mention_count": 58
+    },
+    {
+      "canonical_name": "Δημη",
+      "variants": [
+        "Δημη"
+      ],
+      "mention_count": 58
+    },
+    {
+      "canonical_name": "Φιλ",
+      "variants": [
+        "Φιλ"
+      ],
+      "mention_count": 58
+    },
+    {
+      "canonical_name": "Ψώβθεως",
+      "variants": [
+        "Ψώβθεως"
+      ],
+      "mention_count": 58
+    },
+    {
+      "canonical_name": "Λύκου",
+      "variants": [
+        "Λύκου"
+      ],
+      "mention_count": 58
+    },
+    {
+      "canonical_name": "Βαβυλῶνος",
+      "variants": [
+        "Βαβυλῶνος"
+      ],
+      "mention_count": 58
+    },
+    {
+      "canonical_name": "Καρανίδα",
+      "variants": [
+        "Καρανίδα"
+      ],
+      "mention_count": 57
+    },
+    {
+      "canonical_name": "Γεμέλλου",
+      "variants": [
+        "Γεμέλλου"
+      ],
+      "mention_count": 57
+    },
+    {
+      "canonical_name": "Κερκεσοῦχα",
+      "variants": [
+        "Κερκεσοῦχα"
+      ],
+      "mention_count": 57
+    },
+    {
+      "canonical_name": "Λεοντίου",
+      "variants": [
+        "Λεοντίου"
+      ],
+      "mention_count": 57
+    },
+    {
+      "canonical_name": "Παησίου",
+      "variants": [
+        "Παησίου"
+      ],
+      "mention_count": 57
+    }
+  ]
+}
