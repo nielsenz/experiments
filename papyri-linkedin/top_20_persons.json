@@ -1,0 +1,102 @@
+[
+  {
+    "id": "person::\u03a3\u03ac\u03c1\u03b1\u03c0\u03b9",
+    "name": "\u03a3\u03ac\u03c1\u03b1\u03c0\u03b9",
+    "degree": 2489
+  },
+  {
+    "id": "person::\u039a\u03b1\u03af\u03c3\u03ac\u03c1\u03bf\u03c2",
+    "name": "\u039a\u03b1\u03af\u03c3\u03ac\u03c1\u03bf\u03c2",
+    "degree": 1928
+  },
+  {
+    "id": "person::\u03a0\u03c4\u03bf\u03bb\u03b5\u03bc",
+    "name": "\u03a0\u03c4\u03bf\u03bb\u03b5\u03bc",
+    "degree": 1690
+  },
+  {
+    "id": "person::\u0394\u03b9\u03bf\u03bd\u03c5\u03c2",
+    "name": "\u0394\u03b9\u03bf\u03bd\u03c5\u03c2",
+    "degree": 1420
+  },
+  {
+    "id": "person::\u03a3\u03b5\u03b2\u03b1\u03c3\u03c4",
+    "name": "\u03a3\u03b5\u03b2\u03b1\u03c3\u03c4",
+    "degree": 1319
+  },
+  {
+    "id": "person::\u0391\u1f50\u03c1\u03ae\u03bb\u03b9",
+    "name": "\u0391\u1f50\u03c1\u03ae\u03bb\u03b9",
+    "degree": 1263
+  },
+  {
+    "id": "person::\u039a\u03bf\u03bb\u03bb\u03bf\u03c5\u03b8",
+    "name": "\u039a\u03bf\u03bb\u03bb\u03bf\u03c5\u03b8",
+    "degree": 1254
+  },
+  {
+    "id": "person::\u0398\u03b5\u03bf\u03c6\u03b9\u03bb",
+    "name": "\u0398\u03b5\u03bf\u03c6\u03b9\u03bb",
+    "degree": 1153
+  },
+  {
+    "id": "person::\u03a0\u03b1\u03cd\u03bb\u03bf\u03c5",
+    "name": "\u03a0\u03b1\u03cd\u03bb\u03bf\u03c5",
+    "degree": 1143
+  },
+  {
+    "id": "person::\u0394\u03b7\u03bc\u03b7\u03c4\u03c1",
+    "name": "\u0394\u03b7\u03bc\u03b7\u03c4\u03c1",
+    "degree": 1122
+  },
+  {
+    "id": "person::\u039c\u03b1\u03ba\u03ac\u03c1\u03b9",
+    "name": "\u039c\u03b1\u03ba\u03ac\u03c1\u03b9",
+    "degree": 1122
+  },
+  {
+    "id": "person::\u03a7\u03b1\u03b9\u03c1\u03ae\u03bc\u03bf",
+    "name": "\u03a7\u03b1\u03b9\u03c1\u03ae\u03bc\u03bf",
+    "degree": 1069
+  },
+  {
+    "id": "person::\u039a\u03cd\u03c1\u03bf\u03c5",
+    "name": "\u039a\u03cd\u03c1\u03bf\u03c5",
+    "degree": 1068
+  },
+  {
+    "id": "person::\u0394\u03af\u03c9",
+    "name": "\u0394\u03af\u03c9",
+    "degree": 1050
+  },
+  {
+    "id": "person::\u0394\u03b9\u03bf\u03c3\u03ba\u03bf",
+    "name": "\u0394\u03b9\u03bf\u03c3\u03ba\u03bf",
+    "degree": 1039
+  },
+  {
+    "id": "person::\u039a\u03cd\u03c1\u1ff3",
+    "name": "\u039a\u03cd\u03c1\u1ff3",
+    "degree": 1026
+  },
+  {
+    "id": "person::\u039a\u03bb\u03b1\u03c5\u03b4\u03af",
+    "name": "\u039a\u03bb\u03b1\u03c5\u03b4\u03af",
+    "degree": 999
+  },
+  {
+    "id": "person::\u03a6\u03bf\u03b9\u03b2\u03ac\u03bc\u03bc",
+    "name": "\u03a6\u03bf\u03b9\u03b2\u03ac\u03bc\u03bc",
+    "degree": 977
+  },
+  {
+    "id": "person::\u039a\u03c9\u03bd\u03c3\u03c4\u03b1",
+    "name": "\u039a\u03c9\u03bd\u03c3\u03c4\u03b1",
+    "degree": 947
+  },
+  {
+    "id": "person::\u03a0\u03bb\u03bf\u03c5\u03c4\u03af\u03c9",
+    "name": "\u03a0\u03bb\u03bf\u03c5\u03c4\u03af\u03c9",
+    "degree": 943
+  }
+]
