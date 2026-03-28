@@ -1,0 +1,624 @@
+{
+  "temporal": {
+    "total_documents": 70186,
+    "dated_documents": 44930,
+    "undated_documents": 25256,
+    "date_coverage_pct": 64.0,
+    "earliest_year": -400,
+    "latest_year": 2600,
+    "period_breakdown": {
+      "Byzantine/Islamic": 4959,
+      "Early Roman": 20644,
+      "Late Roman": 13916,
+      "Ptolemaic": 5411,
+      "Unknown": 25256
+    }
+  },
+  "places": {
+    "unique_places": 1931,
+    "documents_with_place": 68839,
+    "top_30_places": [
+      {
+        "place": "unbekannt",
+        "count": 10378
+      },
+      {
+        "place": "Theben",
+        "count": 5383
+      },
+      {
+        "place": "Oxyrhynchos",
+        "count": 4567
+      },
+      {
+        "place": "Arsinoites",
+        "count": 4304
+      },
+      {
+        "place": "Karanis (Arsinoites)",
+        "count": 2274
+      },
+      {
+        "place": "Tebtynis (Arsinoites)",
+        "count": 1672
+      },
+      {
+        "place": "Hermopolis",
+        "count": 1346
+      },
+      {
+        "place": "Hermopolites",
+        "count": 1310
+      },
+      {
+        "place": "Philadelphia (Arsinoites)",
+        "count": 1280
+      },
+      {
+        "place": "Theadelphia (Arsinoites)",
+        "count": 1212
+      },
+      {
+        "place": "Abu Mena",
+        "count": 1184
+      },
+      {
+        "place": "Soknopaiu Nesos (Arsinoites)",
+        "count": 1107
+      },
+      {
+        "place": "Herakleopolites",
+        "count": 972
+      },
+      {
+        "place": "Elephantine",
+        "count": 954
+      },
+      {
+        "place": "Mons Claudianus",
+        "count": 858
+      },
+      {
+        "place": "Oxyrhynchites",
+        "count": 850
+      },
+      {
+        "place": "Apollonopolis",
+        "count": 826
+      },
+      {
+        "place": "Trimithis (Oasis Magna)",
+        "count": 805
+      },
+      {
+        "place": "Arsinoites (?)",
+        "count": 743
+      },
+      {
+        "place": "Aphrodites Kome (Antaiopolites)",
+        "count": 739
+      },
+      {
+        "place": "Ptolemais Euergetis (Arsinoites)",
+        "count": 687
+      },
+      {
+        "place": "Kysis (Oasis Magna)",
+        "count": 662
+      },
+      {
+        "place": "Arsinoiton Polis",
+        "count": 536
+      },
+      {
+        "place": "Berenike",
+        "count": 530
+      },
+      {
+        "place": "Theben (?)",
+        "count": 468
+      },
+      {
+        "place": "Elephantine oder Syene",
+        "count": 463
+      },
+      {
+        "place": "Oberägypten",
+        "count": 457
+      },
+      {
+        "place": "Didymoi",
+        "count": 451
+      },
+      {
+        "place": "Alexandria",
+        "count": 439
+      },
+      {
+        "place": "Kellis (Oasis Magna)",
+        "count": 409
+      }
+    ],
+    "place_names_leaked_as_persons": []
+  },
+  "zenon_archive": {
+    "documents": 500,
+    "graph_nodes": 2100,
+    "graph_edges": 27293,
+    "archive_date_range": [
+      -300,
+      -201
+    ],
+    "top_30_persons": [
+      {
+        "name": "Ζήνωνι",
+        "degree": 1045
+      },
+      {
+        "name": "Διονυσίωι",
+        "degree": 327
+      },
+      {
+        "name": "Ζήνωνος",
+        "degree": 281
+      },
+      {
+        "name": "Πύρρου",
+        "degree": 269
+      },
+      {
+        "name": "Πετοσίριος",
+        "degree": 215
+      },
+      {
+        "name": "Φιλίππωι",
+        "degree": 209
+      },
+      {
+        "name": "Νικομάχωι",
+        "degree": 209
+      },
+      {
+        "name": "Κελεήσει",
+        "degree": 209
+      },
+      {
+        "name": "Πάσιτι",
+        "degree": 203
+      },
+      {
+        "name": "Μίδαι",
+        "degree": 194
+      },
+      {
+        "name": "Πτολε",
+        "degree": 193
+      },
+      {
+        "name": "Κομοάπι",
+        "degree": 189
+      },
+      {
+        "name": "Παάπι",
+        "degree": 189
+      },
+      {
+        "name": "Τεῶι",
+        "degree": 189
+      },
+      {
+        "name": "Στράτωνι",
+        "degree": 186
+      },
+      {
+        "name": "Πάιτος",
+        "degree": 181
+      },
+      {
+        "name": "Φιλαδελφείαι",
+        "degree": 178
+      },
+      {
+        "name": "Πύρωνι",
+        "degree": 176
+      },
+      {
+        "name": "Πετε",
+        "degree": 175
+      },
+      {
+        "name": "Πάιτι",
+        "degree": 174
+      },
+      {
+        "name": "Παχὼνς",
+        "degree": 172
+      },
+      {
+        "name": "Δημητρίωι",
+        "degree": 171
+      },
+      {
+        "name": "Ατκζ",
+        "degree": 170
+      },
+      {
+        "name": "Φιλα",
+        "degree": 170
+      },
+      {
+        "name": "Λαβόιτι",
+        "degree": 168
+      },
+      {
+        "name": "Διογένει",
+        "degree": 168
+      },
+      {
+        "name": "Μέμφεως",
+        "degree": 164
+      },
+      {
+        "name": "Μάρωνος",
+        "degree": 160
+      },
+      {
+        "name": "Πτολεμαίου",
+        "degree": 157
+      },
+      {
+        "name": "Φιλαδέλφειαν",
+        "degree": 154
+      }
+    ],
+    "places": [
+      {
+        "name": "unbekannt",
+        "degree": 121
+      },
+      {
+        "name": "Philadelphia (Arsinoites)",
+        "degree": 74
+      },
+      {
+        "name": "Philadelphia? (Arsinoites)",
+        "degree": 65
+      },
+      {
+        "name": "Alexandria",
+        "degree": 52
+      },
+      {
+        "name": "Alexandria (?)",
+        "degree": 47
+      },
+      {
+        "name": "Arsinoites",
+        "degree": 41
+      },
+      {
+        "name": "Arsinoites (?)",
+        "degree": 18
+      },
+      {
+        "name": "Memphis",
+        "degree": 10
+      },
+      {
+        "name": "Krokodilopolis (Arsinoites)",
+        "degree": 9
+      },
+      {
+        "name": "Palästina",
+        "degree": 7
+      },
+      {
+        "name": "Memphites (?)",
+        "degree": 5
+      },
+      {
+        "name": "Memphis (?)",
+        "degree": 4
+      },
+      {
+        "name": "Memphites",
+        "degree": 4
+      },
+      {
+        "name": "Palästina (?)",
+        "degree": 2
+      },
+      {
+        "name": "Pelusion",
+        "degree": 2
+      },
+      {
+        "name": "Karien",
+        "degree": 2
+      },
+      {
+        "name": "Alexandria ?",
+        "degree": 2
+      },
+      {
+        "name": "Ammonites",
+        "degree": 2
+      },
+      {
+        "name": "Syrien",
+        "degree": 2
+      },
+      {
+        "name": "Philadelphia (Arsinoites, Ägypten)",
+        "degree": 2
+      },
+      {
+        "name": "Philadelpheia (Arsinoites, Ägypten)",
+        "degree": 1
+      },
+      {
+        "name": "Pitos (Memphites)",
+        "degree": 1
+      },
+      {
+        "name": "Birta (Ammonites?)",
+        "degree": 1
+      },
+      {
+        "name": "Alexandria (?), Palästina (?)",
+        "degree": 1
+      },
+      {
+        "name": "Palästina ?",
+        "degree": 1
+      },
+      {
+        "name": "Beirut",
+        "degree": 1
+      },
+      {
+        "name": "Diospolis (Delta)",
+        "degree": 1
+      },
+      {
+        "name": "Schreibort: Alexandria ? (Ägypten); Zielort: Berenikes Hormos (Heliopolites, Ägypten); Fundort: Philadelpheia (Arsinoites, Ägypten)",
+        "degree": 1
+      },
+      {
+        "name": "Halikarnass (?)",
+        "degree": 1
+      },
+      {
+        "name": "Athribis (?)",
+        "degree": 1
+      },
+      {
+        "name": "Hermopolis",
+        "degree": 1
+      },
+      {
+        "name": "Arsinoe (Gau unbekannt)",
+        "degree": 1
+      },
+      {
+        "name": "Krokodilopolis? (Arsinoites)",
+        "degree": 1
+      },
+      {
+        "name": "Arsinoites ?, Ägypten",
+        "degree": 1
+      },
+      {
+        "name": "Busiris (Herakleopolites)",
+        "degree": 1
+      },
+      {
+        "name": "Herakleopolis (?)",
+        "degree": 1
+      },
+      {
+        "name": "Mendes?",
+        "degree": 1
+      },
+      {
+        "name": "Fundort: Philadelphia (Arsinoites, Ägypten)",
+        "degree": 1
+      },
+      {
+        "name": "Koitai (Arsinoites)",
+        "degree": 1
+      },
+      {
+        "name": "Kerke (Memphites)",
+        "degree": 1
+      },
+      {
+        "name": "Psya (Arsinoites)",
+        "degree": 1
+      },
+      {
+        "name": "Aphroditopolites (?)",
+        "degree": 1
+      },
+      {
+        "name": "Philadelphia ? (Arsinoites, Ägypten)",
+        "degree": 1
+      },
+      {
+        "name": "Sophthis (Memphites)",
+        "degree": 1
+      },
+      {
+        "name": "Alexandria?",
+        "degree": 1
+      },
+      {
+        "name": "Theadelphia und Pharbaithos (Arsinoites)",
+        "degree": 1
+      },
+      {
+        "name": "Mendes",
+        "degree": 1
+      },
+      {
+        "name": "Ornes (Herakleopolites)",
+        "degree": 1
+      },
+      {
+        "name": "Karanis? (Arsinoites)",
+        "degree": 1
+      }
+    ],
+    "sample_docs": [
+      {
+        "record_id": "ancsoc.45",
+        "title": "ancsoc.45.87_1",
+        "date_range": [
+          -250,
+          -250
+        ],
+        "place": "Philadelpheia (Arsinoites, Ägypten)",
+        "names": [
+          "Ζήνωνι",
+          "Ψενόβαστις",
+          "Παυῆι",
+          "Ψενοβάστις"
+        ]
+      },
+      {
+        "record_id": "bgu.10.1935",
+        "title": "bgu.10.1935",
+        "date_range": [
+          -275,
+          -226
+        ],
+        "place": "unbekannt",
+        "names": [
+          "Ζήνωνος",
+          "Σισόιτος",
+          "Κόβας",
+          "Πτολεμαίου",
+          "Διοδώρου",
+          "Ξενοκράτης",
+          "Θεύδωρος Κυρηναῖος"
+        ]
+      },
+      {
+        "record_id": "p.cair.zen.1.59001",
+        "title": "p.cair.zen.1.59001",
+        "date_range": null,
+        "place": "Pitos (Memphites)",
+        "names": [
+          "Πτολεμαίου",
+          "Πτολεμαί",
+          "Λεοντίσκου",
+          "Καλλιμήδους",
+          "Πίτωι",
+          "Μεμφίτου",
+          "Διονύσιος",
+          "Γαζαῖος",
+          "Δείνωνα",
+          "Θράικι"
+        ]
+      },
+      {
+        "record_id": "p.cair.zen.1.59002",
+        "title": "p.cair.zen.1.59002",
+        "date_range": null,
+        "place": "Alexandria",
+        "names": [
+          "Ζήνωνι",
+          "Νικόμαχον",
+          "Ζωίλον"
+        ]
+      },
+      {
+        "record_id": "p.cair.zen.1.59003",
+        "title": "p.cair.zen.1.59003",
+        "date_range": null,
+        "place": "Birta (Ammonites?)",
+        "names": [
+          "Πτολεμαίου",
+          "Φιλαδέλφου",
+          "Νικάνωρ Ξενοκλέους Κνίδιος",
+          "Καυνίωι",
+          "Σφραγὶς",
+          "Τουβίου",
+          "Πολέμων Στράτωνος",
+          "Τιμόπολις Βοτέω Μιλήσιος",
+          "Φιλίππου",
+          "Διονυσίου"
+        ]
+      },
+      {
+        "record_id": "p.cair.zen.1.59004",
+        "title": "p.cair.zen.1.59004",
+        "date_range": [
+          -259,
+          -259
+        ],
+        "place": "Palästina",
+        "names": [
+          "Στράτωνος",
+          "Σουραβιτοις",
+          "Λακάσοις",
+          "Νόηι",
+          "Ειτουι",
+          "Βαιτιανάτοις",
+          "Κυδίσωι",
+          "Πτολεμαίδι",
+          "Πολεμοκράτει",
+          "Μέλανι"
+        ]
+      },
+      {
+        "record_id": "p.cair.zen.1.59005",
+        "title": "p.cair.zen.1.59005",
+        "date_range": [
+          -259,
+          -259
+        ],
+        "place": "Palästina",
+        "names": [
+          "Φίλων",
+          "Τουβίου"
+        ]
+      },
+      {
+        "record_id": "p.cair.zen.1.59006",
+        "title": "p.cair.zen.1.59006",
+        "date_range": [
+          -259,
+          -259
+        ],
+        "place": "Palästina",
+        "names": [
+          "Κλεάνακτι",
+          "Μνασιλαίδαι",
+          "Διονυσίωι",
+          "Δαμασκοῦ",
+          "Καλλικράτους",
+          "Μιλτιάδει",
+          "Νόσσωι",
+          "Δάνδει",
+          "Χάρητι",
+          "Μουσαίωι"
+        ]
+      },
+      {
+        "record_id": "p.cair.zen.1.59007-FrA",
+        "title": "p.cair.zen.1.59007_FrA",
+        "date_range": null,
+        "place": "Palästina",
+        "names": []
+      },
+      {
+        "record_id": "p.cair.zen.1.59007-FrB",
+        "title": "p.cair.zen.1.59007_FrB",
+        "date_range": null,
+        "place": "Palästina",
+        "names": []
+      }
+    ]
+  }
+}

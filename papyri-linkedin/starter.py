@@ -59,6 +59,22 @@ NAME_STOPWORDS = {
     "Classics",
     "Computing",
     "DC3",
+    # Place names that leak through as person names (genitive forms)
+    "Καρανίδος",
+    "Χάρακος",
+    "Σοκνοπαίου",
+    "Νήσου",
+    "Σοκνοπαίου Νήσου",
+    "Ὀξυρύγχων",
+    "Ἑρμοπόλεως",
+    "Ἀρσινοΐτου",
+    "Ἡρακλεοπολίτου",
+    "Πτολεμαΐδος",
+    "Ἀλεξανδρείας",
+    "Θεαδελφείας",
+    "Φιλαδελφείας",
+    "Τεβτύνεως",
+    "Ἀφροδίτης",
     # Script and language labels that bleed through from XML metadata
     "Demotic",
     "Coptic",
@@ -80,36 +96,80 @@ NAME_STOPWORDS = {
     "BL",
     "CPR",
     "SPP",
-    # Egyptian months (Greek forms)
+    # Egyptian months (Greek forms) — all common orthographic variants
     "Θὼθ",
     "Θωῦθ",
+    "Θῶυθ",
+    "Θωθ",
     "Φαῶφι",
+    "Φαωφι",
     "Ἁθύρ",
     "Ἁθυρ",
+    "Αθυρ",
     "Χοίακ",
     "Χοιὰκ",
     "Χοιάκ",
+    "Χοίαχ",
+    "Χοιαχ",
+    "Χοιακ",
     "Τῦβι",
     "Tubia",
     "Τυβι",
     "Μεχείρ",
     "Μεχεὶρ",
     "Μεχιρ",
+    "Μεχίρ",
     "Φαμενώθ",
     "Φαμενὼθ",
+    "Φαμενωθ",
     "Φαρμοῦθι",
     "Φαρμοῦθ",
     "Φαρμοθι",
+    "Φαρμουθι",
     "Παχών",
     "Παχὼν",
+    "Παχων",
     "Παῦνι",
     "Παυνι",
     "Ἐπείφ",
     "Ἐπιφ",
+    "Επειφ",
     "Μεσορή",
     "Μεσορὴ",
     "Μεσορ",
+    # Macedonian months (common in Ptolemaic texts)
+    "Δῖος",
+    "Ἀπελλαῖος",
+    "Αὐδναῖος",
+    "Περίτιος",
+    "Περιτίου",
+    "Δύστρος",
+    "Ξανδικός",
+    "Ξανθικός",
+    "Ἀρτεμίσιος",
+    "Δαίσιος",
+    "Πάνημος",
+    "Λῷος",
+    "Γορπιαῖος",
+    "Ὑπερβερεταῖος",
 }
+
+# Pre-compute accent-stripped lowercase versions so variant orthographies
+# that aren't explicitly listed still get caught.
+def _normalize_stopword(s: str) -> str:
+    import unicodedata as _ud
+    d = _ud.normalize("NFD", s)
+    return _ud.normalize("NFC", "".join(c for c in d if _ud.category(c) != "Mn")).lower()
+
+_STOPWORDS_NORMALIZED = {_normalize_stopword(w) for w in NAME_STOPWORDS}
+
+
+def _is_stopword(candidate: str) -> bool:
+    """Check if a candidate name matches any stopword (exact or accent-stripped)."""
+    if candidate in NAME_STOPWORDS:
+        return True
+    return _normalize_stopword(candidate) in _STOPWORDS_NORMALIZED
+
 
 
 @dataclass
@@ -387,7 +447,7 @@ def fallback_name_candidates(text: str) -> list[str]:
         candidate = normalize_person_name(match.group(0))
         if not candidate:
             continue
-        if candidate in NAME_STOPWORDS:
+        if _is_stopword(candidate):
             continue
         if len(candidate) < 3:
             continue

@@ -18,8 +18,10 @@ import starter
 from entity_resolution import (
     CanonicalPerson,
     are_same_person,
+    normalize_greek,
     ranges_overlap,
     resolve_entities,
+    stem_greek,
 )
 
 
@@ -144,6 +146,16 @@ class TestStopwords:
         assert "Demotic" not in names
         assert "BGU" not in names
         assert "Fragment" not in names
+
+    def test_normalized_stopword_catches_accent_variants(self):
+        # Θῶυθ is in stopwords; a variant with different accents should still match
+        assert starter._is_stopword("Θῶυθ")
+        # Accent-stripped form should also match
+        assert starter._is_stopword("Θωυθ")
+
+    @pytest.mark.parametrize("month", ["Χοίαχ", "Χοιαχ", "Περίτιος", "Περιτίου"])
+    def test_new_month_variants_in_stopwords(self, month):
+        assert starter._is_stopword(month)
 
 
 # ---------------------------------------------------------------------------
@@ -336,6 +348,73 @@ class TestResolveEntitiesWithDateRanges:
         name_counts = {"Theon": 10, "Demetrios": 5}
         result = resolve_entities(name_counts)
         assert len(result) == 2
+
+
+# ---------------------------------------------------------------------------
+# Greek stemming
+# ---------------------------------------------------------------------------
+
+class TestStemGreek:
+    @pytest.mark.parametrize("word,expected", [
+        # -ων declension: all cases → nominative -ων
+        ("ζηνων", "ζηνων"),           # nominative stays
+        ("ζηνωνος", "ζηνων"),         # genitive → nom
+        ("ζηνωνι", "ζηνων"),          # dative → nom
+        ("ζηνωνα", "ζηνων"),          # accusative → nom
+        ("σαραπιωνος", "σαραπιων"),
+        ("σαραπιωνι", "σαραπιων"),
+        # -αιος declension: oblique cases → nominative -αιος
+        ("πτολεμαιος", "πτολεμαιος"), # nominative stays
+        ("πτολεμαιου", "πτολεμαιος"), # genitive → nom
+        ("πτολεμαιωι", "πτολεμαιος"), # dative → nom
+        # -ιος declension: oblique cases → nominative -ιος
+        ("διονυσιου", "διονυσιος"),
+        ("διονυσιωι", "διονυσιος"),
+        # -ος declension (2nd decl): genitive -ου → nominative -ος
+        ("θεοδωρου", "θεοδωρος"),
+        ("θεοδωρος", "θεοδωρος"),     # nominative stays (no suffix match)
+        # Short names preserved
+        ("θεων", "θεων"),             # nominative stays
+        ("θεωνος", "θεων"),           # genitive → nom
+    ])
+    def test_stems(self, word, expected):
+        assert stem_greek(word) == expected
+
+    def test_zenon_case_forms_share_stem(self):
+        forms = ["ζηνωνι", "ζηνωνος", "ζηνωνα", "ζηνων"]
+        stems = {stem_greek(f) for f in forms}
+        assert len(stems) == 1
+
+    def test_ptolemaios_case_forms_share_stem(self):
+        forms = ["πτολεμαιος", "πτολεμαιου", "πτολεμαιωι"]
+        stems = {stem_greek(f) for f in forms}
+        assert len(stems) == 1
+
+
+class TestCaseInflectionMerging:
+    """Test that different grammatical cases of the same name are recognized."""
+
+    def test_zenon_dative_and_genitive_merge(self):
+        assert are_same_person("Ζήνωνι", "Ζήνωνος")
+
+    def test_sarapion_nom_and_gen_merge(self):
+        assert are_same_person("Σαραπίων", "Σαραπίωνος")
+
+    def test_ptolemaios_nom_and_gen_merge(self):
+        assert are_same_person("Πτολεμαῖος", "Πτολεμαίου")
+
+    def test_dionysios_gen_and_dat_merge(self):
+        assert are_same_person("Διονυσίου", "Διονυσίωι")
+
+    def test_different_names_still_distinguished(self):
+        assert not are_same_person("Ζήνωνι", "Σαραπίωνος")
+
+    def test_resolve_merges_case_variants(self):
+        name_counts = {"Ζήνωνι": 50, "Ζήνωνος": 30, "Ζήνωνα": 10}
+        result = resolve_entities(name_counts)
+        assert len(result) == 1
+        assert result[0].mention_count == 90
+        assert len(result[0].variants) == 3
 
 
 # ---------------------------------------------------------------------------

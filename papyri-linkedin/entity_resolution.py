@@ -13,28 +13,80 @@ def normalize_greek(name: str) -> str:
     without_accents = ''.join(c for c in decomposed if unicodedata.category(c) != 'Mn')
     return unicodedata.normalize('NFC', without_accents).lower().strip()
 
+def stem_greek(word: str) -> str:
+    """Normalize a Greek name to an approximate nominative form for comparison.
+
+    Greek names in papyri appear in various grammatical cases:
+        Ζήνων (nom) / Ζήνωνος (gen) / Ζήνωνι (dat) / Ζήνωνα (acc)
+        Πτολεμαῖος (nom) / Πτολεμαίου (gen) / Πτολεμαίωι (dat)
+        Σαραπίων (nom) / Σαραπίωνος (gen) / Σαραπίωνι (dat)
+
+    Rather than stripping to a bare stem, this maps oblique-case endings back
+    to their nominative equivalents.  The input should already be accent-stripped
+    and lowercased (via ``normalize_greek``).
+    """
+    # (oblique_suffix, nominative_suffix) — ordered longest-first.
+    _CASE_TO_NOM = (
+        # -ων declension (Σαραπίων, Ζήνων, Θέων …)
+        ("ωνος", "ων"),
+        ("ωνι", "ων"),
+        ("ωνα", "ων"),
+        # -αιος declension (Πτολεμαῖος …)
+        ("αιου", "αιος"),
+        ("αιωι", "αιος"),
+        ("αιον", "αιος"),
+        # -ιος declension (Διονύσιος, Αὐρήλιος …)
+        ("ιου", "ιος"),
+        ("ιωι", "ιος"),
+        # -ευς declension (Ἀχιλλεύς …)
+        ("εως", "ευς"),
+        # general 2nd declension -ος (Θεόδωρος …)
+        ("ου", "ος"),
+    )
+    MIN_RESULT = 4  # don't over-normalize very short names
+
+    for suffix, replacement in _CASE_TO_NOM:
+        if word.endswith(suffix):
+            base = word[: -len(suffix)]
+            result = base + replacement
+            if len(result) >= MIN_RESULT:
+                return result
+    return word
+
+
 def extract_name_parts(name: str) -> list[str]:
     """Break name into parts."""
     normalized = normalize_greek(name)
     return [p for p in normalized.split() if len(p) > 1]
 
+
+def _stemmed_parts(name: str) -> list[str]:
+    """Break name into accent-stripped, case-stemmed parts."""
+    normalized = normalize_greek(name)
+    return [stem_greek(p) for p in normalized.split() if len(p) > 1]
+
+
 def name_similarity(name1: str, name2: str) -> float:
-    """Calculate similarity between two names (0-1)."""
-    parts1 = extract_name_parts(name1)
-    parts2 = extract_name_parts(name2)
-    
+    """Calculate similarity between two names (0-1).
+
+    Uses stemmed Greek forms so that different grammatical cases
+    (e.g. Ζήνωνι vs Ζήνωνος) are recognized as equivalent.
+    """
+    parts1 = _stemmed_parts(name1)
+    parts2 = _stemmed_parts(name2)
+
     if not parts1 or not parts2:
         return 0.0
-    
+
     if len(parts1) == 1 and len(parts2) == 1:
         return 1.0 if parts1[0] == parts2[0] else 0.0
-    
+
     shared = set(parts1) & set(parts2)
     total = set(parts1) | set(parts2)
-    
+
     if not total:
         return 0.0
-    
+
     return len(shared) / len(total)
 
 def ranges_overlap(
@@ -69,6 +121,13 @@ def are_same_person(
             return False
 
     if normalize_greek(name1) == normalize_greek(name2):
+        return True
+
+    # Stemmed comparison catches case-inflected forms of the same name
+    # (e.g. Ζήνωνι / Ζήνωνος both stem to ζηνων).
+    stem1 = stem_greek(normalize_greek(name1))
+    stem2 = stem_greek(normalize_greek(name2))
+    if stem1 == stem2 and len(stem1) >= 4:
         return True
 
     sim = name_similarity(name1, name2)
