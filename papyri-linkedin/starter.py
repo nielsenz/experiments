@@ -4,7 +4,11 @@ import argparse
 import csv
 import html
 import itertools
+import json
+import os
 import re
+import subprocess
+import sys
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Iterable, Optional
@@ -53,6 +57,10 @@ class PapyriDocument:
     source_url: str
     xml: str
     text: str
+    tm_id: Optional[str] = None
+    hgv_id: Optional[str] = None
+    date: Optional[str] = None
+    place: Optional[str] = None
     explicit_names: list[str] = field(default_factory=list)
     person_names: list[str] = field(default_factory=list)
     sender: Optional[str] = None
