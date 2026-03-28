@@ -45,6 +45,19 @@ NAME_STOPWORDS = {
     "Papyrology",
     "Source",
     "Text",
+    "Duke",
+    "Databank",
+    "Documentary",
+    "Creative",
+    "Commons",
+    "Attribution",
+    "License",
+    "This",
+    "Automated",
+    "Collaboratory",
+    "Classics",
+    "Computing",
+    "DC3",
 }
 
 
@@ -212,11 +225,10 @@ def collect_explicit_people(root: ET.Element) -> tuple[list[str], Optional[str],
 
 def extract_document_text(root: ET.Element) -> str:
     sections: list[str] = []
+    # Only extract actual ancient text from edition divs, skip metadata headers
     for path in (
-        ".//tei:teiHeader",
-        ".//tei:head",
-        ".//tei:ab",
         ".//tei:div[@type='edition']",
+        ".//tei:ab",
     ):
         for elem in root.findall(path, TEI_NS):
             text = extract_text(elem)
