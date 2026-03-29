@@ -59,14 +59,3 @@ The goal is to make entity linkage and document networks visible quickly, so a r
 
 5. **Greek morphological normalization.** The current stemmer handles major case endings (-ωνος → -ων, -αίου → -αῖος, etc.) but doesn't cover all declension patterns. A proper lemmatizer (e.g., CLTK's Greek module) would further reduce entity fragmentation.
 
-### Community engagement
-
-The geographic network changes the outreach strategy. The Aurelius/Flavius signals confirm what papyrologists already know — useful for building trust but not novel. The place-to-place connectivity network, the Fayum insularity measurement (76.7%), and the Alexandria non-centrality finding are genuinely new structural claims at a scale nobody has done manually. Lead with these.
-
-1. **Publish a reproducible notebook first.** The digital papyrology community values reproducibility. A notebook that produces the geographic network and the Aurelius histogram from the idp.data corpus in under 10 minutes is more compelling than a paper — and it's the prerequisite that makes every conversation below concrete.
-
-2. **Contact Trismegistos (KU Leuven).** The place-name inconsistency problem ("Arsinoites" vs "Arsinoites, Ägypten") is their data. Offering to help build a normalization layer on top of their TM Geo IDs is a concrete collaboration hook — not just showing up with results. Mark Depauw's team would immediately see the value, and Trismegistos is the natural home for a canonical place-name mapping.
-
-3. **Contact papyri.info / Duke DC3.** The HGV cross-reference pipeline (enriching DDB texts with dates and places via TM ID at the full-corpus level) is directly useful to their infrastructure. Josh Sosin is the PI. Frame it as: "here's a tool that makes your data queryable in a new way, and here's the validation that it works." Best timed after place-name normalization is further along.
-
-4. **Present at a digital humanities venue.** The International Congress of Papyrology, the Digital Classicist seminar series, and DH conferences are natural fits. The geographic network visualization would make a strong poster.
