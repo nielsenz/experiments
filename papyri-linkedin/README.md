@@ -33,28 +33,30 @@ The goal is to make entity linkage and document networks visible quickly, so a r
 - **Flavius displacement (330s–430s CE):** "Flavius" rises as a replacement gentilicium after Constantine, peaking at 1.18/doc in the 430s while Aurelius declines.
 - **Phoibammon signal:** Christian-Coptic names appear only after ~400 CE, tracking Christianization independently.
 
-**Zenon Archive case study:** 500 documents from the archive of Zenon of Philadelphia (~260–240 BCE) produce a genuine Ptolemaic social network. Zenon sits at degree 1,045 with contacts spanning Philadelphia, Alexandria, Memphis, and Palestine.
-
-**Geographic coverage:** 1,931 unique place names across 68,839 geolocated documents. The Fayum oasis (Karanis, Tebtynis, Philadelphia, Theadelphia, Soknopaiou Nesos) accounts for ~12,000+ documents alone.
+**Geographic network:** 758 places connected by 20,934 edges (min 5 shared person names). Oxyrhynchos and the Arsinoites (Fayum) are the two dominant hubs — not Alexandria, which ranks only 12th in betweenness centrality. The Fayum is 76.7% insular: 25K of 33K person names appear only in Fayum documents. The remaining 7.7K names connect outward, primarily to Oxyrhynchos (2,660 shared), Hermopolis (1,288), and — surprisingly — Mons Claudianus, a remote Roman quarry in the Eastern Desert (285 shared), suggesting labor recruitment from the Fayum for imperial quarrying operations.
 
 ## Next steps
 
 ### Research directions
 
-1. **Geographic network analysis.** We have 1,931 places across 68K documents. Build a spatial network: which places are connected by shared people? Do letter-writers in Oxyrhynchus correspond with the Fayum, or is the Fayum a self-contained social world? This is a map, not just a graph, and maps get attention.
+1. **Place-name normalization and spatial mapping.** The geographic network has known noise: "Arsinoites" and "Arsinoites, Ägypten" are separate nodes, as are "Philadelphia" / "Philadelphia?" / "Philadelphia (Arsinoites)". Linking to TM Geo IDs would collapse these and enable a proper geospatial visualization — a map of provincial Egypt's social connectivity, weighted by shared persons, layered by period. This work overlaps directly with Trismegistos collaboration (see below).
 
-2. **Aurelius/Flavius crossover notebook.** The Aurelius spike at 212 CE is textbook papyrology, but the *quantitative* demonstration of Flavius displacing Aurelius decade by decade across the 4th–5th centuries — and the exact crossover point — is not something that has been laid out this cleanly at this scale. Write this up as a standalone Jupyter notebook with inline plots. This is the calling card.
+2. **Validation and error analysis.** The 64% dateability rate means 36% of documents lack HGV dates. Characterize what's missing — is it random, or are certain corpora/periods/regions systematically undated? Understanding the gaps strengthens any temporal or geographic claims built on the dated subset.
 
-3. **Zenon Archive deep dive.** Clean up remaining noise (merge Greek case forms in the graph, strip last place-name leaks) and produce a publication-quality social graph of one man's 3rd-century BCE world. This is the most genuinely "LinkedIn-like" part of the whole corpus.
+3. **Aurelius/Flavius crossover notebook.** Write up the temporal naming analysis as a standalone Jupyter notebook with inline plots. The Aurelius spike at 212 CE validates the pipeline; the Flavius displacement across the 4th–5th centuries and the exact crossover decade are the novel contribution. This is the reproducible demo for the community.
 
-4. **Greek morphological normalization.** The current stemmer handles major case endings (-ωνος → -ων, -αίου → -αῖος, etc.) but doesn't cover all declension patterns. A proper lemmatizer (e.g., CLTK's Greek module) would further reduce fragmentation.
+4. **Zenon Archive deep dive.** Merge Greek case forms in the graph (the stemmer handles this in entity resolution but not yet in graph construction), strip remaining place-name leaks, and produce a publication-quality social network of one person's 3rd-century BCE world.
+
+5. **Greek morphological normalization.** The current stemmer handles major case endings (-ωνος → -ων, -αίου → -αῖος, etc.) but doesn't cover all declension patterns. A proper lemmatizer (e.g., CLTK's Greek module) would further reduce entity fragmentation.
 
 ### Community engagement
 
-5. **Contact papyri.info / Duke DC3.** Lead with the HGV cross-reference pipeline and the temporal validation results, not "we ran NLP on your data." The Aurelius/Flavius signals confirm what papyrologists already know — this builds trust before showing novel results. Josh Sosin at Duke is the PI for papyri.info.
+The geographic network changes the outreach strategy. The Aurelius/Flavius signals confirm what papyrologists already know — useful for building trust but not novel. The place-to-place connectivity network, the Fayum insularity measurement (76.7%), and the Alexandria non-centrality finding are genuinely new structural claims at a scale nobody has done manually. Lead with these.
 
-6. **Contact Trismegistos (KU Leuven).** Mark Depauw's team would be interested in how TM IDs enabled the DDB–HGV enrichment at scale.
+1. **Publish a reproducible notebook first.** The digital papyrology community values reproducibility. A notebook that produces the geographic network and the Aurelius histogram from the idp.data corpus in under 10 minutes is more compelling than a paper — and it's the prerequisite that makes every conversation below concrete.
 
-7. **Publish a reproducible notebook.** The digital papyrology community values reproducibility. A notebook that produces the Aurelius histogram from the idp.data corpus in 5 minutes is more compelling than a paper.
+2. **Contact Trismegistos (KU Leuven).** The place-name inconsistency problem ("Arsinoites" vs "Arsinoites, Ägypten") is their data. Offering to help build a normalization layer on top of their TM Geo IDs is a concrete collaboration hook — not just showing up with results. Mark Depauw's team would immediately see the value, and Trismegistos is the natural home for a canonical place-name mapping.
 
-8. **Post to papy-l or present at a digital humanities venue.** The International Congress of Papyrology and DH conferences are natural fits.
+3. **Contact papyri.info / Duke DC3.** The HGV cross-reference pipeline (enriching DDB texts with dates and places via TM ID at the full-corpus level) is directly useful to their infrastructure. Josh Sosin is the PI. Frame it as: "here's a tool that makes your data queryable in a new way, and here's the validation that it works." Best timed after place-name normalization is further along.
+
+4. **Present at a digital humanities venue.** The International Congress of Papyrology, the Digital Classicist seminar series, and DH conferences are natural fits. The geographic network visualization would make a strong poster.
