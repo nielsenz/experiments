@@ -2,6 +2,11 @@
 
 Prototype workspace for medieval CPI-style text normalization and matching.
 
+## Data Sources
+
+- Allen-Unger Global Commodity Prices Database: [allen-unger-data](https://datasets.iisg.amsterdam/dataset.xhtml?persistentId=hdl:10622/3SV0BO)
+- Winchester Pipe Rolls (1208-1209): [winchester-pipe-rolls](https://archive.org/details/piperollofbishop00churrich) — full transcription with raw prices.
+
 ## Technical primer
 
 This project is meant to explore a practical pipeline for documentary and historical-text work:
