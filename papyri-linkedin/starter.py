@@ -181,6 +181,9 @@ NAME_STOPWORDS = {
     "Λιβὸς",  # "west" / Libya
     # Ethnic labels
     "Πέρσης",  # "Persian"
+    # Metadata artifacts from publication/collection provenance
+    "Βομπαή",  # Bombay/Mumbai — collection provenance, not a person
+    "Reprinted",
 }
 
 # Pre-compute accent-stripped lowercase versions so variant orthographies
