@@ -2,6 +2,16 @@
 
 Prototype workspace for ancient-text named entity extraction and relationship mapping.
 
+## Getting started
+
+1. Clone this repository and `cd papyri-linkedin`
+2. Install dependencies: `uv sync`
+3. Download the corpus: `uv run python local_loader.py --setup`
+   (~2 GB sparse checkout from [papyri/idp.data](https://github.com/papyri/idp.data))
+4. Open the notebook: `uv run jupyter notebook corpus_overview.ipynb`
+
+Step 3 downloads ~2 GB and may take several minutes depending on connection speed. The notebook itself runs in 5-8 minutes on the full corpus.
+
 ## Technical primer
 
 This project is designed around a lightweight research workflow for papyrological and epigraphic data:

@@ -152,6 +152,35 @@ NAME_STOPWORDS = {
     "Λῷος",
     "Γορπιαῖος",
     "Ὑπερβερεταῖος",
+    # Additional month variants
+    "Παχὼνς",  # variant of Pachon
+    # Place names (genitive/oblique forms that masquerade as person names)
+    "Αἰγύπτου",  # Egypt (genitive)
+    "Αἴγυπτος",
+    "Θηβαίδος",  # Thebaid region
+    "Θηβαΐδος",
+    "Κροκοδίλων",  # Krokodilon Polis
+    "Μεμνονείων",  # Ta Memnoneia (Theban necropolis)
+    "Καισαρείου",  # Caesareum (temple/building)
+    "Κερκεσούχων",  # Kerkesouch(a) village
+    "Βακχιάδος",  # Bakchias village
+    "Διονυσιάδος",  # Dionysias village
+    "Μέμφιν",  # Memphis (accusative)
+    "Μέμφεως",  # Memphis (genitive)
+    "Μέμφει",  # Memphis (dative)
+    "Τεπτύνεως",  # Tebtynis variant
+    "Θεαδελφίας",  # Theadelphia variant
+    "Φιλαδελφίας",  # Philadelphia variant
+    "Πτολεμαΐδος",  # Ptolemais (place, genitive) — distinct from personal name Πτολεμαΐς
+    # Religious/institutional terms that appear as false person names
+    "Χριστοῦ",  # "of Christ"
+    "Θεοῦ",  # "of God"
+    "Θεῷ",  # "to God"
+    # Geographic/directional terms
+    "Νότου",  # "south" (wind/compass direction)
+    "Λιβὸς",  # "west" / Libya
+    # Ethnic labels
+    "Πέρσης",  # "Persian"
 }
 
 # Pre-compute accent-stripped lowercase versions so variant orthographies
