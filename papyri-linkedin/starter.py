@@ -158,7 +158,6 @@ NAME_STOPWORDS = {
     "Αἰγύπτου",  # Egypt (genitive)
     "Αἴγυπτος",
     "Θηβαίδος",  # Thebaid region
-    "Θηβαΐδος",
     "Κροκοδίλων",  # Krokodilon Polis
     "Μεμνονείων",  # Ta Memnoneia (Theban necropolis)
     "Καισαρείου",  # Caesareum (temple/building)
@@ -171,7 +170,6 @@ NAME_STOPWORDS = {
     "Τεπτύνεως",  # Tebtynis variant
     "Θεαδελφίας",  # Theadelphia variant
     "Φιλαδελφίας",  # Philadelphia variant
-    "Πτολεμαΐδος",  # Ptolemais (place, genitive) — distinct from personal name Πτολεμαΐς
     # Religious/institutional terms that appear as false person names
     "Χριστοῦ",  # "of Christ"
     "Θεοῦ",  # "of God"
