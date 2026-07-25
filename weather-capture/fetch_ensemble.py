@@ -256,6 +256,12 @@ def load_manifest(date_dir: str, date_str: str, config: dict) -> dict:
     return {
         "schema_version": MANIFEST_SCHEMA_VERSION,
         "date": date_str,
+        # These files hold individual ensemble MEMBERS. Any mean/spread derived
+        # from them is a different statistic from the archive mean/spread in
+        # history/features/ensemble_mean/ and the two must not be joined into
+        # one continuous feature. Recorded here so the distinction is visible
+        # from this side of the seam too. See history/README.md.
+        "provenance": "captured_ensemble_members",
         "expected_files": expected_filenames(config),
         "entries": {},
     }

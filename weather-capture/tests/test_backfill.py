@@ -422,6 +422,195 @@ class RunTests(unittest.TestCase):
         self.assertEqual(len(session.calls), 3, "max_attempts is 3")
 
 
+def ensemble_mean_source(**overrides):
+    source = {
+        "enabled": True,
+        "role": "feature",
+        "provenance": "archive_ensemble_mean",
+        "endpoint": "https://ensemble.example.invalid/v1/ensemble",
+        "models": ["dwd_icon_eps_ensemble_mean_seamless"],
+        "start_date": "2026-03-01",
+        "end_date": "today",
+        "chunk": "past_days",
+        "forecast_days": 7,
+        "request_units_per_call": 4,
+        "hourly": ["temperature_2m", "temperature_2m_spread"],
+    }
+    source.update(overrides)
+    return source
+
+
+class PastDaysArchiveTests(unittest.TestCase):
+    """The ensemble archive is reached with past_days, not a date range."""
+
+    def setUp(self):
+        patcher = mock.patch.object(bh.time, "sleep")
+        patcher.start()
+        self.addCleanup(patcher.stop)
+        self.tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.tmp.cleanup)
+        self.root = os.path.join(self.tmp.name, "history")
+        self.config = make_config(sources={"ensemble_mean": ensemble_mean_source()},
+                                  locations=2)
+
+    def run_backfill(self, config=None, session=None, **overrides):
+        session = session or FakeSession()
+        with mock.patch.object(bh.requests, "Session", return_value=session):
+            rc = bh.run(config or self.config, self.root, make_args(**overrides), TODAY)
+        return rc, session
+
+    def test_one_call_per_series_not_one_per_month(self):
+        rc, session = self.run_backfill()
+        self.assertEqual(rc, 0)
+        self.assertEqual(len(session.calls), 2, "2 locations x 1 model = 2 calls total")
+
+    def test_uses_past_days_and_not_a_date_range(self):
+        _, session = self.run_backfill()
+        params = session.calls[0]["params"]
+        self.assertNotIn("start_date", params)
+        self.assertNotIn("end_date", params)
+        self.assertEqual(params["past_days"], (TODAY - dt.date(2026, 3, 1)).days)
+        self.assertEqual(params["forecast_days"], 7)
+
+    def test_requests_mean_and_spread_with_the_ensemble_mean_model(self):
+        _, session = self.run_backfill()
+        params = session.calls[0]["params"]
+        self.assertEqual(params["models"], "dwd_icon_eps_ensemble_mean_seamless")
+        self.assertEqual(params["hourly"], "temperature_2m,temperature_2m_spread")
+
+    def test_writes_archive_file(self):
+        self.run_backfill()
+        self.assertTrue(os.path.exists(os.path.join(
+            self.root, "features", "ensemble_mean",
+            "fresno-ca_dwd_icon_eps_ensemble_mean_seamless", "archive.json.gz")))
+
+    def test_records_past_days_and_as_of_in_the_manifest(self):
+        self.run_backfill()
+        path = os.path.join(self.root, "features", "ensemble_mean",
+                            "fresno-ca_dwd_icon_eps_ensemble_mean_seamless", "_manifest.json")
+        with open(path, encoding="utf-8") as handle:
+            manifest = json.load(handle)
+        entry = manifest["entries"]["archive.json.gz"]
+        self.assertEqual(entry["as_of"], TODAY.isoformat())
+        self.assertEqual(entry["past_days"], (TODAY - dt.date(2026, 3, 1)).days)
+
+    def test_bills_four_units_per_ensemble_call(self):
+        config = make_config(sources={"ensemble_mean": ensemble_mean_source()}, locations=2)
+        config["request"]["max_request_units_per_run"] = 1000
+        captured = {}
+        real = bh.RateLimiter
+
+        def spy(*a, **kw):
+            captured["limiter"] = real(*a, **kw)
+            return captured["limiter"]
+
+        with mock.patch.object(bh, "RateLimiter", side_effect=spy):
+            self.run_backfill(config)
+        self.assertEqual(captured["limiter"].spent, 8, "2 calls x 4 units")
+
+    def test_is_resumable(self):
+        self.run_backfill()
+        _, session = self.run_backfill()
+        self.assertEqual(len(session.calls), 0)
+
+
+class ProvenanceTests(unittest.TestCase):
+    """The seam between archive mean/spread and captured members must stay visible."""
+
+    def setUp(self):
+        patcher = mock.patch.object(bh.time, "sleep")
+        patcher.start()
+        self.addCleanup(patcher.stop)
+        self.tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.tmp.cleanup)
+        self.root = os.path.join(self.tmp.name, "history")
+
+    def read_manifest(self, *parts):
+        with open(os.path.join(self.root, *parts, "_manifest.json"), encoding="utf-8") as h:
+            return json.load(h)
+
+    def test_provenance_recorded_on_manifest_and_entries(self):
+        config = make_config(sources={"ensemble_mean": ensemble_mean_source()}, locations=1)
+        with mock.patch.object(bh.requests, "Session", return_value=FakeSession()):
+            bh.run(config, self.root, make_args(), TODAY)
+
+        manifest = self.read_manifest(
+            "features", "ensemble_mean", "fresno-ca_dwd_icon_eps_ensemble_mean_seamless")
+        self.assertEqual(manifest["provenance"], "archive_ensemble_mean")
+        self.assertEqual(manifest["entries"]["archive.json.gz"]["provenance"],
+                         "archive_ensemble_mean")
+
+    def test_archive_and_captured_members_carry_different_provenance(self):
+        """The two mean/spread sources must never be indistinguishable."""
+        import fetch_ensemble
+
+        config = make_config(sources={"ensemble_mean": ensemble_mean_source()}, locations=1)
+        with mock.patch.object(bh.requests, "Session", return_value=FakeSession()):
+            bh.run(config, self.root, make_args(), TODAY)
+        archive = self.read_manifest(
+            "features", "ensemble_mean", "fresno-ca_dwd_icon_eps_ensemble_mean_seamless")
+
+        daily = fetch_ensemble.load_manifest(
+            os.path.join(self.tmp.name, "nope"), "2026-07-25",
+            {"locations": [{"slug": "fresno-ca"}], "models": ["gfs025"]})
+
+        self.assertEqual(daily["provenance"], "captured_ensemble_members")
+        self.assertNotEqual(archive["provenance"], daily["provenance"])
+
+    def test_verification_source_provenance_is_distinct_too(self):
+        config = make_config(locations=1)
+        with mock.patch.object(bh.requests, "Session", return_value=FakeSession()):
+            bh.run(config, self.root, make_args(), TODAY)
+        manifest = self.read_manifest(
+            "verification", "historical_forecast_actuals", "fresno-ca")
+        self.assertIsNone(manifest["provenance"],
+                          "test config sets none; the real config sets it")
+
+
+class RealConfigTests(unittest.TestCase):
+    """Sanity checks against the shipped history_sources.json."""
+
+    def setUp(self):
+        self.config = bh.load_config(
+            os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                         "history_sources.json"))
+
+    def test_every_source_has_a_valid_role(self):
+        for name, source in self.config["sources"].items():
+            self.assertIn(source["role"], bh.VALID_ROLES, f"source {name}")
+
+    def test_historical_forecast_is_verification_not_feature(self):
+        self.assertEqual(
+            self.config["sources"]["historical_forecast_actuals"]["role"], "verification",
+            "the stitched-analysis series must never be classed as a feature")
+
+    def test_enabled_sources_all_declare_provenance(self):
+        for name, source in self.config["sources"].items():
+            if source.get("enabled"):
+                self.assertTrue(source.get("provenance"), f"source {name} needs provenance")
+
+    def test_ensemble_mean_requests_spread_for_every_variable(self):
+        hourly = self.config["sources"]["ensemble_mean"]["hourly"]
+        base = [v for v in hourly if not v.endswith("_spread")]
+        for variable in base:
+            self.assertIn(f"{variable}_spread", hourly,
+                          f"{variable} is requested without its spread")
+        self.assertEqual(len(base), 4)
+
+    def test_ensemble_mean_uses_an_ensemble_mean_model_id(self):
+        for model in self.config["sources"]["ensemble_mean"]["models"]:
+            self.assertIn("ensemble_mean", model)
+
+    def test_rejected_previous_runs_stub_is_disabled(self):
+        stub = self.config["sources"]["_rejected_previous_runs_for_ensembles"]
+        self.assertFalse(stub["enabled"])
+        self.assertFalse(stub["hourly"], "must have no variables so it can never run")
+
+    def test_shipped_config_passes_the_firewall(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            self.assertEqual(bh.verify_firewall(self.config, tmp), [])
+
+
 class RateLimiterTests(unittest.TestCase):
     def test_spends_units_per_call(self):
         limiter = bh.RateLimiter(units_per_minute=1000, units_per_run=100, sleep_between=0)

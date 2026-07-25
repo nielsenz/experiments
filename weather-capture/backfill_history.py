@@ -186,17 +186,28 @@ def existing_file_is_usable(path: str) -> bool:
     return True
 
 
-def build_params(source: dict, location: dict, model: str | None,
-                 chunk_start: dt.date, chunk_end: dt.date) -> dict:
+def build_params(source: dict, job: dict) -> dict:
+    """Parameters for one chunk.
+
+    Two shapes, because the endpoints differ. The dated historical endpoints
+    take start_date/end_date. The ensemble archive is reached with past_days
+    instead, which always anchors to today, so that source pulls its whole
+    window in a single call rather than by month.
+    """
     params = {
-        "latitude": location["latitude"],
-        "longitude": location["longitude"],
+        "latitude": job["location"]["latitude"],
+        "longitude": job["location"]["longitude"],
         "hourly": ",".join(source["hourly"]),
-        "start_date": chunk_start.isoformat(),
-        "end_date": chunk_end.isoformat(),
     }
-    if model:
-        params["models"] = model
+    if job.get("past_days") is not None:
+        params["past_days"] = job["past_days"]
+        if source.get("forecast_days") is not None:
+            params["forecast_days"] = source["forecast_days"]
+    else:
+        params["start_date"] = job["chunk_start"].isoformat()
+        params["end_date"] = job["chunk_end"].isoformat()
+    if job["model"]:
+        params["models"] = job["model"]
     return params
 
 
@@ -289,7 +300,9 @@ def load_manifest(directory: str, source_name: str, source: dict) -> dict:
         "schema_version": 1,
         "source": source_name,
         "role": source["role"],
+        "provenance": source.get("provenance"),
         "endpoint": source["endpoint"],
+        "models": source.get("models", []),
         "hourly": source["hourly"],
         "entries": {},
     }
@@ -319,22 +332,37 @@ def plan_source(config: dict, root: str, source_name: str, source: dict,
     start = parse_date(source["start_date"], today)
     end = parse_date(source["end_date"], today)
     models = source.get("models") or [None]
+    units = int(source.get("request_units_per_call", 1))
+    past_days_mode = source.get("chunk") == "past_days"
+
+    if past_days_mode:
+        # past_days always anchors to today, so an arbitrary past window cannot
+        # be selected -- one call per series covers the whole thing.
+        if end < start:
+            raise ValueError(f"end date {end} is before start date {start}")
+        past_days = (today - start).days
+        chunks = [("archive", start, end, past_days)]
+    else:
+        chunks = [(label, s, e, None) for label, s, e in month_chunks(start, end)]
+
     jobs = []
     for location in config["locations"]:
         for model in models:
             directory = series_dir(root, source_name, source, location["slug"], model)
-            for label, chunk_start, chunk_end in month_chunks(start, end):
+            for label, chunk_start, chunk_end, past_days in chunks:
                 jobs.append({
                     "source": source_name,
                     "role": source["role"],
+                    "provenance": source.get("provenance"),
                     "location": location,
                     "model": model,
                     "label": label,
                     "chunk_start": chunk_start,
                     "chunk_end": chunk_end,
+                    "past_days": past_days,
                     "directory": directory,
                     "path": os.path.join(directory, f"{label}.json.gz"),
-                    "units": int(source.get("request_units_per_call", 1)),
+                    "units": units,
                 })
     return jobs
 
@@ -390,8 +418,7 @@ def run(config: dict, root: str, args: argparse.Namespace, today: dt.date) -> in
 
         if args.dry_run:
             for job in todo[: args.dry_run_examples]:
-                params = build_params(source, job["location"], job["model"],
-                                      job["chunk_start"], job["chunk_end"])
+                params = build_params(source, job)
                 log(f"    GET {source['endpoint']}?{urlencode(params)}")
                 log(f"        -> {os.path.relpath(job['path'], root)}")
             if len(todo) > args.dry_run_examples:
@@ -415,8 +442,7 @@ def run(config: dict, root: str, args: argparse.Namespace, today: dt.date) -> in
                 manifests[directory] = load_manifest(directory, source_name, source)
             manifest = manifests[directory]
 
-            params = build_params(source, job["location"], job["model"],
-                                  job["chunk_start"], job["chunk_end"])
+            params = build_params(source, job)
             label = f"{job['location']['slug']}" + (f"/{job['model']}" if job["model"] else "")
             log(f"  {label} {job['label']}")
 
@@ -429,12 +455,20 @@ def run(config: dict, root: str, args: argparse.Namespace, today: dt.date) -> in
                 "status": result["status"],
                 "attempts": result["attempts"],
                 "role": source["role"],
+                # Recorded on every entry so the statistic's origin travels with
+                # the data. Archive ensemble mean/spread and mean/spread derived
+                # from captured members are different statistics and must not be
+                # joined into one continuous feature -- see history/README.md.
+                "provenance": job.get("provenance"),
                 "location": job["location"]["slug"],
                 "model": job["model"],
                 "start_date": job["chunk_start"].isoformat(),
                 "end_date": job["chunk_end"].isoformat(),
                 "fetched_at": dt.datetime.now(dt.timezone.utc).isoformat(),
             }
+            if job.get("past_days") is not None:
+                entry["past_days"] = job["past_days"]
+                entry["as_of"] = today.isoformat()
             if result["status"] == "ok":
                 try:
                     write_gzip(job["path"], result["body"])

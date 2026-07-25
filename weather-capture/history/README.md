@@ -46,6 +46,30 @@ python weather-capture/backfill_history.py --verify-firewall
 
 asserts the two agree. It also runs automatically at the end of every backfill.
 
+## The seam: archive mean/spread ≠ mean/spread from captured members
+
+There are two sources of ensemble mean and spread in this repo, and **they are
+different statistics. Do not join them into one continuous feature.**
+
+| | where | what it is |
+|---|---|---|
+| `archive_ensemble_mean` | `features/ensemble_mean/` | mean/spread as published by the `*_ensemble_mean_*` models |
+| `captured_ensemble_members` | `../data/` | individual members captured daily; any mean/spread is something *you* compute |
+
+They differ in generating process, member count, and derivation. Concatenating
+them produces a feature with a discontinuity at the changeover date — around when
+the daily cron started — that a model will happily fit as if it were signal. The
+break is invisible in the values themselves, which is what makes it dangerous.
+
+Every manifest on both sides carries a `provenance` field
+(`archive_ensemble_mean` vs `captured_ensemble_members`) so the origin travels
+with the data rather than living in someone's memory. **Keep it as a feature
+column, or keep the two as separate features.** Do not drop it in a join.
+
+The daily members capture is the higher-fidelity source and is what the eventual
+model should lean on; the archive mean/spread covers the period before the cron
+existed. Treating them as one series is the tempting shortcut and the wrong one.
+
 ## Windows, and why they differ
 
 | | from | why |
@@ -54,7 +78,7 @@ asserts the two agree. It also runs automatically at the end of every backfill.
 | `historical_forecast_actuals` | 2023-05-01 | matches CAISO, for descriptive work |
 | **modeling window** | **2024-01-01** | Previous Runs API does not go back further |
 | `previous_runs_ifs_hres` | 2024-01-01 | the binding constraint |
-| `ensemble_mean` | 2026-03-01 | earliest available |
+| `ensemble_mean` | 2026-03-01 | earliest archive coverage |
 
 The modeling window is **2024-01-01**, set by the Previous Runs floor. That
 gives 2+ years of deterministic as-issued forecasts against the CAISO series.
@@ -102,7 +126,21 @@ Two specifics to check first:
 - `_previous_day1` as the as-issued variable suffix on the Previous Runs API.
 - The 2024-01-01 Previous Runs floor.
 
-`ensemble_mean` ships **disabled** pending its endpoint spec — host and path are
-confirmed as the same ones the daily capture uses, but the mean/spread variable
-names are not yet filled in. Add them to `hourly`, flip `enabled` to `true`, and
-dry-run it.
+For `ensemble_mean`, the shape is confirmed: same host and path as the daily
+capture, with a `*_ensemble_mean_*` model id selecting mean/spread instead of
+members, requesting both `X` and `X_spread` for each of the four variables, and
+reaching the archive with `past_days` rather than a date range. Only one model id
+is filled in (`dwd_icon_eps_ensemble_mean_seamless`) — **the GFS and ECMWF
+equivalents still need adding** from the Open-Meteo ensemble docs page.
+
+Because `past_days` anchors to today, this source pulls its whole window in a
+single call per location+model, written as `archive.json.gz`, with the effective
+`past_days` and `as_of` date recorded in the manifest.
+
+### Not an option: Previous Runs for ensembles
+
+Recorded here so it isn't re-investigated. The Previous Runs API covers
+**deterministic models only**, with a limited variable set. There is no ensemble
+equivalent — it would be roughly 2 TB for barely three months. Ensemble
+mean/spread history comes from the ensemble archive above. `history_sources.json`
+carries a disabled stub with the same note.
