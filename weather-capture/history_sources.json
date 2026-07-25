@@ -1,0 +1,81 @@
+{
+  "_comment": "One-shot historical backfill sources. This file is the ONLY place endpoint and variable names live, so correcting them does not mean touching code. Nothing here has been verified against the live API -- use `backfill_history.py --dry-run` to print exact URLs and curl one before committing to a full run.",
+
+  "_roles": {
+    "feature": "Safe to use as a model input. As-issued forecast: what the model predicted BEFORE the target hour.",
+    "verification": "Actuals / verification series ONLY. Must never enter the feature set. See history/README.md."
+  },
+
+  "locations": [
+    { "slug": "fresno-ca",      "latitude": 36.7378, "longitude": -119.7871 },
+    { "slug": "sacramento-ca",  "latitude": 38.5816, "longitude": -121.4944 },
+    { "slug": "los-angeles-ca", "latitude": 34.0522, "longitude": -118.2437 },
+    { "slug": "las-vegas-nv",   "latitude": 36.1699, "longitude": -115.1398 },
+    { "slug": "henderson-nv",   "latitude": 36.0395, "longitude": -114.9817 }
+  ],
+
+  "request": {
+    "connect_timeout_seconds": 15,
+    "read_timeout_seconds": 300,
+    "max_attempts": 4,
+    "backoff_base_seconds": 10,
+    "sleep_between_calls_seconds": 3.0,
+    "max_request_units_per_minute": 250,
+    "max_request_units_per_run": 8000
+  },
+
+  "sources": {
+    "previous_runs_ifs_hres": {
+      "enabled": true,
+      "role": "feature",
+      "description": "ECMWF IFS HRES deterministic, as issued. The day-ahead feature series.",
+      "endpoint": "https://previous-runs-api.open-meteo.com/v1/forecast",
+      "models": ["ecmwf_ifs025"],
+      "start_date": "2024-01-01",
+      "end_date": "today",
+      "chunk": "month",
+      "request_units_per_call": 1,
+      "hourly": [
+        "temperature_2m_previous_day1",
+        "shortwave_radiation_previous_day1",
+        "cloud_cover_previous_day1",
+        "wind_speed_100m_previous_day1"
+      ],
+      "_unverified": "Variable suffix `_previous_day1` (the run issued one day before the target hour) and the 2024-01-01 floor are both unconfirmed from this environment. Confirm with --dry-run before a full run.",
+      "_note": "Model id `ecmwf_ifs025` here is HRES deterministic on the previous-runs host. The daily capture uses the same id on the ensemble host for ENS. Same string, different product."
+    },
+
+    "historical_forecast_actuals": {
+      "enabled": true,
+      "role": "verification",
+      "description": "LEAKAGE RISK IF USED AS A FEATURE. Open-Meteo stitches each run's first few hours into a continuous series, which makes this close to analysis -- effectively observations, not a lower-fidelity forecast. Actuals and verification only.",
+      "endpoint": "https://historical-forecast-api.open-meteo.com/v1/forecast",
+      "models": [],
+      "start_date": "2023-05-01",
+      "end_date": "today",
+      "chunk": "month",
+      "request_units_per_call": 1,
+      "hourly": [
+        "temperature_2m",
+        "shortwave_radiation",
+        "cloud_cover",
+        "wind_speed_100m"
+      ],
+      "_note": "Runs from the CAISO window start (2023-05-01), earlier than the 2024-01-01 modeling window, because the extra 2023 months are useful for descriptive work."
+    },
+
+    "ensemble_mean": {
+      "enabled": false,
+      "role": "feature",
+      "description": "Ensemble mean/spread. Refines the deterministic features once available.",
+      "endpoint": "https://ensemble-api.open-meteo.com/v1/ensemble",
+      "models": ["gfs025", "ecmwf_ifs025", "icon_seamless"],
+      "start_date": "2026-03-01",
+      "end_date": "today",
+      "chunk": "month",
+      "request_units_per_call": 4,
+      "hourly": [],
+      "_disabled_reason": "AWAITING ENDPOINT SPEC. Host and path are confirmed as the same ones the daily capture uses; the mean/spread variable names are not yet known. Fill in `hourly`, adjust `endpoint` if the Ensemble Mean API differs, then set enabled to true. Left disabled so a run cannot fire hundreds of malformed calls."
+    }
+  }
+}

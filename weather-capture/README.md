@@ -131,6 +131,28 @@ If it happens: **Actions → weather-capture → Enable workflow**, then dispatc
 run manually. Worth checking the Actions tab occasionally to confirm runs are
 still happening at all.
 
+## Historical backfill
+
+A separate, one-shot job pulls history that predates this capture:
+`backfill_history.py`, configured by `history_sources.json`, writing to
+`history/`. See [`history/README.md`](history/README.md).
+
+It is **deliberately not part of the capture workflow** — different failure
+profile, no deadline, and a backfill bug must never turn the daily gate red. It
+writes to its own tree, so `check_gaps.py` never sees it.
+
+Two firewalled trees, because one of the sources is not what it looks like:
+
+- `history/features/` — as-issued forecasts (ECMWF IFS HRES via the Previous
+  Runs API). Safe as model inputs.
+- `history/verification/` — the Historical Forecast API, which stitches each
+  run's first few hours into a continuous series and is therefore close to
+  analysis. **Actuals only. Using it as a day-ahead feature is leakage.**
+
+Modeling window is **2024-01-01** (the Previous Runs floor), against a CAISO
+window starting 2023-05-01; the extra 2023 months are for descriptive work that
+needs no weather. Start with `--dry-run`.
+
 ## Storage
 
 Roughly 30–60 KB gzipped per file, ~700 KB/day, so on the order of **250 MB per
