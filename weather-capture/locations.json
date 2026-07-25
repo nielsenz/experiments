@@ -1,0 +1,62 @@
+{
+  "_comment": "Capture configuration. Editing 'locations', 'models' or 'hourly' changes what future runs fetch; it does not retroactively change what check_gaps expects of past dates (each date's _manifest.json records the file list that was expected when it was captured).",
+
+  "endpoint": "https://ensemble-api.open-meteo.com/v1/ensemble",
+
+  "models": [
+    "gfs025",
+    "ecmwf_ifs025",
+    "icon_seamless"
+  ],
+
+  "hourly": [
+    "temperature_2m",
+    "shortwave_radiation",
+    "cloud_cover",
+    "wind_speed_100m"
+  ],
+
+  "forecast_days": 7,
+  "past_days": 3,
+
+  "request": {
+    "connect_timeout_seconds": 15,
+    "read_timeout_seconds": 120,
+    "max_attempts": 3,
+    "backoff_base_seconds": 4,
+    "sleep_between_fetches_seconds": 2.0
+  },
+
+  "locations": [
+    {
+      "slug": "fresno-ca",
+      "name": "Fresno, California",
+      "latitude": 36.7378,
+      "longitude": -119.7871
+    },
+    {
+      "slug": "sacramento-ca",
+      "name": "Sacramento, California",
+      "latitude": 38.5816,
+      "longitude": -121.4944
+    },
+    {
+      "slug": "los-angeles-ca",
+      "name": "Los Angeles, California",
+      "latitude": 34.0522,
+      "longitude": -118.2437
+    },
+    {
+      "slug": "las-vegas-nv",
+      "name": "Las Vegas, Nevada",
+      "latitude": 36.1699,
+      "longitude": -115.1398
+    },
+    {
+      "slug": "henderson-nv",
+      "name": "Henderson, Nevada",
+      "latitude": 36.0395,
+      "longitude": -114.9817
+    }
+  ]
+}
