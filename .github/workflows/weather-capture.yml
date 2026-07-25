@@ -1,0 +1,113 @@
+name: weather-capture
+
+# Captures Open-Meteo ensemble forecasts twice daily and commits them to the repo.
+#
+# Ensemble members are retained upstream for only ~3 days, so a missed day is
+# gone permanently. Every design choice here favours "capture something and tell
+# me loudly if it did not work" over elegance.
+
+on:
+  schedule:
+    # 06:00 and 18:00 UTC. The second run is a safety net: on a healthy day it
+    # finds the files already present and does nothing.
+    - cron: '0 6 * * *'
+    - cron: '0 18 * * *'
+  workflow_dispatch:
+    inputs:
+      start_date:
+        description: 'Backfill start date (YYYY-MM-DD, UTC). Leave blank for the normal 3-day window.'
+        required: false
+        type: string
+      end_date:
+        description: 'Backfill end date (YYYY-MM-DD, UTC). Defaults to today when start_date is set.'
+        required: false
+        type: string
+
+# Overlapping runs must never race on the same files or on the push.
+# cancel-in-progress is false on purpose: cancelling a capture loses data.
+concurrency:
+  group: weather-capture
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install --disable-pip-version-check -r weather-capture/requirements.txt
+
+      # continue-on-error: a partial capture is still worth committing, and
+      # check_gaps.py at the end of the job is what decides pass/fail.
+      - name: Fetch ensemble forecasts
+        id: fetch
+        continue-on-error: true
+        # Inputs go through env, never interpolated into the shell directly.
+        env:
+          START_DATE: ${{ inputs.start_date }}
+          END_DATE: ${{ inputs.end_date }}
+        run: |
+          set -uo pipefail
+          if [ -n "${START_DATE}" ] || [ -n "${END_DATE}" ]; then
+            python weather-capture/fetch_ensemble.py \
+              --start-date "${START_DATE}" \
+              --end-date "${END_DATE}"
+          else
+            python weather-capture/fetch_ensemble.py --days 3
+          fi
+
+      - name: Commit and push
+        if: always()
+        run: |
+          set -euo pipefail
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # -A tolerates the directory not existing yet (a run where every
+          # fetch failed), which must not fail this step.
+          git add -A weather-capture/data || true
+
+          if git diff --cached --quiet; then
+            echo "Nothing new to commit."
+            exit 0
+          fi
+
+          git commit -m "weather-capture: $(date -u '+%Y-%m-%d %H:%MZ')"
+
+          # Retry the push: a concurrent commit to the branch is the one race
+          # the concurrency group cannot prevent.
+          for attempt in 1 2 3 4 5; do
+            if git push origin HEAD:"${GITHUB_REF_NAME}"; then
+              echo "Pushed on attempt ${attempt}."
+              exit 0
+            fi
+            echo "Push failed on attempt ${attempt}; rebasing and retrying."
+            sleep $((attempt * 5))
+            git pull --rebase --autostash origin "${GITHUB_REF_NAME}" || true
+          done
+
+          echo "::error::Could not push captured data after 5 attempts."
+          exit 1
+
+      # The gate. Runs after the data is safely committed so that a failure here
+      # never costs us the capture itself.
+      - name: Check for gaps
+        if: always()
+        run: python weather-capture/check_gaps.py --days 3 --deep
+
+      - name: Flag fetch failures
+        if: always() && steps.fetch.outcome == 'failure'
+        run: |
+          echo "::warning::One or more fetches failed; see the per-date _manifest.json files."

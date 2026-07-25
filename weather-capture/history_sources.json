@@ -1,0 +1,111 @@
+{
+  "_comment": "One-shot historical backfill sources. This file is the ONLY place endpoint and variable names live, so correcting them does not mean touching code. Nothing here has been verified against the live API -- use `backfill_history.py --dry-run` to print exact URLs and curl one before committing to a full run.",
+
+  "_roles": {
+    "feature": "Safe to use as a model input. As-issued forecast: what the model predicted BEFORE the target hour.",
+    "verification": "Actuals / verification series ONLY. Must never enter the feature set. See history/README.md."
+  },
+
+  "locations": [
+    { "slug": "fresno-ca",      "latitude": 36.7378, "longitude": -119.7871 },
+    { "slug": "sacramento-ca",  "latitude": 38.5816, "longitude": -121.4944 },
+    { "slug": "los-angeles-ca", "latitude": 34.0522, "longitude": -118.2437 },
+    { "slug": "las-vegas-nv",   "latitude": 36.1699, "longitude": -115.1398 },
+    { "slug": "henderson-nv",   "latitude": 36.0395, "longitude": -114.9817 }
+  ],
+
+  "request": {
+    "connect_timeout_seconds": 15,
+    "read_timeout_seconds": 300,
+    "max_attempts": 4,
+    "backoff_base_seconds": 10,
+    "sleep_between_calls_seconds": 3.0,
+    "max_request_units_per_minute": 250,
+    "max_request_units_per_run": 8000
+  },
+
+  "sources": {
+    "previous_runs_ifs_hres": {
+      "enabled": true,
+      "role": "feature",
+      "description": "ECMWF IFS HRES deterministic, as issued. The day-ahead feature series.",
+      "endpoint": "https://previous-runs-api.open-meteo.com/v1/forecast",
+      "models": ["ecmwf_ifs025"],
+      "start_date": "2024-01-01",
+      "end_date": "today",
+      "chunk": "month",
+      "request_units_per_call": 1,
+      "hourly": [
+        "temperature_2m_previous_day1",
+        "shortwave_radiation_previous_day1",
+        "cloud_cover_previous_day1",
+        "wind_speed_100m_previous_day1"
+      ],
+      "provenance": "previous_runs_deterministic",
+      "_unverified": "Variable suffix `_previous_day1` (the run issued one day before the target hour) and the 2024-01-01 floor are both unconfirmed from this environment. Confirm with --dry-run before a full run.",
+      "_limited_variables_warning": "The Previous Runs API is documented as covering deterministic models with a LIMITED variable set. shortwave_radiation and wind_speed_100m in particular may not be available here. Run with --limit 5 first: a rejected variable should surface as a 400 on the first call rather than as 155 bad files.",
+      "_note": "Model id `ecmwf_ifs025` here is HRES deterministic on the previous-runs host. The daily capture uses the same id on the ensemble host for ENS. Same string, different product."
+    },
+
+    "historical_forecast_actuals": {
+      "enabled": true,
+      "role": "verification",
+      "provenance": "historical_forecast_analysis",
+      "description": "LEAKAGE RISK IF USED AS A FEATURE. Open-Meteo stitches each run's first few hours into a continuous series, which makes this close to analysis -- effectively observations, not a lower-fidelity forecast. Actuals and verification only.",
+      "endpoint": "https://historical-forecast-api.open-meteo.com/v1/forecast",
+      "models": [],
+      "start_date": "2023-05-01",
+      "end_date": "today",
+      "chunk": "month",
+      "request_units_per_call": 1,
+      "hourly": [
+        "temperature_2m",
+        "shortwave_radiation",
+        "cloud_cover",
+        "wind_speed_100m"
+      ],
+      "_note": "Runs from the CAISO window start (2023-05-01), earlier than the 2024-01-01 modeling window, because the extra 2023 months are useful for descriptive work."
+    },
+
+    "ensemble_mean": {
+      "enabled": true,
+      "role": "feature",
+      "provenance": "archive_ensemble_mean",
+      "description": "Ensemble mean/spread from the archive, via the *_ensemble_mean_* model variants. Same host and path as the daily capture; the model id is what selects mean/spread instead of members.",
+      "endpoint": "https://ensemble-api.open-meteo.com/v1/ensemble",
+      "models": ["dwd_icon_eps_ensemble_mean_seamless"],
+      "start_date": "2026-03-01",
+      "end_date": "today",
+      "chunk": "past_days",
+      "forecast_days": 7,
+      "request_units_per_call": 4,
+      "hourly": [
+        "temperature_2m",
+        "temperature_2m_spread",
+        "shortwave_radiation",
+        "shortwave_radiation_spread",
+        "cloud_cover",
+        "cloud_cover_spread",
+        "wind_speed_100m",
+        "wind_speed_100m_spread"
+      ],
+      "_unconfirmed_models": [
+        "The GFS and ECMWF *_ensemble_mean_* model ids are not filled in -- only the DWD ICON one is confirmed. Add them to `models` once known; the full list is on the Open-Meteo ensemble docs page, which was unreachable from the environment this was written in. Everything else about this source is confirmed."
+      ],
+      "_archive_access": "The archive is reached with past_days rather than start_date/end_date, so this source makes ONE call per location+model covering the whole window back to start_date, written as archive.json.gz. Coverage is available from roughly March 2026.",
+      "_seam_warning": "DO NOT concatenate this with the daily members capture into one continuous feature. Archive mean/spread and mean/spread computed from captured members are different statistics -- different generating process, member counts and derivation. The provenance field above is recorded into every manifest entry so the seam stays visible downstream. See history/README.md."
+    },
+
+    "_rejected_previous_runs_for_ensembles": {
+      "enabled": false,
+      "role": "feature",
+      "_why_this_stub_exists": "So the option is not re-derived from scratch later. Using the Previous Runs API to get as-issued ENSEMBLE history does not work: per Open-Meteo's author that API covers deterministic models only, with a limited variable set, because the ensemble equivalent would be roughly 2 TB for barely three months. Ensemble mean/spread history comes from the ensemble_mean source above instead. Do not build against this.",
+      "endpoint": "",
+      "models": [],
+      "start_date": "2024-01-01",
+      "end_date": "today",
+      "request_units_per_call": 1,
+      "hourly": []
+    }
+  }
+}
