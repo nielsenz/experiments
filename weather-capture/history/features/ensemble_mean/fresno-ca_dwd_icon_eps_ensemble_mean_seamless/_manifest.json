@@ -2,24 +2,23 @@
   "endpoint": "https://ensemble-api.open-meteo.com/v1/ensemble",
   "entries": {
     "archive.json.gz": {
-      "all_errors": [
-        "attempt 1: HTTP 400: {\"reason\":\"Past days is invalid. Allowed range 0 to 93. Given 147.\",\"error\":true}"
-      ],
       "as_of": "2026-07-26",
       "attempts": 1,
+      "bytes": 18974,
       "end_date": "2026-07-26",
-      "error": "attempt 1: HTTP 400: {\"reason\":\"Past days is invalid. Allowed range 0 to 93. Given 147.\",\"error\":true}",
-      "fetched_at": "2026-07-26T13:45:04.849139+00:00",
+      "fetched_at": "2026-07-26T14:05:21.428545+00:00",
       "location": "fresno-ca",
       "model": "dwd_icon_eps_ensemble_mean_seamless",
-      "past_days": 147,
+      "past_days": 92,
       "provenance": "archive_ensemble_mean",
+      "raw_bytes": 124079,
       "role": "feature",
-      "start_date": "2026-03-01",
-      "status": "failed"
+      "sha256": "c9543d0853e9c16070ea052a4ce19d403a28772ce7d219452475293c0724ca81",
+      "start_date": "2026-04-25",
+      "status": "ok"
     }
   },
-  "failed": 1,
+  "failed": 0,
   "hourly": [
     "temperature_2m",
     "temperature_2m_spread",
@@ -33,10 +32,10 @@
   "models": [
     "dwd_icon_eps_ensemble_mean_seamless"
   ],
-  "ok": 0,
+  "ok": 1,
   "provenance": "archive_ensemble_mean",
   "role": "feature",
   "schema_version": 1,
   "source": "ensemble_mean",
-  "updated_at": "2026-07-26T13:45:17.865374+00:00"
+  "updated_at": "2026-07-26T14:05:35.842764+00:00"
 }

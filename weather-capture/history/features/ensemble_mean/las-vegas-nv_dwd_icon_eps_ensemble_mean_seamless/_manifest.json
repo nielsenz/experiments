@@ -2,24 +2,23 @@
   "endpoint": "https://ensemble-api.open-meteo.com/v1/ensemble",
   "entries": {
     "archive.json.gz": {
-      "all_errors": [
-        "attempt 1: HTTP 400: {\"reason\":\"Past days is invalid. Allowed range 0 to 93. Given 147.\",\"error\":true}"
-      ],
       "as_of": "2026-07-26",
       "attempts": 1,
+      "bytes": 19833,
       "end_date": "2026-07-26",
-      "error": "attempt 1: HTTP 400: {\"reason\":\"Past days is invalid. Allowed range 0 to 93. Given 147.\",\"error\":true}",
-      "fetched_at": "2026-07-26T13:45:14.571303+00:00",
+      "fetched_at": "2026-07-26T14:05:32.178470+00:00",
       "location": "las-vegas-nv",
       "model": "dwd_icon_eps_ensemble_mean_seamless",
-      "past_days": 147,
+      "past_days": 92,
       "provenance": "archive_ensemble_mean",
+      "raw_bytes": 125088,
       "role": "feature",
-      "start_date": "2026-03-01",
-      "status": "failed"
+      "sha256": "6d4dd776653ccefc8270ae320bc83075ddbbee9f74d3747553785cf94027fff6",
+      "start_date": "2026-04-25",
+      "status": "ok"
     }
   },
-  "failed": 1,
+  "failed": 0,
   "hourly": [
     "temperature_2m",
     "temperature_2m_spread",
@@ -33,10 +32,10 @@
   "models": [
     "dwd_icon_eps_ensemble_mean_seamless"
   ],
-  "ok": 0,
+  "ok": 1,
   "provenance": "archive_ensemble_mean",
   "role": "feature",
   "schema_version": 1,
   "source": "ensemble_mean",
-  "updated_at": "2026-07-26T13:45:17.884989+00:00"
+  "updated_at": "2026-07-26T14:05:35.851575+00:00"
 }

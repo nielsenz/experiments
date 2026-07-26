@@ -2,24 +2,23 @@
   "endpoint": "https://ensemble-api.open-meteo.com/v1/ensemble",
   "entries": {
     "archive.json.gz": {
-      "all_errors": [
-        "attempt 1: HTTP 400: {\"error\":true,\"reason\":\"Past days is invalid. Allowed range 0 to 93. Given 147.\"}"
-      ],
       "as_of": "2026-07-26",
       "attempts": 1,
+      "bytes": 19715,
       "end_date": "2026-07-26",
-      "error": "attempt 1: HTTP 400: {\"error\":true,\"reason\":\"Past days is invalid. Allowed range 0 to 93. Given 147.\"}",
-      "fetched_at": "2026-07-26T13:45:08.067112+00:00",
+      "fetched_at": "2026-07-26T14:05:24.953188+00:00",
       "location": "sacramento-ca",
       "model": "dwd_icon_eps_ensemble_mean_seamless",
-      "past_days": 147,
+      "past_days": 92,
       "provenance": "archive_ensemble_mean",
+      "raw_bytes": 124615,
       "role": "feature",
-      "start_date": "2026-03-01",
-      "status": "failed"
+      "sha256": "b623ccf0c76f74e3246e46748ac1d0bf89ae8c580cc9b27858869035c1ac7879",
+      "start_date": "2026-04-25",
+      "status": "ok"
     }
   },
-  "failed": 1,
+  "failed": 0,
   "hourly": [
     "temperature_2m",
     "temperature_2m_spread",
@@ -33,10 +32,10 @@
   "models": [
     "dwd_icon_eps_ensemble_mean_seamless"
   ],
-  "ok": 0,
+  "ok": 1,
   "provenance": "archive_ensemble_mean",
   "role": "feature",
   "schema_version": 1,
   "source": "ensemble_mean",
-  "updated_at": "2026-07-26T13:45:17.872675+00:00"
+  "updated_at": "2026-07-26T14:05:35.845741+00:00"
 }

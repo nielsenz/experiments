@@ -74,7 +74,7 @@
       "description": "Ensemble mean/spread from the archive, via the *_ensemble_mean_* model variants. Same host and path as the daily capture; the model id is what selects mean/spread instead of members.",
       "endpoint": "https://ensemble-api.open-meteo.com/v1/ensemble",
       "models": ["dwd_icon_eps_ensemble_mean_seamless"],
-      "start_date": "2026-03-01",
+      "start_date": "2026-04-25",
       "end_date": "today",
       "chunk": "past_days",
       "forecast_days": 7,
