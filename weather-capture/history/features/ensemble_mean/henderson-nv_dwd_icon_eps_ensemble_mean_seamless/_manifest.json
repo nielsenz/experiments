@@ -1,0 +1,42 @@
+{
+  "endpoint": "https://ensemble-api.open-meteo.com/v1/ensemble",
+  "entries": {
+    "archive.json.gz": {
+      "all_errors": [
+        "attempt 1: HTTP 400: {\"error\":true,\"reason\":\"Past days is invalid. Allowed range 0 to 93. Given 147.\"}"
+      ],
+      "as_of": "2026-07-26",
+      "attempts": 1,
+      "end_date": "2026-07-26",
+      "error": "attempt 1: HTTP 400: {\"error\":true,\"reason\":\"Past days is invalid. Allowed range 0 to 93. Given 147.\"}",
+      "fetched_at": "2026-07-26T13:45:17.848569+00:00",
+      "location": "henderson-nv",
+      "model": "dwd_icon_eps_ensemble_mean_seamless",
+      "past_days": 147,
+      "provenance": "archive_ensemble_mean",
+      "role": "feature",
+      "start_date": "2026-03-01",
+      "status": "failed"
+    }
+  },
+  "failed": 1,
+  "hourly": [
+    "temperature_2m",
+    "temperature_2m_spread",
+    "shortwave_radiation",
+    "shortwave_radiation_spread",
+    "cloud_cover",
+    "cloud_cover_spread",
+    "wind_speed_100m",
+    "wind_speed_100m_spread"
+  ],
+  "models": [
+    "dwd_icon_eps_ensemble_mean_seamless"
+  ],
+  "ok": 0,
+  "provenance": "archive_ensemble_mean",
+  "role": "feature",
+  "schema_version": 1,
+  "source": "ensemble_mean",
+  "updated_at": "2026-07-26T13:45:17.889995+00:00"
+}
