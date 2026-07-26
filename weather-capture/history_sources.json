@@ -73,7 +73,7 @@
       "provenance": "archive_ensemble_mean",
       "description": "Ensemble mean/spread from the archive, via the *_ensemble_mean_* model variants. Same host and path as the daily capture; the model id is what selects mean/spread instead of members.",
       "endpoint": "https://ensemble-api.open-meteo.com/v1/ensemble",
-      "models": ["dwd_icon_eps_ensemble_mean_seamless"],
+      "models": ["dwd_icon_eps_ensemble_mean_seamless", "ncep_gefs025_ensemble_mean", "ecmwf_ifs025_ensemble_mean"],
       "start_date": "2026-04-25",
       "end_date": "today",
       "chunk": "past_days",
@@ -89,8 +89,8 @@
         "wind_speed_100m",
         "wind_speed_100m_spread"
       ],
-      "_unconfirmed_models": [
-        "The GFS and ECMWF *_ensemble_mean_* model ids are not filled in -- only the DWD ICON one is confirmed. Add them to `models` once known; the full list is on the Open-Meteo ensemble docs page, which was unreachable from the environment this was written in. Everything else about this source is confirmed."
+      "_confirmed_models": [
+        "VERIFIED 2026-07-26 against the live ensemble API. Three ensemble_mean model ids confirmed to return all 8 variables (four fields + _spread each): dwd_icon_eps_ensemble_mean_seamless (DWD ICON), ncep_gefs025_ensemble_mean (GFS/GEFS), ecmwf_ifs025_ensemble_mean (ECMWF IFS). Note the naming is not uniform: the DWD id carries a _seamless suffix, the GFS and ECMWF ids do NOT. Invalid ids return HTTP 400 'Cannot initialize MultiDomains from invalid String value', which is the cheap way to probe new candidates."
       ],
       "_archive_access": "The archive is reached with past_days rather than start_date/end_date, so this source makes ONE call per location+model covering the whole window back to start_date, written as archive.json.gz.",
       "_past_days_limit": "VERIFIED 2026-07-26 against the live API: the ensemble host caps past_days at 93 ('Allowed range 0 to 93'). start_date must stay within ~93 days of today or every call 400s. Set to 2026-04-25 for this reason -- an earlier floor (2026-03-01 was tried) is rejected. This is a hard upstream limit: mean/spread older than the window is not retrievable here, so run this source periodically to keep extending coverage forward rather than expecting a single deep backfill.",

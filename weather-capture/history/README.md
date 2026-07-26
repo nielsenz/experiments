@@ -137,9 +137,12 @@ environment — are now confirmed by real fetches, with these findings:
 - **`ensemble_mean`** — confirmed shape, with one correction: the ensemble host
   caps `past_days` at **93** (`"Allowed range 0 to 93"`). The original
   `start_date: 2026-03-01` (≈147 past_days) 400'd on every call; it is now
-  `2026-04-25`. All 5 location archives captured. Only one model id is filled in
-  (`dwd_icon_eps_ensemble_mean_seamless`) — **the GFS and ECMWF `*_ensemble_mean_*`
-  equivalents still need adding** from the Open-Meteo ensemble docs page.
+  `2026-04-25`. All 5 location archives captured for each of **three** confirmed
+  models: `dwd_icon_eps_ensemble_mean_seamless` (DWD ICON),
+  `ncep_gefs025_ensemble_mean` (GFS), and `ecmwf_ifs025_ensemble_mean` (ECMWF).
+  Note the naming is not uniform — the DWD id ends in `_seamless`, the GFS and
+  ECMWF ids do not. Invalid ids return HTTP 400 ("Cannot initialize MultiDomains
+  from invalid String value"), which is the cheap way to probe new candidates.
 
 Because `past_days` anchors to today, `ensemble_mean` pulls its whole window in a
 single call per location+model, written as `archive.json.gz`, with the effective

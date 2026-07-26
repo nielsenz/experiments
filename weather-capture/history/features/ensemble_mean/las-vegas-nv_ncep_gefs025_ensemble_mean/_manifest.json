@@ -1,0 +1,43 @@
+{
+  "endpoint": "https://ensemble-api.open-meteo.com/v1/ensemble",
+  "entries": {
+    "archive.json.gz": {
+      "as_of": "2026-07-26",
+      "attempts": 1,
+      "bytes": 18751,
+      "end_date": "2026-07-26",
+      "fetched_at": "2026-07-26T14:49:45.591405+00:00",
+      "location": "las-vegas-nv",
+      "model": "ncep_gefs025_ensemble_mean",
+      "past_days": 92,
+      "provenance": "archive_ensemble_mean",
+      "raw_bytes": 124751,
+      "role": "feature",
+      "sha256": "7df3db099544737421eb20c1b162ba5bb5ea900f3c91be26a2ff67132f4078f3",
+      "start_date": "2026-04-25",
+      "status": "ok"
+    }
+  },
+  "failed": 0,
+  "hourly": [
+    "temperature_2m",
+    "temperature_2m_spread",
+    "shortwave_radiation",
+    "shortwave_radiation_spread",
+    "cloud_cover",
+    "cloud_cover_spread",
+    "wind_speed_100m",
+    "wind_speed_100m_spread"
+  ],
+  "models": [
+    "dwd_icon_eps_ensemble_mean_seamless",
+    "ncep_gefs025_ensemble_mean",
+    "ecmwf_ifs025_ensemble_mean"
+  ],
+  "ok": 1,
+  "provenance": "archive_ensemble_mean",
+  "role": "feature",
+  "schema_version": 1,
+  "source": "ensemble_mean",
+  "updated_at": "2026-07-26T14:49:56.768740+00:00"
+}

@@ -1,0 +1,43 @@
+{
+  "endpoint": "https://ensemble-api.open-meteo.com/v1/ensemble",
+  "entries": {
+    "archive.json.gz": {
+      "as_of": "2026-07-26",
+      "attempts": 1,
+      "bytes": 24976,
+      "end_date": "2026-07-26",
+      "fetched_at": "2026-07-26T14:49:41.915908+00:00",
+      "location": "los-angeles-ca",
+      "model": "ecmwf_ifs025_ensemble_mean",
+      "past_days": 92,
+      "provenance": "archive_ensemble_mean",
+      "raw_bytes": 121730,
+      "role": "feature",
+      "sha256": "9f4282bc3b1fd364b1f54f25edef333ef1ee371dec7330438eb3dc9d295f428f",
+      "start_date": "2026-04-25",
+      "status": "ok"
+    }
+  },
+  "failed": 0,
+  "hourly": [
+    "temperature_2m",
+    "temperature_2m_spread",
+    "shortwave_radiation",
+    "shortwave_radiation_spread",
+    "cloud_cover",
+    "cloud_cover_spread",
+    "wind_speed_100m",
+    "wind_speed_100m_spread"
+  ],
+  "models": [
+    "dwd_icon_eps_ensemble_mean_seamless",
+    "ncep_gefs025_ensemble_mean",
+    "ecmwf_ifs025_ensemble_mean"
+  ],
+  "ok": 1,
+  "provenance": "archive_ensemble_mean",
+  "role": "feature",
+  "schema_version": 1,
+  "source": "ensemble_mean",
+  "updated_at": "2026-07-26T14:49:56.765753+00:00"
+}

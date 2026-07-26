@@ -1,0 +1,43 @@
+{
+  "endpoint": "https://ensemble-api.open-meteo.com/v1/ensemble",
+  "entries": {
+    "archive.json.gz": {
+      "as_of": "2026-07-26",
+      "attempts": 1,
+      "bytes": 25645,
+      "end_date": "2026-07-26",
+      "fetched_at": "2026-07-26T14:49:56.664472+00:00",
+      "location": "henderson-nv",
+      "model": "ecmwf_ifs025_ensemble_mean",
+      "past_days": 92,
+      "provenance": "archive_ensemble_mean",
+      "raw_bytes": 121954,
+      "role": "feature",
+      "sha256": "c5ef84da11aa92906b3f160a49029f129a464cebe099c6436cd8d18531c76a1c",
+      "start_date": "2026-04-25",
+      "status": "ok"
+    }
+  },
+  "failed": 0,
+  "hourly": [
+    "temperature_2m",
+    "temperature_2m_spread",
+    "shortwave_radiation",
+    "shortwave_radiation_spread",
+    "cloud_cover",
+    "cloud_cover_spread",
+    "wind_speed_100m",
+    "wind_speed_100m_spread"
+  ],
+  "models": [
+    "dwd_icon_eps_ensemble_mean_seamless",
+    "ncep_gefs025_ensemble_mean",
+    "ecmwf_ifs025_ensemble_mean"
+  ],
+  "ok": 1,
+  "provenance": "archive_ensemble_mean",
+  "role": "feature",
+  "schema_version": 1,
+  "source": "ensemble_mean",
+  "updated_at": "2026-07-26T14:49:56.780992+00:00"
+}

@@ -1,0 +1,43 @@
+{
+  "endpoint": "https://ensemble-api.open-meteo.com/v1/ensemble",
+  "entries": {
+    "archive.json.gz": {
+      "as_of": "2026-07-26",
+      "attempts": 1,
+      "bytes": 24006,
+      "end_date": "2026-07-26",
+      "fetched_at": "2026-07-26T14:49:27.178639+00:00",
+      "location": "fresno-ca",
+      "model": "ecmwf_ifs025_ensemble_mean",
+      "past_days": 92,
+      "provenance": "archive_ensemble_mean",
+      "raw_bytes": 120853,
+      "role": "feature",
+      "sha256": "7e3bb88626f6f5adaddf8f28ace92a6ccfd70d036d9cf3e5f03f71d06f6adac7",
+      "start_date": "2026-04-25",
+      "status": "ok"
+    }
+  },
+  "failed": 0,
+  "hourly": [
+    "temperature_2m",
+    "temperature_2m_spread",
+    "shortwave_radiation",
+    "shortwave_radiation_spread",
+    "cloud_cover",
+    "cloud_cover_spread",
+    "wind_speed_100m",
+    "wind_speed_100m_spread"
+  ],
+  "models": [
+    "dwd_icon_eps_ensemble_mean_seamless",
+    "ncep_gefs025_ensemble_mean",
+    "ecmwf_ifs025_ensemble_mean"
+  ],
+  "ok": 1,
+  "provenance": "archive_ensemble_mean",
+  "role": "feature",
+  "schema_version": 1,
+  "source": "ensemble_mean",
+  "updated_at": "2026-07-26T14:49:56.753304+00:00"
+}
