@@ -92,7 +92,8 @@
       "_unconfirmed_models": [
         "The GFS and ECMWF *_ensemble_mean_* model ids are not filled in -- only the DWD ICON one is confirmed. Add them to `models` once known; the full list is on the Open-Meteo ensemble docs page, which was unreachable from the environment this was written in. Everything else about this source is confirmed."
       ],
-      "_archive_access": "The archive is reached with past_days rather than start_date/end_date, so this source makes ONE call per location+model covering the whole window back to start_date, written as archive.json.gz. Coverage is available from roughly March 2026.",
+      "_archive_access": "The archive is reached with past_days rather than start_date/end_date, so this source makes ONE call per location+model covering the whole window back to start_date, written as archive.json.gz.",
+      "_past_days_limit": "VERIFIED 2026-07-26 against the live API: the ensemble host caps past_days at 93 ('Allowed range 0 to 93'). start_date must stay within ~93 days of today or every call 400s. Set to 2026-04-25 for this reason -- an earlier floor (2026-03-01 was tried) is rejected. This is a hard upstream limit: mean/spread older than the window is not retrievable here, so run this source periodically to keep extending coverage forward rather than expecting a single deep backfill.",
       "_seam_warning": "DO NOT concatenate this with the daily members capture into one continuous feature. Archive mean/spread and mean/spread computed from captured members are different statistics -- different generating process, member counts and derivation. The provenance field above is recorded into every manifest entry so the seam stays visible downstream. See history/README.md."
     },
 

@@ -9,7 +9,7 @@ turn that gate red, which is the entire reason this lives in its own tree.
 history/
 ├── features/                        SAFE as model inputs
 │   ├── previous_runs_ifs_hres/      ECMWF IFS HRES, as issued
-│   └── ensemble_mean/               ensemble mean/spread (pending)
+│   └── ensemble_mean/               ensemble mean/spread (archive)
 └── verification/                    ACTUALS — never a feature
     └── historical_forecast_actuals/
 ```
@@ -78,10 +78,17 @@ existed. Treating them as one series is the tempting shortcut and the wrong one.
 | `historical_forecast_actuals` | 2023-05-01 | matches CAISO, for descriptive work |
 | **modeling window** | **2024-01-01** | Previous Runs API does not go back further |
 | `previous_runs_ifs_hres` | 2024-01-01 | the binding constraint |
-| `ensemble_mean` | 2026-03-01 | earliest archive coverage |
+| `ensemble_mean` | 2026-04-25 | **93-day archive cap** (see below) |
 
 The modeling window is **2024-01-01**, set by the Previous Runs floor. That
 gives 2+ years of deterministic as-issued forecasts against the CAISO series.
+
+`ensemble_mean` has the shortest window and it is not a choice: the ensemble
+archive is reached with `past_days`, which the API caps at **93** ('Allowed range
+0 to 93'). Anything older 400s. So `start_date` must stay within ~93 days of
+today, and mean/spread older than that window is simply not retrievable. **Re-run
+this source periodically** to keep pushing coverage forward — it is a rolling
+window, not a one-shot deep backfill like the other two.
 
 May–December 2023 has actuals and CAISO but no as-issued forecasts. Don't try to
 train on it. It is there for the descriptive work that needs no weather at all —
@@ -114,28 +121,30 @@ budget counted in **request units**, since ensemble calls bill as roughly 4 unit
 each on the free tier. There is also a per-run unit ceiling; hitting it stops the
 run cleanly and tells you to re-run.
 
-## ⚠️ None of this is verified against the live API
+## ✅ Verified against the live API (2026-07-26)
 
-Every `open-meteo.com` host was blocked from the environment where this was
-written, so the endpoints, the variable names, and the date floors in
-`../history_sources.json` are **unconfirmed**. They are all isolated in that one
-config file so fixing them means editing JSON, not code.
+The first full backfill ran successfully against Open-Meteo. The endpoints,
+variable names, and date floors in `../history_sources.json` — previously
+unconfirmed because every `open-meteo.com` host was blocked from the authoring
+environment — are now confirmed by real fetches, with these findings:
 
-Two specifics to check first:
+- **`previous_runs_ifs_hres`** — confirmed. The `_previous_day1` variable suffix
+  and the 2024-01-01 floor both work; all four variables (including
+  `shortwave_radiation` and `wind_speed_100m`, previously flagged as maybe
+  unavailable) returned data. 155/155 monthly chunks captured.
+- **`historical_forecast_actuals`** — confirmed. 195/195 monthly chunks captured
+  back to 2023-05-01.
+- **`ensemble_mean`** — confirmed shape, with one correction: the ensemble host
+  caps `past_days` at **93** (`"Allowed range 0 to 93"`). The original
+  `start_date: 2026-03-01` (≈147 past_days) 400'd on every call; it is now
+  `2026-04-25`. All 5 location archives captured. Only one model id is filled in
+  (`dwd_icon_eps_ensemble_mean_seamless`) — **the GFS and ECMWF `*_ensemble_mean_*`
+  equivalents still need adding** from the Open-Meteo ensemble docs page.
 
-- `_previous_day1` as the as-issued variable suffix on the Previous Runs API.
-- The 2024-01-01 Previous Runs floor.
-
-For `ensemble_mean`, the shape is confirmed: same host and path as the daily
-capture, with a `*_ensemble_mean_*` model id selecting mean/spread instead of
-members, requesting both `X` and `X_spread` for each of the four variables, and
-reaching the archive with `past_days` rather than a date range. Only one model id
-is filled in (`dwd_icon_eps_ensemble_mean_seamless`) — **the GFS and ECMWF
-equivalents still need adding** from the Open-Meteo ensemble docs page.
-
-Because `past_days` anchors to today, this source pulls its whole window in a
+Because `past_days` anchors to today, `ensemble_mean` pulls its whole window in a
 single call per location+model, written as `archive.json.gz`, with the effective
-`past_days` and `as_of` date recorded in the manifest.
+`past_days` and `as_of` date recorded in the manifest. Its 93-day window is a
+rolling one — re-run it periodically to extend coverage forward.
 
 ### Not an option: Previous Runs for ensembles
 
