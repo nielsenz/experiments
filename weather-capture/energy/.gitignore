@@ -1,0 +1,3 @@
+# EIA responses are large and regenerable — keep raw archives out of git
+# only if they get big. For now demand JSON is small; comment out to commit data.
+# data/caiso_demand/*.json.gz
