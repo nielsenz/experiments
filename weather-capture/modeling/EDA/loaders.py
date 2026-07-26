@@ -77,6 +77,43 @@ def load_ensemble_mean(loc, model):
     return _read_gz_json(p)["hourly"]
 
 
+# energy/ sits at weather-capture/energy/, alongside history/
+ENERGY = os.path.normpath(os.path.join(HERE, "..", "..", "energy"))
+
+
+def load_caiso_demand():
+    """CAISO hourly demand (the prediction label) from energy/data/caiso_demand/.
+
+    Returns a dict {utc_hour_key -> demand_MWh_or_None} where the key is
+    normalized to 'YYYY-MM-DDTHH:MM' (":00" minutes) to match the weather
+    series' time strings exactly. Values are floats in megawatthours; missing
+    EIA hours come through as None. De-duplicates repeated periods (keeps last).
+    """
+    out = {}
+    files = sorted(glob.glob(os.path.join(ENERGY, "data", "caiso_demand", "20*.json.gz")))
+    for f in files:
+        d = _read_gz_json(f)
+        for row in d.get("data", []):
+            p = row.get("period")           # 'YYYY-MM-DDTHH'
+            if not p:
+                continue
+            key = p if len(p) > 13 else p + ":00"   # -> 'YYYY-MM-DDTHH:00'
+            v = row.get("value")
+            out[key] = None if v is None else float(v)
+    return out
+
+
+def local_hour(utc_key, utc_offset_hours=-8):
+    """Map a UTC 'YYYY-MM-DDTHH:MM' key to local hour-of-day.
+
+    California/Nevada are UTC-8 (PST) / UTC-7 (PDT). A fixed offset is a
+    deliberate simplification for descriptive EDA — good enough to read diurnal
+    structure; not for production feature engineering across DST boundaries.
+    """
+    h = int(utc_key[11:13])
+    return (h + utc_offset_hours) % 24
+
+
 def to_float(series):
     """Coerce a list that may contain None to a list of floats/NaN via numpy."""
     import numpy as np
@@ -90,3 +127,7 @@ if __name__ == "__main__":
     print("previous_runs fresno-ca:", len(pr["time"]), "hours")
     em = load_ensemble_mean("fresno-ca", "ncep_gefs025_ensemble_mean")
     print("ensemble_mean fresno-ca gfs:", len(em["time"]), "hours")
+    dem = load_caiso_demand()
+    keys = sorted(dem)
+    nn = sum(1 for k in keys if dem[k] is None)
+    print(f"caiso demand: {len(dem)} hours, {nn} null, {keys[0]} -> {keys[-1]}")

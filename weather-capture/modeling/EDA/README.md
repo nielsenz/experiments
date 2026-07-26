@@ -8,12 +8,16 @@ modeling choices later are grounded.
 
 ```
 modeling/EDA/
-├── loaders.py        reusable readers for the 3 history sources (no pandas; numpy + stdlib)
-├── eda.py            the analysis: stats, profiles, forecast skill, spread, CSV export
-├── eda_summary.md    generated written summary with all tables
+├── loaders.py        reusable readers for the 4 history/energy sources (no pandas; numpy + stdlib)
+├── eda.py            weather-only analysis: stats, profiles, forecast skill, spread, CSV export
+├── join_demand_weather.py   CAISO demand × weather join: response curve, demand profiles, degree-days
+├── eda_summary.md    generated weather EDA summary
+├── join_summary.md   generated demand-vs-weather summary
 ├── figures/          generated plots
 │   ├── profiles.png                  diurnal & seasonal temp/solar, all locations
-│   └── forecast_vs_actual_temp.png   day-ahead temp forecast vs actual scatter
+│   ├── forecast_vs_actual_temp.png   day-ahead temp forecast vs actual scatter
+│   ├── demand_vs_temp.png            CAISO demand-temperature response curve
+│   └── demand_profiles.png           diurnal (local) & seasonal demand
 └── csv/              analysis-ready exports
     ├── actuals_hourly.csv            time, location, 4 actual variables (~142k rows)
     └── temp_forecast_vs_actual.csv   aligned forecast/actual/error (~108k rows)
@@ -24,7 +28,8 @@ modeling/EDA/
 ```bash
 # from repo root; deps: py3-numpy py3-matplotlib (apk)
 cd weather-capture/modeling/EDA
-python3 eda.py
+python3 eda.py                    # weather-only EDA
+python3 join_demand_weather.py    # demand × weather (needs energy/ data present)
 ```
 
 `loaders.py` can be imported by future modeling code — it flattens the gzipped
@@ -53,6 +58,27 @@ monthly archives into plain `{var: [values]}` time series and handles the
    you account for UTC (local = UTC−7/−8): pre-dawn temp trough, solar-noon peak,
    summer maxima. Desert sites (Las Vegas, Henderson, Fresno) run hotter and more
    variable than coastal LA.
+
+## Demand × weather findings (`join_demand_weather.py`)
+
+Joins CAISO system demand (EIA) to a 5-city state-average of the actuals weather
+on UTC hours — **28,384 aligned hours**, 2023-05 → today.
+
+5. **Textbook demand–temperature response curve.** Flat "comfort" demand
+   (~22.5 GW) from roughly 2–18 °C, then a sharp cooling-driven ramp above ~20 °C
+   as AC load engages — reaching ~35 GW near 40 °C. Cooling-side sensitivity is
+   **~400 MWh per °C**. Variance fans out in the hot regime, which is exactly why
+   summer demand (and summer forecast error) is the hard, high-stakes part.
+
+6. **Cooling dominates this footprint.** With base ≈ 6 °C (the response minimum),
+   cooling-degree-hours correlate with demand at **+0.63**, heating-degrees at
+   only −0.09. Degree-day transforms are the natural first features; a plain
+   linear temp correlation (+0.62) understates the U-shaped signal.
+
+7. **Demand profiles are classic CAISO.** Evening peak ~20:00 local (~29 GW),
+   pre-dawn trough ~05:00 (~22 GW); seasonal peak in August (~30.7 GW) with a
+   small winter heating uptick. Solar radiation and cloud cover correlate weakly
+   with demand on their own — temperature is the dominant weather driver.
 
 ## Caveats carried from the data
 
