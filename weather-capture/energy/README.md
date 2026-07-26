@@ -21,11 +21,36 @@ to match the CAISO window referenced in `../history/README.md`.
 
 ## Why EIA over CAISO OASIS
 
-Both serve the same underlying demand data. EIA returns years of clean hourly
-JSON in a few paginated calls; OASIS requires per-day ZIP downloads and XML
-parsing. EIA is far cheaper to maintain, so it is the primary source here. (A
-keyless OASIS fallback can be added if the EIA dependency ever becomes a
-problem.)
+Both serve "CAISO system demand," but they are **different products of the same
+grid, not copies of one number.** EIA's `type=D` is demand for the EIA-defined
+CISO balancing-authority region (timezone-normalized, gap-imputed, periodically
+revised); OASIS `SLD_FCST` / `CA ISO-TAC` is CAISO's actual hourly integrated
+load for the TAC-area footprint (settlement-grade, raw).
+
+**Measured difference** (72 hrs, 2026-07-20→22, `CA ISO-TAC` vs EIA `CISO`):
+
+| metric | value |
+|---|---|
+| mean \|diff\| | ~1,106 MWh (3.35%) |
+| max \|diff\| | ~3,454 MWh |
+| pattern | systematic, not noise — largest overnight (up to ~7%), ~0 midday |
+
+The gap is a **boundary + integration-method difference** (which sub-areas /
+imports each footprint includes — e.g. LADWP is a separate TAC area in OASIS),
+not measurement error. It's a level/shape offset, not a distortion of the
+demand-vs-weather *response*, which is what this project learns.
+
+**EIA is chosen because:**
+1. Consistency matters more than absolute boundary "correctness" for modeling
+   demand as a function of weather — EIA is uniformly processed across its whole
+   history.
+2. One JSON call covers years. OASIS needs per-request ZIP+CSV, 37 TAC areas to
+   filter, a ~31-day-per-call limit, and stricter rate limits.
+3. The ~3% offset is harmless for a weather→demand model.
+
+Use OASIS instead only if you need settlement-grade load, sub-LSE breakdowns
+(SCE / PGE / SDGE), or CAISO's official operational record. A keyless OASIS
+fallback can be added if the EIA dependency ever becomes a problem.
 
 ## Running it
 

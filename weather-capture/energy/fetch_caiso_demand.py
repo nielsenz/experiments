@@ -118,7 +118,7 @@ def main():
         sys.exit("EIA_API_KEY not set. Get a free key at https://www.eia.gov/opendata/ "
                  "and add it as an environment variable.")
 
-    end = args.end or dt.datetime.utcnow().strftime("%Y-%m-%d")
+    end = args.end or dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%d")
     start_ym, end_ym = args.start[:7], end[:7]
     os.makedirs(OUTDIR, exist_ok=True)
 
@@ -139,7 +139,7 @@ def main():
             n = len(merged["data"])
             with gzip.open(out, "wt") as fh:
                 json.dump(merged, fh)
-            manifest[ym] = {"rows": n, "fetched_utc": dt.datetime.utcnow().isoformat(timespec="seconds") + "Z",
+            manifest[ym] = {"rows": n, "fetched_utc": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z"),
                             "start": first, "end": nxt}
             json.dump(manifest, open(mpath, "w"), indent=2, sort_keys=True)
             fetched += 1
