@@ -21,11 +21,35 @@ Four conjunctions. Each can independently kill the project. Demand accuracy is
 | # | Link in the chain | Status |
 |---|---|---|
 | 0 | Forecast gross demand competitively | ✅ done — see `iso_benchmark_summary.md` |
-| 1 | **Clean gate-closure test** — does the edge survive when NO feature is fresher than CAISO's DAM gate (~10:00 day-ahead)? | ❌ REQUIRED NEXT. Current "day-ahead" model uses `previous_runs` temp + 168h lag, plausibly fresher than gate. If edge collapses here it was information latency = fake alpha. |
-| 2 | Net-load target (demand − wind − solar), not gross | ❌ not started. Pull CAISO wind/solar forecast + actual (OASIS SLD_REN_FCST / renewables). |
-| 3 | Is net-load *surprise* correlated with DA→RT spread in ramp hours? | ❌ not started. Pull DA (PRC_LMP DAM) + RT (PRC_INTVL_LMP / RTM) prices. |
-| 4 | ...incrementally over the market's implied forecast? | ❌ not started. Market already prices consensus demand. Must beat the *implied* net-load forecast, not CAISO's. |
-| 5 | ...net of bid-ask, congestion, crowding, execution? | ❌ the gap between a backtested spread edge and a tradeable one. |
+| 1 | **Clean gate-closure test** — does the edge survive when NO feature is fresher than CAISO's DAM gate (~10:00 day-ahead)? | ✅ DONE — `gate_clean_test.md`. VERDICT: edge is NOT real alpha. In the evening ramp (the price-relevant hours) CAISO beats us (~1.7%); our aggregate "edge" was CAISO's midday solar miss + our own latency leak. |
+| 2 | Net-load target (demand − wind − solar), not gross | ✅ DONE — `netload_diagnostic.py`, `netload_basis.md`. Solar error compounds MIDDAY (45–54% MAPE) not in the ramp; evening net forecast is CAISO's strong zone (~2.2%, near-zero bias). |
+| 3 | Does net-load surprise predict DA→RT spread in ramp hours? | ✅ DONE — `price_spread_verdict.md`. VERDICT: real, economically-correct, monotonic signal (+$6.22/MWh Q5−Q1 ramp) BUT placebo (overnight) captures 72% of it → mostly generic volatility; clean increment ~$1.76 vs $25 spread noise; sign-agreement ~0.56. **No exploitable edge net of costs.** |
+| 4 | ...incrementally over the market's implied forecast? | ⛔ moot — signal too small/non-specific to reach this test. |
+| 5 | ...net of bid-ask, congestion, crowding, execution? | ⛔ moot — nothing to cost out. |
+
+## OVERALL VERDICT (2026-07-26): chain ran end-to-end, no tradeable edge
+
+The full thesis was tested in order and the honest conclusion is **negative**:
+the market prices the evening net-load expectation about as well as CAISO
+forecasts it (~2.2%), and the residual surprise→spread signal is too small and
+too non-specific (placebo-confirmed) to trade net of costs. This is a *clean*
+negative — reached with every link tested rather than assumed. The pipeline,
+data, and diagnostics are all reusable if a sharper question (below) is worth
+pursuing.
+
+## What could still change the verdict (not started, lower priority)
+
+- **Node-level prices** (not the SP15 hub) where congestion makes spreads larger
+  and less efficient — the hub is the most-arbitraged point.
+- **Tail/event conditioning**: the mechanism may only pay in rare high-surprise
+  ramp events (heatwaves), not on average. Condition on |surprise| > threshold.
+- An **ex-ante surprise forecast that beats CAISO in the ramp** — the gate-clean
+  test says we don't have one; this would be the prerequisite for any real trade.
+
+---
+
+## (historical) original required order — all three now complete
+
 
 ## Required order (cheapest-highest-info first)
 
