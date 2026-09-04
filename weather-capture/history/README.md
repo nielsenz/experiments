@@ -9,7 +9,7 @@ turn that gate red, which is the entire reason this lives in its own tree.
 history/
 ├── features/                        SAFE as model inputs
 │   ├── previous_runs_ifs_hres/      ECMWF IFS HRES, as issued
-│   └── ensemble_mean/               ensemble mean/spread (archive)
+│   └── ensemble_mean/               dated ensemble mean/spread archive vintages
 └── verification/                    ACTUALS — never a feature
     └── historical_forecast_actuals/
 ```
@@ -85,10 +85,11 @@ gives 2+ years of deterministic as-issued forecasts against the CAISO series.
 
 `ensemble_mean` has the shortest window and it is not a choice: the ensemble
 archive is reached with `past_days`, which the API caps at **93** ('Allowed range
-0 to 93'). Anything older 400s. So `start_date` must stay within ~93 days of
-today, and mean/spread older than that window is simply not retrievable. **Re-run
-this source periodically** to keep pushing coverage forward — it is a rolling
-window, not a one-shot deep backfill like the other two.
+0 to 93'). Anything older 400s. The planner clamps the discovery floor to the
+current 93-day window. Mean/spread older than that window is simply not
+retrievable. **Re-run this source periodically**: each run writes a dated
+`archive_<as-of-date>.json.gz` vintage, so the owned archive advances without
+overwriting earlier pulls.
 
 May–December 2023 has actuals and CAISO but no as-issued forecasts. Don't try to
 train on it. It is there for the descriptive work that needs no weather at all —
@@ -145,9 +146,10 @@ environment — are now confirmed by real fetches, with these findings:
   from invalid String value"), which is the cheap way to probe new candidates.
 
 Because `past_days` anchors to today, `ensemble_mean` pulls its whole window in a
-single call per location+model, written as `archive.json.gz`, with the effective
-`past_days` and `as_of` date recorded in the manifest. Its 93-day window is a
-rolling one — re-run it periodically to extend coverage forward.
+single call per location+model, written as `archive_<as-of-date>.json.gz`, with
+the effective `past_days` and `as_of` date recorded in the manifest. Its 93-day
+window is rolling; same-day reruns skip an intact vintage, while later dates add
+new vintages.
 
 ### Not an option: Previous Runs for ensembles
 

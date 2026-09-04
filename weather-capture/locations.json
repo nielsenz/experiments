@@ -57,6 +57,24 @@
       "name": "Henderson, Nevada",
       "latitude": 36.0395,
       "longitude": -114.9817
+    },
+    {
+      "slug": "chicago-midway-il",
+      "name": "Chicago Midway Airport, Illinois",
+      "latitude": 41.7842,
+      "longitude": -87.7553
+    },
+    {
+      "slug": "new-york-central-park-ny",
+      "name": "New York Central Park, New York",
+      "latitude": 40.7789,
+      "longitude": -73.9692
+    },
+    {
+      "slug": "miami-airport-fl",
+      "name": "Miami International Airport, Florida",
+      "latitude": 25.7906,
+      "longitude": -80.3164
     }
   ]
 }

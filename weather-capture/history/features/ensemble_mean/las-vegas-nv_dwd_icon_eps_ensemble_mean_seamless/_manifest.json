@@ -16,6 +16,22 @@
       "sha256": "6d4dd776653ccefc8270ae320bc83075ddbbee9f74d3747553785cf94027fff6",
       "start_date": "2026-04-25",
       "status": "ok"
+    },
+    "archive_2026-09-04.json.gz": {
+      "as_of": "2026-09-04",
+      "attempts": 1,
+      "bytes": 19944,
+      "end_date": "2026-09-04",
+      "fetched_at": "2026-09-04T04:57:05.550563+00:00",
+      "location": "las-vegas-nv",
+      "model": "dwd_icon_eps_ensemble_mean_seamless",
+      "past_days": 93,
+      "provenance": "archive_ensemble_mean",
+      "raw_bytes": 126567,
+      "role": "feature",
+      "sha256": "8a70e83b9f1411dd70ebaeac9a160e29eca4e74bed04d4333e2f907405b11fcc",
+      "start_date": "2026-06-03",
+      "status": "ok"
     }
   },
   "failed": 0,
@@ -32,10 +48,10 @@
   "models": [
     "dwd_icon_eps_ensemble_mean_seamless"
   ],
-  "ok": 1,
+  "ok": 2,
   "provenance": "archive_ensemble_mean",
   "role": "feature",
   "schema_version": 1,
   "source": "ensemble_mean",
-  "updated_at": "2026-07-26T14:05:35.851575+00:00"
+  "updated_at": "2026-09-04T04:57:53.535870+00:00"
 }

@@ -11,7 +11,10 @@
     { "slug": "sacramento-ca",  "latitude": 38.5816, "longitude": -121.4944 },
     { "slug": "los-angeles-ca", "latitude": 34.0522, "longitude": -118.2437 },
     { "slug": "las-vegas-nv",   "latitude": 36.1699, "longitude": -115.1398 },
-    { "slug": "henderson-nv",   "latitude": 36.0395, "longitude": -114.9817 }
+    { "slug": "henderson-nv",   "latitude": 36.0395, "longitude": -114.9817 },
+    { "slug": "chicago-midway-il", "latitude": 41.7842, "longitude": -87.7553 },
+    { "slug": "new-york-central-park-ny", "latitude": 40.7789, "longitude": -73.9692 },
+    { "slug": "miami-airport-fl", "latitude": 25.7906, "longitude": -80.3164 }
   ],
 
   "request": {
@@ -77,6 +80,7 @@
       "start_date": "2026-04-25",
       "end_date": "today",
       "chunk": "past_days",
+      "max_past_days": 93,
       "forecast_days": 7,
       "request_units_per_call": 4,
       "hourly": [
@@ -92,8 +96,8 @@
       "_confirmed_models": [
         "VERIFIED 2026-07-26 against the live ensemble API. Three ensemble_mean model ids confirmed to return all 8 variables (four fields + _spread each): dwd_icon_eps_ensemble_mean_seamless (DWD ICON), ncep_gefs025_ensemble_mean (GFS/GEFS), ecmwf_ifs025_ensemble_mean (ECMWF IFS). Note the naming is not uniform: the DWD id carries a _seamless suffix, the GFS and ECMWF ids do NOT. Invalid ids return HTTP 400 'Cannot initialize MultiDomains from invalid String value', which is the cheap way to probe new candidates."
       ],
-      "_archive_access": "The archive is reached with past_days rather than start_date/end_date, so this source makes ONE call per location+model covering the whole window back to start_date, written as archive.json.gz.",
-      "_past_days_limit": "VERIFIED 2026-07-26 against the live API: the ensemble host caps past_days at 93 ('Allowed range 0 to 93'). start_date must stay within ~93 days of today or every call 400s. Set to 2026-04-25 for this reason -- an earlier floor (2026-03-01 was tried) is rejected. This is a hard upstream limit: mean/spread older than the window is not retrievable here, so run this source periodically to keep extending coverage forward rather than expecting a single deep backfill.",
+      "_archive_access": "The archive is reached with past_days rather than start_date/end_date, so this source makes ONE call per location+model covering the available rolling window. Each retrieval is written as archive_<as-of-date>.json.gz so later runs extend the owned archive instead of skipping or overwriting the first pull.",
+      "_past_days_limit": "VERIFIED 2026-07-26 against the live API: the ensemble host caps past_days at 93 ('Allowed range 0 to 93'). The planner clamps the configured discovery floor to max_past_days=93 relative to each run date. This is a hard upstream limit: mean/spread older than the window is not retrievable here, so run this source periodically to keep extending coverage forward rather than expecting a single deep backfill.",
       "_seam_warning": "DO NOT concatenate this with the daily members capture into one continuous feature. Archive mean/spread and mean/spread computed from captured members are different statistics -- different generating process, member counts and derivation. The provenance field above is recorded into every manifest entry so the seam stays visible downstream. See history/README.md."
     },
 

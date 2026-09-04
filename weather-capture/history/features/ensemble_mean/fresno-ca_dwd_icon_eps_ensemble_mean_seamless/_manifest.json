@@ -16,6 +16,22 @@
       "sha256": "c9543d0853e9c16070ea052a4ce19d403a28772ce7d219452475293c0724ca81",
       "start_date": "2026-04-25",
       "status": "ok"
+    },
+    "archive_2026-09-04.json.gz": {
+      "as_of": "2026-09-04",
+      "attempts": 1,
+      "bytes": 19314,
+      "end_date": "2026-09-04",
+      "fetched_at": "2026-09-04T04:56:34.681889+00:00",
+      "location": "fresno-ca",
+      "model": "dwd_icon_eps_ensemble_mean_seamless",
+      "past_days": 93,
+      "provenance": "archive_ensemble_mean",
+      "raw_bytes": 125667,
+      "role": "feature",
+      "sha256": "4db0a61ad3f551ff966498ef7b0ea7eb59cb53d174b4874153fdb15ce083e63d",
+      "start_date": "2026-06-03",
+      "status": "ok"
     }
   },
   "failed": 0,
@@ -32,10 +48,10 @@
   "models": [
     "dwd_icon_eps_ensemble_mean_seamless"
   ],
-  "ok": 1,
+  "ok": 2,
   "provenance": "archive_ensemble_mean",
   "role": "feature",
   "schema_version": 1,
   "source": "ensemble_mean",
-  "updated_at": "2026-07-26T14:05:35.842764+00:00"
+  "updated_at": "2026-09-04T04:57:53.531483+00:00"
 }

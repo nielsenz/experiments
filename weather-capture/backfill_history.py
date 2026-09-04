@@ -337,11 +337,16 @@ def plan_source(config: dict, root: str, source_name: str, source: dict,
 
     if past_days_mode:
         # past_days always anchors to today, so an arbitrary past window cannot
-        # be selected -- one call per series covers the whole thing.
+        # be selected -- one call per series covers the whole available window.
+        # Store each retrieval by as-of date: overwriting/skipping one fixed
+        # archive file would prevent this rolling upstream window from ever
+        # advancing after the first successful run.
         if end < start:
             raise ValueError(f"end date {end} is before start date {start}")
-        past_days = (today - start).days
-        chunks = [("archive", start, end, past_days)]
+        max_past_days = int(source.get("max_past_days", 93))
+        effective_start = max(start, today - dt.timedelta(days=max_past_days))
+        past_days = (today - effective_start).days
+        chunks = [(f"archive_{today.isoformat()}", effective_start, end, past_days)]
     else:
         chunks = [(label, s, e, None) for label, s, e in month_chunks(start, end)]
 
