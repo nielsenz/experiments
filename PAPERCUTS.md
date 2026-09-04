@@ -1,0 +1,21 @@
+# Papercuts
+
+Small frictions logged in the moment — dead-end tool calls, misleading errors,
+undocumented setup steps, flaky commands. Not blocking on their own; together
+they show where this repo needs sanding down. Append-only, newest at the bottom.
+
+2026-09-04T04:54:37.373Z - gpt-5.6-sol - znielsen
+
+The weather-capture ensemble archive documents a rolling 93-day upstream limit but hard-codes start_date=2026-04-25 and writes a single archive.json.gz that resumability will skip forever; by 2026-09-03 a fresh call requests 131 past days and fails, while a successful old file prevents the periodic extension the README promises.
+
+2026-09-04T04:55:47.570Z - gpt-5.6-sol - znielsen
+
+The documented weather-capture unittest command fails in a fresh checkout because requests is not installed and the README does not tell test runners to install requirements first; only check_gaps tests run, while test_backfill and test_fetch fail during import.
+
+2026-09-04T04:57:15.356Z - gpt-5.6-sol - znielsen
+
+The resumable ensemble_mean backfill was planned for 24 calls, but the exec session reported completion after 10 files with no exit status or summary; the 3-second per-call pacing makes the full job exceed the wrapper's apparent ~30-second lifecycle despite yielding a cell, so repeated invocations are required.
+
+2026-09-04T16:22:04.073Z - gpt-5.6-sol - znielsen
+
+The weather-capture test command had passed earlier with uv --with requests, but a repeat still tried to resolve PyPI and failed on sandbox DNS instead of using the populated task cache. Reliable offline tests need requests declared in the project environment or a locked cache path.

@@ -1,0 +1,43 @@
+{
+  "endpoint": "https://ensemble-api.open-meteo.com/v1/ensemble",
+  "entries": {
+    "archive_2026-09-04.json.gz": {
+      "as_of": "2026-09-04",
+      "attempts": 1,
+      "bytes": 21417,
+      "end_date": "2026-09-04",
+      "fetched_at": "2026-09-04T04:57:26.732714+00:00",
+      "location": "chicago-midway-il",
+      "model": "dwd_icon_eps_ensemble_mean_seamless",
+      "past_days": 93,
+      "provenance": "archive_ensemble_mean",
+      "raw_bytes": 128267,
+      "role": "feature",
+      "sha256": "0ca6a8f19f8d7a678078b7caca27deae747718047254fa355cda57bcc9f9c91a",
+      "start_date": "2026-06-03",
+      "status": "ok"
+    }
+  },
+  "failed": 0,
+  "hourly": [
+    "temperature_2m",
+    "temperature_2m_spread",
+    "shortwave_radiation",
+    "shortwave_radiation_spread",
+    "cloud_cover",
+    "cloud_cover_spread",
+    "wind_speed_100m",
+    "wind_speed_100m_spread"
+  ],
+  "models": [
+    "dwd_icon_eps_ensemble_mean_seamless",
+    "ncep_gefs025_ensemble_mean",
+    "ecmwf_ifs025_ensemble_mean"
+  ],
+  "ok": 1,
+  "provenance": "archive_ensemble_mean",
+  "role": "feature",
+  "schema_version": 1,
+  "source": "ensemble_mean",
+  "updated_at": "2026-09-04T04:57:54.183028+00:00"
+}

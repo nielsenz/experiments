@@ -16,6 +16,22 @@
       "sha256": "c6b637c5f12b3cf96fb2e2242c92ba4bcd89c90e1aef546f080c337f9c7ad14b",
       "start_date": "2026-04-25",
       "status": "ok"
+    },
+    "archive_2026-09-04.json.gz": {
+      "as_of": "2026-09-04",
+      "attempts": 1,
+      "bytes": 19399,
+      "end_date": "2026-09-04",
+      "fetched_at": "2026-09-04T04:56:48.421914+00:00",
+      "location": "sacramento-ca",
+      "model": "ncep_gefs025_ensemble_mean",
+      "past_days": 93,
+      "provenance": "archive_ensemble_mean",
+      "raw_bytes": 125871,
+      "role": "feature",
+      "sha256": "f55af0b3d1e8a148d2e9cb591a1a1c1122183eb3f787f459fa5c5e55a2674e88",
+      "start_date": "2026-06-03",
+      "status": "ok"
     }
   },
   "failed": 0,
@@ -34,10 +50,10 @@
     "ncep_gefs025_ensemble_mean",
     "ecmwf_ifs025_ensemble_mean"
   ],
-  "ok": 1,
+  "ok": 2,
   "provenance": "archive_ensemble_mean",
   "role": "feature",
   "schema_version": 1,
   "source": "ensemble_mean",
-  "updated_at": "2026-07-26T14:49:56.756380+00:00"
+  "updated_at": "2026-09-04T04:57:53.533819+00:00"
 }

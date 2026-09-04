@@ -16,6 +16,22 @@
       "sha256": "9f4282bc3b1fd364b1f54f25edef333ef1ee371dec7330438eb3dc9d295f428f",
       "start_date": "2026-04-25",
       "status": "ok"
+    },
+    "archive_2026-09-04.json.gz": {
+      "as_of": "2026-09-04",
+      "attempts": 1,
+      "bytes": 24937,
+      "end_date": "2026-09-04",
+      "fetched_at": "2026-09-04T04:57:02.113335+00:00",
+      "location": "los-angeles-ca",
+      "model": "ecmwf_ifs025_ensemble_mean",
+      "past_days": 93,
+      "provenance": "archive_ensemble_mean",
+      "raw_bytes": 122890,
+      "role": "feature",
+      "sha256": "47770486ed9bd4ba242a7471ff9f8c86719dcf446ad29647a332c0d130abf51d",
+      "start_date": "2026-06-03",
+      "status": "ok"
     }
   },
   "failed": 0,
@@ -34,10 +50,10 @@
     "ncep_gefs025_ensemble_mean",
     "ecmwf_ifs025_ensemble_mean"
   ],
-  "ok": 1,
+  "ok": 2,
   "provenance": "archive_ensemble_mean",
   "role": "feature",
   "schema_version": 1,
   "source": "ensemble_mean",
-  "updated_at": "2026-07-26T14:49:56.765753+00:00"
+  "updated_at": "2026-09-04T04:57:53.535486+00:00"
 }

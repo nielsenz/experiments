@@ -1,7 +1,9 @@
 # weather-capture
 
-Daily capture of Open-Meteo **ensemble** forecasts for five locations in
-California and Nevada, committed to this repo as gzipped raw JSON.
+Daily capture of Open-Meteo **ensemble** forecasts for eight locations,
+committed to this repo as gzipped raw JSON. Five support the original CAISO
+work; Chicago Midway, New York Central Park, and Miami International are exact
+settlement locations for the deepest Kalshi weather books outside LA.
 
 Open-Meteo retains individual ensemble members for only about three days. This
 job accumulates a forecast history that cannot be bought or backfilled after the
@@ -13,13 +15,13 @@ capturing something and failing loudly when it doesn't.
 | | |
 |---|---|
 | Endpoint | `https://ensemble-api.open-meteo.com/v1/ensemble` |
-| Locations | Fresno CA, Sacramento CA, Los Angeles CA, Las Vegas NV, Henderson NV |
+| Locations | Fresno, Sacramento, Los Angeles, Las Vegas, Henderson, Chicago Midway, New York Central Park, Miami International |
 | Models | `gfs025`, `ecmwf_ifs025`, `icon_seamless` |
 | Hourly variables | `temperature_2m`, `shortwave_radiation`, `cloud_cover`, `wind_speed_100m` |
 | Horizon | `forecast_days=7`, plus `past_days=3` of trailing hours |
 | Schedule | 06:00 and 18:00 UTC, plus manual dispatch |
 
-15 files per day (5 locations × 3 models), one HTTP request each.
+24 files per day (8 locations × 3 models), one HTTP request each.
 
 ```
 weather-capture/data/2026-07-25/
@@ -40,7 +42,7 @@ looking like data — but what gets stored is always the original bytes.)
    exists and is intact. Skip it if so, fetch it if not. This is what makes a
    skipped or delayed run self-healing, and it's why the 18:00 job normally does
    nothing: on a healthy day, the 06:00 job already got everything.
-2. Each fetch is isolated. One bad response never aborts the other fourteen.
+2. Each fetch is isolated. One bad response never aborts the other twenty-three.
    Failures retry 3× with exponential backoff and jitter; calls are spaced ~2s
    apart to stay polite.
 3. Results are recorded in the date's `_manifest.json` after **every** fetch, so
@@ -59,11 +61,11 @@ trailing 3-day window, which is the entire backlog that exists, since members
 older than that are already gone upstream.
 
 1. **Actions → weather-capture → Run workflow** (leave both date inputs blank).
-2. Watch the log. You want to see 15 `ok` lines and a summary like
-   `2026-07-25: 15 fetched, 0 already present, 0 failed`.
+2. Watch the log. You want to see 24 `ok` lines and a summary like
+   `2026-07-25: 24 fetched, 0 already present, 0 failed`.
 3. Confirm the final step prints `all 3 day(s) complete.` and the job is green.
 4. Check the commit landed: `weather-capture/data/` should have three dated
-   directories with 15 files plus a `_manifest.json` each.
+   directories with 24 files plus a `_manifest.json` each.
 5. Spot-check that a file is real data:
 
    ```bash
@@ -155,7 +157,7 @@ needs no weather. Start with `--dry-run`.
 
 ## Storage
 
-Roughly 30–60 KB gzipped per file, ~700 KB/day, so on the order of **250 MB per
+Roughly 30–60 KB gzipped per file, ~1.1 MB/day, so on the order of **400 MB per
 year**. Files are written once and never modified, so git deltas don't compound,
 but expect the repo to be around a gigabyte after four years.
 

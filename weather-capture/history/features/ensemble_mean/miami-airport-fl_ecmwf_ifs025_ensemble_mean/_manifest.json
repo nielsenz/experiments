@@ -1,35 +1,19 @@
 {
   "endpoint": "https://ensemble-api.open-meteo.com/v1/ensemble",
   "entries": {
-    "archive.json.gz": {
-      "as_of": "2026-07-26",
-      "attempts": 1,
-      "bytes": 25645,
-      "end_date": "2026-07-26",
-      "fetched_at": "2026-07-26T14:49:56.664472+00:00",
-      "location": "henderson-nv",
-      "model": "ecmwf_ifs025_ensemble_mean",
-      "past_days": 92,
-      "provenance": "archive_ensemble_mean",
-      "raw_bytes": 121954,
-      "role": "feature",
-      "sha256": "c5ef84da11aa92906b3f160a49029f129a464cebe099c6436cd8d18531c76a1c",
-      "start_date": "2026-04-25",
-      "status": "ok"
-    },
     "archive_2026-09-04.json.gz": {
       "as_of": "2026-09-04",
       "attempts": 1,
-      "bytes": 26399,
+      "bytes": 26305,
       "end_date": "2026-09-04",
-      "fetched_at": "2026-09-04T04:57:23.310435+00:00",
-      "location": "henderson-nv",
+      "fetched_at": "2026-09-04T04:57:54.149237+00:00",
+      "location": "miami-airport-fl",
       "model": "ecmwf_ifs025_ensemble_mean",
       "past_days": 93,
       "provenance": "archive_ensemble_mean",
-      "raw_bytes": 123870,
+      "raw_bytes": 125554,
       "role": "feature",
-      "sha256": "1077b3af2483eb5a07ca5be98dd5cf461bd4c9a16e55920c04d7e820b0697ada",
+      "sha256": "55ab29c9edf8ee069eda812578eb44e92cd041d8908dab50db9055dd754d1dd8",
       "start_date": "2026-06-03",
       "status": "ok"
     }
@@ -50,10 +34,10 @@
     "ncep_gefs025_ensemble_mean",
     "ecmwf_ifs025_ensemble_mean"
   ],
-  "ok": 2,
+  "ok": 1,
   "provenance": "archive_ensemble_mean",
   "role": "feature",
   "schema_version": 1,
   "source": "ensemble_mean",
-  "updated_at": "2026-09-04T04:57:54.182565+00:00"
+  "updated_at": "2026-09-04T04:57:54.185853+00:00"
 }

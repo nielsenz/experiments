@@ -1,0 +1,43 @@
+{
+  "endpoint": "https://ensemble-api.open-meteo.com/v1/ensemble",
+  "entries": {
+    "archive_2026-09-04.json.gz": {
+      "as_of": "2026-09-04",
+      "attempts": 1,
+      "bytes": 21300,
+      "end_date": "2026-09-04",
+      "fetched_at": "2026-09-04T04:57:37.026153+00:00",
+      "location": "new-york-central-park-ny",
+      "model": "dwd_icon_eps_ensemble_mean_seamless",
+      "past_days": 93,
+      "provenance": "archive_ensemble_mean",
+      "raw_bytes": 128227,
+      "role": "feature",
+      "sha256": "512da85f19fd875eeeccf9647b34d08120abfece16673ab20faacb530875a7c8",
+      "start_date": "2026-06-03",
+      "status": "ok"
+    }
+  },
+  "failed": 0,
+  "hourly": [
+    "temperature_2m",
+    "temperature_2m_spread",
+    "shortwave_radiation",
+    "shortwave_radiation_spread",
+    "cloud_cover",
+    "cloud_cover_spread",
+    "wind_speed_100m",
+    "wind_speed_100m_spread"
+  ],
+  "models": [
+    "dwd_icon_eps_ensemble_mean_seamless",
+    "ncep_gefs025_ensemble_mean",
+    "ecmwf_ifs025_ensemble_mean"
+  ],
+  "ok": 1,
+  "provenance": "archive_ensemble_mean",
+  "role": "feature",
+  "schema_version": 1,
+  "source": "ensemble_mean",
+  "updated_at": "2026-09-04T04:57:54.184204+00:00"
+}

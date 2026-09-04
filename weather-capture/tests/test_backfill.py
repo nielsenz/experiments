@@ -138,6 +138,29 @@ class ChunkingTests(unittest.TestCase):
         self.assertEqual(bh.parse_date("today", TODAY), TODAY)
         self.assertEqual(bh.parse_date("2024-01-01", TODAY), dt.date(2024, 1, 1))
 
+    def test_rolling_archive_is_clamped_and_versioned_by_as_of_date(self):
+        source = {
+            "role": "feature",
+            "provenance": "archive_ensemble_mean",
+            "models": ["ecmwf_ifs025_ensemble_mean"],
+            "start_date": "2026-01-01",
+            "end_date": "today",
+            "chunk": "past_days",
+            "max_past_days": 93,
+            "request_units_per_call": 4,
+        }
+        config = {"locations": [{
+            "slug": "miami-airport-fl", "latitude": 25.7906, "longitude": -80.3164,
+        }]}
+
+        jobs = bh.plan_source(config, "/history", "ensemble_mean", source, TODAY)
+
+        self.assertEqual(len(jobs), 1)
+        self.assertEqual(jobs[0]["past_days"], 93)
+        self.assertEqual(jobs[0]["chunk_start"], TODAY - dt.timedelta(days=93))
+        self.assertEqual(jobs[0]["label"], "archive_2026-07-25")
+        self.assertTrue(jobs[0]["path"].endswith("archive_2026-07-25.json.gz"))
+
 
 class RoutingTests(unittest.TestCase):
     """Role decides the tree. This is the firewall, so it is worth pinning down."""
@@ -469,7 +492,7 @@ class PastDaysArchiveTests(unittest.TestCase):
         params = session.calls[0]["params"]
         self.assertNotIn("start_date", params)
         self.assertNotIn("end_date", params)
-        self.assertEqual(params["past_days"], (TODAY - dt.date(2026, 3, 1)).days)
+        self.assertEqual(params["past_days"], 93)
         self.assertEqual(params["forecast_days"], 7)
 
     def test_requests_mean_and_spread_with_the_ensemble_mean_model(self):
@@ -482,7 +505,8 @@ class PastDaysArchiveTests(unittest.TestCase):
         self.run_backfill()
         self.assertTrue(os.path.exists(os.path.join(
             self.root, "features", "ensemble_mean",
-            "fresno-ca_dwd_icon_eps_ensemble_mean_seamless", "archive.json.gz")))
+            "fresno-ca_dwd_icon_eps_ensemble_mean_seamless",
+            "archive_2026-07-25.json.gz")))
 
     def test_records_past_days_and_as_of_in_the_manifest(self):
         self.run_backfill()
@@ -490,9 +514,9 @@ class PastDaysArchiveTests(unittest.TestCase):
                             "fresno-ca_dwd_icon_eps_ensemble_mean_seamless", "_manifest.json")
         with open(path, encoding="utf-8") as handle:
             manifest = json.load(handle)
-        entry = manifest["entries"]["archive.json.gz"]
+        entry = manifest["entries"]["archive_2026-07-25.json.gz"]
         self.assertEqual(entry["as_of"], TODAY.isoformat())
-        self.assertEqual(entry["past_days"], (TODAY - dt.date(2026, 3, 1)).days)
+        self.assertEqual(entry["past_days"], 93)
 
     def test_bills_four_units_per_ensemble_call(self):
         config = make_config(sources={"ensemble_mean": ensemble_mean_source()}, locations=2)
@@ -537,7 +561,7 @@ class ProvenanceTests(unittest.TestCase):
         manifest = self.read_manifest(
             "features", "ensemble_mean", "fresno-ca_dwd_icon_eps_ensemble_mean_seamless")
         self.assertEqual(manifest["provenance"], "archive_ensemble_mean")
-        self.assertEqual(manifest["entries"]["archive.json.gz"]["provenance"],
+        self.assertEqual(manifest["entries"]["archive_2026-07-25.json.gz"]["provenance"],
                          "archive_ensemble_mean")
 
     def test_archive_and_captured_members_carry_different_provenance(self):

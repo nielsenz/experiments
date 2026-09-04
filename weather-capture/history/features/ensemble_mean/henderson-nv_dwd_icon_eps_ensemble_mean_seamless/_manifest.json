@@ -16,6 +16,22 @@
       "sha256": "9f060b6168efb45f841f523f1a1e88bc1e9e819c0dc97eeb0b7b88638d7752bf",
       "start_date": "2026-04-25",
       "status": "ok"
+    },
+    "archive_2026-09-04.json.gz": {
+      "as_of": "2026-09-04",
+      "attempts": 1,
+      "bytes": 20116,
+      "end_date": "2026-09-04",
+      "fetched_at": "2026-09-04T04:57:15.801895+00:00",
+      "location": "henderson-nv",
+      "model": "dwd_icon_eps_ensemble_mean_seamless",
+      "past_days": 93,
+      "provenance": "archive_ensemble_mean",
+      "raw_bytes": 126538,
+      "role": "feature",
+      "sha256": "1fc583317d857425e8b2032b55ad6df0cc7061782a9d7e8b25619edbd48d3f52",
+      "start_date": "2026-06-03",
+      "status": "ok"
     }
   },
   "failed": 0,
@@ -32,10 +48,10 @@
   "models": [
     "dwd_icon_eps_ensemble_mean_seamless"
   ],
-  "ok": 1,
+  "ok": 2,
   "provenance": "archive_ensemble_mean",
   "role": "feature",
   "schema_version": 1,
   "source": "ensemble_mean",
-  "updated_at": "2026-07-26T14:05:35.854485+00:00"
+  "updated_at": "2026-09-04T04:57:53.536939+00:00"
 }
