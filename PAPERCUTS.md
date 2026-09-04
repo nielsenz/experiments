@@ -23,3 +23,7 @@ The weather-capture test command had passed earlier with uv --with requests, but
 2026-09-04T16:23:48.395Z - gpt-5.6-sol - znielsen
 
 Creating the archive commit produced Git's auto-detected author warning because this checkout has no explicit user.name/user.email. Repository setup should document or initialize commit identity before automated contributor workflows.
+
+2026-09-04T16:24:40.713Z - gpt-5.6-sol - znielsen
+
+Pushing the weather archive branch triggered GitHub's 50 MB warning for the unrelated existing blob papyri-linkedin/papyri_graph_5k_canonical.json (62.23 MB). The repo history carries a large non-LFS object, so otherwise small branch pushes surface a distracting storage warning.
