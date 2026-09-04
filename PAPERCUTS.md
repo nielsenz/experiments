@@ -31,3 +31,7 @@ Pushing the weather archive branch triggered GitHub's 50 MB warning for the unre
 2026-09-04T16:25:31.423Z - gpt-5.6-sol - znielsen
 
 After opening the weather-capture PR, gh pr checks reported no checks on the branch. The repository has no PR validation for the 100-test suite or archive integrity check, so local results are the only automated evidence.
+
+2026-09-04T21:05:15.673Z - gpt-5.6-sol - znielsen
+
+The first gh pr view for PR #6 returned mergeable/mergeStateStatus as UNKNOWN even though the PR was clean; an immediate repeat returned MERGEABLE/CLEAN. GitHub's mergeability calculation is transient and should be retried before treating UNKNOWN as a blocker.
