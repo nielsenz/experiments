@@ -1,7 +1,43 @@
 {
-  "complete": true,
+  "complete": false,
   "date": "2026-09-03",
   "entries": {
+    "chicago-midway-il_ecmwf_ifs025.json.gz": {
+      "attempts": 1,
+      "bytes": 57668,
+      "captured_at": "2026-09-05T09:59:07.702494+00:00",
+      "late": true,
+      "location": "chicago-midway-il",
+      "model": "ecmwf_ifs025",
+      "past_days_used": 3,
+      "raw_bytes": 234337,
+      "sha256": "16300f339e1699ba1199bdf8d58233de4e072f405829f8ce8db4129da7de958f",
+      "status": "ok"
+    },
+    "chicago-midway-il_gfs025.json.gz": {
+      "attempts": 1,
+      "bytes": 24008,
+      "captured_at": "2026-09-05T09:59:05.198991+00:00",
+      "late": true,
+      "location": "chicago-midway-il",
+      "model": "gfs025",
+      "past_days_used": 3,
+      "raw_bytes": 144130,
+      "sha256": "37149dde4ae80989d9bf9ebadb9f2843298080d31bb22440322a4d64796777fd",
+      "status": "ok"
+    },
+    "chicago-midway-il_icon_seamless.json.gz": {
+      "attempts": 1,
+      "bytes": 31004,
+      "captured_at": "2026-09-05T09:59:10.085991+00:00",
+      "late": true,
+      "location": "chicago-midway-il",
+      "model": "icon_seamless",
+      "past_days_used": 3,
+      "raw_bytes": 186947,
+      "sha256": "2026b8ca64ed63de99770e9c1137bd33a4e1da7cf6a983b8d0edaa3a94265892",
+      "status": "ok"
+    },
     "fresno-ca_ecmwf_ifs025.json.gz": {
       "attempts": 1,
       "bytes": 45543,
@@ -146,6 +182,78 @@
       "sha256": "df17d8fddd3dad1c0812ed7a0bf71dd0c2ed4f236f6140970add47a671ac7b44",
       "status": "ok"
     },
+    "miami-airport-fl_ecmwf_ifs025.json.gz": {
+      "attempts": 1,
+      "bytes": 54173,
+      "captured_at": "2026-09-05T09:59:22.707125+00:00",
+      "late": true,
+      "location": "miami-airport-fl",
+      "model": "ecmwf_ifs025",
+      "past_days_used": 3,
+      "raw_bytes": 230609,
+      "sha256": "451e6a24fe9f9f929a85aa74288c2b422435d71da5d7ed7cd44cdd3f7e9a9bef",
+      "status": "ok"
+    },
+    "miami-airport-fl_gfs025.json.gz": {
+      "attempts": 1,
+      "bytes": 22402,
+      "captured_at": "2026-09-05T09:59:20.203985+00:00",
+      "late": true,
+      "location": "miami-airport-fl",
+      "model": "gfs025",
+      "past_days_used": 3,
+      "raw_bytes": 146220,
+      "sha256": "8c1ab314ffced5469842b5777ebf3b5f0a00e09f8045bb482178920bf03de81e",
+      "status": "ok"
+    },
+    "miami-airport-fl_icon_seamless.json.gz": {
+      "attempts": 1,
+      "bytes": 28205,
+      "captured_at": "2026-09-05T09:59:25.091103+00:00",
+      "late": true,
+      "location": "miami-airport-fl",
+      "model": "icon_seamless",
+      "past_days_used": 3,
+      "raw_bytes": 190570,
+      "sha256": "38f14a063a6c5ab386352686ccb1cad2ab6d00076d279bf5a11595fcbe968c83",
+      "status": "ok"
+    },
+    "new-york-central-park-ny_ecmwf_ifs025.json.gz": {
+      "attempts": 1,
+      "bytes": 55259,
+      "captured_at": "2026-09-05T09:59:15.472047+00:00",
+      "late": true,
+      "location": "new-york-central-park-ny",
+      "model": "ecmwf_ifs025",
+      "past_days_used": 3,
+      "raw_bytes": 234704,
+      "sha256": "af9d78a38175972f0951c2b02a63bcdd7390e228f6b779187e173f8b621c94b3",
+      "status": "ok"
+    },
+    "new-york-central-park-ny_gfs025.json.gz": {
+      "attempts": 1,
+      "bytes": 24092,
+      "captured_at": "2026-09-05T09:59:12.964471+00:00",
+      "late": true,
+      "location": "new-york-central-park-ny",
+      "model": "gfs025",
+      "past_days_used": 3,
+      "raw_bytes": 145804,
+      "sha256": "36709c27c8d7cf72d83c9d6aa8260f931d4ff2145c5a7433b53f7e347238761c",
+      "status": "ok"
+    },
+    "new-york-central-park-ny_icon_seamless.json.gz": {
+      "attempts": 1,
+      "bytes": 29912,
+      "captured_at": "2026-09-05T09:59:17.853335+00:00",
+      "late": true,
+      "location": "new-york-central-park-ny",
+      "model": "icon_seamless",
+      "past_days_used": 3,
+      "raw_bytes": 187543,
+      "sha256": "1eee543cd55ace156a023db3fb9d22ec8ed4f44c08f8196e7850bc6ec5fb4fe2",
+      "status": "ok"
+    },
     "sacramento-ca_ecmwf_ifs025.json.gz": {
       "attempts": 1,
       "bytes": 53434,
@@ -202,8 +310,8 @@
     "sacramento-ca_icon_seamless.json.gz"
   ],
   "failed": 0,
-  "ok": 15,
+  "ok": 24,
   "provenance": "captured_ensemble_members",
   "schema_version": 1,
-  "updated_at": "2026-09-04T20:33:16.469206+00:00"
+  "updated_at": "2026-09-05T09:59:25.127025+00:00"
 }
