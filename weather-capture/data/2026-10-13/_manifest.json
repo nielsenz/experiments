@@ -1,5 +1,5 @@
 {
-  "complete": false,
+  "complete": true,
   "date": "2026-10-13",
   "entries": {
     "chicago-midway-il_ecmwf_ifs025.json.gz": {
@@ -27,19 +27,16 @@
       "status": "ok"
     },
     "chicago-midway-il_icon_seamless.json.gz": {
-      "all_errors": [
-        "attempt 1: HTTP 500: {\"reason\":\"Something went wrong.\",\"error\":true}",
-        "attempt 2: HTTP 500: {\"reason\":\"Something went wrong.\",\"error\":true}",
-        "attempt 3: HTTP 500: {\"reason\":\"Something went wrong.\",\"error\":true}"
-      ],
-      "attempts": 3,
-      "captured_at": "2026-10-13T00:25:08.981074+00:00",
-      "error": "attempt 3: HTTP 500: {\"reason\":\"Something went wrong.\",\"error\":true}",
+      "attempts": 1,
+      "bytes": 27383,
+      "captured_at": "2026-10-13T13:36:51.401140+00:00",
       "late": false,
       "location": "chicago-midway-il",
       "model": "icon_seamless",
       "past_days_used": 3,
-      "status": "failed"
+      "raw_bytes": 184096,
+      "sha256": "6b9bd4c76e3d7f73806ba4de4aa61a66917d278c490a8625aee493a2a9b9454e",
+      "status": "ok"
     },
     "fresno-ca_ecmwf_ifs025.json.gz": {
       "attempts": 1,
@@ -66,19 +63,16 @@
       "status": "ok"
     },
     "fresno-ca_icon_seamless.json.gz": {
-      "all_errors": [
-        "attempt 1: HTTP 500: {\"error\":true,\"reason\":\"Something went wrong.\"}",
-        "attempt 2: HTTP 500: {\"error\":true,\"reason\":\"Something went wrong.\"}",
-        "attempt 3: HTTP 500: {\"reason\":\"Something went wrong.\",\"error\":true}"
-      ],
-      "attempts": 3,
-      "captured_at": "2026-10-13T00:23:30.432228+00:00",
-      "error": "attempt 3: HTTP 500: {\"reason\":\"Something went wrong.\",\"error\":true}",
+      "attempts": 1,
+      "bytes": 23318,
+      "captured_at": "2026-10-13T13:36:39.612239+00:00",
       "late": false,
       "location": "fresno-ca",
       "model": "icon_seamless",
       "past_days_used": 3,
-      "status": "failed"
+      "raw_bytes": 178287,
+      "sha256": "8cf812f4634273a92beb15cf66506452ed3a7c4fe9c0538e0df5485763b63a53",
+      "status": "ok"
     },
     "henderson-nv_ecmwf_ifs025.json.gz": {
       "attempts": 1,
@@ -105,19 +99,16 @@
       "status": "ok"
     },
     "henderson-nv_icon_seamless.json.gz": {
-      "all_errors": [
-        "attempt 1: HTTP 500: {\"error\":true,\"reason\":\"Something went wrong.\"}",
-        "attempt 2: HTTP 500: {\"reason\":\"Something went wrong.\",\"error\":true}",
-        "attempt 3: HTTP 500: {\"reason\":\"Something went wrong.\",\"error\":true}"
-      ],
-      "attempts": 3,
-      "captured_at": "2026-10-13T00:24:49.264229+00:00",
-      "error": "attempt 3: HTTP 500: {\"reason\":\"Something went wrong.\",\"error\":true}",
+      "attempts": 1,
+      "bytes": 26531,
+      "captured_at": "2026-10-13T13:36:49.051973+00:00",
       "late": false,
       "location": "henderson-nv",
       "model": "icon_seamless",
       "past_days_used": 3,
-      "status": "failed"
+      "raw_bytes": 182106,
+      "sha256": "952af72e584ea2c78e71bc0b78307b0850efadf0c4af44c5a3c31b64c5d32dfd",
+      "status": "ok"
     },
     "las-vegas-nv_ecmwf_ifs025.json.gz": {
       "attempts": 1,
@@ -144,19 +135,16 @@
       "status": "ok"
     },
     "las-vegas-nv_icon_seamless.json.gz": {
-      "all_errors": [
-        "attempt 1: HTTP 500: {\"error\":true,\"reason\":\"Something went wrong.\"}",
-        "attempt 2: HTTP 500: {\"reason\":\"Something went wrong.\",\"error\":true}",
-        "attempt 3: HTTP 500: {\"error\":true,\"reason\":\"Something went wrong.\"}"
-      ],
-      "attempts": 3,
-      "captured_at": "2026-10-13T00:24:29.566595+00:00",
-      "error": "attempt 3: HTTP 500: {\"error\":true,\"reason\":\"Something went wrong.\"}",
+      "attempts": 1,
+      "bytes": 26219,
+      "captured_at": "2026-10-13T13:36:46.704548+00:00",
       "late": false,
       "location": "las-vegas-nv",
       "model": "icon_seamless",
       "past_days_used": 3,
-      "status": "failed"
+      "raw_bytes": 181719,
+      "sha256": "32284debf23c6a6b00780c5c279e927b760d082ae2ec08a72978b734c87dc758",
+      "status": "ok"
     },
     "los-angeles-ca_ecmwf_ifs025.json.gz": {
       "attempts": 1,
@@ -183,19 +171,16 @@
       "status": "ok"
     },
     "los-angeles-ca_icon_seamless.json.gz": {
-      "all_errors": [
-        "attempt 1: HTTP 500: {\"reason\":\"Something went wrong.\",\"error\":true}",
-        "attempt 2: HTTP 500: {\"error\":true,\"reason\":\"Something went wrong.\"}",
-        "attempt 3: HTTP 500: {\"reason\":\"Something went wrong.\",\"error\":true}"
-      ],
-      "attempts": 3,
-      "captured_at": "2026-10-13T00:24:10.218696+00:00",
-      "error": "attempt 3: HTTP 500: {\"reason\":\"Something went wrong.\",\"error\":true}",
+      "attempts": 1,
+      "bytes": 24948,
+      "captured_at": "2026-10-13T13:36:44.338623+00:00",
       "late": false,
       "location": "los-angeles-ca",
       "model": "icon_seamless",
       "past_days_used": 3,
-      "status": "failed"
+      "raw_bytes": 180128,
+      "sha256": "5ba6d7e8f24fd1e61718606b5b8587ceb365c1a798d024eca0fd94b1db05102f",
+      "status": "ok"
     },
     "miami-airport-fl_ecmwf_ifs025.json.gz": {
       "attempts": 1,
@@ -222,19 +207,16 @@
       "status": "ok"
     },
     "miami-airport-fl_icon_seamless.json.gz": {
-      "all_errors": [
-        "attempt 1: HTTP 500: {\"error\":true,\"reason\":\"Something went wrong.\"}",
-        "attempt 2: HTTP 500: {\"reason\":\"Something went wrong.\",\"error\":true}",
-        "attempt 3: HTTP 500: {\"reason\":\"Something went wrong.\",\"error\":true}"
-      ],
-      "attempts": 3,
-      "captured_at": "2026-10-13T00:25:47.974694+00:00",
-      "error": "attempt 3: HTTP 500: {\"reason\":\"Something went wrong.\",\"error\":true}",
+      "attempts": 1,
+      "bytes": 27858,
+      "captured_at": "2026-10-13T13:36:56.099131+00:00",
       "late": false,
       "location": "miami-airport-fl",
       "model": "icon_seamless",
       "past_days_used": 3,
-      "status": "failed"
+      "raw_bytes": 187717,
+      "sha256": "483b85fdff74f3215a3ec06535710418d1550de897780ea8c505927f8c344270",
+      "status": "ok"
     },
     "new-york-central-park-ny_ecmwf_ifs025.json.gz": {
       "attempts": 1,
@@ -261,19 +243,16 @@
       "status": "ok"
     },
     "new-york-central-park-ny_icon_seamless.json.gz": {
-      "all_errors": [
-        "attempt 1: HTTP 500: {\"error\":true,\"reason\":\"Something went wrong.\"}",
-        "attempt 2: HTTP 500: {\"error\":true,\"reason\":\"Something went wrong.\"}",
-        "attempt 3: HTTP 500: {\"error\":true,\"reason\":\"Something went wrong.\"}"
-      ],
-      "attempts": 3,
-      "captured_at": "2026-10-13T00:25:28.087299+00:00",
-      "error": "attempt 3: HTTP 500: {\"error\":true,\"reason\":\"Something went wrong.\"}",
+      "attempts": 1,
+      "bytes": 27819,
+      "captured_at": "2026-10-13T13:36:53.748208+00:00",
       "late": false,
       "location": "new-york-central-park-ny",
       "model": "icon_seamless",
       "past_days_used": 3,
-      "status": "failed"
+      "raw_bytes": 184274,
+      "sha256": "f86830f2fdee31a015cedf28ba495055b08545074f80004d2356fbbb29b23d81",
+      "status": "ok"
     },
     "sacramento-ca_ecmwf_ifs025.json.gz": {
       "attempts": 1,
@@ -300,19 +279,16 @@
       "status": "ok"
     },
     "sacramento-ca_icon_seamless.json.gz": {
-      "all_errors": [
-        "attempt 1: HTTP 500: {\"error\":true,\"reason\":\"Something went wrong.\"}",
-        "attempt 2: HTTP 500: {\"error\":true,\"reason\":\"Something went wrong.\"}",
-        "attempt 3: HTTP 500: {\"error\":true,\"reason\":\"Something went wrong.\"}"
-      ],
-      "attempts": 3,
-      "captured_at": "2026-10-13T00:23:50.149523+00:00",
-      "error": "attempt 3: HTTP 500: {\"error\":true,\"reason\":\"Something went wrong.\"}",
+      "attempts": 1,
+      "bytes": 23939,
+      "captured_at": "2026-10-13T13:36:41.977280+00:00",
       "late": false,
       "location": "sacramento-ca",
       "model": "icon_seamless",
       "past_days_used": 3,
-      "status": "failed"
+      "raw_bytes": 178168,
+      "sha256": "2a4e9a1cdb2277d0a609a877b43e836eaa63ce66328dd39c818c1f49d95c297d",
+      "status": "ok"
     }
   },
   "expected": 24,
@@ -342,9 +318,9 @@
     "sacramento-ca_gfs025.json.gz",
     "sacramento-ca_icon_seamless.json.gz"
   ],
-  "failed": 8,
-  "ok": 16,
+  "failed": 0,
+  "ok": 24,
   "provenance": "captured_ensemble_members",
   "schema_version": 1,
-  "updated_at": "2026-10-13T00:25:47.975456+00:00"
+  "updated_at": "2026-10-13T13:36:56.132700+00:00"
 }
