@@ -1,0 +1,350 @@
+{
+  "complete": false,
+  "date": "2026-10-13",
+  "entries": {
+    "chicago-midway-il_ecmwf_ifs025.json.gz": {
+      "attempts": 1,
+      "bytes": 51885,
+      "captured_at": "2026-10-13T00:24:53.796976+00:00",
+      "late": false,
+      "location": "chicago-midway-il",
+      "model": "ecmwf_ifs025",
+      "past_days_used": 3,
+      "raw_bytes": 230956,
+      "sha256": "34c83117d951be5b78bd55348aa903a099ce89dae2b1ad04d7c51af63564d30b",
+      "status": "ok"
+    },
+    "chicago-midway-il_gfs025.json.gz": {
+      "attempts": 1,
+      "bytes": 21238,
+      "captured_at": "2026-10-13T00:24:51.469926+00:00",
+      "late": false,
+      "location": "chicago-midway-il",
+      "model": "gfs025",
+      "past_days_used": 3,
+      "raw_bytes": 142523,
+      "sha256": "1f55653bcdbd1547d088a33b16146c2a0eda02d59a7bdcdcad884b3463e35e26",
+      "status": "ok"
+    },
+    "chicago-midway-il_icon_seamless.json.gz": {
+      "all_errors": [
+        "attempt 1: HTTP 500: {\"reason\":\"Something went wrong.\",\"error\":true}",
+        "attempt 2: HTTP 500: {\"reason\":\"Something went wrong.\",\"error\":true}",
+        "attempt 3: HTTP 500: {\"reason\":\"Something went wrong.\",\"error\":true}"
+      ],
+      "attempts": 3,
+      "captured_at": "2026-10-13T00:25:08.981074+00:00",
+      "error": "attempt 3: HTTP 500: {\"reason\":\"Something went wrong.\",\"error\":true}",
+      "late": false,
+      "location": "chicago-midway-il",
+      "model": "icon_seamless",
+      "past_days_used": 3,
+      "status": "failed"
+    },
+    "fresno-ca_ecmwf_ifs025.json.gz": {
+      "attempts": 1,
+      "bytes": 45288,
+      "captured_at": "2026-10-13T00:23:14.918855+00:00",
+      "late": false,
+      "location": "fresno-ca",
+      "model": "ecmwf_ifs025",
+      "past_days_used": 3,
+      "raw_bytes": 219081,
+      "sha256": "3911bf197ae4da0cc8f2bccff153918e976c32d64c9851f3aff48a16eb57fb0d",
+      "status": "ok"
+    },
+    "fresno-ca_gfs025.json.gz": {
+      "attempts": 1,
+      "bytes": 18084,
+      "captured_at": "2026-10-13T00:23:12.592116+00:00",
+      "late": false,
+      "location": "fresno-ca",
+      "model": "gfs025",
+      "past_days_used": 3,
+      "raw_bytes": 139418,
+      "sha256": "9b5c9c8793104edf3b45c2878e2c812fc3a75000cea4073b91d968c5458baa05",
+      "status": "ok"
+    },
+    "fresno-ca_icon_seamless.json.gz": {
+      "all_errors": [
+        "attempt 1: HTTP 500: {\"error\":true,\"reason\":\"Something went wrong.\"}",
+        "attempt 2: HTTP 500: {\"error\":true,\"reason\":\"Something went wrong.\"}",
+        "attempt 3: HTTP 500: {\"reason\":\"Something went wrong.\",\"error\":true}"
+      ],
+      "attempts": 3,
+      "captured_at": "2026-10-13T00:23:30.432228+00:00",
+      "error": "attempt 3: HTTP 500: {\"reason\":\"Something went wrong.\",\"error\":true}",
+      "late": false,
+      "location": "fresno-ca",
+      "model": "icon_seamless",
+      "past_days_used": 3,
+      "status": "failed"
+    },
+    "henderson-nv_ecmwf_ifs025.json.gz": {
+      "attempts": 1,
+      "bytes": 49802,
+      "captured_at": "2026-10-13T00:24:34.101538+00:00",
+      "late": false,
+      "location": "henderson-nv",
+      "model": "ecmwf_ifs025",
+      "past_days_used": 3,
+      "raw_bytes": 225383,
+      "sha256": "c585767f70772729319c99d68428ab7d5e38b8e240ddacd1a6a8b21bab1343a2",
+      "status": "ok"
+    },
+    "henderson-nv_gfs025.json.gz": {
+      "attempts": 1,
+      "bytes": 19170,
+      "captured_at": "2026-10-13T00:24:31.772193+00:00",
+      "late": false,
+      "location": "henderson-nv",
+      "model": "gfs025",
+      "past_days_used": 3,
+      "raw_bytes": 141359,
+      "sha256": "0dc10c95f05e8c680a241caa9da709155f22b4f79e1361ceccddba6a049aba12",
+      "status": "ok"
+    },
+    "henderson-nv_icon_seamless.json.gz": {
+      "all_errors": [
+        "attempt 1: HTTP 500: {\"error\":true,\"reason\":\"Something went wrong.\"}",
+        "attempt 2: HTTP 500: {\"reason\":\"Something went wrong.\",\"error\":true}",
+        "attempt 3: HTTP 500: {\"reason\":\"Something went wrong.\",\"error\":true}"
+      ],
+      "attempts": 3,
+      "captured_at": "2026-10-13T00:24:49.264229+00:00",
+      "error": "attempt 3: HTTP 500: {\"reason\":\"Something went wrong.\",\"error\":true}",
+      "late": false,
+      "location": "henderson-nv",
+      "model": "icon_seamless",
+      "past_days_used": 3,
+      "status": "failed"
+    },
+    "las-vegas-nv_ecmwf_ifs025.json.gz": {
+      "attempts": 1,
+      "bytes": 50051,
+      "captured_at": "2026-10-13T00:24:14.772582+00:00",
+      "late": false,
+      "location": "las-vegas-nv",
+      "model": "ecmwf_ifs025",
+      "past_days_used": 3,
+      "raw_bytes": 224489,
+      "sha256": "20b595711b1f690c22ca5ca052f41bc1a92e59d410e9ccc5f9010466f59288fa",
+      "status": "ok"
+    },
+    "las-vegas-nv_gfs025.json.gz": {
+      "attempts": 1,
+      "bytes": 19081,
+      "captured_at": "2026-10-13T00:24:12.446216+00:00",
+      "late": false,
+      "location": "las-vegas-nv",
+      "model": "gfs025",
+      "past_days_used": 3,
+      "raw_bytes": 141214,
+      "sha256": "44e2533424f39050f2a7e3afa998750e76592838de4f655fcc9ea5f5860abd22",
+      "status": "ok"
+    },
+    "las-vegas-nv_icon_seamless.json.gz": {
+      "all_errors": [
+        "attempt 1: HTTP 500: {\"error\":true,\"reason\":\"Something went wrong.\"}",
+        "attempt 2: HTTP 500: {\"reason\":\"Something went wrong.\",\"error\":true}",
+        "attempt 3: HTTP 500: {\"error\":true,\"reason\":\"Something went wrong.\"}"
+      ],
+      "attempts": 3,
+      "captured_at": "2026-10-13T00:24:29.566595+00:00",
+      "error": "attempt 3: HTTP 500: {\"error\":true,\"reason\":\"Something went wrong.\"}",
+      "late": false,
+      "location": "las-vegas-nv",
+      "model": "icon_seamless",
+      "past_days_used": 3,
+      "status": "failed"
+    },
+    "los-angeles-ca_ecmwf_ifs025.json.gz": {
+      "attempts": 1,
+      "bytes": 47050,
+      "captured_at": "2026-10-13T00:23:54.696792+00:00",
+      "late": false,
+      "location": "los-angeles-ca",
+      "model": "ecmwf_ifs025",
+      "past_days_used": 3,
+      "raw_bytes": 222577,
+      "sha256": "7331decc64e5cd2a26ab6a9b3209eb5e3de6a752f618f32a88cce1366ade7d51",
+      "status": "ok"
+    },
+    "los-angeles-ca_gfs025.json.gz": {
+      "attempts": 1,
+      "bytes": 17418,
+      "captured_at": "2026-10-13T00:23:52.371282+00:00",
+      "late": false,
+      "location": "los-angeles-ca",
+      "model": "gfs025",
+      "past_days_used": 3,
+      "raw_bytes": 140794,
+      "sha256": "1baa492679b96ca93a7566288e345c78232612e88b62cc882e1e1a53c74f0eed",
+      "status": "ok"
+    },
+    "los-angeles-ca_icon_seamless.json.gz": {
+      "all_errors": [
+        "attempt 1: HTTP 500: {\"reason\":\"Something went wrong.\",\"error\":true}",
+        "attempt 2: HTTP 500: {\"error\":true,\"reason\":\"Something went wrong.\"}",
+        "attempt 3: HTTP 500: {\"reason\":\"Something went wrong.\",\"error\":true}"
+      ],
+      "attempts": 3,
+      "captured_at": "2026-10-13T00:24:10.218696+00:00",
+      "error": "attempt 3: HTTP 500: {\"reason\":\"Something went wrong.\",\"error\":true}",
+      "late": false,
+      "location": "los-angeles-ca",
+      "model": "icon_seamless",
+      "past_days_used": 3,
+      "status": "failed"
+    },
+    "miami-airport-fl_ecmwf_ifs025.json.gz": {
+      "attempts": 1,
+      "bytes": 52976,
+      "captured_at": "2026-10-13T00:25:32.625470+00:00",
+      "late": false,
+      "location": "miami-airport-fl",
+      "model": "ecmwf_ifs025",
+      "past_days_used": 3,
+      "raw_bytes": 234380,
+      "sha256": "1f96b6fb37fb18008908a98ad1f90bc136fea97657e2f11eabdcaba52abdd19b",
+      "status": "ok"
+    },
+    "miami-airport-fl_gfs025.json.gz": {
+      "attempts": 1,
+      "bytes": 20674,
+      "captured_at": "2026-10-13T00:25:30.291577+00:00",
+      "late": false,
+      "location": "miami-airport-fl",
+      "model": "gfs025",
+      "past_days_used": 3,
+      "raw_bytes": 144034,
+      "sha256": "ef13b5ceb3d5b7bb9dad414febfa7f505e55bdcdf2faf991f51fe4ff7cda532d",
+      "status": "ok"
+    },
+    "miami-airport-fl_icon_seamless.json.gz": {
+      "all_errors": [
+        "attempt 1: HTTP 500: {\"error\":true,\"reason\":\"Something went wrong.\"}",
+        "attempt 2: HTTP 500: {\"reason\":\"Something went wrong.\",\"error\":true}",
+        "attempt 3: HTTP 500: {\"reason\":\"Something went wrong.\",\"error\":true}"
+      ],
+      "attempts": 3,
+      "captured_at": "2026-10-13T00:25:47.974694+00:00",
+      "error": "attempt 3: HTTP 500: {\"reason\":\"Something went wrong.\",\"error\":true}",
+      "late": false,
+      "location": "miami-airport-fl",
+      "model": "icon_seamless",
+      "past_days_used": 3,
+      "status": "failed"
+    },
+    "new-york-central-park-ny_ecmwf_ifs025.json.gz": {
+      "attempts": 1,
+      "bytes": 52017,
+      "captured_at": "2026-10-13T00:25:13.516137+00:00",
+      "late": false,
+      "location": "new-york-central-park-ny",
+      "model": "ecmwf_ifs025",
+      "past_days_used": 3,
+      "raw_bytes": 231276,
+      "sha256": "3fa0aaaf764b142c52eceffe058bbc151ca14979799f8d052c1eaf461bb8dd87",
+      "status": "ok"
+    },
+    "new-york-central-park-ny_gfs025.json.gz": {
+      "attempts": 1,
+      "bytes": 21779,
+      "captured_at": "2026-10-13T00:25:11.185547+00:00",
+      "late": false,
+      "location": "new-york-central-park-ny",
+      "model": "gfs025",
+      "past_days_used": 3,
+      "raw_bytes": 142353,
+      "sha256": "847824ce7cf44083e2cf22b6bb12651d7bc5b9cd635414ef2a84e48a35c05392",
+      "status": "ok"
+    },
+    "new-york-central-park-ny_icon_seamless.json.gz": {
+      "all_errors": [
+        "attempt 1: HTTP 500: {\"error\":true,\"reason\":\"Something went wrong.\"}",
+        "attempt 2: HTTP 500: {\"error\":true,\"reason\":\"Something went wrong.\"}",
+        "attempt 3: HTTP 500: {\"error\":true,\"reason\":\"Something went wrong.\"}"
+      ],
+      "attempts": 3,
+      "captured_at": "2026-10-13T00:25:28.087299+00:00",
+      "error": "attempt 3: HTTP 500: {\"error\":true,\"reason\":\"Something went wrong.\"}",
+      "late": false,
+      "location": "new-york-central-park-ny",
+      "model": "icon_seamless",
+      "past_days_used": 3,
+      "status": "failed"
+    },
+    "sacramento-ca_ecmwf_ifs025.json.gz": {
+      "attempts": 1,
+      "bytes": 45250,
+      "captured_at": "2026-10-13T00:23:34.975135+00:00",
+      "late": false,
+      "location": "sacramento-ca",
+      "model": "ecmwf_ifs025",
+      "past_days_used": 3,
+      "raw_bytes": 220606,
+      "sha256": "ec497c1b7bc39a066a2614968b404cd46f6464ef5290fcad42468d1f8b0a8f83",
+      "status": "ok"
+    },
+    "sacramento-ca_gfs025.json.gz": {
+      "attempts": 1,
+      "bytes": 16907,
+      "captured_at": "2026-10-13T00:23:32.641438+00:00",
+      "late": false,
+      "location": "sacramento-ca",
+      "model": "gfs025",
+      "past_days_used": 3,
+      "raw_bytes": 139309,
+      "sha256": "d7141cd6d62a015dd53a32c66580689f93a5e75a8fb6cb7156ae214f28418b0a",
+      "status": "ok"
+    },
+    "sacramento-ca_icon_seamless.json.gz": {
+      "all_errors": [
+        "attempt 1: HTTP 500: {\"error\":true,\"reason\":\"Something went wrong.\"}",
+        "attempt 2: HTTP 500: {\"error\":true,\"reason\":\"Something went wrong.\"}",
+        "attempt 3: HTTP 500: {\"error\":true,\"reason\":\"Something went wrong.\"}"
+      ],
+      "attempts": 3,
+      "captured_at": "2026-10-13T00:23:50.149523+00:00",
+      "error": "attempt 3: HTTP 500: {\"error\":true,\"reason\":\"Something went wrong.\"}",
+      "late": false,
+      "location": "sacramento-ca",
+      "model": "icon_seamless",
+      "past_days_used": 3,
+      "status": "failed"
+    }
+  },
+  "expected": 24,
+  "expected_files": [
+    "chicago-midway-il_ecmwf_ifs025.json.gz",
+    "chicago-midway-il_gfs025.json.gz",
+    "chicago-midway-il_icon_seamless.json.gz",
+    "fresno-ca_ecmwf_ifs025.json.gz",
+    "fresno-ca_gfs025.json.gz",
+    "fresno-ca_icon_seamless.json.gz",
+    "henderson-nv_ecmwf_ifs025.json.gz",
+    "henderson-nv_gfs025.json.gz",
+    "henderson-nv_icon_seamless.json.gz",
+    "las-vegas-nv_ecmwf_ifs025.json.gz",
+    "las-vegas-nv_gfs025.json.gz",
+    "las-vegas-nv_icon_seamless.json.gz",
+    "los-angeles-ca_ecmwf_ifs025.json.gz",
+    "los-angeles-ca_gfs025.json.gz",
+    "los-angeles-ca_icon_seamless.json.gz",
+    "miami-airport-fl_ecmwf_ifs025.json.gz",
+    "miami-airport-fl_gfs025.json.gz",
+    "miami-airport-fl_icon_seamless.json.gz",
+    "new-york-central-park-ny_ecmwf_ifs025.json.gz",
+    "new-york-central-park-ny_gfs025.json.gz",
+    "new-york-central-park-ny_icon_seamless.json.gz",
+    "sacramento-ca_ecmwf_ifs025.json.gz",
+    "sacramento-ca_gfs025.json.gz",
+    "sacramento-ca_icon_seamless.json.gz"
+  ],
+  "failed": 8,
+  "ok": 16,
+  "provenance": "captured_ensemble_members",
+  "schema_version": 1,
+  "updated_at": "2026-10-13T00:25:47.975456+00:00"
+}
