@@ -83,9 +83,9 @@ def scen(name, elev, temp, lf, lcf, cf, rcf, rf, wall):
     return dict(scenario=name, elev_ft=elev, temp=temp, rho=rho_rel(elev, temp), lrho=np.log(rho_rel(elev, temp)),
                 dist=(lf + 2*lcf + 2*cf + 2*rcf + rf) / 8, wall=wall, d_dist=(lf + 2*lcf + 2*cf + 2*rcf + rf) / 8 - mD, d_wall=wall - mW)
 S = pd.DataFrame([
-    scen("A's Strip dome, rumored dims 340/380/415, 10ft walls", 2133, 73, 340, 380, 415, 380, 340, 10),
-    scen("A's Strip dome, MLB-average dims & walls", 2133, 73, 332, 377, 402, 376, 328, mW),
-    scen("A's Strip dome, cozy 325/365/400, 8ft walls", 2133, 73, 325, 365, 400, 365, 325, 8),
+    scen("A's Strip dome, rumored dims 340/380/415, 10ft walls", 2133, 72, 340, 380, 415, 380, 340, 10),
+    scen("A's Strip dome, MLB-average dims & walls", 2133, 72, 332, 377, 402, 376, 328, mW),
+    scen("A's Strip dome, cozy 325/365/400, 8ft walls", 2133, 72, 325, 365, 400, 365, 325, 8),
     scen("Same site if it were open-air (95F), rumored dims", 2133, 95, 340, 380, 415, 380, 340, 10),
     scen("Las Vegas Ballpark (Aviators, 3,012 ft, open-air 95F)", 3012, 95, 340, 380, 415, 380, 340, 11.5),
     scen("Reference: sea-level 70F park with MLB-average dims", 0, 70, 332, 377, 402, 376, 328, mW),

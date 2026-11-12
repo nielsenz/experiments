@@ -10,7 +10,7 @@ C = dict(date=0, vis=3, home=6, vr=9, hr_=10, park=16,
          v_ab=21, v_h=22, v_2b=23, v_3b=24, v_hr=25, v_sf=28, v_hbp=29, v_bb=30, v_k=32,
          h_ab=49, h_h=50, h_2b=51, h_3b=52, h_hr=53, h_sf=56, h_hbp=57, h_bb=58, h_k=60)
 rows = []
-for f in sorted(glob.glob(f'{RS}/seasons/20*/GL20*.TXT')):
+for f in sorted(glob.glob(f'{RS}/seasons/20*/[Gg][Ll]20*.[Tt][Xx][Tt]')):
     for r in csv.reader(open(f, encoding='latin-1')):
         try:
             d = {k: r[i] for k, i in C.items()}
