@@ -1,0 +1,30 @@
+{
+ "summary": {
+  "n": 350,
+  "median_abs_pct_error": 10.245414666070307,
+  "mean_abs_pct_error": 12.686328588967063,
+  "within_10pct": 49.42857142857143,
+  "within_20pct": 80.0,
+  "r2_cv": 0.7859333816823628,
+  "band80_low": 0.8414115144631653,
+  "band80_high": 1.2659058059613688,
+  "naive_area_median_ppsf_mape": 11.694493799374367
+ },
+ "coef": {
+  "const": 13.182423604246173,
+  "lsqft": 0.8380158762834068,
+  "beds": -0.02437482115050966,
+  "baths": 0.04825191595090348,
+  "attached": -0.15745957337243355,
+  "area_Anthem": 0.008416992610304819,
+  "area_Centennial Hills": -0.06604185723369355,
+  "area_Mountains Edge": -0.10253849265531115,
+  "area_Seven Hills": 0.08458152875070261,
+  "area_Silverado Ranch": -0.02560825430959587,
+  "area_Southern Highlands": -0.06606569880443247,
+  "area_Summerlin": 0.12007798051559596,
+  "area_Sun City Anthem": 0.005715217623886081,
+  "area_Sun City Summerlin": 0.10048696524135921
+ },
+ "ref": "Henderson (citywide)"
+}
