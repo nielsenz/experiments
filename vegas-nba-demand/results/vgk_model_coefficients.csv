@@ -1,0 +1,12 @@
+term,coef,std_err,t
+intercept,17952.0,37.4,480.41
+fri_sat,187.6,35.1,5.34
+sunday,46.6,53.8,0.87
+holiday_week,275.7,61.5,4.48
+late_season,175.5,33.7,5.2
+home_opener,625.7,102.9,6.08
+original_six,145.5,44.5,3.27
+canadian,-93.3,38.7,-2.41
+pacific,72.9,37.1,1.96
+season_2024_25,-167.3,38.0,-4.4
+season_2025_26,-206.5,37.8,-5.46

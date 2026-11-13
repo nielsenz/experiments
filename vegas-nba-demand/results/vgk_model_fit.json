@@ -1,0 +1,20 @@
+{
+  "seasons": [
+    "2023-24",
+    "2024-25",
+    "2025-26"
+  ],
+  "n_games": 123,
+  "r2": 0.547,
+  "adj_r2": 0.507,
+  "resid_sd": 169,
+  "loo_rmse_model": 175,
+  "loo_rmse_season_mean_baseline": 227,
+  "attendance_sd_all_games": 240,
+  "attendance_sd_pct_of_fixed_seats": 1.38,
+  "attendance_range": [
+    17564,
+    18724
+  ],
+  "games_below_fixed_seats": 0
+}

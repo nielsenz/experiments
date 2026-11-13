@@ -1,0 +1,30 @@
+{
+  "capped_era_2023_24_to_2025_26": {
+    "games": 123,
+    "mean": 18014,
+    "sd": 240,
+    "games_below_fixed_seats": 0,
+    "weekend_vs_midweek_excl_openers": {
+      "fri_sat_games": 40,
+      "fri_sat_mean": 18100,
+      "mon_thu_games": 67,
+      "mon_thu_mean": 17946,
+      "gap": 154
+    }
+  },
+  "season_2026_27_to_date": {
+    "games": 10,
+    "mean": 17055,
+    "sd": 596,
+    "games_below_fixed_seats": 6,
+    "mean_gap_vs_model": -851,
+    "mean_pct_change_vs_2025_26": -4.9,
+    "weekend_vs_midweek_excl_openers": {
+      "fri_sat_games": 4,
+      "fri_sat_mean": 17360,
+      "mon_thu_games": 5,
+      "mon_thu_mean": 16655,
+      "gap": 705
+    }
+  }
+}
