@@ -1,0 +1,24 @@
+{
+  "n_teams": 29,
+  "league_mean": 18096,
+  "ols_intercept": 16796.7,
+  "ols_slope_log_pop_m": 902.6,
+  "ols_r2": 0.163,
+  "ols_resid_sd": 1694,
+  "vegas_ols_prediction": 17590,
+  "vegas_ols_80pct_interval": [
+    15307,
+    19872
+  ],
+  "peer_n": 12,
+  "peer_median": 18219,
+  "peer_mean": 17541,
+  "peer_iqr": [
+    16402,
+    19088
+  ],
+  "teams_averaging_20000_plus": [
+    "Bulls",
+    "76ers"
+  ]
+}
