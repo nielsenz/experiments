@@ -6,7 +6,7 @@ Usage: python hedonic_model.py            -> fit, validate, write tables
 import os, sys, json, numpy as np, pandas as pd
 B = os.path.join(os.path.dirname(__file__), '..'); R = f'{B}/results'; os.makedirs(R, exist_ok=True)
 d = pd.read_csv(f'{B}/data/sold_homes.csv')
-d['attached'] = d.address.str.contains('#').astype(int)           # condo/townhome units carry a unit number
+# attached = condo/townhome (listing address carried a unit number); street addresses are not stored
 d['ppsf'] = d.price / d.sqft
 d = d[(d.price < 2.5e6) & (d.sqft < 6000)].reset_index(drop=True)  # custom estates are a different market
 areas = sorted(d.area.unique()); REF = 'Henderson (citywide)'
@@ -43,7 +43,7 @@ by = d.groupby('area').agg(sales=('price', 'size'), median_price=('price', 'medi
 by['premium_vs_henderson_pct'] = [100 * (np.exp(coef.get('area_' + a, 0)) - 1) for a in by.index]
 by['typical_2000sf_3bd_2.5ba'] = [np.exp(coef.const + coef.get('area_' + a, 0)) for a in by.index]
 by = by.sort_values('premium_vs_henderson_pct', ascending=False); by.round(1).to_csv(f'{R}/area_table.csv')
-d.sort_values(['area', 'address']).to_csv(f'{R}/sales_with_cv_predictions.csv', index=False)
+d.sort_values(['area', 'zip', 'price']).to_csv(f'{R}/sales_with_cv_predictions.csv', index=False)
 def estimate(area, sqft, beds, baths, attached=0):
     x = pd.DataFrame([dict(area=area, sqft=sqft, beds=beds, baths=baths, attached=attached)]); p = float(np.exp(design(x).values @ b)[0])
     return p, p * np.exp(q10), p * np.exp(q90)
@@ -52,5 +52,5 @@ if len(sys.argv) >= 5:
 else:
     pd.set_option('display.width', 200); print(json.dumps(summary, indent=1)); print(coef.round(3).to_string()); print(by.round(1).to_string())
     print('size elasticity: +10%% sqft -> %+.1f%% price; extra bath %+.1f%%; extra bedroom at same sqft %+.1f%%; attached unit %+.1f%%' % (100 * (1.1**coef.lsqft - 1), 100 * (np.exp(coef.baths) - 1), 100 * (np.exp(coef.beds) - 1), 100 * (np.exp(coef.attached) - 1)))
-    sh = d[d.area == 'Seven Hills'].sort_values('cv_err_pct'); print(sh[['address', 'price', 'sqft', 'beds', 'baths', 'ppsf', 'cv_pred', 'cv_err_pct']].round(0).to_string())
+    sh = d[d.area == 'Seven Hills'].sort_values('cv_err_pct'); print(sh[['zip', 'price', 'sqft', 'beds', 'baths', 'ppsf', 'cv_pred', 'cv_err_pct']].round(0).to_string())
     for s in (1600, 2128, 2400, 3000, 3700): print(s, ['%.0f' % v for v in estimate('Seven Hills', s, 3 if s < 2300 else 4, 2.5 if s < 2300 else 3)])
