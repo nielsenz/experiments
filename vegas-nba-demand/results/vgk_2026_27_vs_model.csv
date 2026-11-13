@@ -1,0 +1,11 @@
+date,weekday,opponent,attendance,model_expected,gap,pct_of_fixed_seats
+2026-09-29,Tuesday,Chicago Blackhawks,17838,18517,-679,102.7
+2026-10-02,Friday,Anaheim Ducks,17619,18006,-387,101.5
+2026-10-08,Thursday,Toronto Maple Leafs,15977,17798,-1821,92.0
+2026-10-10,Saturday,Los Angeles Kings,16768,18006,-1238,96.6
+2026-10-15,Thursday,Calgary Flames,16433,17725,-1292,94.6
+2026-10-17,Saturday,Pittsburgh Penguins,17437,17933,-496,100.4
+2026-10-20,Tuesday,Tampa Bay Lightning,17017,17746,-729,98.0
+2026-10-27,Tuesday,Ottawa Senators,16663,17652,-989,95.9
+2026-10-30,Friday,New Jersey Devils,17615,17933,-318,101.4
+2026-11-11,Wednesday,Utah Mammoth,17186,17746,-560,99.0
