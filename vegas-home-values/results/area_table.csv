@@ -1,0 +1,11 @@
+area,sales,median_price,median_sqft,median_ppsf,median_abs_err_pct,premium_vs_henderson_pct,typical_2000sf_3bd_2.5ba
+Summerlin,40,611500.0,1976.0,301.2,11.2,12.8,598691.4
+Sun City Summerlin,41,462500.0,1599.0,296.8,12.1,10.6,587076.6
+Seven Hills,25,695000.0,2395.0,280.8,15.4,8.8,577812.7
+Anthem,6,472500.0,1797.0,266.7,5.4,0.8,535438.1
+Sun City Anthem,41,470000.0,1768.0,274.4,6.2,0.6,533993.4
+Henderson (citywide),35,422000.0,1592.0,266.7,11.5,0.0,530950.2
+Silverado Ranch,41,418000.0,1508.0,259.2,6.8,-2.5,517526.2
+Centennial Hills,41,435000.0,1854.0,250.6,15.0,-6.4,497018.1
+Southern Highlands,39,539999.0,2350.0,237.6,9.5,-6.4,497006.3
+Mountains Edge,41,455000.0,2010.0,239.7,9.4,-9.7,479205.6
