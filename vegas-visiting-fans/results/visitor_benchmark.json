@@ -1,0 +1,105 @@
+{
+  "visitors_in_town_per_night": 337935,
+  "plan_visitors_share_of_in_town_pct": [
+    2.35,
+    2.61
+  ],
+  "plan_incidental_share_of_in_town_pct": [
+    1.1,
+    1.23
+  ],
+  "raiders_incidental_per_game_median": 4703,
+  "raiders_incidental_share_of_in_town_pct": 1.39,
+  "allegiant_incidental_quartiles_max": {
+    "Raiders regular season": [
+      3949,
+      4703,
+      5679,
+      7883
+    ],
+    "Concerts": [
+      1018,
+      1950,
+      2810,
+      3865
+    ],
+    "All 96 events": [
+      1649,
+      2880,
+      4295,
+      10860
+    ]
+  },
+  "lvcva_attended_sport": 1927285,
+  "lvcva_primary_sport": 1156371,
+  "lvcva_incidental_sport": 770914,
+  "lvcva_attended_moe_people": 223883,
+  "lvcva_attended_moe_pts": 0.58,
+  "lvcva_one_point_in_people": 385457,
+  "plan_visitor_tickets": [
+    643383,
+    714420
+  ],
+  "plan_vs_attended_one_game_each_pct": [
+    33,
+    37
+  ],
+  "plan_vs_attended_two_games_each_pct": [
+    17,
+    19
+  ],
+  "plan_trip_vs_primary_one_game_each_pct": [
+    29,
+    33
+  ],
+  "plan_trip_vs_primary_two_games_each_pct": [
+    15,
+    16
+  ],
+  "plan_incidental_vs_incidental_pct": [
+    39,
+    44
+  ],
+  "allegiant_2025_sports_visitors": 608467,
+  "other_mlb_per_game": [
+    {
+      "benchmark": "Brewers, out of state (ticket data)",
+      "share_pct": 14.0,
+      "per_game": 4580
+    },
+    {
+      "benchmark": "Brewers, out of state and overnight",
+      "share_pct": 5.7,
+      "per_game": 1878
+    },
+    {
+      "benchmark": "Pirates, out of state (secondary source)",
+      "share_pct": 30.0,
+      "per_game": 5648
+    },
+    {
+      "benchmark": "Cubs, outside Illinois (team figure, 2011)",
+      "share_pct": 37.0,
+      "per_game": 13786
+    }
+  ],
+  "opponent_projection_per_game": {
+    "league-average sensitivity": [
+      1438,
+      1597
+    ],
+    "most opponent-sensitive quarter of parks": [
+      2331,
+      2588
+    ],
+    "most opponent-sensitive park": [
+      4305,
+      4780
+    ]
+  },
+  "channel_totals_low_central_high": [
+    2456,
+    5211,
+    10459
+  ]
+}

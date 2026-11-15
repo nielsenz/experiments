@@ -33,29 +33,44 @@ from out of town, two-night runs 75%, and the one four-night run 83%. Acts get m
 What sets the share is the product. Wrestling, boxing and rugby draw 81%. Concerts draw 71%. Soccer, 56%. A Raiders preseason
 game, 53%. Nothing in that list is a team that plays every week, and no Las Vegas team that does has ever published a number.
 
-## What every-week teams draw
+## How many visitors is a baseball game worth?
 
-Two benchmarks exist, and neither is ideal.
+Other ballparks give a wide answer. The Brewers' ticket data shows 14% of fans from out of state, about 4,600 a game, most of
+them a 90-minute drive from Chicago. The Cubs say 37% of Wrigley Field crowds come from outside Illinois, about 13,800. The
+A's plan, at 7,900 to 8,800, sits between a regional ballpark and the most famous one in the country.
 
-The Golden Knights are thought to draw 15 to 25% of their crowd from out of town. That is 2,700 to 4,500 visitors a game. It
-rests on three estimates, the latest from 2021.
+Las Vegas has no Chicago next door. Its visitors have to come from two places, and each can be sized.
 
-The Brewers have ticket data: 14% of attendees from out of state. On 2025 attendance that is 4,600 a game, in a market 90
-minutes from Chicago.
+**People who make the trip because of the game.** Nine seasons of major league game logs, 21,546 games, show how much of a
+crowd depends on who is visiting. In the median park it is about 1,800 tickets a game. The most opponent-dependent park in
+baseball was the A's own, in Oakland, where 19% of the gate moved with the opponent. Put that Oakland-level dependence on a
+Las Vegas schedule and it comes to 4,300 to 4,800 a game. The plan needs 4,200 to 4,700. In other words, the plan's
+travelling-fan number is the highest value any team has shown, and that measure includes local fans of the visiting team.
 
-Two different sports, two different cities, about 4,500 visitors a game. The A's plan needs 7,900 to 8,800. Over a season that
-is 643,000 to 714,000 visitor tickets, roughly double what the Raiders sell to visitors and 1.7 to 1.9 times the Brewers'
-out-of-state total.
+**People already in town who add a game.** The Allegiant surveys count these directly: visitors who came to the event but not
+to Las Vegas for it. A median Raiders game gets 4,700. A median concert gets 2,000. The plan needs 3,700 to 4,100, on every
+one of 81 dates.
+
+Add the two channels and the middle of the range is about 5,200 visitors a game, with 2,500 at the low end and 10,500 at the
+high end. The plan is inside that range, in the top half. Reaching it takes Oakland's opponent dependence and a Raiders-sized
+walk-up crowd at the same time, on a Tuesday in May as well as a Saturday in July.
+
+The best argument for the plan is the size of the pool. About 338,000 visitors are in Las Vegas on an average night. The plan
+asks for 2.4 to 2.6% of them. No other baseball city has a pool like that, which is why no other city's numbers settle it.
 
 ## Where the plan is cautious
 
 In one respect the plan undersells itself. It counts only 53% of visitors as people who came to Las Vegas because of the game.
 At Raiders games, 86.5% of visitors say the game was their main reason. Across all 96 events the average is 90%.
 
-That does not rescue the count. At 4,500 visitors a game, the plan's own 53% yields 115,000 to 197,000 incremental visitors a
-year from baseball, a third to a little over half of the 341,000 it implies. The public contribution was justified by that
-tourism. The gate is not what is at risk. At 20,000 locals and 4,500 visitors the A's draw about 24,000, a below-average major
-league crowd.
+That does not rescue the count. In the build-up above, trips made for the game come to 116,000 to 387,000 a year, centred on
+189,000, against the 341,000 the plan implies. The public contribution was justified by that tourism. The gate is not what is
+at risk. At 20,000 locals and 5,200 visitors the A's draw about 25,000, a below-average major league crowd.
+
+There is also a measurement problem. The tourism authority's annual survey says 5% of visitors attended a sporting event last
+year, 1.93 million people. The A's whole visitor target is a third of that. But the survey is reported in whole percentage
+points, each worth 385,000 people, and it has read 6, 6, 4 and 5% in the last four years. It will not be able to say whether
+the A's delivered.
 
 ## The case for the plan
 

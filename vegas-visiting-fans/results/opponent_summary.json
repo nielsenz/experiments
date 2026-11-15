@@ -1,0 +1,40 @@
+{
+  "games": 21546,
+  "seasons": [
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "residual_sd_pct": 18.8,
+  "league_visitor_effect_range_pct": [
+    -6.3,
+    20.6
+  ],
+  "top5_visitors": [
+    "NYA",
+    "LAN",
+    "CHN",
+    "BOS",
+    "NYN"
+  ],
+  "park_attributable_per_game_median": 1834,
+  "park_attributable_per_game_min_max": [
+    471,
+    3391
+  ],
+  "park_attributable_share_median_pct": 7.1,
+  "park_attributable_share_max_pct": 18.7,
+  "vegas_drivable_opponents": [
+    "ANA",
+    "ARI",
+    "LAN",
+    "SDN"
+  ],
+  "vegas_drivable_home_games": 11.0
+}

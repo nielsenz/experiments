@@ -1,0 +1,15 @@
+leg,benchmark,per_game_low,per_game_high
+Plan,"A's plan, all visitors",7943.0,8820.0
+Plan,"A's plan, came for the game (53%)",4210.0,4675.0
+Plan,"A's plan, already in town (47%)",3733.0,4145.0
+Estimate,"Golden Knights, 15 to 25% of 17,929",2689.0,4482.0
+Other MLB markets,"Brewers, out of state (ticket data)",4580.0,4580.0
+Other MLB markets,"Brewers, out of state and overnight",1878.0,1878.0
+Other MLB markets,"Pirates, out of state (secondary source)",5648.0,5648.0
+Other MLB markets,"Cubs, outside Illinois (team figure, 2011)",13786.0,13786.0
+Opponent-attributable (game logs),league-average sensitivity,1438.0,1597.0
+Opponent-attributable (game logs),most opponent-sensitive quarter of parks,2331.0,2588.0
+Opponent-attributable (game logs),most opponent-sensitive park,4305.0,4780.0
+Already in town (Allegiant survey),Raiders regular season: middle half of events,3949.0,5679.0
+Already in town (Allegiant survey),Concerts: middle half of events,1018.0,2810.0
+Already in town (Allegiant survey),All 96 events: middle half of events,1649.0,4295.0
