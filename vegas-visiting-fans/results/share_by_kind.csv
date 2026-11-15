@@ -1,6 +1,7 @@
-kind,events,mean_pct,min_pct,max_pct,dates_per_year
-rodeo,1,88.5,88.5,88.5,10.0
-one_off_sport,7,73.6,58.0,87.0,1.0
-concert,14,69.1,54.0,83.0,1.5
-raiders_regular,14,64.3,54.0,76.0,10.0
-raiders_preseason,3,51.0,45.0,58.0,10.0
+kind,events,mean_pct,min_pct,max_pct,mean_main_reason_pct,mean_attendance,mean_visitors,mean_locals
+other_sport,7,80.6,74,85,96.1,50157.6,40775.8,9381.8
+college_football,9,74.9,64,87,86.4,39088.3,30534.2,8554.2
+concert,36,71.5,42,89,94.0,48260.8,34807.9,13452.9
+nfl_regular,30,64.6,54,76,86.5,55998.6,36278.9,19719.8
+soccer,10,55.5,42,68,83.1,36034.9,20516.2,15518.7
+nfl_preseason,4,52.8,45,58,86.8,53846.8,28384.8,25462.0

@@ -1,4 +1,6 @@
 property,dates,visitor_tickets_low,visitor_tickets_high,local_tickets_low,local_tickets_high,visitors_per_date_low,visitors_per_date_high,locals_per_date_low,locals_per_date_high
-Raiders 2025 (measured),10,339200.0,339200.0,207897.0,207897.0,33920.0,33920.0,20790.0,20790.0
+"Raiders 2025 (measured, scaled to 10 dates)",10,344436.0,344436.0,208824.0,208824.0,34444.0,34444.0,20882.0,20882.0
 "Golden Knights 2025-26 (15 to 25% visitors, estimated)",41,110263.0,183772.0,551317.0,624826.0,2689.0,4482.0,13447.0,15240.0
-"A's plan (30% of a 29,400 sellout)",81,714420.0,714420.0,1666980.0,1666980.0,8820.0,8820.0,20580.0,20580.0
+"Brewers 2025 (14% out of state, ticket data)",81,371012.0,371012.0,2279077.0,2279077.0,4580.0,4580.0,28137.0,28137.0
+"A's plan, traffic study (30% of 29,400)",81,714420.0,714420.0,1666980.0,1666980.0,8820.0,8820.0,20580.0,20580.0
+"A's plan, legislative (30% of 26,476)",81,643367.0,643367.0,1501189.0,1501189.0,7943.0,7943.0,18533.0,18533.0

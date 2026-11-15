@@ -1,40 +1,97 @@
-event_id,date,venue,property,event,kind,dates_per_year,attendance,out_of_town_pct,measured,date_basis,source
-1,2022-10-08,Allegiant Stadium,Shamrock Series,Notre Dame vs BYU,one_off_sport,1,,87,1,source,casino.org 2023-03 (Stadium Authority)
-2,2022-12-18,Allegiant Stadium,Raiders,Raiders vs Patriots,raiders_regular,10,,69,1,source,casino.org 2023-03 (Stadium Authority)
-3,2023-04-01,Allegiant Stadium,Concert,Red Hot Chili Peppers,concert,1,,54,1,source,LVSportsBiz 2023-09-19
-4,2023-06-15,Allegiant Stadium,Soccer,Soccer match (June 15),one_off_sport,1,,62,1,source,LVSportsBiz 2023-09-19
-5,2023-06-18,Allegiant Stadium,Soccer,Soccer match (June 18),one_off_sport,1,,58,1,source,LVSportsBiz 2023-09-19
-6,2023-08-13,Allegiant Stadium,Raiders,Raiders vs 49ers (preseason),raiders_preseason,10,54369,45,1,source,Review-Journal 2024-01 (Stadium Authority Q3 2023)
-7,2023-08-26,Allegiant Stadium,Concert,Beyonce,concert,2,44702,66,1,source,Review-Journal 2024-01 (Stadium Authority Q3 2023)
-8,2023-09-24,Allegiant Stadium,Raiders,Raiders vs Steelers,raiders_regular,10,58964,64,1,source,Review-Journal 2024-01 (Stadium Authority Q3 2023)
-9,2023-10-09,Allegiant Stadium,Raiders,Raiders vs Packers,raiders_regular,10,60133,64,1,source,Review-Journal 2024-03 (Stadium Authority Q4 2023)
-10,2024-08-17,Allegiant Stadium,Raiders,Raiders vs Cowboys (preseason),raiders_preseason,10,,50,1,source,KSNV 2025-03 (Stadium Authority)
-11,2024-10-13,Allegiant Stadium,Raiders,Raiders vs Steelers,raiders_regular,10,59312,76,1,source,Review-Journal 2025-03 / KSNV 2025-03
-12,2024-10-27,Allegiant Stadium,Raiders,Raiders vs Chiefs,raiders_regular,10,59101,73,1,source,Review-Journal 2025-03
-13,2024-12-22,Allegiant Stadium,Raiders,Raiders vs Jaguars,raiders_regular,10,46561,59,1,source,Review-Journal 2025-03 / KSNV 2025-03
-14,2025-01-05,Allegiant Stadium,Raiders,Raiders vs Chargers,raiders_regular,10,51707,56,1,source,LVSportsBiz 2025-05-20
-15,2025-04-19,Allegiant Stadium,WrestleMania,WrestleMania 41 (two nights),one_off_sport,2,59321,82.5,1,source,Review-Journal 2025-08 (Stadium Authority Q2 2025); attendance is the two-night total halved
-16,,Allegiant Stadium,Concert,Post Malone,concert,1,53738,69,1,quarter only (2025 Q2),Review-Journal 2025-08
-17,,Allegiant Stadium,Concert,Kendrick Lamar,concert,1,52328,66,1,quarter only (2025 Q2),Review-Journal 2025-08
-18,,Allegiant Stadium,Concert,Coldplay night 1,concert,2,50518,79,1,quarter only (2025 Q2),Review-Journal 2025-08
-19,,Allegiant Stadium,Concert,Coldplay night 2,concert,2,49950,77,1,quarter only (2025 Q2),Review-Journal 2025-08
-20,,Allegiant Stadium,Concert,AC/DC,concert,1,48899,78,1,quarter only (2025 Q2),Review-Journal 2025-08
-21,,Allegiant Stadium,Concert,Shakira,concert,1,46120,59,1,quarter only (2025 Q2),Review-Journal 2025-08
-22,,Allegiant Stadium,Raiders,Raiders vs 49ers (preseason),raiders_preseason,10,54186,58,1,quarter only (2025 Q3); preseason inferred,casinos.com 2025-11 (Stadium Authority Q3 2025)
-23,2025-09-13,Allegiant Stadium,Boxing,Canelo vs Crawford,one_off_sport,1,65302,85,1,source,Review-Journal 2025-12 / casinos.com 2025-11
-24,2025-09-15,Allegiant Stadium,Raiders,Raiders vs Chargers,raiders_regular,10,58679,58,1,NFL schedule (not in attendance source),casinos.com 2025-11 (Stadium Authority Q3 2025)
-25,2025-09-28,Allegiant Stadium,Raiders,Raiders vs Bears,raiders_regular,10,59036,66,1,NFL schedule (not in attendance source),casinos.com 2025-11 (Stadium Authority Q3 2025)
-26,,Allegiant Stadium,Concert,The Weeknd,concert,1,51103,58,1,quarter only (2025 Q3),casinos.com 2025-11
-27,,Allegiant Stadium,Concert,Beyonce night 1,concert,2,,76,1,quarter only (2025 Q3),casinos.com 2025-11
-28,,Allegiant Stadium,Concert,Beyonce night 2,concert,2,,83,1,quarter only (2025 Q3),casinos.com 2025-11
-29,,Allegiant Stadium,Concert,Chris Brown night 1,concert,2,,64,1,quarter only (2025 Q3),casinos.com 2025-11
-30,,Allegiant Stadium,Concert,Chris Brown night 2,concert,2,,69,1,quarter only (2025 Q3),casinos.com 2025-11
-31,,Allegiant Stadium,Concert,Paul McCartney,concert,1,42926,70,1,quarter only (2025 Q4),Review-Journal 2026-02 (Stadium Authority Q4 2025)
-32,,Allegiant Stadium,Las Vegas Bowl,Las Vegas Bowl: Nebraska vs Utah,one_off_sport,1,34369,76,1,quarter only (2025 Q4),Review-Journal 2026-02
-33,,Allegiant Stadium,HBCU Classic,Grambling State vs Jackson State,one_off_sport,1,30149,65,1,quarter only (2025 Q4),Review-Journal 2026-02
-34,2025-11-02,Allegiant Stadium,Raiders,Raiders vs Jaguars,raiders_regular,10,52401,63,1,source,Review-Journal 2026-02
-35,2025-11-17,Allegiant Stadium,Raiders,Raiders vs Cowboys,raiders_regular,10,60327,68,1,source,Review-Journal 2026-02
-36,2025-11-23,Allegiant Stadium,Raiders,Raiders vs Browns,raiders_regular,10,53749,61,1,source,Review-Journal 2026-02
-37,2025-12-07,Allegiant Stadium,Raiders,Raiders vs Broncos,raiders_regular,10,57018,69,1,source,Review-Journal 2026-02
-38,2025-12-28,Allegiant Stadium,Raiders,Raiders vs Giants,raiders_regular,10,52136,54,1,source,Review-Journal 2026-02
-39,,Thomas & Mack Center,National Finals Rodeo,NFR (10 performances),rodeo,10,17509,88.5,1,annual,LVSportsBiz 2023-12-16 (87 to 90 percent in previous years; attendance is the 2023 nightly average)
+date,event,kind,run_nights,attendance,out_of_town_pct,main_reason_pct,report
+2022-10-02,Raiders vs Broncos,nfl_regular,1,58759,67,90,Q4 2022
+2022-10-08,Shamrock Series: Notre Dame vs BYU,college_football,1,55996,87,81,Q4 2022
+2022-10-23,Raiders vs Texans,nfl_regular,1,54057,60,87,Q4 2022
+2022-11-01,Elton John,concert,1,44496,42,83,Q4 2022
+2022-11-13,Raiders vs Colts,nfl_regular,1,56636,67,89,Q4 2022
+2022-12-02,Pac-12 Championship,college_football,1,55863,81,76,Q4 2022
+2022-12-04,Raiders vs Chargers,nfl_regular,1,57147,63,88,Q4 2022
+2022-12-17,Las Vegas Bowl,college_football,1,21766,70,90,Q4 2022
+2022-12-18,Raiders vs Patriots,nfl_regular,1,57787,69,90,Q4 2022
+2023-04-01,Red Hot Chili Peppers,concert,1,37102,54,86,Q2 2023
+2023-06-15,Nations League Semi-Finals,soccer,1,57188,62,86,Q2 2023
+2023-06-18,Nations League Finals,soccer,1,26403,58,83,Q2 2023
+2023-07-12,Concacaf Gold Cup Semi-Finals,soccer,1,27028,42,73,Q3 2023
+2023-07-30,Manchester United vs Borussia Dortmund,soccer,1,39739,63,89,Q3 2023
+2023-08-01,AC Milan vs FC Barcelona,soccer,1,31506,42,82,Q3 2023
+2023-08-10,Karol G,concert,1,33679,56,96,Q3 2023
+2023-08-13,Raiders vs 49ers,nfl_preseason,1,54369,45,88,Q3 2023
+2023-08-18,Blackpink,concert,1,41797,62,97,Q3 2023
+2023-08-26,Beyonce night 1,concert,2,44702,66,94,Q3 2023
+2023-08-27,Beyonce night 2,concert,2,41415,62,89,Q3 2023
+2023-09-24,Raiders vs Steelers,nfl_regular,1,58964,64,93,Q3 2023
+2023-10-07,Pink,concert,1,51957,75,94,Q4 2023
+2023-10-09,Raiders vs Packers,nfl_regular,1,60133,64,90,Q4 2023
+2023-10-15,Raiders vs Patriots,nfl_regular,1,53581,65,83,Q4 2023
+2023-10-28,Ed Sheeran,concert,1,57622,52,91,Q4 2023
+2023-11-05,Raiders vs Giants,nfl_regular,1,56721,63,84,Q4 2023
+2023-11-12,Raiders vs Jets,nfl_regular,1,57936,66,89,Q4 2023
+2023-11-26,Raiders vs Chiefs,nfl_regular,1,58070,69,86,Q4 2023
+2023-12-01,Pac-12 Championship,college_football,1,55926,79,89,Q4 2023
+2023-12-10,Raiders vs Vikings,nfl_regular,1,59609,74,85,Q4 2023
+2023-12-14,Raiders vs Chargers,nfl_regular,1,53536,61,85,Q4 2023
+2023-12-23,Las Vegas Bowl,college_football,1,16005,66,81,Q4 2023
+2024-01-07,Raiders vs Broncos,nfl_regular,1,54805,59,93,Q1 2024
+2024-03-02,National Rugby League,other_sport,1,31927,74,93,Q1 2024
+2024-03-16,TWICE,concert,1,37395,74,98,Q1 2024
+2024-05-11,Rolling Stones,concert,1,43317,72,90,Q2 2024
+2024-06-26,Copa America: Ecuador vs Jamaica,soccer,1,15966,59,83,Q2 2024
+2024-06-28,Copa America: Brazil vs Paraguay,soccer,1,41155,58,80,Q2 2024
+2024-07-06,Copa America: Uruguay vs Brazil,soccer,1,45202,68,86,Q3 2024
+2024-08-08,Morgan Wallen night 1,concert,2,50982,77,96,Q3 2024
+2024-08-09,Morgan Wallen night 2,concert,2,52734,76,97,Q3 2024
+2024-08-17,Raiders vs Cowboys,nfl_preseason,1,53967,50,86,Q3 2024
+2024-08-23,Raiders vs 49ers,nfl_preseason,1,52865,58,86,Q3 2024
+2024-09-01,Vegas Kickoff Classic,college_football,1,58428,86,95,Q3 2024
+2024-09-13,Pink,concert,1,43773,58,88,Q3 2024
+2024-09-22,Raiders vs Panthers,nfl_regular,1,55028,62,90,Q3 2024
+2024-09-29,Raiders vs Browns,nfl_regular,1,54576,63,84,Q3 2024
+2024-10-13,Raiders vs Steelers,nfl_regular,1,59312,76,90,Q4 2024
+2024-10-27,Raiders vs Chiefs,nfl_regular,1,59101,73,87,Q4 2024
+2024-11-09,Billy Joel and Sting,concert,1,47497,78,92,Q4 2024
+2024-11-24,Raiders vs Broncos,nfl_regular,1,57086,68,83,Q4 2024
+2024-12-07,George Strait,concert,1,48101,89,93,Q4 2024
+2024-12-16,Raiders vs Falcons,nfl_regular,1,55099,69,85,Q4 2024
+2024-12-22,Raiders vs Jaguars,nfl_regular,1,46561,59,87,Q4 2024
+2024-12-27,Las Vegas Bowl,college_football,1,23393,64,79,Q4 2024
+2025-01-05,Raiders vs Chargers,nfl_regular,1,51707,56,83,Q1 2025
+2025-01-18,Inter Miami vs Club America,soccer,1,46089,61,89,Q1 2025
+2025-03-01,National Rugby League,other_sport,1,38107,78,96,Q1 2025
+2025-03-29,Mayday,concert,1,15914,82,99,Q1 2025
+2025-04-19,WrestleMania 41 day 1,other_sport,2,58538,81,98,Q2 2025
+2025-04-20,WrestleMania 41 day 2,other_sport,2,60103,84,97,Q2 2025
+2025-04-26,AC/DC,concert,1,48899,78,94,Q2 2025
+2025-05-03,Post Malone,concert,1,53738,69,92,Q2 2025
+2025-05-31,Kendrick Lamar,concert,1,52328,66,98,Q2 2025
+2025-06-06,Coldplay night 1,concert,2,49950,77,94,Q2 2025
+2025-06-07,Coldplay night 2,concert,2,50518,79,95,Q2 2025
+2025-06-22,Concacaf Gold Cup,soccer,1,30073,42,80,Q2 2025
+2025-06-28,Shakira,concert,1,46120,59,93,Q2 2025
+2025-07-05,The Weeknd,concert,1,51103,58,91,Q3 2025
+2025-07-25,Beyonce night 1,concert,2,43642,76,91,Q3 2025
+2025-07-26,Beyonce night 2,concert,2,49049,83,95,Q3 2025
+2025-08-16,Raiders vs 49ers,nfl_preseason,1,54186,58,87,Q3 2025
+2025-09-13,Canelo vs Crawford,other_sport,1,65302,85,96,Q3 2025
+2025-09-15,Raiders vs Chargers,nfl_regular,1,58679,58,87,Q3 2025
+2025-09-19,Chris Brown night 1,concert,2,42768,64,95,Q3 2025
+2025-09-20,Chris Brown night 2,concert,2,46876,69,97,Q3 2025
+2025-09-28,Raiders vs Bears,nfl_regular,1,59036,66,90,Q3 2025
+2025-10-04,Paul McCartney,concert,1,42926,70,91,Q4 2025
+2025-10-12,Raiders vs Titans,nfl_regular,1,50402,62,83,Q4 2025
+2025-10-25,HBCU Classic,college_football,1,30149,65,95,Q4 2025
+2025-11-02,Raiders vs Jaguars,nfl_regular,1,52401,63,82,Q4 2025
+2025-11-17,Raiders vs Cowboys,nfl_regular,1,60327,68,95,Q4 2025
+2025-11-23,Raiders vs Browns,nfl_regular,1,53749,61,79,Q4 2025
+2025-12-07,Raiders vs Broncos,nfl_regular,1,57018,69,87,Q4 2025
+2025-12-28,Raiders vs Giants,nfl_regular,1,52136,54,72,Q4 2025
+2025-12-31,Las Vegas Bowl,college_football,1,34269,76,92,Q4 2025
+2026-04-10,Bruno Mars night 1,concert,2,51535,75,90,Q2 2026
+2026-04-11,Bruno Mars night 2,concert,2,52443,78,96,Q2 2026
+2026-04-18,WrestleMania 42 day 1,other_sport,2,47093,81,96,Q2 2026
+2026-04-19,WrestleMania 42 day 2,other_sport,2,50033,81,97,Q2 2026
+2026-05-01,Morgan Wallen night 1,concert,2,57889,80,98,Q2 2026
+2026-05-02,Morgan Wallen night 2,concert,2,59859,85,98,Q2 2026
+2026-05-23,BTS night 1,concert,4,61630,86,98,Q2 2026
+2026-05-24,BTS night 2,concert,4,62387,84,98,Q2 2026
+2026-05-27,BTS night 3,concert,4,60624,84,98,Q2 2026
+2026-05-28,BTS night 4,concert,4,60621,78,98,Q2 2026

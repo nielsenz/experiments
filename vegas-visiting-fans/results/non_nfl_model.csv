@@ -1,0 +1,17 @@
+target,term,coef,se,t,n,r2
+out_of_town_pct,intercept,75.84,4.23,17.93,62,0.48
+out_of_town_pct,midweek,-5.72,3.5,-1.64,62,0.48
+out_of_town_pct,summer,0.32,3.36,0.09,62,0.48
+out_of_town_pct,concert,-7.18,4.08,-1.76,62,0.48
+out_of_town_pct,soccer,-18.77,5.66,-3.32,62,0.48
+out_of_town_pct,college_football,-0.79,5.06,-0.16,62,0.48
+out_of_town_pct,y2025,2.16,2.86,0.76,62,0.48
+out_of_town_pct,y2026,12.25,3.92,3.12,62,0.48
+visitors,intercept,35552.38,4641.56,7.66,62,0.38
+visitors,midweek,-3377.03,3836.41,-0.88,62,0.38
+visitors,summer,271.82,3683.59,0.07,62,0.38
+visitors,concert,-4268.7,4472.87,-0.95,62,0.38
+visitors,soccer,-14314.02,6213.92,-2.3,62,0.38
+visitors,college_football,-5069.7,5549.92,-0.91,62,0.38
+visitors,y2025,1920.19,3134.92,0.61,62,0.38
+visitors,y2026,14441.55,4304.8,3.35,62,0.38

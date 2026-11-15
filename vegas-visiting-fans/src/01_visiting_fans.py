@@ -1,14 +1,10 @@
 """Visiting-fan share in Las Vegas: what the measured data supports for the A's.
 
-Inputs:  data/events.csv           39 events with a reported out-of-town share
-         data/benchmarks.csv       estimates and plans (Golden Knights, A's, UFC)
-         data/raiders_seasons.csv  Raiders season totals
+Inputs:  data/events.csv           96 Allegiant Stadium events with a surveyed out-of-town share,
+                                   transcribed from Stadium Authority quarterly activity reports
+         data/benchmarks.csv       estimates, plans and other-market figures
          data/mlb_markets_2025.csv 13 one-team MLB metros, 2025 attendance
-Outputs: results/share_by_kind.csv, results/curve_fit.json,
-         results/curve_predictions.csv, results/raiders_games.csv,
-         results/raiders_game_model.csv, results/annual_ticket_volumes.csv,
-         results/mlb_tickets_per_resident.csv, results/as_scenarios.csv,
-         results/summary.json
+Outputs: results/*.csv, results/summary.json
 """
 import json
 from pathlib import Path
@@ -23,17 +19,34 @@ RNG = np.random.default_rng(20261115)
 
 LV_POP = 2_407_226            # Las Vegas MSA, Census July 2025
 AS_DATES = 81
-AS_SELLOUT = 29_400           # 98% of 30,000 fixed seats (traffic study basis)
-AS_CAPACITY = 33_000
-AS_VISITOR_SHARE = 0.30       # plan
-AS_INCREMENTAL_SHARE = 0.16   # plan: fans who would not otherwise be in town
+AS_SELLOUT = 29_400           # traffic study: 98% of 30,000 fixed seats
+AS_LEG_AVG = 26_476           # legislative basis: 2.6M over 95 events, per-game figure derived in a 2024 public comment
+AS_VISITOR_SHARE = 0.30
+AS_INCREMENTAL_OF_VISITORS = 0.53
+AS_INCREMENTAL_PER_YEAR = 405_000   # all 95 planned events
+AS_INCREMENTAL_BASEBALL = AS_VISITOR_SHARE * AS_INCREMENTAL_OF_VISITORS * AS_LEG_AVG * AS_DATES   # 81 games
 VGK_DATES = 41
-VGK_AVG = 17_929              # 2025-26, from ../vegas-nba-demand
+VGK_AVG = 17_929              # 2025-26 announced, from ../vegas-nba-demand
+BREWERS_OUT_OF_STATE = 0.14   # team ticket data, cited in 2020 CSL study and 2023 legislative testimony
+BREWERS_OVERNIGHT_OF_OOS = 0.41
+BREWERS_2025 = 2_650_089
 
-ev = pd.read_csv(ROOT / "data" / "events.csv")
+ev = pd.read_csv(ROOT / "data" / "events.csv", parse_dates=["date"])
 ev["share"] = ev.out_of_town_pct / 100
 ev["visitors"] = ev.attendance * ev.share
-ev["locals"] = ev.attendance * (1 - ev.share)
+ev["locals"] = ev.attendance - ev.visitors
+ev["came_for_event"] = ev.visitors * ev.main_reason_pct / 100
+ev["weekday"] = ev.date.dt.day_name()
+ev["midweek"] = ev.weekday.isin(["Monday", "Tuesday", "Wednesday", "Thursday"]).astype(int)
+ev["summer"] = ev.date.dt.month.isin([6, 7, 8]).astype(int)
+ev["nfl"] = ev.kind.str.startswith("nfl")
+ev["season"] = np.where(ev.date.dt.month <= 2, ev.date.dt.year - 1, ev.date.dt.year)
+
+# Transcription check: NFL attendance by report quarter against the reports' own summary table.
+SUMMARY_NFL = {"Q4 2022": 284_386, "Q3 2023": 113_333, "Q4 2023": 399_586, "Q3 2024": 216_436, "Q4 2024": 277_159}
+got = ev[ev.nfl].groupby("report").attendance.sum()
+for q, want in SUMMARY_NFL.items():
+    assert int(got[q]) == want, (q, int(got[q]), want)
 
 
 def logit(p):
@@ -44,18 +57,33 @@ def expit(x):
     return 1 / (1 + np.exp(-x))
 
 
+def ols(d, y, cols):
+    X = np.column_stack([np.ones(len(d))] + [d[c].to_numpy(float) for c in cols])
+    yv = d[y].to_numpy(float)
+    b, *_ = np.linalg.lstsq(X, yv, rcond=None)
+    resid = yv - X @ b
+    dof = len(d) - X.shape[1]
+    se = np.sqrt(np.diag(np.linalg.inv(X.T @ X)) * (resid @ resid) / dof)
+    r2 = 1 - (resid @ resid) / ((yv - yv.mean()) ** 2).sum()
+    out = pd.DataFrame({"target": y, "term": ["intercept"] + cols, "coef": b, "se": se, "t": b / se})
+    out["n"] = len(d)
+    out["r2"] = r2
+    return out
+
+
 # ---------------------------------------------------------------- 1. by kind
-by_kind = (ev.groupby("kind")
-           .agg(events=("share", "size"), mean_pct=("out_of_town_pct", "mean"),
-                min_pct=("out_of_town_pct", "min"), max_pct=("out_of_town_pct", "max"),
-                dates_per_year=("dates_per_year", "median"))
-           .round(1).sort_values("mean_pct", ascending=False).reset_index())
+by_kind = (ev.groupby("kind").agg(
+    events=("share", "size"), mean_pct=("out_of_town_pct", "mean"), min_pct=("out_of_town_pct", "min"),
+    max_pct=("out_of_town_pct", "max"), mean_main_reason_pct=("main_reason_pct", "mean"),
+    mean_attendance=("attendance", "mean"), mean_visitors=("visitors", "mean"), mean_locals=("locals", "mean"))
+    .round(1).sort_values("mean_pct", ascending=False).reset_index())
 by_kind.to_csv(RES / "share_by_kind.csv", index=False)
 
 # ------------------------------------------- 2. share against dates per year
-# Measured events only cover 1 to 10 dates a year. The fit is extrapolated to
-# 41 and 81 dates and then compared with the Golden Knights estimates, which
-# were held out.
+# Raiders games count as 10 dates a year; everything else by nights in the run (1, 2 or 4).
+ev["dates_per_year"] = np.where(ev.nfl, 10, ev.run_nights)
+ev["cluster"] = np.where(ev.nfl, "Raiders " + ev.season.astype(str),
+                         ev.event.str.replace(r" (night|day) \d", "", regex=True) + " " + ev.date.dt.year.astype(str))
 
 
 def fit_curve(d):
@@ -64,182 +92,166 @@ def fit_curve(d):
     return b
 
 
-def predict(b, dates):
-    return float(expit(b[0] + b[1] * np.log(dates)))
-
-
-specs = {
-    "all measured events": ev,
-    "excluding preseason": ev[ev.kind != "raiders_preseason"],
-    "excluding rodeo": ev[ev.kind != "rodeo"],
-    "excluding preseason and rodeo": ev[~ev.kind.isin(["raiders_preseason", "rodeo"])],
-}
-rows, fit_out = [], {}
+specs = {"all 96 events": ev, "excluding preseason": ev[ev.kind != "nfl_preseason"],
+         "concerts only (1, 2 or 4 nights)": ev[ev.kind == "concert"],
+         "non-NFL events only": ev[~ev.nfl]}
+curve_rows, fit_out = [], {}
 for name, d in specs.items():
     b = fit_curve(d)
-    # Bootstrap by property so 16 Raiders games do not count as 16 independent points.
-    props = d.property.unique()
+    groups = [g for _, g in d.groupby("cluster")]
     boots = []
-    for _ in range(4000):
-        pick = RNG.choice(props, size=len(props), replace=True)
-        s = pd.concat([d[d.property == p] for p in pick])
-        if s.dates_per_year.nunique() < 2:
-            continue
-        boots.append(fit_curve(s))
+    for _ in range(3000):
+        pick = RNG.integers(0, len(groups), len(groups))
+        s = pd.concat([groups[i] for i in pick])
+        if s.dates_per_year.nunique() > 1:
+            boots.append(fit_curve(s))
     boots = np.array(boots)
-    fit_out[name] = {
-        "n_events": int(len(d)), "n_properties": int(len(props)),
-        "intercept": round(float(b[0]), 3), "slope_per_log_date": round(float(b[1]), 3),
-        "slope_80pct_interval": [round(float(q), 3) for q in np.quantile(boots[:, 1], [0.1, 0.9])],
-    }
-    for dates in (1, 2, 10, 41, 81):
-        p = [expit(bb[0] + bb[1] * np.log(dates)) for bb in boots]
-        rows.append({"spec": name, "dates_per_year": dates,
-                     "predicted_pct": round(100 * predict(b, dates), 1),
-                     "low80_pct": round(100 * float(np.quantile(p, 0.1)), 1),
-                     "high80_pct": round(100 * float(np.quantile(p, 0.9)), 1)})
-pd.DataFrame(rows).to_csv(RES / "curve_predictions.csv", index=False)
+    fit_out[name] = {"n_events": int(len(d)), "n_clusters": len(groups),
+                     "slope_per_log_date": round(float(b[1]), 3),
+                     "slope_80pct_interval": [round(float(q), 3) for q in np.quantile(boots[:, 1], [0.1, 0.9])]}
+    for dates in (1, 2, 4, 10, 41, 81):
+        p = expit(boots[:, 0] + boots[:, 1] * np.log(dates))
+        curve_rows.append({"spec": name, "dates_per_year": dates,
+                           "predicted_pct": round(100 * float(expit(b[0] + b[1] * np.log(dates))), 1),
+                           "low80_pct": round(100 * float(np.quantile(p, 0.1)), 1),
+                           "high80_pct": round(100 * float(np.quantile(p, 0.9)), 1)})
+pd.DataFrame(curve_rows).to_csv(RES / "curve_predictions.csv", index=False)
 (RES / "curve_fit.json").write_text(json.dumps(fit_out, indent=2))
+by_run = (ev[ev.kind == "concert"].groupby("run_nights")
+          .agg(events=("share", "size"), mean_pct=("out_of_town_pct", "mean")).round(1).reset_index())
+by_run.to_csv(RES / "concert_share_by_run_length.csv", index=False)
 
 # -------------------------------------------------------- 3. Raiders by game
-rg = ev[ev.property == "Raiders"].copy()
-rg["date"] = pd.to_datetime(rg.date)
-rg["weekday"] = rg.date.dt.day_name()
-rg["preseason"] = (rg.kind == "raiders_preseason").astype(int)
-rg["monday"] = (rg.weekday == "Monday").astype(int)
-rg["late"] = rg.date.dt.month.isin([12, 1]).astype(int)   # December and January
-rg_out = rg[["date", "event", "weekday", "preseason", "attendance", "out_of_town_pct",
-             "visitors", "locals"]].copy()
-rg_out[["visitors", "locals"]] = rg_out[["visitors", "locals"]].round(0)
+rg = ev[ev.nfl].copy()
+rg["preseason"] = (rg.kind == "nfl_preseason").astype(int)
+rg["weeknight"] = rg.midweek
+rg["late"] = rg.date.dt.month.isin([12, 1]).astype(int)
+rg["division"] = rg.event.str.contains("Broncos|Chiefs|Chargers").astype(int)
+for s in (2023, 2024, 2025):
+    rg[f"s{s}"] = (rg.season == s).astype(int)
+rg_out = rg[["event", "weekday", "season", "preseason", "attendance", "out_of_town_pct", "main_reason_pct",
+             "visitors", "locals", "came_for_event"]].round(0)
+rg_out.insert(0, "date", rg.date.dt.date)
 rg_out.to_csv(RES / "raiders_games.csv", index=False)
-
-full = rg.dropna(subset=["attendance", "date"])
-reg = full[full.preseason == 0]
-
-
-def ols(y, cols, d):
-    X = np.column_stack([np.ones(len(d))] + [d[c].to_numpy(float) for c in cols])
-    b, *_ = np.linalg.lstsq(X, y, rcond=None)
-    resid = y - X @ b
-    dof = len(d) - X.shape[1]
-    se = np.sqrt(np.diag(np.linalg.inv(X.T @ X)) * (resid @ resid) / dof)
-    return pd.DataFrame({"term": ["intercept"] + cols, "coef": b, "se": se, "t": b / se})
-
-
-gm = []
-for target in ("out_of_town_pct", "visitors", "locals"):
-    t = ols(full[target].to_numpy(float), ["preseason", "monday", "late"], full)
-    t.insert(0, "target", target)
-    gm.append(t)
-gm = pd.concat(gm).round(2)
+terms = ["preseason", "weeknight", "late", "division", "s2023", "s2024", "s2025"]
+gm = pd.concat([ols(rg, t, terms) for t in ("out_of_town_pct", "visitors", "locals")]).round(2)
 gm.to_csv(RES / "raiders_game_model.csv", index=False)
+reg = rg[rg.preseason == 0]
+by_season = (reg.groupby("season").agg(
+    games=("share", "size"), attendance=("attendance", "mean"), visitors=("visitors", "mean"),
+    locals=("locals", "mean"), main_reason_pct=("main_reason_pct", "mean")).round(0))
+by_season["out_of_town_pct"] = (100 * reg.groupby("season").visitors.sum() / reg.groupby("season").attendance.sum()).round(1)
+by_season.to_csv(RES / "raiders_by_season.csv")
+by_opp = (reg.assign(opp=reg.event.str.replace("Raiders vs ", ""))
+          .groupby("opp").agg(games=("share", "size"), mean_pct=("out_of_town_pct", "mean"),
+                              mean_visitors=("visitors", "mean")).round(0).sort_values("mean_pct", ascending=False))
+by_opp.to_csv(RES / "raiders_by_opponent.csv")
 
-corr_att_share = float(np.corrcoef(reg.attendance, reg.out_of_town_pct)[0, 1])
-corr_att_locals = float(np.corrcoef(reg.attendance, reg.locals)[0, 1])
+# ------------------------------------------ 4. non-NFL: weekday and summer
+nn = ev[~ev.nfl].copy()
+for k in ("concert", "soccer", "college_football"):
+    nn[k] = (nn.kind == k).astype(int)
+nn["y2025"] = (nn.date.dt.year == 2025).astype(int)
+nn["y2026"] = (nn.date.dt.year == 2026).astype(int)
+nm = pd.concat([ols(nn, t, ["midweek", "summer", "concert", "soccer", "college_football", "y2025", "y2026"])
+                for t in ("out_of_town_pct", "visitors")]).round(2)
+nm.to_csv(RES / "non_nfl_model.csv", index=False)
+midweek_tbl = (nn.groupby(["kind", "midweek"]).agg(events=("share", "size"), mean_pct=("out_of_town_pct", "mean"),
+                                                   mean_visitors=("visitors", "mean")).round(0).reset_index())
+midweek_tbl.to_csv(RES / "non_nfl_midweek.csv", index=False)
 
-# ------------------------------------------------ 4. annual ticket volumes
-seasons = pd.read_csv(ROOT / "data" / "raiders_seasons.csv")
-r25 = seasons[seasons.season == 2025].iloc[0]
-raiders_vis = r25.total_attendance * r25.out_of_town_pct / 100
-raiders_loc = r25.total_attendance - raiders_vis
+# ------------------------------------------------ 5. annual ticket volumes
+r25 = rg[rg.season == 2025]            # 8 regular-season games and 1 preseason; the January 2026 game is missing
+r_dates = 10
+r_vis = r25.visitors.mean() * r_dates
+r_loc = r25.locals.mean() * r_dates
+r_inc = r25.came_for_event.mean() * r_dates
 vgk_total = VGK_AVG * VGK_DATES
-as_total = AS_SELLOUT * AS_DATES
-vol = pd.DataFrame([
-    {"property": "Raiders 2025 (measured)", "dates": int(r25.home_dates),
-     "visitor_tickets_low": raiders_vis, "visitor_tickets_high": raiders_vis,
-     "local_tickets_low": raiders_loc, "local_tickets_high": raiders_loc},
+plans = {"A's plan, traffic study (30% of 29,400)": AS_SELLOUT, "A's plan, legislative (30% of 26,476)": AS_LEG_AVG}
+vol = [
+    {"property": "Raiders 2025 (measured, scaled to 10 dates)", "dates": r_dates,
+     "visitor_tickets_low": r_vis, "visitor_tickets_high": r_vis, "local_tickets_low": r_loc, "local_tickets_high": r_loc},
     {"property": "Golden Knights 2025-26 (15 to 25% visitors, estimated)", "dates": VGK_DATES,
      "visitor_tickets_low": 0.15 * vgk_total, "visitor_tickets_high": 0.25 * vgk_total,
      "local_tickets_low": 0.75 * vgk_total, "local_tickets_high": 0.85 * vgk_total},
-    {"property": "A's plan (30% of a 29,400 sellout)", "dates": AS_DATES,
-     "visitor_tickets_low": AS_VISITOR_SHARE * as_total, "visitor_tickets_high": AS_VISITOR_SHARE * as_total,
-     "local_tickets_low": (1 - AS_VISITOR_SHARE) * as_total, "local_tickets_high": (1 - AS_VISITOR_SHARE) * as_total},
-])
-vol["visitors_per_date_low"] = vol.visitor_tickets_low / vol.dates
-vol["visitors_per_date_high"] = vol.visitor_tickets_high / vol.dates
-vol["locals_per_date_low"] = vol.local_tickets_low / vol.dates
-vol["locals_per_date_high"] = vol.local_tickets_high / vol.dates
+    {"property": "Brewers 2025 (14% out of state, ticket data)", "dates": 81,
+     "visitor_tickets_low": BREWERS_OUT_OF_STATE * BREWERS_2025, "visitor_tickets_high": BREWERS_OUT_OF_STATE * BREWERS_2025,
+     "local_tickets_low": (1 - BREWERS_OUT_OF_STATE) * BREWERS_2025, "local_tickets_high": (1 - BREWERS_OUT_OF_STATE) * BREWERS_2025},
+]
+for name, avg in plans.items():
+    vol.append({"property": name, "dates": AS_DATES,
+                "visitor_tickets_low": AS_VISITOR_SHARE * avg * AS_DATES, "visitor_tickets_high": AS_VISITOR_SHARE * avg * AS_DATES,
+                "local_tickets_low": (1 - AS_VISITOR_SHARE) * avg * AS_DATES, "local_tickets_high": (1 - AS_VISITOR_SHARE) * avg * AS_DATES})
+vol = pd.DataFrame(vol)
+for side in ("visitor", "local"):
+    for b in ("low", "high"):
+        vol[f"{side}s_per_date_{b}"] = vol[f"{side}_tickets_{b}"] / vol.dates
 vol.round(0).to_csv(RES / "annual_ticket_volumes.csv", index=False)
+as_vis = (vol.visitor_tickets_low[4], vol.visitor_tickets_low[3])    # legislative, traffic study
+as_loc = (vol.local_tickets_low[4], vol.local_tickets_low[3])
+lv_vis = (r_vis + 0.15 * vgk_total, r_vis + 0.25 * vgk_total)
+lv_loc = (r_loc + 0.75 * vgk_total, r_loc + 0.85 * vgk_total)
 
-existing_vis = (vol.visitor_tickets_low[:2].sum(), vol.visitor_tickets_high[:2].sum())
-existing_loc = (vol.local_tickets_low[:2].sum(), vol.local_tickets_high[:2].sum())
-as_vis, as_loc = vol.visitor_tickets_low[2], vol.local_tickets_low[2]
-
-# ------------------------------------------ 5. MLB tickets per resident
+# ------------------------------------------ 6. MLB tickets per resident
 mlb = pd.read_csv(ROOT / "data" / "mlb_markets_2025.csv")
 mlb["tickets_per_resident"] = mlb.attendance_2025 / mlb.metro_pop_2025
-mlb["avg_attendance"] = mlb.attendance_2025 / mlb.home_dates
 peer = mlb[mlb.metro_pop_2025.between(1.3e6, 3.1e6)]
 mlb.sort_values("tickets_per_resident").round(3).to_csv(RES / "mlb_tickets_per_resident.csv", index=False)
-as_local_tpr = as_loc / LV_POP
-as_total_tpr = as_total / LV_POP
 
-# ------------------------------------------------------- 6. A's scenarios
-local_cases = {
-    "plan (20,580)": (1 - AS_VISITOR_SHARE) * AS_SELLOUT,
-    "peer low (Pirates/Orioles rate)": peer.tickets_per_resident.min() * LV_POP / AS_DATES,
-    "peer median rate": peer.tickets_per_resident.median() * LV_POP / AS_DATES,
-}
-visitor_cases = {
-    "Knights count, low (15%)": 0.15 * VGK_AVG,
-    "Knights count, high (25%)": 0.25 * VGK_AVG,
-    "plan, incremental only (16%)": AS_INCREMENTAL_SHARE * AS_SELLOUT,
-    "plan (30%)": AS_VISITOR_SHARE * AS_SELLOUT,
-}
+# ------------------------------------------------------- 7. A's scenarios
+local_cases = {"plan, traffic study": 0.70 * AS_SELLOUT, "plan, legislative": 0.70 * AS_LEG_AVG,
+               "Raiders regular-season local count": float(reg.locals.mean())}
+visitor_cases = {"Golden Knights count, low (15%)": 0.15 * VGK_AVG, "Golden Knights count, high (25%)": 0.25 * VGK_AVG,
+                 "Brewers out-of-state count (14% of 32,717)": BREWERS_OUT_OF_STATE * BREWERS_2025 / 81,
+                 "plan, legislative (30% of 26,476)": 0.30 * AS_LEG_AVG, "plan, traffic study (30% of 29,400)": 0.30 * AS_SELLOUT}
 sc = []
 for ln, L in local_cases.items():
     for vn, V in visitor_cases.items():
-        att = min(L + V, AS_CAPACITY)
-        sc.append({"locals_case": ln, "visitors_case": vn, "locals_per_game": round(L),
-                   "visitors_per_game": round(V), "attendance_per_game": round(att),
-                   "visitor_share_pct": round(100 * V / (L + V), 1),
+        sc.append({"locals_case": ln, "visitors_case": vn, "locals_per_game": round(L), "visitors_per_game": round(V),
+                   "attendance_per_game": round(min(L + V, 33_000)), "visitor_share_pct": round(100 * V / (L + V), 1),
                    "visitor_tickets_per_year": round(V * AS_DATES),
-                   "shortfall_vs_plan_visitor_tickets": round(as_vis - V * AS_DATES)})
-sc = pd.DataFrame(sc)
-sc.to_csv(RES / "as_scenarios.csv", index=False)
+                   "incremental_at_53pct": round(V * AS_DATES * AS_INCREMENTAL_OF_VISITORS),
+                   "incremental_vs_baseball_plan_pct": round(100 * V * AS_DATES * AS_INCREMENTAL_OF_VISITORS / AS_INCREMENTAL_BASEBALL)})
+pd.DataFrame(sc).to_csv(RES / "as_scenarios.csv", index=False)
 
 summary = {
-    "events_with_measured_share": int(len(ev)),
-    "raiders_games_with_share": int(len(rg)),
-    "raiders_regular_games_with_attendance": int(len(reg)),
-    "raiders_regular_mean_share_pct": round(float(reg.out_of_town_pct.mean()), 1),
-    "raiders_regular_mean_locals_per_game": round(float(reg.locals.mean())),
-    "raiders_regular_locals_range": [round(float(reg.locals.min())), round(float(reg.locals.max()))],
-    "raiders_regular_mean_visitors_per_game": round(float(reg.visitors.mean())),
-    "raiders_regular_visitors_range": [round(float(reg.visitors.min())), round(float(reg.visitors.max()))],
-    "raiders_corr_attendance_vs_share": round(corr_att_share, 2),
-    "raiders_corr_attendance_vs_locals": round(corr_att_locals, 2),
-    "raiders_2025_visitor_tickets": round(float(raiders_vis)),
-    "raiders_2025_local_tickets": round(float(raiders_loc)),
-    "vgk_visitor_tickets_range": [round(0.15 * vgk_total), round(0.25 * vgk_total)],
-    "vgk_local_tickets_range": [round(0.75 * vgk_total), round(0.85 * vgk_total)],
-    "as_plan_visitor_tickets": round(float(as_vis)),
-    "as_plan_local_tickets": round(float(as_loc)),
-    "as_plan_incremental_visitor_tickets": round(AS_INCREMENTAL_SHARE * as_total),
-    "as_visitor_tickets_vs_raiders": round(float(as_vis / raiders_vis), 2),
-    "as_visitor_tickets_vs_raiders_plus_vgk": [round(float(as_vis / existing_vis[1]), 2),
-                                               round(float(as_vis / existing_vis[0]), 2)],
-    "as_local_tickets_vs_raiders_plus_vgk": [round(float(as_loc / existing_loc[1]), 2),
-                                             round(float(as_loc / existing_loc[0]), 2)],
-    "as_visitors_per_game_vs_vgk": [round(float(0.30 * AS_SELLOUT / (0.25 * VGK_AVG)), 2),
-                                    round(float(0.30 * AS_SELLOUT / (0.15 * VGK_AVG)), 2)],
-    "as_local_tickets_per_resident": round(float(as_local_tpr), 3),
-    "as_total_tickets_per_resident": round(float(as_total_tpr), 3),
-    "mlb_peer_metros": peer.metro.tolist(),
-    "mlb_peer_tickets_per_resident_min_median_max": [
-        round(float(peer.tickets_per_resident.min()), 3),
-        round(float(peer.tickets_per_resident.median()), 3),
-        round(float(peer.tickets_per_resident.max()), 3)],
-    "visitor_trips_if_2_or_3_games_per_trip": [round(float(as_vis / 3)), round(float(as_vis / 2))],
+    "events": int(len(ev)), "raiders_games": int(len(rg)), "raiders_regular_games": int(len(reg)),
+    "raiders_regular_share_weighted_pct": round(100 * float(reg.visitors.sum() / reg.attendance.sum()), 1),
+    "raiders_regular_locals_mean_sd_min_max": [round(float(x)) for x in (reg.locals.mean(), reg.locals.std(), reg.locals.min(), reg.locals.max())],
+    "raiders_regular_visitors_mean_sd_min_max": [round(float(x)) for x in (reg.visitors.mean(), reg.visitors.std(), reg.visitors.min(), reg.visitors.max())],
+    "raiders_corr_attendance_share": round(float(np.corrcoef(reg.attendance, reg.out_of_town_pct)[0, 1]), 2),
+    "raiders_corr_attendance_locals": round(float(np.corrcoef(reg.attendance, reg.locals)[0, 1]), 2),
+    "raiders_main_reason_mean_pct": round(float(reg.main_reason_pct.mean()), 1),
+    "raiders_2025_visitor_tickets": round(float(r_vis)), "raiders_2025_local_tickets": round(float(r_loc)),
+    "raiders_2025_came_for_game": round(float(r_inc)),
+    "all_events_main_reason_mean_pct": round(float(ev.main_reason_pct.mean()), 1),
+    "all_events_main_reason_min_pct": float(ev.main_reason_pct.min()),
+    "non_nfl_midweek_events": int(nn.midweek.sum()),
+    "as_plan_visitor_tickets_low_high": [round(float(x)) for x in as_vis],
+    "as_plan_local_tickets_low_high": [round(float(x)) for x in as_loc],
+    "as_plan_visitors_per_game_low_high": [round(0.30 * AS_LEG_AVG), round(0.30 * AS_SELLOUT)],
+    "as_plan_incremental_per_year": AS_INCREMENTAL_PER_YEAR,
+    "as_plan_incremental_baseball_only": round(AS_INCREMENTAL_BASEBALL),
+    "as_plan_incremental_per_game": round(AS_INCREMENTAL_BASEBALL / AS_DATES),
+    "as_incremental_baseball_vs_raiders_came_for_game": round(float(AS_INCREMENTAL_BASEBALL / r_inc), 2),
+    "as_incremental_all_events_vs_raiders_came_for_game": round(float(AS_INCREMENTAL_PER_YEAR / r_inc), 2),
+    "as_visitor_tickets_vs_raiders": [round(float(x / r_vis), 2) for x in as_vis],
+    "as_visitor_tickets_vs_raiders_plus_vgk": [round(float(as_vis[0] / lv_vis[1]), 2), round(float(as_vis[1] / lv_vis[0]), 2)],
+    "as_local_tickets_vs_raiders_plus_vgk": [round(float(as_loc[0] / lv_loc[1]), 2), round(float(as_loc[1] / lv_loc[0]), 2)],
+    "as_visitor_tickets_vs_brewers_out_of_state": [round(float(x / (BREWERS_OUT_OF_STATE * BREWERS_2025)), 2) for x in as_vis],
+    "brewers_out_of_state_tickets": round(BREWERS_OUT_OF_STATE * BREWERS_2025),
+    "brewers_out_of_state_per_game": round(BREWERS_OUT_OF_STATE * BREWERS_2025 / 81),
+    "brewers_overnight_out_of_state_tickets": round(BREWERS_OUT_OF_STATE * BREWERS_OVERNIGHT_OF_OOS * BREWERS_2025),
+    "as_local_tickets_per_resident_low_high": [round(float(x / LV_POP), 3) for x in as_loc],
+    "as_total_tickets_per_resident_low_high": [round(AS_LEG_AVG * 81 / LV_POP, 3), round(AS_SELLOUT * 81 / LV_POP, 3)],
+    "mlb_peer_tickets_per_resident_min_median_max": [round(float(x), 3) for x in (
+        peer.tickets_per_resident.min(), peer.tickets_per_resident.median(), peer.tickets_per_resident.max())],
 }
 (RES / "summary.json").write_text(json.dumps(summary, indent=2))
 
-print(by_kind.to_string(index=False))
-print(json.dumps(fit_out, indent=2))
-print(pd.DataFrame(rows).to_string(index=False))
-print(rg_out.to_string(index=False))
-print(gm.to_string(index=False))
-print(vol.round(0).T.to_string())
-print(mlb.sort_values("tickets_per_resident")[["team", "metro_pop_2025", "avg_attendance", "tickets_per_resident"]].round(3).to_string(index=False))
-print(sc.to_string(index=False))
-print(json.dumps(summary, indent=2))
+pd.set_option("display.width", 220)
+print(by_kind.to_string(index=False)); print(by_run.to_string(index=False))
+print(json.dumps(fit_out, indent=1)); print(pd.DataFrame(curve_rows).to_string(index=False))
+print(gm.to_string(index=False)); print(by_season.to_string()); print(by_opp.to_string())
+print(nm.to_string(index=False)); print(midweek_tbl.to_string(index=False))
+print(vol.round(0).T.to_string()); print(pd.DataFrame(sc).to_string(index=False)); print(json.dumps(summary, indent=1))

@@ -1,42 +1,38 @@
 {
-  "all measured events": {
-    "n_events": 39,
-    "n_properties": 9,
-    "intercept": 0.934,
-    "slope_per_log_date": -0.136,
+  "all 96 events": {
+    "n_events": 96,
+    "n_clusters": 54,
+    "slope_per_log_date": -0.099,
     "slope_80pct_interval": [
-      -0.278,
-      0.556
+      -0.159,
+      0.001
     ]
   },
   "excluding preseason": {
+    "n_events": 92,
+    "n_clusters": 54,
+    "slope_per_log_date": -0.066,
+    "slope_80pct_interval": [
+      -0.129,
+      0.032
+    ]
+  },
+  "concerts only (1, 2 or 4 nights)": {
     "n_events": 36,
-    "n_properties": 9,
-    "intercept": 0.923,
-    "slope_per_log_date": -0.082,
+    "n_clusters": 26,
+    "slope_per_log_date": 0.602,
     "slope_80pct_interval": [
-      -0.227,
-      0.558
+      0.361,
+      0.808
     ]
   },
-  "excluding rodeo": {
-    "n_events": 38,
-    "n_properties": 8,
-    "intercept": 0.942,
-    "slope_per_log_date": -0.174,
+  "non-NFL events only": {
+    "n_events": 62,
+    "n_clusters": 50,
+    "slope_per_log_date": 0.635,
     "slope_80pct_interval": [
-      -0.309,
-      0.565
-    ]
-  },
-  "excluding preseason and rodeo": {
-    "n_events": 35,
-    "n_properties": 8,
-    "intercept": 0.932,
-    "slope_per_log_date": -0.125,
-    "slope_80pct_interval": [
-      -0.257,
-      0.577
+      0.463,
+      0.841
     ]
   }
 }

@@ -1,0 +1,8 @@
+kind,midweek,events,mean_pct,mean_visitors
+college_football,0,8,75.0,31095.0
+college_football,1,1,76.0,26044.0
+concert,0,31,72.0,34776.0
+concert,1,5,67.0,35003.0
+other_sport,0,7,81.0,40776.0
+soccer,0,6,58.0,22617.0
+soccer,1,4,51.0,17365.0

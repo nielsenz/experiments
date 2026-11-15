@@ -1,77 +1,77 @@
-# The A's local ask is ordinary. The visitor ask has no precedent.
+# Twenty thousand locals, and the visitors nobody has counted
 
-*Draft. Figures from `README.md` and `results/`; sources are listed per row in `data/`.*
+*Draft. Figures from `README.md` and `results/`; every event row is from the Las Vegas Stadium Authority's quarterly reports.*
 
 The last roof truss went up at the A's ballpark on Nov. 13. The building is on schedule. The open question is who sits in it.
 
-The plan presented to Nevada lawmakers and repeated in the team's traffic study is a 70/30 split: at a sellout of 29,400, about
-20,580 Southern Nevadans and 8,820 visitors, 81 times a year.
+The plan put to Nevada lawmakers is a 70/30 split: seven locals for every three visitors, 81 times a year. Depending on which
+version of the plan you use, that is 18,500 to 20,600 Southern Nevadans and 7,900 to 8,800 visitors a game.
 
-It is tempting to test that against the Raiders, who draw 62 to 68% of their crowd from out of town, or against the Golden
-Knights, who are thought to draw 15 to 25%. I started there, expecting a tidy curve: the more dates a team plays, the smaller
-the visitor share. The data would not cooperate.
+There is a public record that can test this, and it is better than most people realize. Every quarter the Raiders file a report
+with the Stadium Authority listing each ticketed event at Allegiant Stadium: scanned attendance, the share of the crowd from
+out of town, and the share of those visitors who say the event was the main reason for their trip. I transcribed 96 events,
+October 2022 through May 2026.
 
-## What has been measured
+## The local crowd is a constant
 
-The Las Vegas Stadium Authority reports an out-of-town share for ticketed events at Allegiant Stadium. I collected 39 events
-with a published share, 2022 to 2025.
+Start with the Raiders, because they are the only Las Vegas team with a surveyed crowd.
 
-- One-off sports events (Canelo-Crawford, WrestleMania, the Las Vegas Bowl): 74% on average.
-- Stadium concerts: 69%.
-- Raiders regular-season games: 64%.
-- Raiders preseason games: 51%.
+Across 30 regular-season games, the number of locals in the building averages 19,720 and barely moves. It does not care whether
+the opponent is the Chiefs or the Jaguars, whether it is Monday night or Sunday afternoon, September or December, 2022 or 2025.
+What moves is everybody else: 27,500 visitors for a late-season Jaguars game, 45,100 for the Steelers.
 
-Every one of those is a destination event on 10 or fewer dates a year. Within that range, date count explains almost nothing.
-A fit of share on dates has a slope that could be negative or positive, and stretched out to 81 dates it predicts 58%, which
-nobody believes. The Golden Knights number that would anchor the low end has never been measured. It is three estimates made
-between 2017 and 2021.
+So Las Vegas has shown, 30 times, that it will put about 20,000 residents in a stadium. That is the number the A's plan needs
+from locals. The plan needs it on 81 dates instead of 10, which is a large step, but 0.62 to 0.69 tickets per resident is what
+Pittsburgh and Baltimore manage. It is the less surprising half of the plan.
 
-So the share curve is not something the public record can support. The counts are.
+## The visitor share does not fall with more dates
 
-## Counts
+My first guess was that visitor share drops as a property plays more often: 88% for a rodeo, 65% for the Raiders, 15 to 25% for
+the Golden Knights. The Allegiant data does not show that. Among concerts it shows the reverse. One-night shows average 66%
+from out of town, two-night runs 75%, and the one four-night run 83%. Acts get more nights because people travel for them.
 
-| | Dates | Visitor tickets a year | Local tickets a year |
-|---|---|---|---|
-| Raiders, 2025 | 10 | 339,000 | 208,000 |
-| Golden Knights, 2025-26 (estimated) | 41 | 110,000 to 184,000 | 551,000 to 625,000 |
-| A's plan | 81 | 714,000 | 1,667,000 |
+What sets the share is the product. Wrestling, boxing and rugby draw 81%. Concerts draw 71%. Soccer, 56%. A Raiders preseason
+game, 53%. Nothing in that list is a team that plays every week, and no Las Vegas team that does has ever published a number.
 
-Two things stand out.
+## What every-week teams draw
 
-**The local number looks large and is not.** 1.67 million local tickets is about double what the Raiders and Golden Knights
-sell to locals combined. But baseball is a volume business everywhere. It works out to 0.69 tickets per resident. Pittsburgh
-and Baltimore sold 0.63 last year, Kansas City 0.77, St. Louis 0.80, Cincinnati and Cleveland about 0.94. Las Vegas would need
-to behave like a below-average baseball town.
+Two benchmarks exist, and neither is ideal.
 
-There is a detail in the Raiders data that makes this concrete. Across 13 regular-season games, the number of locals in the
-building hardly moves: about 20,000, whether the crowd is 46,000 or 60,000. Visitors are what swing the gate. The A's plan
-needs that same 20,000, on 81 dates instead of 10.
+The Golden Knights are thought to draw 15 to 25% of their crowd from out of town. That is 2,700 to 4,500 visitors a game. It
+rests on three estimates, the latest from 2021.
 
-**The visitor number is the new thing.** 714,000 visitor tickets is 2.1 times what the Raiders sell, and 1.4 to 1.6 times the
-Raiders and Golden Knights together. Per game it is two to three times what a Golden Knights game is estimated to draw.
+The Brewers have ticket data: 14% of attendees from out of state. On 2025 attendance that is 4,600 a game, in a market 90
+minutes from Chicago.
 
-## What happens if the visitors come at hockey's rate
+Two different sports, two different cities, about 4,500 visitors a game. The A's plan needs 7,900 to 8,800. Over a season that
+is 643,000 to 714,000 visitor tickets, roughly double what the Raiders sell to visitors and 1.7 to 1.9 times the Brewers'
+out-of-state total.
 
-Suppose locals show up exactly as planned and visitors arrive at the Golden Knights' estimated count of 2,700 to 4,500 a game.
-The A's draw 23,300 to 25,100. That is a respectable crowd, around 80 to 85% of the sellout figure.
+## Where the plan is cautious
 
-What goes missing is 350,000 to 500,000 visitor tickets a year. The public contribution was sold on new tourism: 16% of fans,
-about 381,000 tickets a year, were supposed to be people who came to Las Vegas for baseball. That is the number at risk, not
-the gate.
+In one respect the plan undersells itself. It counts only 53% of visitors as people who came to Las Vegas because of the game.
+At Raiders games, 86.5% of visitors say the game was their main reason. Across all 96 events the average is 90%.
+
+That does not rescue the count. At 4,500 visitors a game, the plan's own 53% yields 115,000 to 197,000 incremental visitors a
+year from baseball, a third to a little over half of the 341,000 it implies. The public contribution was justified by that
+tourism. The gate is not what is at risk. At 20,000 locals and 4,500 visitors the A's draw about 24,000, a below-average major
+league crowd.
 
 ## The case for the plan
 
-Two points in its favor deserve equal weight.
+Three things point the other way.
 
-First, baseball is played in series. A Cubs fan who flies in for a weekend can use three tickets. At two or three games per
-trip, 714,000 visitor tickets is 240,000 to 360,000 trips, which is about what the Raiders already generate at one game per
-trip.
+The first actual sales figure is close to the forecast. The A's sold out their top club, about 300 seats, and 24% of buyers
+live outside Southern Nevada. These are the most expensive seats in the building and buyers are not attendees, but it is the
+only number so far that is not a projection.
 
-Second, the last forecast like this one was too cautious. Before Allegiant Stadium opened, the stadium authority expected 27%
-of attendees to be visitors. In 2022 it was 40 to 49%.
+Baseball is played in series. A visiting fan can use two or three tickets on one trip, which turns 643,000 to 714,000 tickets
+into 214,000 to 357,000 trips. The Raiders already generate 344,000.
 
-## What would settle it
+And the last forecast like this one was too low. The authority expected 27% visitors at Allegiant events and got 40 to 49%.
 
-One measured season of Golden Knights attendance by home ZIP code would say more than everything above. The arena has had that
-data since at least 2018. Until someone publishes it, the honest position is that Las Vegas knows how many visitors come to
-ten football games a year and is guessing about everything else.
+## What to watch
+
+The A's say their deposit list is over 20,000. Where those people live is the next real data point. After that, the ballpark's
+own quarterly reports should carry the same out-of-town column from the first homestand in 2028. Las Vegas knows exactly who
+comes to ten football games a year. For the 122 dates a year the A's and Golden Knights will play, it is still estimating.

@@ -1,65 +1,76 @@
 {
-  "events_with_measured_share": 39,
-  "raiders_games_with_share": 17,
-  "raiders_regular_games_with_attendance": 13,
-  "raiders_regular_mean_share_pct": 63.9,
-  "raiders_regular_mean_locals_per_game": 20072,
-  "raiders_regular_locals_range": [
+  "events": 96,
+  "raiders_games": 34,
+  "raiders_regular_games": 30,
+  "raiders_regular_share_weighted_pct": 64.8,
+  "raiders_regular_locals_mean_sd_min_max": [
+    19720,
+    2361,
     14235,
     24645
   ],
-  "raiders_regular_mean_visitors_per_game": 36014,
-  "raiders_regular_visitors_range": [
+  "raiders_regular_visitors_mean_sd_min_max": [
+    36279,
+    4509,
     27471,
     45077
   ],
-  "raiders_corr_attendance_vs_share": 0.63,
-  "raiders_corr_attendance_vs_locals": -0.21,
-  "raiders_2025_visitor_tickets": 339200,
-  "raiders_2025_local_tickets": 207897,
-  "vgk_visitor_tickets_range": [
-    110263,
-    183772
+  "raiders_corr_attendance_share": 0.64,
+  "raiders_corr_attendance_locals": -0.26,
+  "raiders_main_reason_mean_pct": 86.5,
+  "raiders_2025_visitor_tickets": 344436,
+  "raiders_2025_local_tickets": 208824,
+  "raiders_2025_came_for_game": 293775,
+  "all_events_main_reason_mean_pct": 89.7,
+  "all_events_main_reason_min_pct": 72.0,
+  "non_nfl_midweek_events": 10,
+  "as_plan_visitor_tickets_low_high": [
+    643367,
+    714420
   ],
-  "vgk_local_tickets_range": [
-    551317,
-    624826
+  "as_plan_local_tickets_low_high": [
+    1501189,
+    1666980
   ],
-  "as_plan_visitor_tickets": 714420,
-  "as_plan_local_tickets": 1666980,
-  "as_plan_incremental_visitor_tickets": 381024,
-  "as_visitor_tickets_vs_raiders": 2.11,
+  "as_plan_visitors_per_game_low_high": [
+    7943,
+    8820
+  ],
+  "as_plan_incremental_per_year": 405000,
+  "as_plan_incremental_baseball_only": 340984,
+  "as_plan_incremental_per_game": 4210,
+  "as_incremental_baseball_vs_raiders_came_for_game": 1.16,
+  "as_incremental_all_events_vs_raiders_came_for_game": 1.38,
+  "as_visitor_tickets_vs_raiders": [
+    1.87,
+    2.07
+  ],
   "as_visitor_tickets_vs_raiders_plus_vgk": [
-    1.37,
-    1.59
+    1.22,
+    1.57
   ],
   "as_local_tickets_vs_raiders_plus_vgk": [
-    2.0,
-    2.2
+    1.8,
+    2.19
   ],
-  "as_visitors_per_game_vs_vgk": [
-    1.97,
-    3.28
+  "as_visitor_tickets_vs_brewers_out_of_state": [
+    1.73,
+    1.93
   ],
-  "as_local_tickets_per_resident": 0.692,
-  "as_total_tickets_per_resident": 0.989,
-  "mlb_peer_metros": [
-    "Milwaukee",
-    "Cleveland",
-    "Kansas City",
-    "Cincinnati",
-    "Pittsburgh",
-    "St. Louis",
-    "Baltimore",
-    "Denver"
+  "brewers_out_of_state_tickets": 371012,
+  "brewers_out_of_state_per_game": 4580,
+  "brewers_overnight_out_of_state_tickets": 152115,
+  "as_local_tickets_per_resident_low_high": [
+    0.624,
+    0.692
+  ],
+  "as_total_tickets_per_resident_low_high": [
+    0.891,
+    0.989
   ],
   "mlb_peer_tickets_per_resident_min_median_max": [
     0.63,
     0.789,
     1.683
-  ],
-  "visitor_trips_if_2_or_3_games_per_trip": [
-    238140,
-    357210
   ]
 }

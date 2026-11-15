@@ -1,18 +1,35 @@
-date,event,weekday,preseason,attendance,out_of_town_pct,visitors,locals
-2022-12-18,Raiders vs Patriots,Sunday,0,,69.0,,
-2023-08-13,Raiders vs 49ers (preseason),Sunday,1,54369.0,45.0,24466.0,29903.0
-2023-09-24,Raiders vs Steelers,Sunday,0,58964.0,64.0,37737.0,21227.0
-2023-10-09,Raiders vs Packers,Monday,0,60133.0,64.0,38485.0,21648.0
-2024-08-17,Raiders vs Cowboys (preseason),Saturday,1,,50.0,,
-2024-10-13,Raiders vs Steelers,Sunday,0,59312.0,76.0,45077.0,14235.0
-2024-10-27,Raiders vs Chiefs,Sunday,0,59101.0,73.0,43144.0,15957.0
-2024-12-22,Raiders vs Jaguars,Sunday,0,46561.0,59.0,27471.0,19090.0
-2025-01-05,Raiders vs Chargers,Sunday,0,51707.0,56.0,28956.0,22751.0
-,Raiders vs 49ers (preseason),,1,54186.0,58.0,31428.0,22758.0
-2025-09-15,Raiders vs Chargers,Monday,0,58679.0,58.0,34034.0,24645.0
-2025-09-28,Raiders vs Bears,Sunday,0,59036.0,66.0,38964.0,20072.0
-2025-11-02,Raiders vs Jaguars,Sunday,0,52401.0,63.0,33013.0,19388.0
-2025-11-17,Raiders vs Cowboys,Monday,0,60327.0,68.0,41022.0,19305.0
-2025-11-23,Raiders vs Browns,Sunday,0,53749.0,61.0,32787.0,20962.0
-2025-12-07,Raiders vs Broncos,Sunday,0,57018.0,69.0,39342.0,17676.0
-2025-12-28,Raiders vs Giants,Sunday,0,52136.0,54.0,28153.0,23983.0
+date,event,weekday,season,preseason,attendance,out_of_town_pct,main_reason_pct,visitors,locals,came_for_event
+2022-10-02,Raiders vs Broncos,Sunday,2022,0,58759,67,90,39369.0,19390.0,35432.0
+2022-10-23,Raiders vs Texans,Sunday,2022,0,54057,60,87,32434.0,21623.0,28218.0
+2022-11-13,Raiders vs Colts,Sunday,2022,0,56636,67,89,37946.0,18690.0,33772.0
+2022-12-04,Raiders vs Chargers,Sunday,2022,0,57147,63,88,36003.0,21144.0,31682.0
+2022-12-18,Raiders vs Patriots,Sunday,2022,0,57787,69,90,39873.0,17914.0,35886.0
+2023-08-13,Raiders vs 49ers,Sunday,2023,1,54369,45,88,24466.0,29903.0,21530.0
+2023-09-24,Raiders vs Steelers,Sunday,2023,0,58964,64,93,37737.0,21227.0,35095.0
+2023-10-09,Raiders vs Packers,Monday,2023,0,60133,64,90,38485.0,21648.0,34637.0
+2023-10-15,Raiders vs Patriots,Sunday,2023,0,53581,65,83,34828.0,18753.0,28907.0
+2023-11-05,Raiders vs Giants,Sunday,2023,0,56721,63,84,35734.0,20987.0,30017.0
+2023-11-12,Raiders vs Jets,Sunday,2023,0,57936,66,89,38238.0,19698.0,34032.0
+2023-11-26,Raiders vs Chiefs,Sunday,2023,0,58070,69,86,40068.0,18002.0,34459.0
+2023-12-10,Raiders vs Vikings,Sunday,2023,0,59609,74,85,44111.0,15498.0,37494.0
+2023-12-14,Raiders vs Chargers,Thursday,2023,0,53536,61,85,32657.0,20879.0,27758.0
+2024-01-07,Raiders vs Broncos,Sunday,2023,0,54805,59,93,32335.0,22470.0,30072.0
+2024-08-17,Raiders vs Cowboys,Saturday,2024,1,53967,50,86,26984.0,26984.0,23206.0
+2024-08-23,Raiders vs 49ers,Friday,2024,1,52865,58,86,30662.0,22203.0,26369.0
+2024-09-22,Raiders vs Panthers,Sunday,2024,0,55028,62,90,34117.0,20911.0,30706.0
+2024-09-29,Raiders vs Browns,Sunday,2024,0,54576,63,84,34383.0,20193.0,28882.0
+2024-10-13,Raiders vs Steelers,Sunday,2024,0,59312,76,90,45077.0,14235.0,40569.0
+2024-10-27,Raiders vs Chiefs,Sunday,2024,0,59101,73,87,43144.0,15957.0,37535.0
+2024-11-24,Raiders vs Broncos,Sunday,2024,0,57086,68,83,38818.0,18268.0,32219.0
+2024-12-16,Raiders vs Falcons,Monday,2024,0,55099,69,85,38018.0,17081.0,32316.0
+2024-12-22,Raiders vs Jaguars,Sunday,2024,0,46561,59,87,27471.0,19090.0,23900.0
+2025-01-05,Raiders vs Chargers,Sunday,2024,0,51707,56,83,28956.0,22751.0,24033.0
+2025-08-16,Raiders vs 49ers,Saturday,2025,1,54186,58,87,31428.0,22758.0,27342.0
+2025-09-15,Raiders vs Chargers,Monday,2025,0,58679,58,87,34034.0,24645.0,29609.0
+2025-09-28,Raiders vs Bears,Sunday,2025,0,59036,66,90,38964.0,20072.0,35067.0
+2025-10-12,Raiders vs Titans,Sunday,2025,0,50402,62,83,31249.0,19153.0,25937.0
+2025-11-02,Raiders vs Jaguars,Sunday,2025,0,52401,63,82,33013.0,19388.0,27070.0
+2025-11-17,Raiders vs Cowboys,Monday,2025,0,60327,68,95,41022.0,19305.0,38971.0
+2025-11-23,Raiders vs Browns,Sunday,2025,0,53749,61,79,32787.0,20962.0,25902.0
+2025-12-07,Raiders vs Broncos,Sunday,2025,0,57018,69,87,39342.0,17676.0,34228.0
+2025-12-28,Raiders vs Giants,Sunday,2025,0,52136,54,72,28153.0,23983.0,20270.0

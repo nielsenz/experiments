@@ -1,9 +1,14 @@
-property,dates_per_year,avg_attendance,out_of_town_pct_low,out_of_town_pct_high,basis,year,source
-Golden Knights (LVCVA chief),41,17929,25,25,estimate,2018,LVSportsBiz 2018-09-18 quoting Rossi Ralenkotter
-Golden Knights (Applied Analysis),41,17929,15,20,estimate,2021,Review-Journal 2021 quoting Jeremy Aguero
-Golden Knights (team target),41,17929,10,15,plan,2017,Las Vegas Sun 2017-02-22 / The Hockey News
-UFC cards in Las Vegas,,,88,88,research cited by Aguero (date count not sourced),2021,Review-Journal 2021
-Athletics ballpark (traffic study),81,29400,30,30,plan,2024,Review-Journal (70/30 split at a 29400 sellout)
-Athletics ballpark (alternate),81,29400,27,27,plan,2025,Sports Illustrated Inside the As
-Allegiant Stadium all events (forecast),,,27,27,pre-opening forecast,2021,casino.org 2023-03 quoting Steve Hill
-Allegiant Stadium all events (2022 actual),,,40,49,measured,2022,casino.org 2023-03
+property,market,dates_per_year,out_of_town_pct_low,out_of_town_pct_high,basis,year,definition,source
+Golden Knights (former LVCVA chief),Las Vegas,41,25,25,estimate,2018,visitors,LVSportsBiz 2018-09-18 quoting Rossi Ralenkotter
+Golden Knights (Applied Analysis),Las Vegas,41,15,20,estimate,2021,out of town,Review-Journal 2021 quoting Jeremy Aguero
+Golden Knights (team target),Las Vegas,41,10,15,plan,2017,not local,Las Vegas Sun 2017-02-22
+Athletics ballpark (legislative testimony),Las Vegas,81,30,30,plan,2023,out of town; 53 percent of them incremental; 405000 incremental visitors a year over 95 events,Applied Analysis testimony on SB1 as cited in Stadium Authority agenda book 2024-08-15
+Athletics ballpark (traffic study),Las Vegas,81,30,30,plan,2024,visitors at a 29400 sellout,Review-Journal
+Athletics ballpark (alternate),Las Vegas,81,27,27,plan,2025,visiting fans,Sports Illustrated Inside the As
+Athletics Athletic Club buyers (about 300 seats),Las Vegas,81,24,24,measured (buyers not attendees),2026,buyers from outside Southern Nevada,Review-Journal 2026-10 quoting Marc Badain
+Brewers,Milwaukee,81,14,14,measured (team ticket data),2020,out of state; 41 percent of them stayed overnight,Urban Milwaukee 2020-02-25 on the CSL study; Wisconsin legislative testimony 2023-10-05
+Brewers (Miller Park first season),Milwaukee,81,17,17,survey,2001,stayed overnight,Urban Milwaukee 2017-05-10 on the Chamberlain study
+UFC cards,Las Vegas,,88,88,research cited by Aguero,2021,out of town,Review-Journal 2021
+National Finals Rodeo,Las Vegas,10,87,90,reported,2023,outside Southern Nevada,LVSportsBiz 2023-12-16
+Allegiant Stadium all events (forecast),Las Vegas,,27,27,pre-opening forecast,2021,tourists,casino.org 2023-03 quoting Steve Hill
+Allegiant Stadium all events (2022 actual),Las Vegas,,40,49,measured,2022,tourists,casino.org 2023-03
