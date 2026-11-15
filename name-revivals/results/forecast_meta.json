@@ -1,0 +1,25 @@
+{
+ "made": "2026-11-15",
+ "data_through": 2024,
+ "target": "log change in share of births, mean of 2022-24 to mean of 2032-34",
+ "model": "B + bearer-age clock only",
+ "train_origins": [
+  1950,
+  2014
+ ],
+ "features": [
+  "is_f",
+  "logshare",
+  "mom3",
+  "mom5",
+  "mom10",
+  "mom20",
+  "accel",
+  "log_peak",
+  "rel_peak",
+  "peak_age",
+  "off_trough",
+  "trough_age",
+  "old_mean_age"
+ ]
+}
