@@ -1,0 +1,40 @@
+event_id,date,venue,property,event,kind,dates_per_year,attendance,out_of_town_pct,measured,date_basis,source
+1,2022-10-08,Allegiant Stadium,Shamrock Series,Notre Dame vs BYU,one_off_sport,1,,87,1,source,casino.org 2023-03 (Stadium Authority)
+2,2022-12-18,Allegiant Stadium,Raiders,Raiders vs Patriots,raiders_regular,10,,69,1,source,casino.org 2023-03 (Stadium Authority)
+3,2023-04-01,Allegiant Stadium,Concert,Red Hot Chili Peppers,concert,1,,54,1,source,LVSportsBiz 2023-09-19
+4,2023-06-15,Allegiant Stadium,Soccer,Soccer match (June 15),one_off_sport,1,,62,1,source,LVSportsBiz 2023-09-19
+5,2023-06-18,Allegiant Stadium,Soccer,Soccer match (June 18),one_off_sport,1,,58,1,source,LVSportsBiz 2023-09-19
+6,2023-08-13,Allegiant Stadium,Raiders,Raiders vs 49ers (preseason),raiders_preseason,10,54369,45,1,source,Review-Journal 2024-01 (Stadium Authority Q3 2023)
+7,2023-08-26,Allegiant Stadium,Concert,Beyonce,concert,2,44702,66,1,source,Review-Journal 2024-01 (Stadium Authority Q3 2023)
+8,2023-09-24,Allegiant Stadium,Raiders,Raiders vs Steelers,raiders_regular,10,58964,64,1,source,Review-Journal 2024-01 (Stadium Authority Q3 2023)
+9,2023-10-09,Allegiant Stadium,Raiders,Raiders vs Packers,raiders_regular,10,60133,64,1,source,Review-Journal 2024-03 (Stadium Authority Q4 2023)
+10,2024-08-17,Allegiant Stadium,Raiders,Raiders vs Cowboys (preseason),raiders_preseason,10,,50,1,source,KSNV 2025-03 (Stadium Authority)
+11,2024-10-13,Allegiant Stadium,Raiders,Raiders vs Steelers,raiders_regular,10,59312,76,1,source,Review-Journal 2025-03 / KSNV 2025-03
+12,2024-10-27,Allegiant Stadium,Raiders,Raiders vs Chiefs,raiders_regular,10,59101,73,1,source,Review-Journal 2025-03
+13,2024-12-22,Allegiant Stadium,Raiders,Raiders vs Jaguars,raiders_regular,10,46561,59,1,source,Review-Journal 2025-03 / KSNV 2025-03
+14,2025-01-05,Allegiant Stadium,Raiders,Raiders vs Chargers,raiders_regular,10,51707,56,1,source,LVSportsBiz 2025-05-20
+15,2025-04-19,Allegiant Stadium,WrestleMania,WrestleMania 41 (two nights),one_off_sport,2,59321,82.5,1,source,Review-Journal 2025-08 (Stadium Authority Q2 2025); attendance is the two-night total halved
+16,,Allegiant Stadium,Concert,Post Malone,concert,1,53738,69,1,quarter only (2025 Q2),Review-Journal 2025-08
+17,,Allegiant Stadium,Concert,Kendrick Lamar,concert,1,52328,66,1,quarter only (2025 Q2),Review-Journal 2025-08
+18,,Allegiant Stadium,Concert,Coldplay night 1,concert,2,50518,79,1,quarter only (2025 Q2),Review-Journal 2025-08
+19,,Allegiant Stadium,Concert,Coldplay night 2,concert,2,49950,77,1,quarter only (2025 Q2),Review-Journal 2025-08
+20,,Allegiant Stadium,Concert,AC/DC,concert,1,48899,78,1,quarter only (2025 Q2),Review-Journal 2025-08
+21,,Allegiant Stadium,Concert,Shakira,concert,1,46120,59,1,quarter only (2025 Q2),Review-Journal 2025-08
+22,,Allegiant Stadium,Raiders,Raiders vs 49ers (preseason),raiders_preseason,10,54186,58,1,quarter only (2025 Q3); preseason inferred,casinos.com 2025-11 (Stadium Authority Q3 2025)
+23,2025-09-13,Allegiant Stadium,Boxing,Canelo vs Crawford,one_off_sport,1,65302,85,1,source,Review-Journal 2025-12 / casinos.com 2025-11
+24,2025-09-15,Allegiant Stadium,Raiders,Raiders vs Chargers,raiders_regular,10,58679,58,1,NFL schedule (not in attendance source),casinos.com 2025-11 (Stadium Authority Q3 2025)
+25,2025-09-28,Allegiant Stadium,Raiders,Raiders vs Bears,raiders_regular,10,59036,66,1,NFL schedule (not in attendance source),casinos.com 2025-11 (Stadium Authority Q3 2025)
+26,,Allegiant Stadium,Concert,The Weeknd,concert,1,51103,58,1,quarter only (2025 Q3),casinos.com 2025-11
+27,,Allegiant Stadium,Concert,Beyonce night 1,concert,2,,76,1,quarter only (2025 Q3),casinos.com 2025-11
+28,,Allegiant Stadium,Concert,Beyonce night 2,concert,2,,83,1,quarter only (2025 Q3),casinos.com 2025-11
+29,,Allegiant Stadium,Concert,Chris Brown night 1,concert,2,,64,1,quarter only (2025 Q3),casinos.com 2025-11
+30,,Allegiant Stadium,Concert,Chris Brown night 2,concert,2,,69,1,quarter only (2025 Q3),casinos.com 2025-11
+31,,Allegiant Stadium,Concert,Paul McCartney,concert,1,42926,70,1,quarter only (2025 Q4),Review-Journal 2026-02 (Stadium Authority Q4 2025)
+32,,Allegiant Stadium,Las Vegas Bowl,Las Vegas Bowl: Nebraska vs Utah,one_off_sport,1,34369,76,1,quarter only (2025 Q4),Review-Journal 2026-02
+33,,Allegiant Stadium,HBCU Classic,Grambling State vs Jackson State,one_off_sport,1,30149,65,1,quarter only (2025 Q4),Review-Journal 2026-02
+34,2025-11-02,Allegiant Stadium,Raiders,Raiders vs Jaguars,raiders_regular,10,52401,63,1,source,Review-Journal 2026-02
+35,2025-11-17,Allegiant Stadium,Raiders,Raiders vs Cowboys,raiders_regular,10,60327,68,1,source,Review-Journal 2026-02
+36,2025-11-23,Allegiant Stadium,Raiders,Raiders vs Browns,raiders_regular,10,53749,61,1,source,Review-Journal 2026-02
+37,2025-12-07,Allegiant Stadium,Raiders,Raiders vs Broncos,raiders_regular,10,57018,69,1,source,Review-Journal 2026-02
+38,2025-12-28,Allegiant Stadium,Raiders,Raiders vs Giants,raiders_regular,10,52136,54,1,source,Review-Journal 2026-02
+39,,Thomas & Mack Center,National Finals Rodeo,NFR (10 performances),rodeo,10,17509,88.5,1,annual,LVSportsBiz 2023-12-16 (87 to 90 percent in previous years; attendance is the 2023 nightly average)

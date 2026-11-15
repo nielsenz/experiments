@@ -1,0 +1,13 @@
+target,term,coef,se,t
+out_of_town_pct,intercept,67.17,2.46,27.33
+out_of_town_pct,preseason,-22.17,6.5,-3.41
+out_of_town_pct,monday,-3.83,4.26,-0.9
+out_of_town_pct,late,-7.67,3.89,-1.97
+visitors,intercept,38453.51,2031.9,18.92
+visitors,preseason,-13987.46,5375.91,-2.6
+visitors,monday,-606.41,3519.36,-0.17
+visitors,late,-7472.82,3212.72,-2.33
+locals,intercept,18640.32,1170.68,15.92
+locals,preseason,11262.63,3097.33,3.64
+locals,monday,3225.58,2027.68,1.59
+locals,late,2234.49,1851.01,1.21
