@@ -1,0 +1,38 @@
+inscription,scribe,word,commodity,total,status,rule,n_entries,sum,diff,n_damaged,lost_lines,total_damaged,implied_missing,entries,has_fractions
+HT9a,,KU-RO,,31 J E,does not balance,section,7,31,-3/4,0,False,False,,5 J E + 10 + 4 + 2 + 2 J + 2 J + 4 E,True
+HT9b,,KU-RO,,24,balances,section,7,24,0,0,False,False,,3 + 3 + 8 + 2 + 2 + 2 + 4,False
+HT11a,HT Scribe 24,KU-RO,,10,uncheckable,section,3,6,-4,1,False,False,entry read as 3? = 7,3? + 2 + 1,False
+HT11b,HT Scribe 24,KU-RO,,180,balances,section,5,180,0,0,False,False,,40 + 30 + 50 + 30 + 30,False
+HT13,HT Scribe 8,KU-RO,,130 J,uncheckable,section,6,131,1/2,1,False,False,entry read as 5 J? = 5,5 J? + 56 + 27 J + 18 + 19 + 5,True
+HT25b,,KU-RO,𐝫 𐝫,16,uncheckable,section,0,0,-16,0,True,False,,,False
+HT25b,,KU-RO,,52,balances,section,2,52,0,0,False,False,,28 + 24,False
+HT27a,HT Scribe 11,KU-RO,,335,uncheckable,section,8,322,-13,1,False,False,entry read as 50? = 63,90 + 50? + 51 + 20 + 43 + 21 + 5 + 42,False
+HT39,HT Scribe 12,KU-RO,KU-RE *414+A,100,uncheckable,section,3,28,-72,1,False,False,entry read as 10? = 82,10? + 8 + 10,False
+HT46a,,KU-RO,,43 J,uncheckable,section,1,1,-85/2,1,True,False,,1?,True
+HT67,HT Scribe 23,KU-RO,𐝫 𐝫,420?,uncheckable,section,0,0,-420,0,True,True,,,False
+HT74,HT Scribe 24,KU-RO,𐝫 𐝫,20?,uncheckable,section,0,0,-20,0,True,True,,,False
+HT85a,HT Scribe 9,KU-RO,,66?,balances as read (damaged signs),section,7,66,0,0,False,True,,12 + 12 + 6 + 24 + 5 + 3 + 4,False
+HT88,HT Scribe 7,KU-RO,,6,balances,after KI-RO,6,6,0,0,False,False,,1 + 1 + 1 + 1 + 1 + 1,False
+HT89,HT Scribe 2,KU-RO,,87,balances,section,5,87,0,0,False,False,,23 + 22 + 24 + 13 + 5,False
+HT94a,HT Scribe 9,KU-RO,,110,does not balance,section,5,111,1,0,False,False,,62 + 20 + 7 + 18 + 4,False
+HT94b,HT Scribe 9,KU-RO,,5,balances,section,5,5,0,0,False,False,,1 + 1 + 1 + 1 + 1,False
+HT100,,KU-RO,,97,uncheckable,section,5,93,-4,0,True,False,lost entry = 4,58 + 12 + 2 + 5 + 16,False
+HT102,HT Scribe 5,KU-RO,,1060,uncheckable,section,7,1070,10,1,False,False,entry read as 33? = 23,976 + 33? + 33 + 10 + 3 + 10 + 5,False
+HT104,HT Scribe 5,KU-RO,,95,balances,section,3,95,0,0,False,False,,45 J + 20 J + 29,True
+HT109,HT Scribe 7,KU-RO,,129,uncheckable,section,2,8,-121,1,True,False,,4? + 4,False
+HT110a,,KU-RO,,100?,uncheckable,section,2,21,-79,0,False,True,,20 + 1,False
+HT116b,,KU-RO,GRA,100?,uncheckable,section,0,0,-100,0,False,True,,,False
+HT117a,HT Scribe 9,KU-RO,,10,balances,section,10,10,0,0,False,False,,1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1,False
+HT118,HT Scribe 3,KU-RO,,30,does not balance,main,4,35,5,0,False,False,,15 + 6 + 4 + 10,False
+HT119,HT Scribe 9,KU-RO,,160,does not balance,section,9,159,-1,0,False,False,,34 + 68 + 13 + 10 + 7 + 7 + 10 + 2 + 8,False
+HT122a,HT Scribe 9,KU-RO,,31,uncheckable,section,16,22,-9,2,False,False,,2? + 2? + 2 + 1 + 2 + 3 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1,False
+HT122b,HT Scribe 9,KU-RO,,65,uncheckable,section,5,15,-50,1,False,False,entry read as 7? = 57,7? + 2 + 2 + 2 + 2,False
+HT122b,HT Scribe 9,PO-TO-KU-RO,,97,balances,grand,3,97,0,0,False,False,,31 + 1 + 65,False
+HT123+124a,HT Scribe 6,KU-RO,OLIV,93 J,balances,commodity,4,187/2,0,0,False,False,,31 + 31 J + 16 + 15,True
+HT123+124a,HT Scribe 6,KU-RO,*308,25 H?,uncheckable,section,0,,,0,False,True,,,True
+HT123+124b,HT Scribe 6,KU-RO,,20,uncheckable,section,8,,,0,False,False,,11 + 1 J E + 4 + 1 + 10 + J L2 + A + E F,True
+HT127b,,KU-RO,*307,156,uncheckable,section,1,13,-143,1,True,False,,13?,False
+HT127b,,KU-RO,,292,balances,running,6,292,0,0,False,False,,156 + 72 + 24 + 15 + 11 + 14,False
+HT131b,,PO-TO-KU-RO,,452 J?,uncheckable,section,2,32,-841/2,1,True,True,,30? + 2,True
+PH(?)31a,,KU-RO,CAPm+KU,1,uncheckable,main,4,4,3,1,True,False,,1 + 1 + 1 + 1?,False
+ZA15b,ZA Scribe 5,KU-RO,VIN,78,uncheckable,section,1,3,-75,0,False,False,,3,False

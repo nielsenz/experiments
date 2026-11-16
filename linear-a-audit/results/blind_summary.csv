@@ -1,0 +1,2 @@
+top_word,top_word_run_sums,familywise_p,max_any_word_any_shuffle,numbers_tested,labels,other_word_run_sums,other_word_expected,other_word_p,permutations
+KU-RO,8,4.999750012499375e-05,7,349,229,12,14.61065,0.8316084195790211,20000
