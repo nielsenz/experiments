@@ -1,0 +1,12 @@
+item,value,unit,source
+nevada_apportionment,300000,AF/yr,SNWA
+nevada_allocation_2027_2028,250000,AF/yr,Interior 2027-2028 Operating Guidelines (Aug 21 2026): 50000 AF reduction
+consumptive_use_2024,212000,AF,SNWA 2026 Water Resource Plan executive summary
+consumptive_use_2025,198000,AF,SNWA spokesperson via KSNV (Aug 21 2026)
+clark_pop_2026,2505000,people,UNLV CBER 2026 forecast
+clark_pop_2040,2770000,people,UNLV CBER 2026 forecast
+clark_pop_2060,3080000,people,UNLV CBER 2026 forecast
+clark_growth_2026_2036,204000,people,UNLV CBER 2026 forecast
+gpcd_2024,95,gal/person/day,SNWA 2026 plan (via lasvegasxeriscape summary)
+gpcd_goal_2035,86,gal/person/day,SNWA 2026 Water Resource Plan ch. 4
+gpcd_upper_case,93,gal/person/day,SNWA 2026 Water Resource Plan ch. 4
