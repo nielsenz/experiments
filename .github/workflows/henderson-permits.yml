@@ -1,0 +1,65 @@
+name: henderson-permits
+
+# Downloads the City of Henderson permit table, runs the analysis, and commits
+# the data and results. Manual, plus once on any push that changes the project
+# on its own branch (so a new branch produces its first data set by itself).
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [henderson-permits]
+    paths:
+      - 'henderson-permits/src/**'
+      - 'henderson-permits/requirements.txt'
+      - '.github/workflows/henderson-permits.yml'
+
+concurrency:
+  group: henderson-permits
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  pull:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install --disable-pip-version-check -r henderson-permits/requirements.txt
+
+      - name: Fetch permits
+        run: python henderson-permits/src/fetch_permits.py
+
+      - name: Analyze
+        run: python henderson-permits/src/analyze.py
+
+      - name: Commit and push
+        run: |
+          set -euo pipefail
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A henderson-permits/data henderson-permits/results
+          if git diff --cached --quiet; then
+            echo "Nothing new to commit."
+            exit 0
+          fi
+          git commit -m "henderson-permits: data pull $(date -u '+%Y-%m-%d %H:%MZ')"
+          for attempt in 1 2 3 4 5; do
+            if git push origin HEAD:"${GITHUB_REF_NAME}"; then
+              exit 0
+            fi
+            sleep $((attempt * 5))
+            git pull --rebase --autostash origin "${GITHUB_REF_NAME}" || true
+          done
+          echo "::error::Could not push after 5 attempts."
+          exit 1
