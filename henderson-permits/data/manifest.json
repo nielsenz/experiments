@@ -1,0 +1,28 @@
+{
+  "source": "https://services2.arcgis.com/naGsY5NZWVbd6bwD/arcgis/rest/services/DSC_Permits/FeatureServer/0",
+  "fetched_utc": "2026-11-18T00:54:52Z",
+  "rows_in_service": 277339,
+  "rows_written": 277339,
+  "columns": [
+    "ObjectId",
+    "PermitNumber",
+    "PermitType",
+    "WorkClass",
+    "Department",
+    "Category",
+    "PermitStatus",
+    "SubmittalMethod",
+    "ApplyDate",
+    "ApplyDateFY",
+    "IssueDate",
+    "FinalizedDate",
+    "ExpireDate",
+    "WorkingDaysBetweenApplyDateAndIssueDate",
+    "ValuationTotal",
+    "ParcelAddressZip",
+    "ProfessionalName",
+    "ProfessionalStateLicNbr",
+    "ProfessionalPhone"
+  ],
+  "slim": true
+}
